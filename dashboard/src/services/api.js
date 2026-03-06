@@ -5,8 +5,8 @@
  * AUTHORITATIVE METADATA: All names, roles, and UI properties are defined here.
  */
 
-// Fallback no modo DEV local. Na VPS (Produção), usa o próprio domínio para o Traefik rotear
-const BASE_URL = import.meta.env.VITE_API_URL || ''
+// Fallback no modo DEV local (npm run dev). Na VPS (Produção), usa o próprio domínio para o Traefik rotear
+const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:18795' : '')
 
 // ─── UTILS ─────────────────────────────────────────────────────────
 
