@@ -34,7 +34,7 @@ services:
 
     volumes:
       - caio_workspace:/app/workspace
-      - /root/Caio-Corp/config.json:/root/.nanobot/config.json ## Caminho correto que o nanobot lê
+      - /root/agente_caio/config.json:/root/.nanobot/config.json ## Caminho correto que o nanobot lê
 
     networks:
       - ControllNet ## Nome da rede interna
