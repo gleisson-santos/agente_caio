@@ -1,146 +1,62 @@
 [
   {
     "agent": "caio-ceo",
-    "name": "Agente Caio",
-    "role": "Orquestrador Central",
-    "tier": 0,
-    "status": "online",
-    "last_update": "2026-02-26T12:01:13.886642+00:00",
-    "uptime": "4m 51s",
-    "metrics": {
-      "model": "arcee-ai/trinity-large-preview:free"
-    }
+    "name": "Caio (CEO)",
+    "role": "Orquestrador Principal",
+    "tier": 0
   },
   {
-    "name": "Agente BD",
-    "role": "Monitor de Banco de Dados",
-    "type": "agent",
-    "status": "running",
-    "response_time_ms": 0.0,
-    "last_ping": "08:57:11",
-    "last_task": "health_check",
-    "consecutive_misses": 0,
-    "uptime": "47s",
-    "agent": "agent-bd"
-  },
-  {
-    "name": "Especialista em E-mail",
-    "role": "Monitoramento 24/7 de Correio Eletr\u00f4nico",
-    "type": "agent",
-    "status": "error",
-    "response_time_ms": 0.0,
-    "last_ping": "08:57:11",
-    "last_task": "polling_emails",
-    "consecutive_misses": 1,
-    "uptime": "47s",
-    "agent": "agent-email"
-  },
-  {
-    "name": "Agente Life",
-    "role": "Supervisor de Agentes",
-    "type": "agent",
-    "status": "online",
-    "response_time_ms": 0,
-    "last_ping": "08:57:11",
-    "last_task": "supervising",
-    "consecutive_misses": 0,
-    "uptime": "47s",
-    "agent": "agent-life"
-  },
-  {
-    "name": "Agente SSO",
-    "role": "Monitor de Infraestrutura VPS",
-    "type": "agent",
-    "status": "online",
-    "response_time_ms": 0.0,
-    "last_ping": "08:57:11",
-    "last_task": "collecting_metrics",
-    "consecutive_misses": 0,
-    "uptime": "47s",
-    "agent": "agent-sso"
-  },
-  {
+    "agent": "agent-token",
     "name": "Agente Token",
-    "role": "Monitor de Consumo de Tokens",
-    "type": "agent",
-    "status": "online",
-    "response_time_ms": 0.0,
-    "last_ping": "08:57:11",
-    "last_task": "idle",
-    "consecutive_misses": 0,
-    "uptime": "47s",
-    "agent": "agent-token"
+    "role": "Auditor de Consumo",
+    "tier": 1
   },
   {
-    "name": "Esp. Almoxarifado",
-    "role": "Logistics Analyst",
-    "type": "specialist",
-    "status": "aguardando",
-    "response_time_ms": -1,
-    "last_ping": "\u2014",
-    "last_task": "aguardando",
-    "consecutive_misses": 0,
-    "uptime": "\u2014",
-    "agent": "spec-almox"
+    "agent": "agent-bd",
+    "name": "Agente BD",
+    "role": "Monitor de Dados",
+    "tier": 1
   },
   {
+    "agent": "agent-life",
+    "name": "Agente Life",
+    "role": "Supervisor do Sistema",
+    "tier": 1
+  },
+  {
+    "agent": "agent-sso",
+    "name": "Agente SSO",
+    "role": "Infra & Saúde VPS",
+    "tier": 1
+  },
+  {
+    "agent": "spec-pendencias",
+    "name": "Especialista em Pendências",
+    "role": "Data Extractor",
+    "tier": 2
+  },
+  {
+    "agent": "spec-email",
+    "name": "Especialista em Email",
+    "role": "Security Guard",
+    "tier": 2
+  },
+  {
+    "agent": "spec-schedule",
+    "name": "Especialista dos Schedule",
+    "role": "Time Keeper",
+    "tier": 2
+  },
+  {
+    "agent": "spec-docs",
     "name": "Especialista em Documentos",
     "role": "Document Creator",
-    "type": "specialist",
-    "status": "online",
-    "response_time_ms": -1,
-    "last_ping": "\u2014",
-    "last_task": "aguardando",
-    "consecutive_misses": 0,
-    "uptime": "\u2014",
-    "agent": "spec-docs"
+    "tier": 2
   },
   {
-    "name": "Esp. Email",
-    "role": "Security Guard",
-    "type": "specialist",
-    "status": "aguardando",
-    "response_time_ms": -1,
-    "last_ping": "\u2014",
-    "last_task": "aguardando",
-    "consecutive_misses": 0,
-    "uptime": "\u2014",
-    "agent": "spec-email"
-  },
-  {
-    "name": "Esp. Relat\u00f3rio MS",
-    "role": "Data Miner",
-    "type": "specialist",
-    "status": "aguardando",
-    "response_time_ms": -1,
-    "last_ping": "\u2014",
-    "last_task": "aguardando",
-    "consecutive_misses": 0,
-    "uptime": "\u2014",
-    "agent": "spec-ms"
-  },
-  {
-    "name": "Esp. Pend\u00eancias",
-    "role": "Live Monitor",
-    "type": "specialist",
-    "status": "aguardando",
-    "response_time_ms": -1,
-    "last_ping": "\u2014",
-    "last_task": "aguardando",
-    "consecutive_misses": 0,
-    "uptime": "\u2014",
-    "agent": "spec-pendencias"
-  },
-  {
-    "name": "Esp. Schedule",
-    "role": "Time Keeper",
-    "type": "specialist",
-    "status": "aguardando",
-    "response_time_ms": -1,
-    "last_ping": "\u2014",
-    "last_task": "aguardando",
-    "consecutive_misses": 0,
-    "uptime": "\u2014",
-    "agent": "spec-schedule"
+    "agent": "spec-almox",
+    "name": "Esp. Almoxarifado",
+    "role": "Logistics Analyst",
+    "tier": 2
   }
 ]
