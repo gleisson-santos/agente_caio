@@ -5,7 +5,7 @@ services:
   ## --------------------------- CAIO CORP --------------------------- ##
 
   caio-dashboard:
-    image: gleissonsantos/caio-dashboard:latest ## Dashboard React + Nginx
+    image: caiocorp/caio-dashboard:latest ## Dashboard React + Nginx
 
     networks:
       - ControllNet ## Nome da rede interna
@@ -29,7 +29,7 @@ services:
   ## --------------------------- CAIO CORP --------------------------- ##
 
   caio-agent:
-    image: gleissonsantos/caio-agent:latest ## Core do Agente IA
+    image: caiocorp/caio-agent:latest ## Core do Agente IA
     command: [ "gateway" ] ## Inicia o bot Telegram (override do CMD status)
 
     volumes:
