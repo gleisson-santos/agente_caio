@@ -50,6 +50,13 @@ services:
       placement:
         constraints:
           - node.role == manager
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.caio-agent.rule=Host(`agentecaio.controllserv.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
+        - traefik.http.routers.caio-agent.entrypoints=websecure
+        - traefik.http.routers.caio-agent.priority=2
+        - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver
+        - traefik.http.services.caio-agent.loadbalancer.server.port=18795
 
 ## --------------------------- CAIO CORP --------------------------- ##
 
