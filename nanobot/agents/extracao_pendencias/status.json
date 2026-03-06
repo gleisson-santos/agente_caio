@@ -1,0 +1,23 @@
+{
+  "status": "online",
+  "status_detail": "Aguardando próximo ciclo",
+  "progress_pct": 100,
+  "last_run": "2026-03-04T19:27:21.585312",
+  "next_run": null,
+  "thread_status": {
+    "Vazamento": "✅ Concluído",
+    "Pavimento": "✅ Concluído",
+    "Falta d'Água": "✅ Concluído",
+    "Carro Pipa": "✅ Concluído"
+  },
+  "db_confirmed": true,
+  "success_summary": "✅ Extração concluída com sucesso!\n📦 4 registro(s) enviados ao Supabase\n⏱️ Duração: 0:02:01\n📅 04/03/2026 19:27",
+  "today_extractions": 1,
+  "today_date": "2026-03-04",
+  "metrics": {
+    "total_downloads": 4,
+    "uploads_ok": 4,
+    "uploads_error": 0,
+    "last_duration": "0:02:01"
+  }
+}
