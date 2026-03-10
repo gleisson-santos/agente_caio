@@ -375,7 +375,8 @@ def definitiva(filtro, data_inicio, data_fim, callback=None, driver_path=None, t
     # Declaração de Variaveis
     user = "t034183"
     passw = "Caneta2026*"
-    url = 'http://sciweb.embasanet.ba.gov.br/sci-web/'
+    #url = 'http://sciweb.embasanet.ba.gov.br/sci-web/'
+    url = 'http://sciweb.embasanet.ba.gov.br:8443/sci-web/'   
 
     if callback: callback(f"Iniciando Extração em: {target_dir}")
 
