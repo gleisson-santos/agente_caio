@@ -115,76 +115,136 @@ class EmailChannel(BaseChannel):
             return
 
         self._running = True
-        logger.info("Starting Email channel (IMAP polling mode)...")
+        logger.info("Starting Email channel (IMAP IDLE + Polling mode)...")
         logger.info("Email cross-notify: channel={}, chat_id={}", self._notify_channel, self._notify_chat_id)
 
-        poll_seconds = max(5, int(self.config.poll_interval_seconds))
+        # We start two tasks: 
+        # 1. The IDLE loop (real-time push)
+        # 2. A safety polling task (fallback)
+        asyncio.create_task(self._idle_loop())
+        
+        poll_seconds = max(60, int(self.config.poll_interval_seconds)) # Slower poll as backup
         while self._running:
             try:
-                inbound_items = await asyncio.to_thread(self._fetch_new_messages)
-                if inbound_items:
-                    logger.info("Email: {} new message(s) detected", len(inbound_items))
-                for item in inbound_items:
-                    sender = item["sender"]
-                    subject = item.get("subject", "")
-                    message_id = item.get("message_id", "")
-                    logger.info("Email from '{}': '{}'", sender, subject[:60])
-
-                    if subject:
-                        self._last_subject_by_chat[sender] = subject
-                    if message_id:
-                        self._last_message_id_by_chat[sender] = message_id
-
-                    # Cache email for future user interaction (reply/delete)
-                    body_raw = item.get("body_text", "") or ""
-                    self._recent_emails.append({
-                        "sender": sender,
-                        "subject": subject,
-                        "message_id": message_id,
-                        "body": body_raw[:2000],  # Keep first 2000 chars
-                        "time": datetime.now().strftime("%H:%M"),
-                    })
-                    # Keep only last 20 emails in cache
-                    if len(self._recent_emails) > 20:
-                        self._recent_emails = self._recent_emails[-20:]
-
-                    # NOTE: We do NOT call _handle_message() here.
-                    # Emails should not be auto-processed/replied by the agent.
-                    # The user must explicitly ask to reply or take action.
-
-                    # Cross-channel notification (e.g. alert on Telegram)
-                    if self._notify_channel and self._notify_chat_id:
-                        # Clean body using advanced scrubbing
-                        body_clean = clean_email_body(body_raw, max_chars=200)
-
-                        # Format using native Telegram HTML compatible Markdown
-                        # [vHTML-Final] - using ** as requested by user
-                        summary = (
-                            f"📬 **Novo Email Recebido**\n\n"
-                            f"👤 **Remetente:** {sender}\n"
-                            f"📌 **Assunto:** {subject}\n"
-                            f"🕒 **Hora:** {datetime.now().strftime('%H:%M')}\n\n"
-                            f"💬 **Prévia**\n"
-                            f"{body_clean}\n\n"
-                            f"⚡ **Ações**\n"
-                            f"👁 Ler email completo\n"
-                            f"🗑 Mover para lixo\n"
-                            f"📂 Arquivar"
-                        )
-                        logger.info("Sending email cross-notify to {}:{}", self._notify_channel, self._notify_chat_id)
-                        try:
-                            await self.bus.publish_outbound(OutboundMessage(
-                                channel=self._notify_channel,
-                                chat_id=self._notify_chat_id,
-                                content=summary,
-                            ))
-                            logger.info("Email cross-notify published OK")
-                        except Exception as notify_err:
-                            logger.warning("Email cross-notify failed: {}", notify_err)
+                await self._check_and_notify()
             except Exception as e:
                 logger.error("Email polling error: {}", e)
-
             await asyncio.sleep(poll_seconds)
+
+    async def _check_and_notify(self) -> None:
+        """Fetch new messages and send notifications if needed."""
+        inbound_items = await asyncio.to_thread(self._fetch_new_messages)
+        if inbound_items:
+            logger.info("Email: {} new message(s) detected", len(inbound_items))
+        for item in inbound_items:
+            sender = item["sender"]
+            subject = item.get("subject", "")
+            message_id = item.get("message_id", "")
+            logger.info("Email from '{}': '{}'", sender, subject[:60])
+
+            if subject:
+                self._last_subject_by_chat[sender] = subject
+            if message_id:
+                self._last_message_id_by_chat[sender] = message_id
+
+            body_raw = item.get("body_text", "") or ""
+            self._recent_emails.append({
+                "sender": sender,
+                "subject": subject,
+                "message_id": message_id,
+                "body": body_raw[:2000],
+                "time": datetime.now().strftime("%H:%M"),
+            })
+            if len(self._recent_emails) > 20:
+                self._recent_emails = self._recent_emails[-20:]
+
+            if self._notify_channel and self._notify_chat_id:
+                body_clean = clean_email_body(body_raw, max_chars=200)
+                summary = (
+                    f"📬 **Novo Email Recebido**\n\n"
+                    f"👤 **Remetente:** {sender}\n"
+                    f"📌 **Assunto:** {subject}\n"
+                    f"🕒 **Hora:** {datetime.now().strftime('%H:%M')}\n\n"
+                    f"💬 **Prévia**\n"
+                    f"{body_clean}\n\n"
+                    f"⚡ **Ações**\n"
+                    f"👁 Ler email completo\n"
+                    f"🗑 Mover para lixo\n"
+                    f"📂 Arquivar"
+                )
+                logger.info("Sending email cross-notify to {}:{}", self._notify_channel, self._notify_chat_id)
+                try:
+                    await self.bus.publish_outbound(OutboundMessage(
+                        channel=self._notify_channel,
+                        chat_id=self._notify_chat_id,
+                        content=summary,
+                    ))
+                    logger.info("Email cross-notify published OK")
+                except Exception as notify_err:
+                    logger.warning("Email cross-notify failed: {}", notify_err)
+
+    async def _idle_loop(self) -> None:
+        """Wait for IMAP IDLE notifications (real-time push)."""
+        while self._running:
+            client = None
+            try:
+                logger.info("Email IDLE: Establishing connection...")
+                if self.config.imap_use_ssl:
+                    client = imaplib.IMAP4_SSL(self.config.imap_host, self.config.imap_port)
+                else:
+                    client = imaplib.IMAP4(self.config.imap_host, self.config.imap_port)
+                
+                client.login(self.config.imap_username, self.config.imap_password)
+                client.select(self.config.imap_mailbox or "INBOX")
+                
+                logger.info("Email IDLE: Active. Waiting for push notifications...")
+                
+                while self._running:
+                    # Start IDLE
+                    # We use a custom thread-wrapper because imaplib is blocking
+                    def _do_idle():
+                        try:
+                            # Send IDLE command
+                            client.send(b"%s IDLE\r\n" % client._new_tag())
+                            resp = client.readline()
+                            if b"continuation" not in resp.lower() and b"+" not in resp:
+                                return False
+                            
+                            # Block waiting for data or timeout (approx 29 mins for Gmail)
+                            client.socket().settimeout(1740) # 29 mins
+                            while True:
+                                line = client.readline()
+                                if not line: break
+                                if b"EXISTS" in line.upper() or b"RECENT" in line.upper():
+                                    # New mail! Terminate IDLE
+                                    client.send(b"DONE\r\n")
+                                    client.readline()
+                                    return True
+                        except Exception as ide:
+                            logger.debug("IDLE inner error (likely timeout): {}", ide)
+                            try:
+                                client.send(b"DONE\r\n")
+                                client.readline()
+                            except: pass
+                            return False
+                        return False
+
+                    new_mail = await asyncio.to_thread(_do_idle)
+                    if new_mail:
+                        logger.info("Email IDLE: Push received! Checking messages...")
+                        await self._check_and_notify()
+                    
+                    # Prevent tight loop on error
+                    await asyncio.sleep(1)
+
+            except Exception as e:
+                logger.error("Email IDLE core error: {}. Retrying in 30s...", e)
+                await asyncio.sleep(30)
+            finally:
+                if client:
+                    try:
+                        client.logout()
+                    except: pass
 
     def remove_from_cache(self, subject: str = "", sender: str = "") -> None:
         """Remove emails from the recent cache matching subject or sender."""
