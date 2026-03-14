@@ -373,9 +373,10 @@ def definitiva(filtro, data_inicio, data_fim, callback=None, driver_path=None, t
         target_dir = pastas_mapeadas.get(filtro, os.path.join(base_path, "Extrações_Pendencias"))
     
     # Declaração de Variaveis
-    user = "t034183"
-    passw = "Caneta2026*"
-    url = 'http://sciweb.embasanet.ba.gov.br/sci-web/'
+    user = ""
+    passw = ""
+    #url = ''
+    url = ''   
 
     if callback: callback(f"Iniciando Extração em: {target_dir}")
 
