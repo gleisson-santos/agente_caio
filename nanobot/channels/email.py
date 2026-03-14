@@ -152,6 +152,8 @@ class EmailChannel(BaseChannel):
                     # Emails should not be auto-processed/replied by the agent.
                     # The user must explicitly ask to reply or take action.
 
+                    # Cross-channel notification (e.g. alert on Telegram)
+                    if self._notify_channel and self._notify_chat_id:
                         # Clean body using advanced scrubbing
                         body_clean = clean_email_body(body_raw, max_chars=200)
 
