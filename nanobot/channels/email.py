@@ -22,6 +22,39 @@ from nanobot.channels.base import BaseChannel
 from nanobot.config.schema import EmailConfig
 
 
+def clean_email_body(raw_body: str, max_chars: int = 200) -> str:
+    """
+    Remove HTML tags, CSS blocks (style) and scripts, 
+    then normalize whitespace and truncate.
+    """
+    if not raw_body or raw_body == "(empty email body)":
+        return "(sem conteúdo)"
+
+    # 1. Remove <style> and <script> blocks (including contents)
+    text = re.sub(r'<(style|script)[^>]*>[\s\S]*?</\1>', '', raw_body, flags=re.IGNORECASE)
+    
+    # 2. Convert <br> and </p> to newlines
+    text = re.sub(r'<\s*br\s*/?>', '\n', text, flags=re.IGNORECASE)
+    text = re.sub(r'<\s*/\s*p\s*>', '\n', text, flags=re.IGNORECASE)
+    
+    # 3. Strip all other HTML tags
+    text = re.sub(r'<[^>]+>', '', text)
+    
+    # 4. Unescape HTML entities
+    text = html.unescape(text)
+    
+    # 5. Normalize whitespace: reduce multiple spaces/newlines to single ones
+    text = re.sub(r'[ \t]+', ' ', text)
+    text = re.sub(r'\n{2,}', '\n', text)
+    
+    # 6. Final cleanup and truncation
+    text = text.strip()
+    if len(text) > max_chars:
+        text = text[:max_chars].rsplit(' ', 1)[0] + '...'
+        
+    return text or "(sem conteúdo)"
+
+
 class EmailChannel(BaseChannel):
     """
     Email channel.
@@ -119,28 +152,21 @@ class EmailChannel(BaseChannel):
                     # Emails should not be auto-processed/replied by the agent.
                     # The user must explicitly ask to reply or take action.
 
-                    # Cross-channel notification (e.g. alert on Telegram)
-                    if self._notify_channel and self._notify_chat_id:
-                        # Clean body: remove excess whitespace, limit to ~150 chars
-                        body_clean = " ".join(body_raw.split()).strip()
-                        if len(body_clean) > 150:
-                            body_clean = body_clean[:150].rsplit(" ", 1)[0] + "…"
-                        if not body_clean or body_clean == "(empty email body)":
-                            body_clean = "(sem conteúdo)"
+                        # Clean body using advanced scrubbing
+                        body_clean = clean_email_body(body_raw, max_chars=200)
 
-                        # Format using the new minimalist, modern Telegram style (MarkdownV2)
-                        # Avoiding ASCII tables and simulated boxes as requested.
+                        # Format using native Telegram HTML
                         summary = (
-                            f"📬 *Novo Email Recebido*\n\n"
-                            f"👤 *Remetente:* {sender}\n"
-                            f"📌 *Assunto:* {subject}\n"
-                            f"🕒 *Hora:* {datetime.now().strftime('%H:%M')}\n\n"
-                            f"💬 *Prévia:*\n"
-                            f"{body_clean[:100]}...\n\n"
-                            f"⚡ *Ações rápidas:*\n"
-                            f"👁 *Ler email completo*\n"
-                            f"🗑 *Mover para lixo*\n"
-                            f"📂 *Arquivar*"
+                            f"📬 <b>Novo Email Recebido</b>\n\n"
+                            f"👤 <b>Remetente:</b> {sender}\n"
+                            f"📌 <b>Assunto:</b> {subject}\n"
+                            f"🕒 <b>Hora:</b> {datetime.now().strftime('%H:%M')}\n\n"
+                            f"💬 <b>Prévia</b>\n"
+                            f"{body_clean}\n\n"
+                            f"⚡ <b>Ações</b>\n"
+                            f"👁 Ler email completo\n"
+                            f"🗑 Mover para lixo\n"
+                            f"📂 Arquivar"
                         )
                         logger.info("Sending email cross-notify to {}:{}", self._notify_channel, self._notify_chat_id)
                         try:

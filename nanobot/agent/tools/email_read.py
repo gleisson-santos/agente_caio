@@ -226,14 +226,15 @@ class EmailReadTool(Tool):
                     to = _decode_header(msg.get("To"))
 
                     entry = [
-                        f"👤 *Remetente:* {sender}",
-                        f"📌 *Assunto:* {subject}",
-                        f"🕒 *Data:* {date}",
+                        f"👤 <b>Remetente:</b> {sender}",
+                        f"📌 <b>Assunto:</b> {subject}",
+                        f"🕒 <b>Data:</b> {date}",
                     ]
 
                     if include_body:
                         body = _extract_body(msg)
-                        entry.append(f"💬 *Prévia:*\n{body[:200]}...")
+                        # We don't have the clean_email_body here yet, but we can truncate
+                        entry.append(f"💬 <b>Prévia</b>\n{body[:200]}...")
 
                     results.append("\n".join(entry))
                 except Exception as e:
