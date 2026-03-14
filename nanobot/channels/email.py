@@ -128,14 +128,25 @@ class EmailChannel(BaseChannel):
                         if not body_clean or body_clean == "(empty email body)":
                             body_clean = "(sem conteúdo)"
 
+                        # Format using the approved Telegram-native single-email template
+                        # Using MarkdownV2 with monospace table blocks for elegance
                         summary = (
-                            f"━━━━━━━━━━━━━━━━━━━━\n"
-                            f"📧  *Novo Email Recebido*\n"
-                            f"━━━━━━━━━━━━━━━━━━━━\n"
-                            f"👤 *De:*  {sender}\n"
-                            f"📌 *Assunto:*  {subject}\n\n"
-                            f"💬 _{body_clean}_\n"
-                            f"━━━━━━━━━━━━━━━━━━━━"
+                            f"📧 *NOVO EMAIL RECEBIDO*\n"
+                            f"*Caio AI | {datetime.now().strftime('%d/%m/%Y %H:%M')}*\n\n"
+                            f"📊 *Detalhes Rápidos:*\n"
+                            f"👤 {sender}\n"
+                            f"📌 {subject}\n\n"
+                            f"```\n"
+                            f"┌{'─'*17}┬{'─'*22}┬{'─'*6}┬{'─'*25}┐\n"
+                            f"│ Remetente         │ Assunto                │ Hora │ Preview                   │\n"
+                            f"├{'─'*17}┼{'─'*22}┼{'─'*6}┼{'─'*25}┤\n"
+                            f"│ {str(sender)[:15]:<15} │ {str(subject)[:20]:<20} │ {datetime.now().strftime('%H:%M')}│ {str(body_clean)[:23]:<23} │\n"
+                            f"└{'─'*17}┴{'─'*22}┴{'─'*6}┴{'─'*25}┘\n"
+                            f"```\n\n"
+                            f"⚡ *Ações Rápidas:*\n"
+                            f"👁️ *ler {str(sender).split('@')[0]}* – Mostra corpo full\n"
+                            f"🗑️ *deletar {str(sender).split('@')[0]}* – Move pro lixo\n"
+                            f"**Inbox organizada! Comande agora.** 🐱💥"
                         )
                         logger.info("Sending email cross-notify to {}:{}", self._notify_channel, self._notify_chat_id)
                         try:
