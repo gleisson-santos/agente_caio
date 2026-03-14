@@ -442,7 +442,11 @@ def gateway(
                     await bus.publish_outbound(OutboundMessage(
                         channel="telegram",
                         chat_id=tg_chat_id,
-                        content=f"🔔 Lembrete: {job.payload.message}"
+                        content=(
+                            f"⏰ *Lembrete de Evento*\n\n"
+                            f"📌 *Detalhe:* {job.payload.message}\n\n"
+                            f"✅ *Notificação automática do Agente*"
+                        )
                     ))
             return job.payload.message
 

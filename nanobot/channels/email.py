@@ -128,25 +128,19 @@ class EmailChannel(BaseChannel):
                         if not body_clean or body_clean == "(empty email body)":
                             body_clean = "(sem conteúdo)"
 
-                        # Format using the approved Telegram-native single-email template
-                        # Using MarkdownV2 with monospace table blocks for elegance
+                        # Format using the new minimalist, modern Telegram style (MarkdownV2)
+                        # Avoiding ASCII tables and simulated boxes as requested.
                         summary = (
-                            f"📧 *NOVO EMAIL RECEBIDO*\n"
-                            f"*Caio AI | {datetime.now().strftime('%d/%m/%Y %H:%M')}*\n\n"
-                            f"📊 *Detalhes Rápidos:*\n"
-                            f"👤 {sender}\n"
-                            f"📌 {subject}\n\n"
-                            f"```\n"
-                            f"┌{'─'*17}┬{'─'*22}┬{'─'*6}┬{'─'*25}┐\n"
-                            f"│ Remetente         │ Assunto                │ Hora │ Preview                   │\n"
-                            f"├{'─'*17}┼{'─'*22}┼{'─'*6}┼{'─'*25}┤\n"
-                            f"│ {str(sender)[:15]:<15} │ {str(subject)[:20]:<20} │ {datetime.now().strftime('%H:%M')}│ {str(body_clean)[:23]:<23} │\n"
-                            f"└{'─'*17}┴{'─'*22}┴{'─'*6}┴{'─'*25}┘\n"
-                            f"```\n\n"
-                            f"⚡ *Ações Rápidas:*\n"
-                            f"👁️ *ler {str(sender).split('@')[0]}* – Mostra corpo full\n"
-                            f"🗑️ *deletar {str(sender).split('@')[0]}* – Move pro lixo\n"
-                            f"**Inbox organizada! Comande agora.** 🐱💥"
+                            f"📬 *Novo Email Recebido*\n\n"
+                            f"👤 *Remetente:* {sender}\n"
+                            f"📌 *Assunto:* {subject}\n"
+                            f"🕒 *Hora:* {datetime.now().strftime('%H:%M')}\n\n"
+                            f"💬 *Prévia:*\n"
+                            f"{body_clean[:100]}...\n\n"
+                            f"⚡ *Ações rápidas:*\n"
+                            f"👁 *Ler email completo*\n"
+                            f"🗑 *Mover para lixo*\n"
+                            f"📂 *Arquivar*"
                         )
                         logger.info("Sending email cross-notify to {}:{}", self._notify_channel, self._notify_chat_id)
                         try:
