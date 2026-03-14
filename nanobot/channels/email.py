@@ -155,15 +155,16 @@ class EmailChannel(BaseChannel):
                         # Clean body using advanced scrubbing
                         body_clean = clean_email_body(body_raw, max_chars=200)
 
-                        # Format using native Telegram HTML
+                        # Format using native Telegram HTML compatible Markdown
+                        # [vHTML-Final] - using ** as requested by user
                         summary = (
-                            f"📬 <b>Novo Email Recebido</b>\n\n"
-                            f"👤 <b>Remetente:</b> {sender}\n"
-                            f"📌 <b>Assunto:</b> {subject}\n"
-                            f"🕒 <b>Hora:</b> {datetime.now().strftime('%H:%M')}\n\n"
-                            f"💬 <b>Prévia</b>\n"
+                            f"📬 **Novo Email Recebido**\n\n"
+                            f"👤 **Remetente:** {sender}\n"
+                            f"📌 **Assunto:** {subject}\n"
+                            f"🕒 **Hora:** {datetime.now().strftime('%H:%M')}\n\n"
+                            f"💬 **Prévia**\n"
                             f"{body_clean}\n\n"
-                            f"⚡ <b>Ações</b>\n"
+                            f"⚡ **Ações**\n"
                             f"👁 Ler email completo\n"
                             f"🗑 Mover para lixo\n"
                             f"📂 Arquivar"
