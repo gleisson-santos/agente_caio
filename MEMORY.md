@@ -23,13 +23,15 @@ O **Agente Caio** é um ecossistema de inteligência artificial multifuncional p
 - **Funcionalidades:** Monitoramento de métricas, log de eventos em tempo real, controle de especialistas e chat neural interativo.
 
 ### 3. Camada de Especialistas
-- **Especialista em Pendências:** Automação Selenium (`agendador.py`) para extração de dados do SCI Web e envio para Supabase. Possui monitor de atividade granular Etapas 1/4.
-- **Especialista em Email:** Análise e gestão de emails via IA (Sentinel).
-- **Agente SSO/Life/Token:** Micro-agentes de observabilidade da infraestrutura (CPU, Memória, Tokens, DB).
+- **Especialista em Pendências (SCI Embasa):** Automação extração de dados. Refatorado para maior estabilidade no Linux (subprocess), pronto para loop 24/7 dependendo apenas de túnel SSH ativo.
+- **Especialista em Email (Sentinel):** Análise e gestão de emails via IA. Modelos nativos para Telegram (multi/single) aprovados e ativos.
+- **Agente SSO/Life/Token:** Micro-agentes de observabilidade. O monitor de tokens agora gera resumos semanais dinâmicos em HTML responsivo.
+- **Especialista Podologia 🦶:** Agente integrado ao dashboard, responsável por acompanhamento de clientes e agendamentos.
+- **Especialista Financeiro (FIIs/Ações):** Gera relatórios analíticos de carteiras de investimentos (ex: Carteira R$3k) exportando PDFs e dashboards móveis.
 
 ---
 
-## 📈 Melhorias Recentes (Fevereiro 2026)
+## 📈 Melhorias Recentes (Março 2026)
 
 ### 🌌 Refatoração UI/UX Premium (v4.0)
 - **Neural Sphere:** Implementação de animação Canvas 60fps no cabeçalho do chat, simulando uma rede neural ativa.
@@ -37,9 +39,10 @@ O **Agente Caio** é um ecossistema de inteligência artificial multifuncional p
 - **Glassmorphism:** Visual moderno com desfoque de fundo, transparências neon e bordas arredondadas.
 - **Ergonomia Mobile:** Input de chat fixo na base com auto-resize, garantindo usabilidade em qualquer dispositivo.
 
-### ⚙️ Evolução do Especialista em Pendências
-- **Visibilidade Total:** Adição do "Monitor de Atividade" no Dashboard, reportando micro-etapas da extração.
-- **Controle via Chat:** O Agente Caio agora pode iniciar, parar ou verificar o status da extração diretamente via comando de voz/texto.
+### ⚙️ Evolução dos Especialistas e VPS
+- **Extração SCI:** Código 100% estabilizado e versionado em repositório Git local no VPS.
+- **Dashboard Modular:** Agentes "plug-and-play" (Ex: Podologia subiu automaticamente para a Camada Agentes no painel).
+- **Entrega Multicanal:** Outputs centralizados no diretório `/out/` com disparo direto para o Telegram via ZIP para driblar restrições de SSH do usuário.
 - **Consolidação de Ambiente:** Sincronização de dependências através de um único `.venv` e `requirements.txt` global para evitar redundâncias.
 
 ---
