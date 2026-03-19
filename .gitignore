@@ -28,6 +28,11 @@ build/
 *.jpeg
 *.svg
 *.webp
+!docs/*.png
+!docs/*.jpg
+!docs/*.jpeg
+!docs/*.svg
+!docs/*.webp
 *.zip
 *.skill
 !workspace/memory/MEMORY.md
