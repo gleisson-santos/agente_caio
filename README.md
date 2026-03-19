@@ -1,13 +1,12 @@
 <div align="center">
-  <img src="docs/dashboard_online.png" alt="Caio Corp Dashboard" width="800"/>
   <h1>🐱 Agente Caio Corp v3.0</h1>
-  <p><strong>Centro de Inteligência Operacional & Plataforma de Agentes Autônomos</strong></p>
+  <p><strong>Centro de Inteligência Operacional & Plataforma de Agentes Autônomos — UomniMind Elite Stack</strong></p>
   <p>
-    <a href="https://github.com/gleisson-santos/agente_caio/actions"><img src="https://github.com/gleisson-santos/agente_caio/actions/workflows/docker-publish.yml/badge.svg" alt="Build"></a>
+    <a href="https://github.com/gleisson-santos/agente_caio/actions"><img src="https://github.com/gleisson-santos/agente_caio/actions/workflows/docker-publish.yml/badge.svg" alt="Build Status"></a>
     <a href="https://hub.docker.com/r/caiocorp/caio-dashboard"><img src="https://img.shields.io/docker/pulls/caiocorp/caio-dashboard?label=Dashboard%20Pulls&logo=docker" alt="Dashboard Pulls"></a>
     <a href="https://hub.docker.com/r/caiocorp/caio-agent"><img src="https://img.shields.io/docker/pulls/caiocorp/caio-agent?label=Agent%20Pulls&logo=docker" alt="Agent Pulls"></a>
-    <img src="https://img.shields.io/badge/python-≥3.11-blue" alt="Python">
-    <img src="https://img.shields.io/badge/react-18-61DAFB?logo=react&logoColor=black" alt="React">
+    <img src="https://img.shields.io/badge/python-≥3.11-blue" alt="Python Version">
+    <img src="https://img.shields.io/badge/react-18-61DAFB?logo=react&logoColor=black" alt="React 18">
   </p>
 </div>
 
@@ -29,18 +28,19 @@ graph TD
     %% Nós
     CEO["🧠 Caio (CEO)<br>Orquestrador Principal"]:::ceo
 
-    subgraph Camada de Infraestrutura e Monitoramento (Tier 1)
+    subgraph "Camada de Infraestrutura e Monitoramento (Tier 1)"
         A_TOKEN["💎 Agente Token<br>Auditor de Consumo"]:::infra
         A_BD["🗄️ Agente BD<br>Monitor de Dados"]:::infra
         A_LIFE["❤️ Agente Life<br>Supervisor do Sistema"]:::infra
         A_SSO["🖥️ Agente SSO<br>Infra & Saúde VPS"]:::infra
     end
 
-    subgraph Camada de Execução Especializada (Tier 2)
+    subgraph "Camada de Execução Especializada (Tier 2)"
         S_PEND["⚡ Especialista em Pendências<br>Extrai SCI/Upload Supabase"]:::spec
         S_EMAIL["📧 Especialista em Email<br>Leitura IMAP/Resumos"]:::spec
         S_SCHED["📆 Especialista dos Schedule<br>Google Calendar & Crons"]:::spec
         S_DOCS["📄 Especialista em Documentos<br>Geração PDF/PPTX/DOCX"]:::spec
+        S_ALMOX["📦 Esp. Almoxarifado<br>Analista de Logística"]:::spec
     end
 
     %% Conexões
@@ -53,6 +53,7 @@ graph TD
     A_LIFE -.-> S_EMAIL
     CEO --> S_SCHED
     CEO --> S_DOCS
+    CEO --> S_ALMOX
 ```
 
 ## ✨ O que o Caio pode fazer por você:
@@ -62,6 +63,7 @@ graph TD
 3. **Seninela de E-mails:** O Especialista de E-mail fica de olho na sua caixa de entrada, filtra SPAM via IA, resume o que é mais importante e avisa você das urgências.
 4. **Gerenciador de Tempo:** Com a nova integração do **Google Calendar**, você pede no Telegram: "Caio, marca uma reunião amanhã às 14h com o Thiago", e o evento é agendado magicamente no seu calendário.
 5. **Criador de Documentos Profissionais:** Peça "Mano, cria uma proposta comercial de prestação de serviço de TI para o Cliente XPTO", e o sistema devolve o `.docx` pronto e perfeitamente formatado.
+6. **Analista de Logística (Almoxarifado):** Gere relatórios de estoque, acompanhe entradas e saídas e tenha controle total do seu almoxarifado via comandos simples no Telegram.
 
 ---
 
