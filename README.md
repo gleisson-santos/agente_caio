@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="docs/dashboard_online.png" alt="Caio Corp Dashboard" width="800"/>
   <h1>🐱 Agente Caio Corp v3.0</h1>
   <p><strong>Centro de Inteligência Operacional & Plataforma de Agentes Autônomos — UomniMind Elite Stack</strong></p>
   <p>
@@ -59,7 +60,7 @@ graph TD
 ## ✨ O que o Caio pode fazer por você:
 
 1. **Gestão via Telegram 24/7:** O bot do Caio fica ouvindo no seu Telegram. Você pede para ele extrair pendências, e ele acorda o Especialista de Pendências, roda a automação de Selenium (Brave), e devolve o resumo.
-2. **Dashboard Web "Live":** Tudo o que os agentes fazem reflete imediatamente no Dashboard `agentecaio.controllserv.com.br`, indicando o Status de cada serviço (Online, Error, Executando) e suas métricas.
+2. **Dashboard Web "Live":** Tudo o que os agentes fazem reflete imediatamente no Dashboard `SEU DOMINIO`, indicando o Status de cada serviço (Online, Error, Executando) e suas métricas.
 3. **Seninela de E-mails:** O Especialista de E-mail fica de olho na sua caixa de entrada, filtra SPAM via IA, resume o que é mais importante e avisa você das urgências.
 4. **Gerenciador de Tempo:** Com a nova integração do **Google Calendar**, você pede no Telegram: "Caio, marca uma reunião amanhã às 14h com o Thiago", e o evento é agendado magicamente no seu calendário.
 5. **Criador de Documentos Profissionais:** Peça "Mano, cria uma proposta comercial de prestação de serviço de TI para o Cliente XPTO", e o sistema devolve o `.docx` pronto e perfeitamente formatado.
@@ -107,7 +108,7 @@ services:
           - node.role == manager
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-dashboard.rule=Host(`agentecaio.controllserv.com.br`)
+        - traefik.http.routers.caio-dashboard.rule=Host(`SEU DOMINIO`)
         - traefik.http.routers.caio-dashboard.entrypoints=websecure
         - traefik.http.routers.caio-dashboard.priority=1
         - traefik.http.routers.caio-dashboard.tls.certresolver=letsencryptresolver
@@ -136,7 +137,7 @@ services:
           - node.role == manager
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-agent.rule=Host(`agentecaio.controllserv.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
+        - traefik.http.routers.caio-agent.rule=Host(`SEU DOMINIO`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
         - traefik.http.routers.caio-agent.entrypoints=websecure
         - traefik.http.routers.caio-agent.priority=2
         - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver
