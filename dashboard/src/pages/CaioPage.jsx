@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { api, AGENT_UI_META } from '../services/api'
-import NeuralSphere from '../components/NeuralSphere'
 
 const getDailySessionId = () => {
     const today = new Date().toISOString().split('T')[0];
@@ -143,7 +142,22 @@ export default function CaioPage() {
 
     return (
         <div className="cc-chat-page-root-futuristic">
-            <NeuralSphere />
+            {/* Clean header area - no neural animation */}
+            <div style={{
+                padding: '14px 24px',
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+                background: 'rgba(15,15,20,0.95)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                flexShrink: 0
+            }}>
+                <div style={{ fontSize: '28px', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(99,102,241,0.1)', borderRadius: '10px' }}>🐈</div>
+                <div>
+                    <div style={{ fontSize: '15px', fontWeight: 800, color: '#fff' }}>Caio</div>
+                    <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '1.5px' }}>Neural Core • Online</div>
+                </div>
+            </div>
 
             {agentMeta && (
                 <div className="cc-agent-chat-header fade-in" style={{
