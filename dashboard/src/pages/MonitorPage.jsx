@@ -21,17 +21,20 @@ const MOCK_LOGS = [
 export default function MonitorPage() {
   const [agents, setAgents] = useState([])
   const [services, setServices] = useState([])
+  const [traces, setTraces] = useState([])
+  const [activeTab, setActiveTab] = useState('overview') // 'overview' | 'tracing'
 
   const fetchData = useCallback(async () => {
-    const [a, s] = await Promise.all([api.getAgents(), api.getServices()])
+    const [a, s, t] = await Promise.all([api.getAgents(), api.getServices(), api.getTracingLogs()])
     setAgents(a)
     setServices(s)
+    setTraces(t || [])
   }, [])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchData()
-    const interval = setInterval(fetchData, 30000)
+    const interval = setInterval(fetchData, 10000)
     return () => clearInterval(interval)
   }, [fetchData])
 
@@ -49,19 +52,38 @@ export default function MonitorPage() {
         <p>Saúde, consumo de tokens, alertas e logs em tempo real.</p>
       </div>
 
-      {/* Services */}
-      <div className="section-title fade-in-up">Serviços</div>
-      <div className="services-grid fade-in-up">
-        {services.map(svc => (
-          <div key={svc.id} className="service-card">
-            <span className={`service-dot ${svc.status}`} />
-            <div>
-              <div className="service-name">{svc.name}</div>
-              <div className="service-meta">{svc.response} {svc.port ? `· :${svc.port}` : ''} {svc.uptime ? `· ${svc.uptime}` : ''}</div>
-            </div>
-          </div>
-        ))}
+      <div className="monitor-tabs fade-in-up" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid var(--border)' }}>
+        <button 
+          className={`tab-btn ${activeTab === 'overview' ? 'active' : ''}`} 
+          onClick={() => setActiveTab('overview')}
+          style={{ padding: '0.5rem 1rem', background: 'none', border: 'none', borderBottom: activeTab === 'overview' ? '2px solid var(--accent)' : '2px solid transparent', color: activeTab === 'overview' ? 'var(--text)' : 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}
+        >
+          Overview (Infra)
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'tracing' ? 'active' : ''}`} 
+          onClick={() => setActiveTab('tracing')}
+          style={{ padding: '0.5rem 1rem', background: 'none', border: 'none', borderBottom: activeTab === 'tracing' ? '2px solid var(--accent)' : '2px solid transparent', color: activeTab === 'tracing' ? 'var(--text)' : 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}
+        >
+          Agent Tracing (Logs IA)
+        </button>
       </div>
+
+      {activeTab === 'overview' ? (
+        <>
+          {/* Services */}
+          <div className="section-title fade-in-up">Serviços</div>
+          <div className="services-grid fade-in-up">
+            {services.map(svc => (
+              <div key={svc.id} className="service-card">
+                <span className={`service-dot ${svc.status}`} />
+                <div>
+                  <div className="service-name">{svc.name}</div>
+                  <div className="service-meta">{svc.response} {svc.port ? `· :${svc.port}` : ''} {svc.uptime ? `· ${svc.uptime}` : ''}</div>
+                </div>
+              </div>
+            ))}
+          </div>
 
       {/* Top Row: VPS + Tokens */}
       <div className="monitor-top-row fade-in-up fade-in-up-delay-2">
@@ -159,6 +181,63 @@ export default function MonitorPage() {
           </div>
         </div>
       </div>
+      </>
+      ) : (
+        <div className="tracing-container fade-in-up">
+          <div className="section-title">Tracing & Thoughts</div>
+          <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>Rastreamento em tempo real das interações e execuções de ferramentas da LLM.</p>
+          
+          <div className="traces-feed" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {traces.length === 0 ? (
+              <div className="empty-state" style={{ padding: '2rem', textAlign: 'center', background: 'var(--card-bg)', borderRadius: '12px' }}>
+                <span style={{ fontSize: '2rem' }}>🕵️</span>
+                <p>Nenhum trace registrado ainda. Inicie uma conversa com os agentes.</p>
+              </div>
+            ) : traces.map((trace, idx) => (
+              <div key={idx} className="trace-card" style={{ background: 'var(--card-bg)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                <div className="trace-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     <span style={{ background: 'var(--accent-glow)', color: 'var(--accent)', padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold' }}>
+                       {trace.agent_id.toUpperCase()}
+                     </span>
+                     <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}> via {trace.channel}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>⏱ {trace.duration_ms}ms</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{new Date(trace.timestamp).toLocaleTimeString()}</span>
+                  </div>
+                </div>
+                
+                <div className="trace-body" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '1rem' }}>
+                  <div className="trace-prompt" style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px' }}>
+                    <h4 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Prompt</h4>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--text)', whiteSpace: 'pre-wrap', margin: 0 }}>{trace.prompt_preview}</p>
+                  </div>
+                  <div className="trace-response" style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px', borderLeft: '2px solid var(--accent)' }}>
+                    <h4 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Agent Response</h4>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--text)', whiteSpace: 'pre-wrap', margin: 0 }}>{trace.response_preview}</p>
+                  </div>
+                </div>
+                
+                <div className="trace-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.5rem', fontSize: '0.8rem' }}>
+                  <div className="trace-tools" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                     {trace.tools_used && trace.tools_used.length > 0 ? (
+                       trace.tools_used.map((tool, i) => (
+                         <span key={i} style={{ background: 'rgba(34,197,94,0.1)', color: '#22c55e', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>🔧 {tool}</span>
+                       ))
+                     ) : (
+                       <span style={{ color: 'var(--text-muted)' }}>Nenhuma ferramenta usada</span>
+                     )}
+                  </div>
+                  <div className="trace-model" style={{ color: 'var(--text-muted)', display: 'flex', gap: '0.5rem' }}>
+                    <span>{trace.model}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   )
 }

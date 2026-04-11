@@ -509,6 +509,12 @@ export const api = {
         return []
     },
 
+    // ── Tracing ────────────────────────────────────────
+    async getTracingLogs(limit = 50) {
+        const data = await fetchAPI(`/api/tracing?limit=${limit}`)
+        return data?.traces || []
+    },
+
     // ── Tasks & Events (Base) ──────────────────────────
 
     // ── Services ───────────────────────────────────────
