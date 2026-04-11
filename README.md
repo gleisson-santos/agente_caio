@@ -99,7 +99,7 @@ Acesse o manual completo de deploy em [WALKTHROUGH_SETUP.md](WALKTHROUGH_SETUP.m
 
 **Desenvolvedor:** Gleisson Santos  
 **Plataforma de Base:** Nanobot AI Framework (HKUDS)  
-**Suporte Premium:** [controllserv.com.br](http://controllserv.com.br)
+**Suporte Premium:** EM BREVE!
 
 ---
 <p align="center">
