@@ -1,13 +1,115 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { api, AGENT_UI_META } from '../services/api'
 import ReactMarkdown from 'react-markdown'
-import NeuralSphere from '../components/NeuralSphere'
 
 const getAgentSessionId = (agentId) => {
     const today = new Date().toISOString().split('T')[0];
     return `spec-${agentId}-${today}`;
 }
 
+/* ─── Code Block with Copy + Collapse ─────────────────────────── */
+function CodeBlock({ children, className }) {
+    const [copied, setCopied] = useState(false)
+    const [collapsed, setCollapsed] = useState(true)
+    const code = String(children).replace(/\n$/, '')
+    const lines = code.split('\n').length
+    const isLong = lines > 12
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+    }
+
+    return (
+        <div className="cc-code-block">
+            <div className="cc-code-header">
+                <span className="cc-code-lang">{(className || '').replace('language-', '') || 'prompt'}</span>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                    {isLong && (
+                        <button className="cc-code-btn" onClick={() => setCollapsed(!collapsed)}>
+                            {collapsed ? '▼ Expandir' : '▲ Recolher'}
+                        </button>
+                    )}
+                    <button className="cc-code-btn cc-code-copy" onClick={handleCopy}>
+                        {copied ? '✓ Copiado!' : '📋 Copiar'}
+                    </button>
+                </div>
+            </div>
+            <pre className={`cc-code-pre ${isLong && collapsed ? 'cc-code-collapsed' : ''}`}>
+                <code>{code}</code>
+            </pre>
+        </div>
+    )
+}
+
+/* ─── File Download Inline ─────────────────────────────────── */
+function FileAttachment({ path }) {
+    const filename = path.split('/').pop()
+    const ext = filename.split('.').pop().toLowerCase()
+    const icons = { html: '🌐', pdf: '📕', docx: '📘', xlsx: '📗', py: '🐍', js: '📜', css: '🎨' }
+    const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:18795' : '')
+
+    return (
+        <div className="cc-file-attachment">
+            <span className="cc-file-icon">{icons[ext] || '📄'}</span>
+            <div className="cc-file-info">
+                <span className="cc-file-name">{filename}</span>
+                <span className="cc-file-ext">{ext.toUpperCase()}</span>
+            </div>
+            <a
+                href={`${BASE_URL}/api/documents/${encodeURIComponent(filename)}/download`}
+                target="_blank"
+                rel="noreferrer"
+                className="cc-file-download-btn"
+            >
+                ⬇ Baixar
+            </a>
+        </div>
+    )
+}
+
+/* ─── Enhanced Markdown Renderer ─────────────────────────── */
+function ChatMarkdown({ content }) {
+    // Detect file paths in content and render inline download buttons
+    const fileRegex = /(?:Arquivo\s+(?:salvo|gerado)|Baixe\s+aqui|Baixe\s+agora)[:\s]+`?([^\s`]+\.\w{2,5})`?/gi
+    const files = []
+    let match
+    while ((match = fileRegex.exec(content)) !== null) {
+        const fullPath = match[1]
+        const filename = fullPath.split('/').pop()
+        if (!files.find(f => f.filename === filename)) {
+            files.push({ fullPath, filename })
+        }
+    }
+
+    return (
+        <div className="markdown-content">
+            <ReactMarkdown
+                components={{
+                    code({ className, children, ...props }) {
+                        const isInline = !className && String(children).indexOf('\n') === -1
+                        if (isInline) {
+                            return <code className="cc-inline-code" {...props}>{children}</code>
+                        }
+                        return <CodeBlock className={className}>{children}</CodeBlock>
+                    }
+                }}
+            >
+                {content}
+            </ReactMarkdown>
+            {files.length > 0 && (
+                <div className="cc-files-section">
+                    {files.map((f, i) => (
+                        <FileAttachment key={i} path={f.fullPath} />
+                    ))}
+                </div>
+            )}
+        </div>
+    )
+}
+
+/* ─── Main Component ─────────────────────────────────────── */
 export default function SpecialistChatPage({ agentId }) {
     const [messages, setMessages] = useState([])
     const [inputValue, setInputValue] = useState('')
@@ -17,9 +119,9 @@ export default function SpecialistChatPage({ agentId }) {
     const messagesEndRef = useRef(null)
     const textareaRef = useRef(null)
 
-    const scrollToBottom = () => {
+    const scrollToBottom = useCallback(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }
+    }, [])
 
     useEffect(() => {
         setAgentMeta(AGENT_UI_META[agentId] || null);
@@ -32,10 +134,10 @@ export default function SpecialistChatPage({ agentId }) {
                 if (history && history.length > 0) {
                     setMessages(history)
                 } else {
-                    const welcomeMsg = agentMeta 
+                    const welcomeMsg = agentMeta
                         ? `Olá! Sou o **${agentMeta.name}**, especialista em **${agentMeta.role}**. Como posso aplicar minha expertise ao seu projeto agora? 🧠💡`
-                        : `Olá! Conexão estabelecida com o terminal especialista. Como posso ajudar?`;
-                    
+                        : `Conexão estabelecida com o terminal especialista.`;
+
                     setMessages([{ role: 'assistant', content: welcomeMsg }])
                 }
             } catch (e) {
@@ -47,7 +149,7 @@ export default function SpecialistChatPage({ agentId }) {
 
     useEffect(() => {
         scrollToBottom()
-    }, [messages, isTyping])
+    }, [messages, isTyping, scrollToBottom])
 
     const handleSend = async () => {
         if (!inputValue.trim() || isTyping) return
@@ -86,45 +188,43 @@ export default function SpecialistChatPage({ agentId }) {
     }
 
     return (
-        <div className="cc-chat-page-root-futuristic">
-            <NeuralSphere />
-
-            {agentMeta && (
-                <div className="cc-agent-chat-header fade-in" style={{
-                    position: 'absolute', top: '20px', left: '50%', transform: 'translateX(-50%)',
-                    zIndex: 10, display: 'flex', alignItems: 'center', gap: '12px',
-                    background: 'rgba(15, 23, 42, 0.8)', padding: '8px 24px',
-                    borderRadius: '50px', border: '1px solid var(--accent)',
-                    backdropFilter: 'blur(12px)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)'
-                }}>
-                    <span style={{ fontSize: '24px' }}>{agentMeta.iconEmoji}</span>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <span style={{ fontWeight: 800, fontSize: '15px', color: '#fff' }}>{agentMeta.name}</span>
-                            <div className="cc-status-dot online" style={{ width: '6px', height: '6px' }}></div>
-                        </div>
-                        <span style={{ fontSize: '10px', color: 'var(--accent)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px' }}>{agentMeta.role}</span>
+        <div className="cc-specialist-page">
+            {/* Clean compact header — no animation */}
+            <div className="cc-specialist-header">
+                <button className="cc-back-btn" onClick={() => { window.location.href = '#/agents'; }}>
+                    ← Voltar
+                </button>
+                <div className="cc-specialist-identity">
+                    <span className="cc-specialist-icon">{agentMeta?.iconEmoji || '🤖'}</span>
+                    <div className="cc-specialist-info">
+                        <span className="cc-specialist-name">{agentMeta?.name || 'Especialista'}</span>
+                        <span className="cc-specialist-role">{agentMeta?.role || 'Agent'}</span>
+                    </div>
+                    <div className="cc-specialist-status">
+                        <div className="cc-status-dot online" style={{ width: '6px', height: '6px' }}></div>
+                        <span>Online</span>
                     </div>
                 </div>
-            )}
+            </div>
 
-            <div className="cc-chat-scroll-futuristic">
+            {/* Messages */}
+            <div className="cc-specialist-messages">
                 {messages.map((msg, i) => (
-                    <div key={i} className={`cc-msg-wrapper ${msg.role === 'user' ? 'user' : 'assistant'}`}>
-                        <div className={`cc-chat-bubble-futuristic ${msg.role}`}>
-                            <div className="markdown-content">
-                                <ReactMarkdown>{msg.content}</ReactMarkdown>
-                            </div>
+                    <div key={i} className={`cc-msg-row ${msg.role}`}>
+                        <div className={`cc-msg-bubble ${msg.role}`}>
+                            {msg.role === 'assistant' ? (
+                                <ChatMarkdown content={msg.content} />
+                            ) : msg.content}
                         </div>
-                        <div className="cc-chat-time-futuristic">
+                        <div className="cc-msg-meta">
                             {msg.role === 'user' ? 'COMANDO ENVIADO' : (agentMeta ? agentMeta.name.toUpperCase() : 'ESPECIALISTA')} • {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </div>
                     </div>
                 ))}
 
                 {isTyping && (
-                    <div className="cc-msg-wrapper assistant">
-                        <div className="cc-chat-bubble-futuristic assistant" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div className="cc-msg-row assistant">
+                        <div className="cc-msg-bubble assistant" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <div className="cc-typing-futuristic">
                                 <span></span>
                                 <span></span>
@@ -139,11 +239,12 @@ export default function SpecialistChatPage({ agentId }) {
                 <div ref={messagesEndRef} />
             </div>
 
-            <div className="cc-input-outer-futuristic">
-                <div className="cc-input-inner-futuristic">
+            {/* Input */}
+            <div className="cc-specialist-input-area">
+                <div className="cc-specialist-input-wrap">
                     <textarea
                         ref={textareaRef}
-                        className="cc-chat-input-futuristic"
+                        className="cc-specialist-textarea"
                         placeholder={`Instruir ${agentMeta?.name || 'especialista'}...`}
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
@@ -155,10 +256,9 @@ export default function SpecialistChatPage({ agentId }) {
                         }}
                     />
                     <button
-                        className="cc-send-btn-futuristic"
+                        className="cc-specialist-send-btn"
                         onClick={handleSend}
                         disabled={!inputValue.trim() || isTyping}
-                        style={{ color: (inputValue.trim() && !isTyping) ? 'var(--accent)' : 'var(--text-tertiary)' }}
                     >
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" strokeLinecap="round" strokeLinejoin="round" />
