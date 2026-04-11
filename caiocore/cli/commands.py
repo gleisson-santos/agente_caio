@@ -101,7 +101,7 @@ def _init_prompt_session() -> None:
     except Exception:
         pass
 
-    history_file = Path.home() / ".nanobot" / "history" / "cli_history"
+    history_file = Path.home() / ".caiocore" / "history" / "cli_history"
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
     _PROMPT_SESSION = PromptSession(
@@ -116,7 +116,7 @@ def _print_agent_response(response: str, render_markdown: bool) -> None:
     content = response or ""
     body = Markdown(content) if render_markdown else Text(content)
     console.print()
-    console.print(f"[cyan]{__logo__} nanobot[/cyan]")
+    console.print(f"[cyan]{__logo__} caio[/cyan]")
     console.print(body)
     console.print()
 
@@ -148,7 +148,7 @@ async def _read_interactive_input_async() -> str:
 
 def version_callback(value: bool):
     if value:
-        console.print(f"{__logo__} nanobot v{__version__}")
+        console.print(f"{__logo__} caio v{__version__}")
         raise typer.Exit()
 
 
@@ -378,7 +378,7 @@ def gateway(
         logging.basicConfig(level=logging.DEBUG)
         logger.enable("caiocore")
     
-    console.print(f"{__logo__} Starting nanobot gateway on port {port}...")
+    console.print(f"{__logo__} Starting caio gateway on port {port}...")
     
     config = load_config()
     bus = MessageBus()
