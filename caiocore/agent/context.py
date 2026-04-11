@@ -53,18 +53,19 @@ class ContextBuilder:
         if memory:
             parts.append(f"# Memory\n\n{memory}")
         
-        # Skills - progressive loading
-        # 1. Always-loaded skills: include full content
-        always_skills = self.skills.get_always_skills()
-        if always_skills:
-            always_content = self.skills.load_skills_for_context(always_skills)
-            if always_content:
-                parts.append(f"# Active Skills\n\n{always_content}")
-        
-        # 2. Available skills: only show summary (agent uses read_file to load)
-        skills_summary = self.skills.build_skills_summary()
-        if skills_summary:
-            parts.append(f"""# Skills
+        # Skills - only load for the main orchestrator (Caio)
+        if not is_specialist:
+            # 1. Always-loaded skills: include full content
+            always_skills = self.skills.get_always_skills()
+            if always_skills:
+                always_content = self.skills.load_skills_for_context(always_skills)
+                if always_content:
+                    parts.append(f"# Active Skills\n\n{always_content}")
+            
+            # 2. Available skills: only show summary (agent uses read_file to load)
+            skills_summary = self.skills.build_skills_summary()
+            if skills_summary:
+                parts.append(f"""# Skills
 
 The following skills extend your capabilities. To use a skill, read its SKILL.md file using the read_file tool.
 Skills with available="false" need dependencies installed first - you can try installing them with apt/brew.
@@ -139,8 +140,8 @@ Para recordar eventos passados, use grep em {workspace_path}/memory/HISTORY.md""
         """Load all bootstrap files from workspace."""
         parts = []
         
-        # Prevent personality leakage: Specialists should not receive Caio's SOUL.md or AGENTS.md
-        files_to_load = [f for f in self.BOOTSTRAP_FILES if not (is_specialist and f in ["SOUL.md", "AGENTS.md", "USER.md"])]
+        # Prevent personality leakage: Specialists should not receive Caio's SOUL.md, AGENTS.md, or TOOLS.md
+        files_to_load = [f for f in self.BOOTSTRAP_FILES if not (is_specialist and f in ["SOUL.md", "AGENTS.md", "USER.md", "TOOLS.md"])]
         
         for filename in files_to_load:
             file_path = self.workspace / filename
