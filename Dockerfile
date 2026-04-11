@@ -23,6 +23,7 @@ RUN mkdir -p nanobot bridge caiocore && touch caiocore/__init__.py && \
 # Copy the full source and install
 COPY caiocore/ caiocore/
 COPY bridge/ bridge/
+COPY tools/ tools/
 RUN uv pip install --system --no-cache .
 
 # Build the WhatsApp bridge
