@@ -80,7 +80,14 @@ class SettingsUpdate(BaseModel):
     telegramEnabled: Optional[bool] = None
     emailEnabled: Optional[bool] = None
     whatsappEnabled: Optional[bool] = None
+    telegramToken: Optional[str] = None
+    telegramAllowList: Optional[str] = None
+    telegramNotifyChatId: Optional[str] = None
+    evolutionBaseUrl: Optional[str] = None
+    evolutionApiKey: Optional[str] = None
+    evolutionInstance: Optional[str] = None
     providerKeys: Optional[dict[str, str]] = None
+
     providerBases: Optional[dict[str, str]] = None
     braveKey: Optional[str] = None
 
@@ -1255,7 +1262,14 @@ async def get_settings():
         "telegramEnabled": _config.channels.telegram.enabled,
         "emailEnabled": _config.channels.email.enabled,
         "whatsappEnabled": _config.channels.evolution.enabled,
+        "telegramToken": _config.channels.telegram.token,
+        "telegramAllowList": ",".join(_config.channels.telegram.allow_from),
+        "telegramNotifyChatId": _config.channels.telegram.notify_chat_id or "",
+        "evolutionBaseUrl": _config.channels.evolution.base_url,
+        "evolutionApiKey": _config.channels.evolution.api_key,
+        "evolutionInstance": _config.channels.evolution.instance_name,
         "providerKeys": {
+
             "openrouter": _config.providers.openrouter.api_key,
             "gemini": _config.providers.gemini.api_key,
             "groq": _config.providers.groq.api_key,
@@ -1296,7 +1310,19 @@ async def update_settings(data: SettingsUpdate):
     if data.emailEnabled is not None: _config.channels.email.enabled = data.emailEnabled
     if data.whatsappEnabled is not None: _config.channels.evolution.enabled = data.whatsappEnabled
 
+    # Channel Details
+    if data.telegramToken is not None: _config.channels.telegram.token = data.telegramToken
+    if data.telegramAllowList is not None:
+        _config.channels.telegram.allow_from = [x.strip() for x in data.telegramAllowList.split(",") if x.strip()]
+    if data.telegramNotifyChatId is not None:
+        _config.channels.telegram.notify_chat_id = data.telegramNotifyChatId
+    
+    if data.evolutionBaseUrl is not None: _config.channels.evolution.base_url = data.evolutionBaseUrl
+    if data.evolutionApiKey is not None: _config.channels.evolution.api_key = data.evolutionApiKey
+    if data.evolutionInstance is not None: _config.channels.evolution.instance_name = data.evolutionInstance
+
     # Provider Settings
+
     if data.providerKeys:
         for p, key in data.providerKeys.items():
             if hasattr(_config.providers, p):

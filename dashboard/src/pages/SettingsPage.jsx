@@ -57,19 +57,75 @@ export default function SettingsPage() {
 
         <div className="settings-section fade-in-up fade-in-up-delay-1">
           <div className="settings-section-title">📡 Canais de Comunicação</div>
-          {[
-            { key: 'telegramEnabled', label: 'Telegram', desc: 'Receber e enviar mensagens via @CaioAgentbot' },
-            { key: 'emailEnabled', label: 'Email (IMAP/SMTP)', desc: 'Monitor de e-mails com análise e resumos' },
-            { key: 'whatsappEnabled', label: 'WhatsApp', desc: 'Integração oficial via Evolution API' },
-          ].map(ch => (
-            <div key={ch.key} className="toggle-row">
+          
+          {/* Telegram */}
+          <div className="channel-config-box">
+            <div className="toggle-row">
               <div>
-                <div className="toggle-label">{ch.label}</div>
-                <div className="toggle-desc">{ch.desc}</div>
+                <div className="toggle-label">Telegram</div>
+                <div className="toggle-desc">Receber e enviar mensagens via @CaioAgentbot</div>
               </div>
-              <div className={`toggle-switch ${settings[ch.key] ? 'active' : ''}`} onClick={() => toggleChannel(ch.key)} />
+              <div className={`toggle-switch ${settings.telegramEnabled ? 'active' : ''}`} onClick={() => setSettings({ ...settings, telegramEnabled: !settings.telegramEnabled })} />
             </div>
-          ))}
+            {settings.telegramEnabled && (
+              <div className="channel-details fade-in">
+                <div className="form-group">
+                  <label>Bot Token</label>
+                  <input type="password" value={settings.telegramToken} onChange={e => setSettings({ ...settings, telegramToken: e.target.value })} placeholder="12345:ABC..." />
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>IDs Permitidos (separados por vírgula)</label>
+                    <input value={settings.telegramAllowList} onChange={e => setSettings({ ...settings, telegramAllowList: e.target.value })} placeholder="12345678, 87654321" />
+                  </div>
+                  <div className="form-group">
+                    <label>ID para Notificações (Notify ID)</label>
+                    <input value={settings.telegramNotifyChatId} onChange={e => setSettings({ ...settings, telegramNotifyChatId: e.target.value })} placeholder="12345678" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Email */}
+          <div className="channel-config-box">
+            <div className="toggle-row">
+              <div>
+                <div className="toggle-label">Email (IMAP/SMTP)</div>
+                <div className="toggle-desc">Monitor de e-mails com análise e resumos</div>
+              </div>
+              <div className={`toggle-switch ${settings.emailEnabled ? 'active' : ''}`} onClick={() => setSettings({ ...settings, emailEnabled: !settings.emailEnabled })} />
+            </div>
+          </div>
+
+          {/* WhatsApp / Evolution */}
+          <div className="channel-config-box">
+            <div className="toggle-row">
+              <div>
+                <div className="toggle-label">WhatsApp (Nativo)</div>
+                <div className="toggle-desc">Integração oficial via Evolution API</div>
+              </div>
+              <div className={`toggle-switch ${settings.whatsappEnabled ? 'active' : ''}`} onClick={() => setSettings({ ...settings, whatsappEnabled: !settings.whatsappEnabled })} />
+            </div>
+            {settings.whatsappEnabled && (
+              <div className="channel-details fade-in">
+                <div className="form-group">
+                  <label>Evolution API Base URL</label>
+                  <input value={settings.evolutionBaseUrl} onChange={e => setSettings({ ...settings, evolutionBaseUrl: e.target.value })} placeholder="https://evolution.seuservidor.com" />
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>API Key</label>
+                    <input type="password" value={settings.evolutionApiKey} onChange={e => setSettings({ ...settings, evolutionApiKey: e.target.value })} placeholder="Chave global ou da instância" />
+                  </div>
+                  <div className="form-group">
+                    <label>Nome da Instância</label>
+                    <input value={settings.evolutionInstance} onChange={e => setSettings({ ...settings, evolutionInstance: e.target.value })} placeholder="CaioAgent" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* AI Providers */}

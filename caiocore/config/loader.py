@@ -32,7 +32,24 @@ def load_config(config_path: Path | None = None) -> Config:
     """
     path = config_path or get_config_path()
 
+    if not path.exists():
+        # Auto-creation logic for better distribution experience
+        example = Path("config.example.json")
+        if example.exists():
+            try:
+                import shutil
+                shutil.copy(example, path)
+                print(f"Project Setup: Created {path} from config.example.json")
+            except Exception as e:
+                print(f"Setup Error: Failed to copy config.example.json: {e}")
+        else:
+            # Create a completely fresh default if no example exists
+            cfg = Config()
+            save_config(cfg, path)
+            print(f"Project Setup: Initialized fresh config at {path}")
+
     if path.exists():
+
         try:
             with open(path, encoding="utf-8") as f:
                 data = json.load(f)
