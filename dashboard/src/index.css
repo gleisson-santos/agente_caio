@@ -512,6 +512,19 @@ code {
   gap: var(--sp-3);
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 .metric-label {
   font-size: var(--fs-sm);
