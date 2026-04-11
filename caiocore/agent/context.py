@@ -44,7 +44,7 @@ class ContextBuilder:
         parts.append(self._get_identity(is_specialist=is_specialist))
         
         # Bootstrap files
-        bootstrap = self._load_bootstrap_files()
+        bootstrap = self._load_bootstrap_files(is_specialist=is_specialist)
         if bootstrap:
             parts.append(bootstrap)
         
@@ -135,11 +135,14 @@ Se precisar usar ferramentas, chame-as diretamente — nunca envie uma mensagem 
 Quando lembrar de algo importante, escreva em {workspace_path}/memory/MEMORY.md
 Para recordar eventos passados, use grep em {workspace_path}/memory/HISTORY.md"""
     
-    def _load_bootstrap_files(self) -> str:
+    def _load_bootstrap_files(self, is_specialist: bool = False) -> str:
         """Load all bootstrap files from workspace."""
         parts = []
         
-        for filename in self.BOOTSTRAP_FILES:
+        # Prevent personality leakage: Specialists should not receive Caio's SOUL.md or AGENTS.md
+        files_to_load = [f for f in self.BOOTSTRAP_FILES if not (is_specialist and f in ["SOUL.md", "AGENTS.md", "USER.md"])]
+        
+        for filename in files_to_load:
             file_path = self.workspace / filename
             if file_path.exists():
                 content = file_path.read_text(encoding="utf-8", errors="replace")
