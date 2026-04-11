@@ -291,8 +291,14 @@ class AgentLoop:
         initial_messages: list[dict],
         session: Session | None = None,
         on_progress: Callable[[str], Awaitable[None]] | None = None,
+        allowed_tools: list[str] | None = None,
     ) -> tuple[str | None, list[str]]:
-        """Run the agent iteration loop. Returns (final_content, tools_used)."""
+        """Run the agent iteration loop. Returns (final_content, tools_used).
+        
+        Args:
+            allowed_tools: If set, only these tools are visible to the LLM.
+                           None = full access (Caio CEO mode).
+        """
         messages = initial_messages
         iteration = 0
         final_content = None
@@ -301,10 +307,13 @@ class AgentLoop:
         while iteration < self.max_iterations:
             iteration += 1
 
+            # Use filtered tools when operating as a specialist
+            tool_defs = self.tools.get_definitions(allowed_tools=allowed_tools)
+
             # Use internal fallback helper
             response = await self._call_provider_with_fallback(
                 messages, 
-                self.tools.get_definitions(),
+                tool_defs,
                 self.model,
                 self.max_tokens,
                 self.temperature
@@ -508,6 +517,7 @@ class AgentLoop:
 
         # Specialist routing (check for explicit agent_id or @mentions)
         specialist_instruction = ""
+        specialist_allowed_tools = None  # None = full access (Caio CEO)
         target_spec_id = agent_id or ""
         
         if not target_spec_id:
@@ -529,6 +539,12 @@ class AgentLoop:
                     logger.info("Routing message to specialist: {} (found instructions)", target_spec_id)
                 else:
                     logger.warning("Specialist {} found but instructions are EMPTY", target_spec_id)
+                
+                # Get per-specialist tool restrictions
+                if hasattr(spec_agent, "get_allowed_tools"):
+                    specialist_allowed_tools = spec_agent.get_allowed_tools()
+                    if specialist_allowed_tools is not None:
+                        logger.info("Specialist {} restricted to tools: {}", target_spec_id, specialist_allowed_tools)
 
         initial_messages = self.context.build_messages(
             history=session.get_history(max_messages=self.memory_window),
@@ -565,6 +581,7 @@ class AgentLoop:
         session.add_message("user", msg.content)
         final_content, tools_used = await self._run_agent_loop(
             initial_messages, session=session, on_progress=on_progress or _bus_progress,
+            allowed_tools=specialist_allowed_tools,
         )
 
         if final_content is None:

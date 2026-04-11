@@ -587,10 +587,12 @@ def gateway(
                             agent_id=f"spec-{agent_id}" if not agent_id.startswith("spec-") else agent_id,
                             name=agent_meta["name"],
                             role=agent_meta["role"],
-                            instruction_file=target_file
+                            instruction_file=target_file,
+                            allowed_tools=agent_meta.get("tools")  # Per-specialist tool restriction
                         )
                         agent_registry.register(spec_agent)
-                        logger.info(f"Registered dynamic specialist: {agent_id} (using {target_file})")
+                        tools_info = agent_meta.get("tools", "ALL")
+                        logger.info(f"Registered specialist: {agent_id} (tools: {tools_info})")
                     else:
                         logger.warning(f"Instruction file {instr_file} or {instr_file_alt} missing for specialist {agent_id}")
         else:
