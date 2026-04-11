@@ -559,7 +559,12 @@ def gateway(
 
     # Register Specialists dynamically from agents_list.json (Tier 2)
     try:
-        agents_list_path = Path(__file__).parent.parent.parent / "tools" / "agents_list.json"
+        # Tenta no diretório atual (Docker /app) ou no pacote via __file__
+        local_tools_path = Path.cwd() / "tools" / "agents_list.json"
+        pkg_tools_path = Path(__file__).parent.parent.parent / "tools" / "agents_list.json"
+        
+        agents_list_path = local_tools_path if local_tools_path.exists() else pkg_tools_path
+
         if agents_list_path.exists():
             with open(agents_list_path, "r", encoding="utf-8") as f:
                 all_agents_metadata = json.load(f)
@@ -570,11 +575,15 @@ def gateway(
                     if not agent_id:
                         continue
                     
-                    # Tenta encontrar o arquivo de instrução (suporta hifen ou underscore)
+                    # Tenta encontrar o arquivo de instrução
                     instr_file = f"{agent_id}.md"
                     instr_file_alt = f"{agent_id.replace('-', '_')}.md"
                     
-                    premium_dir = Path(__file__).parent.parent / "agents" / "premium"
+                    # Tenta no subdiretório current/local vs pacote
+                    local_premium_dir = Path.cwd() / "caiocore" / "agents" / "premium"
+                    pkg_premium_dir = Path(__file__).parent.parent / "agents" / "premium"
+                    
+                    premium_dir = local_premium_dir if local_premium_dir.exists() else pkg_premium_dir
                     target_file = None
                     
                     if (premium_dir / instr_file).exists():
@@ -583,13 +592,19 @@ def gateway(
                         target_file = instr_file_alt
                     
                     if target_file:
+                        # Precisamos garantir que criamos a SpecialistAgent com o path absoluto para ele conseguir abrir
+                        abs_target_path = premium_dir / target_file
+                        # We must bypass the internal __file__ check inside SpecialistAgent by patching it
                         spec_agent = SpecialistAgent(
                             agent_id=f"spec-{agent_id}" if not agent_id.startswith("spec-") else agent_id,
                             name=agent_meta["name"],
                             role=agent_meta["role"],
-                            instruction_file=target_file,
-                            allowed_tools=agent_meta.get("tools")  # Per-specialist tool restriction
+                            instruction_file=None, # Bypass standard logic
+                            allowed_tools=agent_meta.get("tools")
                         )
+                        # Manually load the instruction from the correct absolute path
+                        spec_agent.instruction_path = abs_target_path
+                        spec_agent._load_instructions()
                         agent_registry.register(spec_agent)
                         tools_info = agent_meta.get("tools", "ALL")
                         logger.info(f"Registered specialist: {agent_id} (tools: {tools_info})")

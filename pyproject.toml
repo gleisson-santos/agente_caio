@@ -88,12 +88,13 @@ packages = ["caiocore"]
 [tool.hatch.build.targets.wheel.sources]
 "caiocore" = "caiocore"
 
-# Include non-Python files in skills
+# Include non-Python files in skills and agents
 [tool.hatch.build]
 include = [
     "caiocore/**/*.py",
     "caiocore/skills/**/*.md",
     "caiocore/skills/**/*.sh",
+    "caiocore/agents/**/*.md",
 ]
 
 [tool.hatch.build.targets.sdist]
