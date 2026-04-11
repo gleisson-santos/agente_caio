@@ -71,7 +71,7 @@ export default function SpecialistChatPage({ agentId }) {
             } else {
                 setMessages(prev => [...prev, { role: 'assistant', content: 'Erro de processamento neural.' }])
             }
-        } catch (err) {
+        } catch {
             setMessages(prev => [...prev, { role: 'assistant', content: '🔴 Erro de conexão com o núcleo.' }])
         } finally {
             setIsTyping(false)

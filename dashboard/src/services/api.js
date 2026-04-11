@@ -509,11 +509,7 @@ export const api = {
         return []
     },
 
-    // ── Tasks ──────────────────────────────────────────
-    async getTasks() { return [] },
-    async createTask(data) { return { ...data, id: 'task-new' } },
-    async deleteTask(id) { return true },
-    async executeTask(id) { return { id, status: 'completed' } },
+    // ── Tasks & Events (Base) ──────────────────────────
 
     // ── Services ───────────────────────────────────────
     async getServices() {
@@ -604,10 +600,7 @@ export const api = {
         // Workflows future feature — return empty for now to prevent crashes
         return []
     },
-    async getEvents(limit = 50) {
-        const data = await fetchAPI(`/events?limit=${limit}`)
-        return Array.isArray(data) ? data : (data?.events || [])
-    },
+
 
     // ── Documents API ────────────────────────────────────
     async listDocuments() {

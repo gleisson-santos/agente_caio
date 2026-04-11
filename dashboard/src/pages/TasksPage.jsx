@@ -3,7 +3,6 @@ import { useTasks } from '../context/TaskContext'
 import { useAgents } from '../context/AgentContext'
 
 const statusLabel = { completed: 'Concluída', running: 'Executando', pending: 'Pendente', failed: 'Falha' }
-const priorityLabel = { critical: 'Crítica', high: 'Alta', medium: 'Média', low: 'Baixa' }
 
 export default function TasksPage() {
     const { tasks, createTask, executeTask, deleteTask, tasksByStatus, workflows } = useTasks()
