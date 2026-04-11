@@ -41,6 +41,10 @@ class ExecTool(Tool):
         return "exec"
     
     @property
+    def requires_approval(self) -> bool:
+        return True
+    
+    @property
     def description(self) -> str:
         return "Execute a shell command and return its output. Use with caution."
     

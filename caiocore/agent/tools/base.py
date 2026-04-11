@@ -28,6 +28,11 @@ class Tool(ABC):
         pass
     
     @property
+    def requires_approval(self) -> bool:
+        """If true, the AgentLoop will require explicit user permission (Sim/Não) before executing this tool."""
+        return False
+    
+    @property
     @abstractmethod
     def description(self) -> str:
         """Description of what the tool does."""

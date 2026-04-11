@@ -388,6 +388,8 @@ class AgentLoop:
                     logger.info("Tool call: {}({})", tool_call.name, args_str[:200])
                     
                     # HARD GUARD: Block tools not in the specialist's allowed list
+                    tool_obj = self.tools.get(tool_call.name)
+                    
                     if allowed_tools is not None and tool_call.name not in allowed_tools:
                         result = (
                             f"BLOQUEADO: A ferramenta '{tool_call.name}' não está disponível para este especialista. "
@@ -396,7 +398,17 @@ class AgentLoop:
                         )
                         logger.warning("Tool {} BLOCKED for specialist (allowed: {})", tool_call.name, allowed_tools)
                     else:
-                        result = await self.tools.execute(tool_call.name, tool_call.arguments)
+                        requires_app = getattr(tool_obj, "requires_approval", False) if tool_obj else False
+                        
+                        user_just_approved = False
+                        if session:
+                            user_just_approved = session.metadata.get("user_just_approved", False)
+                        
+                        if requires_app and not user_just_approved:
+                            logger.info("Tool {} requires approval. Blocking execution...", tool_call.name)
+                            result = f"⛔ EXECUÇÃO PAUSADA: A ação '{tool_call.name}' é crítica. Você DEVE perguntar ao usuário: 'Posso proceder com esta ação? (Sim/Não)'. A ferramenta NÃO foi executada ainda."
+                        else:
+                            result = await self.tools.execute(tool_call.name, tool_call.arguments)
                     
                     messages = self.context.add_tool_result(
                         messages, tool_call.id, tool_call.name, result
@@ -468,6 +480,18 @@ class AgentLoop:
         """Process a single inbound message and return the response."""
         logger.info("DEBUG: Processando mensagem no AGENT_LOOP: {} (canal: {})", msg.content[:50], msg.channel)
         
+        key = session_key or f"{msg.channel}:{msg.chat_id}"
+        session = self.sessions.get_or_create(key)
+        
+        # --- HUMAN IN THE LOOP APPROVAL INTERCEPT ---
+        lower_msg = msg.content.strip().lower()
+        # Se for uma confirmação (adicionar flexibilidade se ele explicou que autoriza)
+        if lower_msg in ["sim", "yes", "aprovar", "pode", "y", "confirmo", "autorizo", "pode fazer", "pode executar", "ok", "autorizado"]:
+            session.metadata["user_just_approved"] = True
+            logger.info("Approval flag SET for session {}", key)
+        else:
+            session.metadata["user_just_approved"] = False
+        
         # Tracing context setup
         start_time = time.time()
         
@@ -492,9 +516,6 @@ class AgentLoop:
 
         preview = msg.content[:80] + "..." if len(msg.content) > 80 else msg.content
         logger.info("Processing message from {}:{}: {}", msg.channel, msg.sender_id, preview)
-
-        key = session_key or msg.session_key
-        session = self.sessions.get_or_create(key)
 
         # Slash commands
         cmd = msg.content.strip().lower()
