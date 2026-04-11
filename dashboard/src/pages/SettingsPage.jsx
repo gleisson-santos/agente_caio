@@ -61,7 +61,7 @@ export default function SettingsPage() {
           {[
             { key: 'telegramEnabled', label: 'Telegram', desc: 'Receber e enviar mensagens via @CaioAgentbot' },
             { key: 'emailEnabled', label: 'Email (IMAP/SMTP)', desc: 'Monitor de e-mails com análise e resumos' },
-            { key: 'whatsappEnabled', label: 'WhatsApp', desc: 'Integração via Evolution API (em desenvolvimento)' },
+            { key: 'whatsappEnabled', label: 'WhatsApp', desc: 'Integração oficial via Evolution API' },
           ].map(ch => (
             <div key={ch.key} className="toggle-row">
               <div>

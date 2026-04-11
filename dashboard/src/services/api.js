@@ -538,13 +538,14 @@ export const api = {
 
     // ── Settings ───────────────────────────────────────
     async getSettings() {
-        return {
-            model: 'gemini/gemini-2.0-flash', maxTokens: 8192, temperature: 0.7,
-            telegramEnabled: true, emailEnabled: true, whatsappEnabled: false,
-            botName: 'CaioAgent',
-        }
+        return await fetchAPI('/api/settings')
     },
-    async updateSettings(data) { return data },
+    async updateSettings(data) {
+        return await fetchAPI('/api/settings', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        })
+    },
 
     // ── Actions ────────────────────────────────────────
     async generateExtra(type) { return await fetchAPI(`/api/extras/generate/${type}`, { method: 'POST' }) },

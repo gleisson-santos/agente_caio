@@ -72,6 +72,17 @@ class NotificationRequest(BaseModel):
     chat_id: Optional[str] = None
 
 
+class SettingsUpdate(BaseModel):
+    model: Optional[str] = None
+    maxTokens: Optional[int] = None
+    temperature: Optional[float] = None
+    botName: Optional[str] = None
+    telegramEnabled: Optional[bool] = None
+    emailEnabled: Optional[bool] = None
+    whatsappEnabled: Optional[bool] = None
+
+
+
 class HeartbeatRequest(BaseModel):
     agent: str
     status: str = "online"
@@ -1213,6 +1224,84 @@ async def delete_task(task_id: str):
         raise HTTPException(status_code=404, detail="Task not found")
     _save_tasks(new_tasks)
     return {"deleted": True}
+
+
+# ── Settings API ─────────────────────────────────────────────────────
+
+@app.get("/api/settings")
+async def get_settings():
+    """Get current agent configuration."""
+    if not _config:
+        return {
+            "model": "gpt-4o",
+            "maxTokens": 4096,
+            "temperature": 0.7,
+            "botName": "CaioAgent",
+            "telegramEnabled": False,
+            "emailEnabled": False,
+            "whatsappEnabled": False
+        }
+    
+    return {
+        "model": _config.agents.defaults.model,
+        "maxTokens": _config.agents.defaults.max_tokens,
+        "temperature": _config.agents.defaults.temperature,
+        "botName": _config.bot_name if hasattr(_config, "bot_name") else "CaioAgent",
+        "telegramEnabled": _config.channels.telegram.enabled,
+        "emailEnabled": _config.channels.email.enabled,
+        "whatsappEnabled": _config.channels.evolution.enabled,
+    }
+
+
+@app.post("/api/settings")
+async def update_settings(data: SettingsUpdate):
+    """Update agent configuration and save to disk."""
+    global _config
+    if not _config:
+        raise HTTPException(status_code=500, detail="Config not loaded")
+    
+    orig_telegram = _config.channels.telegram.enabled
+    orig_email = _config.channels.email.enabled
+    orig_whatsapp = _config.channels.evolution.enabled
+
+    # AI Model Settings
+    if data.model is not None: _config.agents.defaults.model = data.model
+    if data.maxTokens is not None: _config.agents.defaults.max_tokens = data.maxTokens
+    if data.temperature is not None: _config.agents.defaults.temperature = data.temperature
+    if data.botName is not None and hasattr(_config, "bot_name"): 
+        _config.bot_name = data.botName
+    
+    # Channels
+    if data.telegramEnabled is not None: _config.channels.telegram.enabled = data.telegramEnabled
+    if data.emailEnabled is not None: _config.channels.email.enabled = data.emailEnabled
+    if data.whatsappEnabled is not None: _config.channels.evolution.enabled = data.whatsappEnabled
+
+    # Persist to config.json
+    from caiocore.config.loader import save_config
+    save_config(_config)
+    
+    # Hot-reload in-memory agent settings
+    if _agent:
+        _agent.model = _config.agents.defaults.model
+        _agent.max_tokens = _config.agents.defaults.max_tokens
+        _agent.temperature = _config.agents.defaults.temperature
+        logger.info("Settings: Hot-reloaded AI parameters to AgentLoop")
+
+    reboot_needed = (
+        orig_telegram != _config.channels.telegram.enabled or
+        orig_email != _config.channels.email.enabled or
+        orig_whatsapp != _config.channels.evolution.enabled
+    )
+    
+    if reboot_needed:
+        logger.warning("Settings: Channel configuration changed. A restart of the gateway is recommended.")
+
+    return {
+        "status": "ok",
+        "reboot_required": reboot_needed,
+        "message": "Configurações salvas com sucesso." + (" Reinicie o sistema para aplicar mudanças nos canais." if reboot_needed else "")
+    }
+
 
 
 # ── Channel Webhooks ─────────────────────────────────────────────────
