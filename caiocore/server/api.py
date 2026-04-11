@@ -1294,9 +1294,12 @@ async def update_settings(data: SettingsUpdate):
     )
     
     if reboot_needed:
-        logger.warning("Settings: Channel configuration changed. A restart of the gateway is recommended.")
+        logger.warning("Settings: Channel configuration changed. Syncing ChannelManager...")
+        if _channels:
+            asyncio.create_task(_channels.sync_with_config(_config))
 
     return {
+
         "status": "ok",
         "reboot_required": reboot_needed,
         "message": "Configurações salvas com sucesso." + (" Reinicie o sistema para aplicar mudanças nos canais." if reboot_needed else "")

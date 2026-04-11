@@ -32,10 +32,10 @@ class ChannelManager:
         self._init_channels()
     
     def _init_channels(self) -> None:
-        """Initialize channels based on config."""
+        """Initialize channels based on config. Only creates if not already exists."""
         
         # Telegram channel
-        if self.config.channels.telegram.enabled:
+        if self.config.channels.telegram.enabled and "telegram" not in self.channels:
             try:
                 from caiocore.channels.telegram import TelegramChannel
                 self.channels["telegram"] = TelegramChannel(
@@ -43,80 +43,80 @@ class ChannelManager:
                     self.bus,
                     groq_api_key=self.config.providers.groq.api_key,
                 )
-                logger.info("Telegram channel enabled")
+                logger.info("Telegram channel created")
             except ImportError as e:
                 logger.warning("Telegram channel not available: {}", e)
         
         # WhatsApp channel
-        if self.config.channels.whatsapp.enabled:
+        if self.config.channels.whatsapp.enabled and "whatsapp" not in self.channels:
             try:
                 from caiocore.channels.whatsapp import WhatsAppChannel
                 self.channels["whatsapp"] = WhatsAppChannel(
                     self.config.channels.whatsapp, self.bus
                 )
-                logger.info("WhatsApp channel enabled")
+                logger.info("WhatsApp channel created")
             except ImportError as e:
                 logger.warning("WhatsApp channel not available: {}", e)
 
         # Evolution channel
-        if self.config.channels.evolution.enabled:
+        if self.config.channels.evolution.enabled and "evolution" not in self.channels:
             try:
                 from caiocore.channels.evolution import EvolutionChannel
 
                 self.channels["evolution"] = EvolutionChannel(
                     self.config.channels.evolution, self.bus
                 )
-                logger.info("Evolution channel (WhatsApp) enabled")
+                logger.info("Evolution channel (WhatsApp) created")
             except ImportError as e:
                 logger.warning("Evolution channel not available: {}", e)
 
         # Discord channel
-        if self.config.channels.discord.enabled:
+        if self.config.channels.discord.enabled and "discord" not in self.channels:
             try:
                 from caiocore.channels.discord import DiscordChannel
                 self.channels["discord"] = DiscordChannel(
                     self.config.channels.discord, self.bus
                 )
-                logger.info("Discord channel enabled")
+                logger.info("Discord channel created")
             except ImportError as e:
                 logger.warning("Discord channel not available: {}", e)
         
         # Feishu channel
-        if self.config.channels.feishu.enabled:
+        if self.config.channels.feishu.enabled and "feishu" not in self.channels:
             try:
                 from caiocore.channels.feishu import FeishuChannel
                 self.channels["feishu"] = FeishuChannel(
                     self.config.channels.feishu, self.bus
                 )
-                logger.info("Feishu channel enabled")
+                logger.info("Feishu channel created")
             except ImportError as e:
                 logger.warning("Feishu channel not available: {}", e)
 
         # Mochat channel
-        if self.config.channels.mochat.enabled:
+        if self.config.channels.mochat.enabled and "mochat" not in self.channels:
             try:
                 from caiocore.channels.mochat import MochatChannel
 
                 self.channels["mochat"] = MochatChannel(
                     self.config.channels.mochat, self.bus
                 )
-                logger.info("Mochat channel enabled")
+                logger.info("Mochat channel created")
             except ImportError as e:
                 logger.warning("Mochat channel not available: {}", e)
 
         # DingTalk channel
-        if self.config.channels.dingtalk.enabled:
+        if self.config.channels.dingtalk.enabled and "dingtalk" not in self.channels:
             try:
                 from caiocore.channels.dingtalk import DingTalkChannel
                 self.channels["dingtalk"] = DingTalkChannel(
                     self.config.channels.dingtalk, self.bus
                 )
-                logger.info("DingTalk channel enabled")
+                logger.info("DingTalk channel created")
             except ImportError as e:
                 logger.warning("DingTalk channel not available: {}", e)
 
         # Email channel
-        if self.config.channels.email.enabled:
+        if self.config.channels.email.enabled and "email" not in self.channels:
             try:
                 from caiocore.channels.email import EmailChannel
 
@@ -133,32 +133,33 @@ class ChannelManager:
                     notify_channel=notify_channel,
                     notify_chat_id=notify_chat_id,
                 )
-                logger.info("Email channel enabled")
+                logger.info("Email channel created")
             except ImportError as e:
                 logger.warning("Email channel not available: {}", e)
 
         # Slack channel
-        if self.config.channels.slack.enabled:
+        if self.config.channels.slack.enabled and "slack" not in self.channels:
             try:
                 from caiocore.channels.slack import SlackChannel
                 self.channels["slack"] = SlackChannel(
                     self.config.channels.slack, self.bus
                 )
-                logger.info("Slack channel enabled")
+                logger.info("Slack channel created")
             except ImportError as e:
                 logger.warning("Slack channel not available: {}", e)
 
         # QQ channel
-        if self.config.channels.qq.enabled:
+        if self.config.channels.qq.enabled and "qq" not in self.channels:
             try:
                 from caiocore.channels.qq import QQChannel
                 self.channels["qq"] = QQChannel(
                     self.config.channels.qq,
                     self.bus,
                 )
-                logger.info("QQ channel enabled")
+                logger.info("QQ channel created")
             except ImportError as e:
                 logger.warning("QQ channel not available: {}", e)
+
     
     async def _start_channel(self, name: str, channel: BaseChannel) -> None:
         """Start a channel and log any exceptions."""
@@ -243,6 +244,42 @@ class ChannelManager:
             }
             for name, channel in self.channels.items()
         }
+
+    async def sync_with_config(self, config: Config) -> None:
+        """Sync running channels with the provided config (Hot-reload)."""
+        logger.info("Manager: Syncing channels with new config...")
+        self.config = config
+        
+        # 1. Map expected enabled state
+        enabled_maps = {
+            "telegram": config.channels.telegram.enabled,
+            "whatsapp": config.channels.whatsapp.enabled,
+            "evolution": config.channels.evolution.enabled,
+            "discord": config.channels.discord.enabled,
+            "feishu": config.channels.feishu.enabled,
+            "mochat": config.channels.mochat.enabled,
+            "dingtalk": config.channels.dingtalk.enabled,
+            "email": config.channels.email.enabled,
+            "slack": config.channels.slack.enabled,
+            "qq": config.channels.qq.enabled,
+        }
+        
+        # 2. Stop channels that were disabled
+        for name, channel in list(self.channels.items()):
+            if not enabled_maps.get(name, False):
+                logger.warning("Manager: Stopping disabled channel '{}'...", name)
+                await channel.stop()
+                del self.channels[name]
+        
+        # 3. Create newly enabled channels
+        self._init_channels()
+        
+        # 4. Start channels that are not running
+        for name, channel in self.channels.items():
+            if not channel.is_running:
+                logger.info("Manager: Starting new channel '{}'...", name)
+                asyncio.create_task(self._start_channel(name, channel))
+
     
     @property
     def enabled_channels(self) -> list[str]:
