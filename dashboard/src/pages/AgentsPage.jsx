@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { api, STATUS_CONFIG, EVENT_TYPES } from '../services/api'
-import { useAgents } from '../context/AgentContext'
+
 
 function StatusBadge({ status }) {
   const cfg = STATUS_CONFIG[status] || STATUS_CONFIG.offline
@@ -13,7 +13,7 @@ function StatusBadge({ status }) {
 }
 
 export default function AgentsPage({ focusAgent, onNavigate }) {
-  const { openChat } = useAgents()
+
   const [agents, setAgents] = useState([])
   const [events, setEvents] = useState([])
   const [selected, setSelected] = useState(focusAgent || null)
@@ -24,7 +24,9 @@ export default function AgentsPage({ focusAgent, onNavigate }) {
     setEvents(e)
   }, [])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchData() }, [fetchData])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { if (focusAgent) setSelected(focusAgent) }, [focusAgent])
 
   const ceo = agents.find(a => a.tier === 0)

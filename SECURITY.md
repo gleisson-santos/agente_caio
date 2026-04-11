@@ -2,10 +2,10 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in nanobot, please report it by:
+If you discover a security vulnerability in CaioCore, please report it by:
 
 1. **DO NOT** open a public GitHub issue
-2. Create a private security advisory on GitHub or contact the repository maintainers (xubinrencs@gmail.com)
+2. Create a private security advisory on GitHub or contact the maintainer (Gleisson Santos)
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce
@@ -22,13 +22,13 @@ We aim to respond to security reports within 48 hours.
 
 ```bash
 # ✅ Good: Store in config file with restricted permissions
-chmod 600 ~/.nanobot/config.json
+chmod 600 ~/.caiocore/config.json
 
 # ❌ Bad: Hardcoding keys in code or committing them
 ```
 
 **Recommendations:**
-- Store API keys in `~/.nanobot/config.json` with file permissions set to `0600`
+- Store API keys in `~/.caiocore/config.json` with file permissions set to `0600`
 - Consider using environment variables for sensitive keys
 - Use OS keyring/credential manager for production deployments
 - Rotate API keys regularly
@@ -97,7 +97,7 @@ File operations have path traversal protection, but:
 **WhatsApp Bridge:**
 - The bridge binds to `127.0.0.1:3001` (localhost only, not accessible from external network)
 - Set `bridgeToken` in config to enable shared-secret authentication between Python and Node.js
-- Keep authentication data in `~/.nanobot/whatsapp-auth` secure (mode 0700)
+- Keep authentication data in `~/.caiocore/whatsapp-auth` secure (mode 0700)
 
 ### 6. Dependency Security
 
@@ -145,14 +145,14 @@ For production use:
 3. **Set Proper Permissions**
    ```bash
    chmod 700 ~/.nanobot
-   chmod 600 ~/.nanobot/config.json
-   chmod 700 ~/.nanobot/whatsapp-auth
+   chmod 600 ~/.caiocore/config.json
+   chmod 700 ~/.caiocore/whatsapp-auth
    ```
 
 4. **Enable Logging**
    ```bash
    # Configure log monitoring
-   tail -f ~/.nanobot/logs/nanobot.log
+   tail -f ~/.caiocore/logs/caiocore.log
    ```
 
 5. **Use Rate Limiting**
@@ -195,7 +195,7 @@ If you suspect a security breach:
 1. **Immediately revoke compromised API keys**
 2. **Review logs for unauthorized access**
    ```bash
-   grep "Access denied" ~/.nanobot/logs/nanobot.log
+   grep "Access denied" ~/.caiocore/logs/caiocore.log
    ```
 3. **Check for unexpected file modifications**
 4. **Rotate all credentials**
@@ -256,8 +256,8 @@ Before deploying nanobot:
 **Last Updated**: 2026-02-03
 
 For the latest security updates and announcements, check:
-- GitHub Security Advisories: https://github.com/HKUDS/nanobot/security/advisories
-- Release Notes: https://github.com/HKUDS/nanobot/releases
+- GitHub Security Advisories: https://github.com/gleisson-santos/agente_caio/security/advisories
+- Release Notes: https://github.com/gleisson-santos/agente_caio/releases
 
 ## License
 

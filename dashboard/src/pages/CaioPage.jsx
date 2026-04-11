@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { api } from '../services/api'
+import { api, AGENT_UI_META } from '../services/api'
 import NeuralSphere from '../components/NeuralSphere'
 
 const getDailySessionId = () => {
@@ -12,6 +12,8 @@ export default function CaioPage() {
     const [inputValue, setInputValue] = useState('')
     const [isTyping, setIsTyping] = useState(false)
     const [sessionId] = useState(getDailySessionId())
+    const [activeAgentId, setActiveAgentId] = useState(null)
+    const [agentMeta, setAgentMeta] = useState(null)
     const messagesEndRef = useRef(null)
     const textareaRef = useRef(null)
 
@@ -20,25 +22,44 @@ export default function CaioPage() {
     }
 
     useEffect(() => {
+        // Detect specialist from URL hash: #/chat?agent=lovable
+        const hash = window.location.hash;
+        if (hash.includes('agent=')) {
+            const id = hash.split('agent=')[1].split('&')[0]; // Safe split
+            
+            // Try matching directly, then with spec- prefix
+            let foundId = id;
+            if (!AGENT_UI_META[foundId]) {
+                const specId = `spec-${id}`;
+                if (AGENT_UI_META[specId]) {
+                    foundId = specId;
+                }
+            }
+
+            setActiveAgentId(foundId);
+            setAgentMeta(AGENT_UI_META[foundId] || null);
+        }
+    }, [])
+
+    useEffect(() => {
         const loadHistory = async () => {
             try {
                 const history = await api.getChatHistory(sessionId)
                 if (history && history.length > 0) {
                     setMessages(history)
                 } else {
-                    setMessages([
-                        {
-                            role: 'assistant',
-                            content: 'Olá! Sou o Caio, seu assistente inteligente. Como posso ajudar você hoje? 🧠✨\n\nMinha interface neural está ativa e pronta para extrações, análises e comandos.'
-                        }
-                    ])
+                    const welcomeMsg = agentMeta 
+                        ? `Olá! Sou o ${agentMeta.name}, especialista em ${agentMeta.role}. Como posso ajudar você com sua expertise hoje? 🧠✨`
+                        : 'Olá! Sou o Caio, seu assistente inteligente. Como posso ajudar você hoje? 🧠✨\n\nMinha interface neural está ativa e pronta para extrações, análises e comandos.';
+                    
+                    setMessages([{ role: 'assistant', content: welcomeMsg }])
                 }
             } catch (e) {
                 console.error("Erro ao carregar histórico", e)
             }
         }
         loadHistory()
-    }, [sessionId])
+    }, [sessionId, agentMeta])
 
     useEffect(() => {
         scrollToBottom()
@@ -58,7 +79,7 @@ export default function CaioPage() {
         setIsTyping(true)
 
         try {
-            const response = await api.sendChatMessage(userMsg, sessionId)
+            const response = await api.sendChatMessage(userMsg, sessionId, activeAgentId)
             if (response && response.content) {
                 setMessages(prev => [...prev, { role: 'assistant', content: response.content }])
             } else if (response && response.status === 'error') {
@@ -124,6 +145,26 @@ export default function CaioPage() {
         <div className="cc-chat-page-root-futuristic">
             <NeuralSphere />
 
+            {agentMeta && (
+                <div className="cc-agent-chat-header fade-in" style={{
+                    position: 'absolute', top: '20px', left: '50%', transform: 'translateX(-50%)',
+                    zIndex: 10, display: 'flex', alignItems: 'center', gap: '12px',
+                    background: 'rgba(15, 23, 42, 0.8)', padding: '8px 20px',
+                    borderRadius: '50px', border: '1px solid rgba(59, 130, 246, 0.3)',
+                    backdropFilter: 'blur(10px)', boxShadow: '0 4px 20px rgba(0,0,0,0.4)'
+                }}>
+                    <span style={{ fontSize: '20px' }}>{agentMeta.iconEmoji}</span>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontWeight: 700, fontSize: '14px', color: '#fff' }}>{agentMeta.name}</span>
+                        <span style={{ fontSize: '10px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '1px' }}>{agentMeta.role}</span>
+                    </div>
+                    <button 
+                        onClick={() => { window.location.href = '#/agents'; }}
+                        style={{ marginLeft: '10px', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '12px' }}
+                    >✕</button>
+                </div>
+            )}
+
             <div className="cc-chat-scroll-futuristic">
                 {messages.map((msg, i) => (
                     <div key={i} className={`cc-msg-wrapper ${msg.role === 'user' ? 'user' : 'assistant'}`}>
@@ -131,7 +172,7 @@ export default function CaioPage() {
                             {msg.role === 'user' ? msg.content : renderMessageContent(msg.content)}
                         </div>
                         <div className="cc-chat-time-futuristic">
-                            {msg.role === 'user' ? 'YOU' : 'CAIO • NEURAL CORE'} • {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            {msg.role === 'user' ? 'VOCÊ' : (agentMeta ? agentMeta.name.toUpperCase() : 'CAIO • NEURAL CORE')} • {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </div>
                     </div>
                 ))}

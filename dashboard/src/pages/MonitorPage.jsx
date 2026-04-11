@@ -21,16 +21,15 @@ const MOCK_LOGS = [
 export default function MonitorPage() {
   const [agents, setAgents] = useState([])
   const [services, setServices] = useState([])
-  const [events, setEvents] = useState([])
 
   const fetchData = useCallback(async () => {
-    const [a, s, e] = await Promise.all([api.getAgents(), api.getServices(), api.getEvents()])
+    const [a, s] = await Promise.all([api.getAgents(), api.getServices()])
     setAgents(a)
     setServices(s)
-    setEvents(e)
   }, [])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchData()
     const interval = setInterval(fetchData, 30000)
     return () => clearInterval(interval)

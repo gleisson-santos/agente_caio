@@ -21,6 +21,7 @@ export function TaskProvider({ children }) {
     }, [])
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchAll()
         const interval = setInterval(fetchAll, 30000)
         return () => clearInterval(interval)
@@ -61,6 +62,7 @@ export function TaskProvider({ children }) {
     )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTasks() {
     return useContext(TaskContext)
 }

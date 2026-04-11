@@ -1,6 +1,6 @@
 # Available Tools
 
-This document describes the tools available to nanobot.
+This document describes the tools available to caiocore.
 
 ## File Operations
 
@@ -193,6 +193,6 @@ email_delete(
 ## Adding Custom Tools
 
 To add custom tools:
-1. Create a class that extends `Tool` in `nanobot/agent/tools/`
+1. Create a class that extends `Tool` in `caiocore/agent/tools/`
 2. Implement `name`, `description`, `parameters`, and `execute`
 3. Register it in `AgentLoop._register_default_tools()`

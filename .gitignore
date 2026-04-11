@@ -8,9 +8,9 @@ venv/
 ENV/
 *.log
 *.txt
-.nanobot/
+.caiocore/
 .gemini/
-nanobot_temp/
+caiocore_temp/
 workspace/history/
 workspace/memory/HISTORY.md
 node_modules/
@@ -43,6 +43,6 @@ config.json
 credentials.json
 token.pickle
 *.pickle
-nanobot/extras/api.env
+caiocore/extras/api.env
 caio-stack/core/token.json
 caio-stack/core/credentials.json

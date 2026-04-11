@@ -3,12 +3,7 @@ import { FileText, Presentation, FileSpreadsheet, FileEdit, Sparkles, Trash2, Lo
 import { api } from '../services/api'
 import ReactMarkdown from 'react-markdown'
 
-const aiExamples = [
-  'Crie um contrato de prestação de serviços para consultoria de TI',
-  'Gere um relatório gerencial mensal com indicadores de desempenho',
-  'Faça uma apresentação executiva de 5 slides sobre resultados Q1',
-  'Monte uma ata de reunião do comitê de segurança',
-]
+
 
 export default function DocumentsPage() {
   const [documents, setDocuments] = useState([])
@@ -16,12 +11,10 @@ export default function DocumentsPage() {
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [sessionId] = useState(`dashboard-docs-${new Date().toISOString().split('T')[0]}`)
-  const [aiFormat, setAiFormat] = useState('docx')
   const [statusMsg, setStatusMsg] = useState(null)
 
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
-  const pollRef = useRef(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -49,7 +42,7 @@ export default function DocumentsPage() {
     try {
       const docs = await api.listDocuments()
       setDocuments(docs)
-    } catch (e) { /* silent */ }
+    } catch { /* silent */ }
   }, [])
 
   useEffect(() => {
@@ -97,7 +90,7 @@ export default function DocumentsPage() {
       } else {
         setMessages(prev => [...prev, { role: 'assistant', content: 'Erro de processamento neural. Tente novamente.' }])
       }
-    } catch (err) {
+    } catch {
       setMessages(prev => prev.filter(m => m.id !== tempId))
       setMessages(prev => [...prev, { role: 'assistant', content: '⏳ A tarefa está demorando ou o núcleo está offline. Verifique a listagem abaixo!' }])
     } finally {
@@ -120,7 +113,7 @@ export default function DocumentsPage() {
       await api.deleteDocument(filename)
       showStatus(`🗑️ "${filename}" excluído`)
       fetchDocuments()
-    } catch (e) { /* silent */ }
+    } catch { /* silent */ }
   }
 
   const formatDate = (iso) => {
@@ -130,10 +123,7 @@ export default function DocumentsPage() {
       ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
   }
 
-  const catColors = {
-    legal: { bg: 'rgba(255,171,0,0.12)', text: '#FFB300' },
-    empresarial: { bg: 'rgba(0,200,150,0.12)', text: '#00C896' },
-  }
+
 
   const typeIcons = {
     pdf: <FileText size={16} style={{ color: '#ef4444' }} />,

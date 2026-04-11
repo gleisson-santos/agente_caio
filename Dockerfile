@@ -16,12 +16,12 @@ WORKDIR /app
 
 # Install Python dependencies first (cached layer)
 COPY pyproject.toml README.md LICENSE ./
-RUN mkdir -p nanobot bridge && touch nanobot/__init__.py && \
+RUN mkdir -p nanobot bridge && touch caiocore/__init__.py && \
     uv pip install --system --no-cache . && \
     rm -rf nanobot bridge
 
 # Copy the full source and install
-COPY nanobot/ nanobot/
+COPY caiocore/ caiocore/
 COPY bridge/ bridge/
 RUN uv pip install --system --no-cache .
 
@@ -36,5 +36,5 @@ RUN mkdir -p /root/.nanobot
 # Gateway default port
 EXPOSE 18790
 
-ENTRYPOINT ["nanobot"]
+ENTRYPOINT ["caiocore"]
 CMD ["status"]

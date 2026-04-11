@@ -56,7 +56,7 @@ O Agente Caio deve responder sempre de forma:
 ---
 
 ## 📂 Pontos Importantes de Manutenção
-- **Status JSON:** O arquivo `nanobot/agents/extracao_pendencias/status.json` é a fonte da verdade para o progresso do robô.
+- **Status JSON:** O arquivo `caiocore/agents/extracao_pendencias/status.json` é a fonte da verdade para o progresso do robô.
 - **Comandos Críticos:** 
   - `python start_api.py` -> Inicia o Gateway.
   - `npm run dev` (em /dashboard) -> Inicia o Frontend.

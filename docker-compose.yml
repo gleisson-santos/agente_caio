@@ -18,7 +18,7 @@ services:
           - node.role == manager
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-dashboard.rule=Host(`agentecaio.controllserv.com.br`)
+        - traefik.http.routers.caio-dashboard.rule=Host(`SEU DOMINIO`)
         - traefik.http.routers.caio-dashboard.entrypoints=websecure
         - traefik.http.routers.caio-dashboard.priority=1
         - traefik.http.routers.caio-dashboard.tls.certresolver=letsencryptresolver
@@ -34,7 +34,7 @@ services:
 
     volumes:
       - caio_workspace:/app/workspace
-      - /root/agente_caio/config.json:/root/.nanobot/config.json ## Caminho correto que o nanobot lê
+      - /root/agente_caio/config.json:/root/.caiocore/config.json ## Caminho correto que o caiocore lê
       - /root/agente_caio/caio-stack:/app/caio-stack ## Pastas com credenciais (Google Calendar, etc)
 
     networks:
@@ -53,7 +53,7 @@ services:
           - node.role == manager
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-agent.rule=Host(`agentecaio.controllserv.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
+        - traefik.http.routers.caio-agent.rule=Host(`SEU DOMINIO`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
         - traefik.http.routers.caio-agent.entrypoints=websecure
         - traefik.http.routers.caio-agent.priority=2
         - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver

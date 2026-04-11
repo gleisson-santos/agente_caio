@@ -378,7 +378,7 @@ function LifeDrilldown({ agent }) {
 }
 
 // ─── AGENT DRILLDOWN (detail panel when clicking an agent) ────────
-function AgentDrilldown({ agent, events, onClose, openChat, onNavigate }) {
+function AgentDrilldown({ agent, events, onClose, onNavigate }) {
   const [expandedEmail, setExpandedEmail] = useState(null)
   const [replyText, setReplyText] = useState('')
   const [isProcessing, setIsProcessing] = useState(false)
@@ -1046,7 +1046,7 @@ function OpenRouterShowcase() {
 
 // ─── MAIN DASHBOARD PAGE ──────────────────────────────────────────
 export default function DashboardPage({ onNavigate }) {
-  const { agents, ceo, tier1, tier2, openChat } = useAgents()
+  const { agents, ceo, tier1, tier2 } = useAgents()
   const [events, setEvents] = useState([])
   const [services, setServices] = useState([])
   const [selectedAgent, setSelectedAgent] = useState(null)
@@ -1058,6 +1058,7 @@ export default function DashboardPage({ onNavigate }) {
   }, [])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchAll()
     const interval = setInterval(fetchAll, 30000)
     return () => clearInterval(interval)
@@ -1144,7 +1145,6 @@ export default function DashboardPage({ onNavigate }) {
           agent={drillAgent} 
           events={drillEvents} 
           onClose={() => setSelectedAgent(null)} 
-          openChat={openChat}
           onNavigate={onNavigate}
         />
       )}
