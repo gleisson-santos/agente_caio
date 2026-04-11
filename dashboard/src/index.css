@@ -454,6 +454,46 @@ code {
   background: var(--surface-3);
 }
 
+.form-group label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+/* ─── SETTINGS PROVIDERS ─────────────────────────────────────────── */
+.providers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sp-4);
+  margin-top: var(--sp-2);
+}
+
+.provider-card {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-4);
+  transition: all 0.2s ease;
+}
+
+.provider-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.provider-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
 .metric-label {
   font-size: var(--fs-sm);
   color: var(--text-tertiary);

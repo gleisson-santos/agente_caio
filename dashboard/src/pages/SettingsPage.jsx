@@ -72,30 +72,46 @@ export default function SettingsPage() {
           ))}
         </div>
 
-        {/* API Keys */}
+        {/* AI Providers */}
         <div className="settings-section fade-in-up fade-in-up-delay-2">
-          <div className="settings-section-title">🔑 Chaves de API</div>
-          <div className="settings-grid">
-            <div className="form-group">
-              <label>OpenRouter API Key (sk-or-...)</label>
-              <input 
-                type="password" 
-                value={settings.openrouterKey} 
-                onChange={e => setSettings({ ...settings, openrouterKey: e.target.value })} 
-                placeholder="sk-or-v1-..."
-              />
-            </div>
-            <div className="form-group">
-              <label>Gemini API Key (AIzaSy...)</label>
-              <input 
-                type="password" 
-                value={settings.geminiKey} 
-                onChange={e => setSettings({ ...settings, geminiKey: e.target.value })} 
-                placeholder="AIzaSy..."
-              />
-            </div>
+          <div className="settings-section-title">🔌 Provedores de LLM</div>
+          <div className="providers-grid">
+            {settings.providerKeys && Object.keys(settings.providerKeys).map(p => (
+              <div key={p} className="provider-card">
+                <div className="provider-header">
+                  <span>{p === 'openai' ? '🌐' : p === 'anthropic' ? '🎭' : p === 'google' || p === 'gemini' ? '💎' : p === 'groq' ? '⚡' : '🔌'}</span>
+                  {p}
+                </div>
+                <div className="form-group">
+                  <label>API Key</label>
+                  <input 
+                    type="password" 
+                    value={settings.providerKeys[p]} 
+                    onChange={e => {
+                      const newKeys = { ...settings.providerKeys, [p]: e.target.value };
+                      setSettings({ ...settings, providerKeys: newKeys });
+                    }} 
+                    placeholder={`Sua chave para ${p}`}
+                  />
+                </div>
+                {p === 'custom' && (
+                  <div className="form-group" style={{ marginTop: '12px' }}>
+                    <label>Base URL</label>
+                    <input 
+                      value={settings.providerBases[p]} 
+                      onChange={e => {
+                        const newBases = { ...settings.providerBases, [p]: e.target.value };
+                        setSettings({ ...settings, providerBases: newBases });
+                      }} 
+                      placeholder="https://api.openai.com/v1"
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-          <div className="form-group" style={{ marginTop: '12px' }}>
+          
+          <div className="form-group" style={{ marginTop: '24px', borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
             <label>Brave Search Key (Extração Web)</label>
             <input 
               type="password" 

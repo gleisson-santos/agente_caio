@@ -80,9 +80,10 @@ class SettingsUpdate(BaseModel):
     telegramEnabled: Optional[bool] = None
     emailEnabled: Optional[bool] = None
     whatsappEnabled: Optional[bool] = None
-    openrouterKey: Optional[str] = None
-    geminiKey: Optional[str] = None
+    providerKeys: Optional[dict[str, str]] = None
+    providerBases: Optional[dict[str, str]] = None
     braveKey: Optional[str] = None
+
 
 
 
@@ -1254,10 +1255,21 @@ async def get_settings():
         "telegramEnabled": _config.channels.telegram.enabled,
         "emailEnabled": _config.channels.email.enabled,
         "whatsappEnabled": _config.channels.evolution.enabled,
-        "openrouterKey": _config.providers.openrouter.api_key if hasattr(_config.providers.openrouter, "api_key") else "",
-        "geminiKey": _config.providers.gemini.api_key if hasattr(_config.providers.gemini, "api_key") else "",
+        "providerKeys": {
+            "openrouter": _config.providers.openrouter.api_key,
+            "gemini": _config.providers.gemini.api_key,
+            "groq": _config.providers.groq.api_key,
+            "openai": _config.providers.openai.api_key,
+            "anthropic": _config.providers.anthropic.api_key,
+            "deepseek": _config.providers.deepseek.api_key,
+            "custom": _config.providers.custom.api_key,
+        },
+        "providerBases": {
+            "custom": _config.providers.custom.api_base or "",
+        },
         "braveKey": _config.tools.web.search.api_key if hasattr(_config.tools.web.search, "api_key") else "",
     }
+
 
 
 
@@ -1284,12 +1296,21 @@ async def update_settings(data: SettingsUpdate):
     if data.emailEnabled is not None: _config.channels.email.enabled = data.emailEnabled
     if data.whatsappEnabled is not None: _config.channels.evolution.enabled = data.whatsappEnabled
 
-    # Provider Keys
-    if data.openrouterKey is not None: _config.providers.openrouter.api_key = data.openrouterKey
-    if data.geminiKey is not None: _config.providers.gemini.api_key = data.geminiKey
+    # Provider Settings
+    if data.providerKeys:
+        for p, key in data.providerKeys.items():
+            if hasattr(_config.providers, p):
+                getattr(_config.providers, p).api_key = key
+    
+    if data.providerBases:
+        for p, base in data.providerBases.items():
+            if hasattr(_config.providers, p):
+                getattr(_config.providers, p).api_base = base if base else None
+
     if data.braveKey is not None: _config.tools.web.search.api_key = data.braveKey
 
     # Persist to config.json
+
 
     from caiocore.config.loader import save_config
     save_config(_config)
