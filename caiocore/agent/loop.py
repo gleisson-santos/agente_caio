@@ -384,7 +384,18 @@ class AgentLoop:
                     tools_used.append(tool_call.name)
                     args_str = json.dumps(tool_call.arguments, ensure_ascii=False)
                     logger.info("Tool call: {}({})", tool_call.name, args_str[:200])
-                    result = await self.tools.execute(tool_call.name, tool_call.arguments)
+                    
+                    # HARD GUARD: Block tools not in the specialist's allowed list
+                    if allowed_tools is not None and tool_call.name not in allowed_tools:
+                        result = (
+                            f"BLOQUEADO: A ferramenta '{tool_call.name}' não está disponível para este especialista. "
+                            f"Ferramentas permitidas: {', '.join(allowed_tools)}. "
+                            f"Responda usando apenas texto e suas ferramentas autorizadas."
+                        )
+                        logger.warning("Tool {} BLOCKED for specialist (allowed: {})", tool_call.name, allowed_tools)
+                    else:
+                        result = await self.tools.execute(tool_call.name, tool_call.arguments)
+                    
                     messages = self.context.add_tool_result(
                         messages, tool_call.id, tool_call.name, result
                     )

@@ -78,7 +78,7 @@
     "isPremium": true,
     "hideMetrics": true,
     "description": "Seu braço direito para ideias, rascunhos e documentos.",
-    "tools": ["web_search", "web_fetch", "write_file", "read_file", "ls"]
+    "tools": ["web_search", "web_fetch", "write_file", "read_file", "list_dir"]
   },
   {
     "agent": "copywriter",
