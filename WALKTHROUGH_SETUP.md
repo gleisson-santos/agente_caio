@@ -101,4 +101,3 @@ Se você estiver usando **Portainer**:
 
 O CaioCore é altamente extensível. Você pode adicionar novos agentes em `caiocore/agents/premium/` e registrá-los no arquivo `commands.py`.
 
-Para suporte oficial, acesse: [agentecaio.controllserv.com.br](http://agentecaio.controllserv.com.br)
