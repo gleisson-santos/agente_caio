@@ -16,9 +16,9 @@ WORKDIR /app
 
 # Install Python dependencies first (cached layer)
 COPY pyproject.toml README.md LICENSE ./
-RUN mkdir -p nanobot bridge && touch caiocore/__init__.py && \
+RUN mkdir -p nanobot bridge caiocore && touch caiocore/__init__.py && \
     uv pip install --system --no-cache . && \
-    rm -rf nanobot bridge
+    rm -rf nanobot bridge caiocore
 
 # Copy the full source and install
 COPY caiocore/ caiocore/
