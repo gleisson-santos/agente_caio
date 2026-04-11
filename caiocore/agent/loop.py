@@ -15,6 +15,7 @@ from loguru import logger
 from caiocore.agent.context import ContextBuilder
 from caiocore.agent.memory import MemoryStore
 from caiocore.agent.subagent import SubagentManager
+from caiocore.agent.tracer import AgentTracer
 from caiocore.agent.tools.cron import CronTool
 from caiocore.agent.tools.email_read import EmailReadTool
 from caiocore.agent.tools.email_delete import EmailDeleteTool
@@ -75,6 +76,7 @@ class AgentLoop:
         self.bus = bus
         self.provider = provider
         self.workspace = workspace
+        self.tracer = AgentTracer(self.workspace)
         self.model = model or provider.get_default_model()
         self.max_iterations = max_iterations
         self.temperature = temperature
@@ -465,6 +467,10 @@ class AgentLoop:
     ) -> OutboundMessage | None:
         """Process a single inbound message and return the response."""
         logger.info("DEBUG: Processando mensagem no AGENT_LOOP: {} (canal: {})", msg.content[:50], msg.channel)
+        
+        # Tracing context setup
+        start_time = time.time()
+        
         # System messages: parse origin from chat_id ("channel:chat_id")
         if msg.channel == "system":
             channel, chat_id = (msg.chat_id.split(":", 1) if ":" in msg.chat_id
@@ -613,6 +619,19 @@ class AgentLoop:
         if message_tool := self.tools.get("message"):
             if isinstance(message_tool, MessageTool) and message_tool._sent_in_turn:
                 return None
+
+        # Tracing integration
+        duration_ms = (time.time() - start_time) * 1000.0
+        self.tracer.log_run(
+            session_id=session_key or session.key,
+            agent_id=target_spec_id or "caio-core",
+            channel=msg.channel,
+            prompt=msg.content,
+            response_content=final_content,
+            tools_used=tools_used,
+            duration_ms=duration_ms,
+            model=getattr(self, "model", "unknown")
+        )
 
         return OutboundMessage(
             channel=msg.channel, chat_id=msg.chat_id, content=final_content,

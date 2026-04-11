@@ -613,6 +613,24 @@ async def get_events(
         event_type=event_type,
     )
 
+# ── Tracing endpoint ────────────────────────────────────────────────
+
+@app.get("/api/tracing")
+async def get_tracing_logs(limit: int = Query(50, ge=1, le=500)):
+    """Retrieve recent AI tracing logs."""
+    try:
+        from caiocore.agent.tracer import AgentTracer
+        # In a real setup, we might persist this instance in api.py, but for now we create reading instance
+        workspace_dir = _Path(os.path.expanduser("~")) / ".nanobot" / "workspace"
+        if not workspace_dir.exists():
+            workspace_dir = _Path(os.getcwd())
+            
+        tracer = AgentTracer(workspace_dir)
+        return {"traces": tracer.get_recent_traces(limit=limit)}
+    except Exception as e:
+        logger.error(f"Error fetching traces: {e}")
+        return {"traces": [], "error": str(e)}
+
 
 # ── Existing endpoints (notify, extras, tasks) ─────────────────────
 
