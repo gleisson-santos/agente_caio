@@ -15,6 +15,7 @@ from loguru import logger
 from caiocore.agent.context import ContextBuilder
 from caiocore.agent.memory import MemoryStore
 from caiocore.agent.subagent import SubagentManager
+from caiocore.agent.workflow import WorkflowEngine
 from caiocore.agent.tracer import AgentTracer
 from caiocore.agent.tools.cron import CronTool
 from caiocore.agent.tools.email_read import EmailReadTool
@@ -24,6 +25,7 @@ from caiocore.agent.tools.filesystem import EditFileTool, ListDirTool, ReadFileT
 from caiocore.agent.tools.google_calendar import GoogleCalendarTool
 from caiocore.agent.tools.documentos import GeradorDocumentosTool
 from caiocore.agent.tools.message import MessageTool
+from caiocore.agent.tools.workflow import WorkflowTool
 from caiocore.agent.tools.registry import ToolRegistry
 from caiocore.agent.tools.shell import ExecTool
 from caiocore.agent.tools.spawn import SpawnTool
@@ -104,6 +106,7 @@ class AgentLoop:
             exec_config=self.exec_config,
             restrict_to_workspace=restrict_to_workspace,
         )
+        self.workflows = WorkflowEngine(self, bus)
 
         self._running = False
         self._mcp_servers = mcp_servers or {}
@@ -138,6 +141,9 @@ class AgentLoop:
         
         # Register media generation tool (DALL-E, etc via OpenRouter)
         self.tools.register(GeneratorTool())
+        
+        # Register Workflow tool
+        self.tools.register(WorkflowTool(self.workflows))
         
         # Register email reading tool if IMAP credentials are configured
         ec = self.email_config

@@ -58,6 +58,18 @@ class ChannelManager:
             except ImportError as e:
                 logger.warning("WhatsApp channel not available: {}", e)
 
+        # Evolution channel
+        if self.config.channels.evolution.enabled:
+            try:
+                from caiocore.channels.evolution import EvolutionChannel
+
+                self.channels["evolution"] = EvolutionChannel(
+                    self.config.channels.evolution, self.bus
+                )
+                logger.info("Evolution channel (WhatsApp) enabled")
+            except ImportError as e:
+                logger.warning("Evolution channel not available: {}", e)
+
         # Discord channel
         if self.config.channels.discord.enabled:
             try:

@@ -21,6 +21,17 @@ class WhatsAppConfig(Base):
     allow_from: list[str] = Field(default_factory=list)  # Allowed phone numbers
 
 
+class EvolutionConfig(Base):
+    """WhatsApp integration via Evolution API."""
+
+    enabled: bool = False
+    base_url: str = ""  # e.g. https://evolution.seudominio.com
+    api_key: str = ""
+    instance_name: str = "Caio"
+    instance_token: str = ""
+    allow_from: list[str] = Field(default_factory=list)
+
+
 class TelegramConfig(Base):
     """Telegram channel configuration."""
 
@@ -172,6 +183,7 @@ class ChannelsConfig(Base):
     """Configuration for chat channels."""
 
     whatsapp: WhatsAppConfig = Field(default_factory=WhatsAppConfig)
+    evolution: EvolutionConfig = Field(default_factory=EvolutionConfig)
     telegram: TelegramConfig = Field(default_factory=TelegramConfig)
     discord: DiscordConfig = Field(default_factory=DiscordConfig)
     feishu: FeishuConfig = Field(default_factory=FeishuConfig)

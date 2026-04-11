@@ -1215,6 +1215,25 @@ async def delete_task(task_id: str):
     return {"deleted": True}
 
 
+# ── Channel Webhooks ─────────────────────────────────────────────────
+
+@app.post("/api/webhooks/evolution")
+async def evolution_webhook(data: dict[str, Any]):
+    """Receives WhatsApp events from Evolution API."""
+    if not _channels:
+        return {"status": "channels_not_ready"}
+    
+    # Forward to the evolution channel instance
+    evo = _channels.get_channel("evolution")
+    if not evo:
+        return {"status": "evolution_channel_not_enabled"}
+    
+    # Process in background task to return 200 OK to Evolution ASAP
+    asyncio.create_task(evo.handle_webhook(data))
+    return {"status": "ok"}
+
+
+
 def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
     """Start the FastAPI server with all dependencies injected."""
     global _agent, _bus, _config, _cron, _channels, _doc_agent
