@@ -55,7 +55,6 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Channels */}
         <div className="settings-section fade-in-up fade-in-up-delay-1">
           <div className="settings-section-title">📡 Canais de Comunicação</div>
           {[
@@ -71,6 +70,40 @@ export default function SettingsPage() {
               <div className={`toggle-switch ${settings[ch.key] ? 'active' : ''}`} onClick={() => toggleChannel(ch.key)} />
             </div>
           ))}
+        </div>
+
+        {/* API Keys */}
+        <div className="settings-section fade-in-up fade-in-up-delay-2">
+          <div className="settings-section-title">🔑 Chaves de API</div>
+          <div className="settings-grid">
+            <div className="form-group">
+              <label>OpenRouter API Key (sk-or-...)</label>
+              <input 
+                type="password" 
+                value={settings.openrouterKey} 
+                onChange={e => setSettings({ ...settings, openrouterKey: e.target.value })} 
+                placeholder="sk-or-v1-..."
+              />
+            </div>
+            <div className="form-group">
+              <label>Gemini API Key (AIzaSy...)</label>
+              <input 
+                type="password" 
+                value={settings.geminiKey} 
+                onChange={e => setSettings({ ...settings, geminiKey: e.target.value })} 
+                placeholder="AIzaSy..."
+              />
+            </div>
+          </div>
+          <div className="form-group" style={{ marginTop: '12px' }}>
+            <label>Brave Search Key (Extração Web)</label>
+            <input 
+              type="password" 
+              value={settings.braveKey} 
+              onChange={e => setSettings({ ...settings, braveKey: e.target.value })} 
+              placeholder="Chave para busca na web"
+            />
+          </div>
         </div>
 
         {/* Save */}

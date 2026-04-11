@@ -80,6 +80,10 @@ class SettingsUpdate(BaseModel):
     telegramEnabled: Optional[bool] = None
     emailEnabled: Optional[bool] = None
     whatsappEnabled: Optional[bool] = None
+    openrouterKey: Optional[str] = None
+    geminiKey: Optional[str] = None
+    braveKey: Optional[str] = None
+
 
 
 
@@ -1250,7 +1254,11 @@ async def get_settings():
         "telegramEnabled": _config.channels.telegram.enabled,
         "emailEnabled": _config.channels.email.enabled,
         "whatsappEnabled": _config.channels.evolution.enabled,
+        "openrouterKey": _config.providers.openrouter.api_key if hasattr(_config.providers.openrouter, "api_key") else "",
+        "geminiKey": _config.providers.gemini.api_key if hasattr(_config.providers.gemini, "api_key") else "",
+        "braveKey": _config.tools.web.search.api_key if hasattr(_config.tools.web.search, "api_key") else "",
     }
+
 
 
 @app.post("/api/settings")
@@ -1276,7 +1284,13 @@ async def update_settings(data: SettingsUpdate):
     if data.emailEnabled is not None: _config.channels.email.enabled = data.emailEnabled
     if data.whatsappEnabled is not None: _config.channels.evolution.enabled = data.whatsappEnabled
 
+    # Provider Keys
+    if data.openrouterKey is not None: _config.providers.openrouter.api_key = data.openrouterKey
+    if data.geminiKey is not None: _config.providers.gemini.api_key = data.geminiKey
+    if data.braveKey is not None: _config.tools.web.search.api_key = data.braveKey
+
     # Persist to config.json
+
     from caiocore.config.loader import save_config
     save_config(_config)
     
