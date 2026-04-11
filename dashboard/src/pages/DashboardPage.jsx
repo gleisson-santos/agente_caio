@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Brain, Coins, Database, HeartPulse, Server, Zap, Mail, CalendarClock, FileText, Package, Activity } from 'lucide-react'
+import { Brain, Coins, Database, HeartPulse, Server, Zap, Mail, CalendarClock, FileText, Package, Activity, MessageSquare } from 'lucide-react'
 import { api, STATUS_CONFIG, EVENT_TYPES } from '../services/api'
+import { useAgents } from '../context/AgentContext'
 
 // ─── STATUS BADGE ──────────────────────────────────────────────────
 function StatusBadge({ status }) {
@@ -339,9 +340,34 @@ function LifeDrilldown({ agent }) {
                   <span className="cc-lhc-status" style={{ color: getStatusColor(h.status) }}>
                     {getStatusIcon(h.status)} {getStatusText(h.status)}
                   </span>
+                  {h.is_premium && (
+                    <span className="premium-badge" style={{ 
+                      background: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
+                      color: '#000',
+                      fontSize: '9px',
+                      fontWeight: 'bold',
+                      padding: '2px 6px',
+                      borderRadius: '4px',
+                      marginLeft: 'auto'
+                    }}>PREMIUM</span>
+                  )}
                 </div>
                 <div className="cc-lhc-name">{h.name || h.agent_id}</div>
                 <div className="cc-lhc-role">{h.role}</div>
+                {h.is_premium && h.status === 'offline' && (
+                  <button className="btn-buy" style={{
+                    width: '100%',
+                    marginTop: '8px',
+                    fontSize: '10px',
+                    padding: '4px',
+                    background: 'rgba(251,191,36,0.1)',
+                    border: '1px solid #fbbf24',
+                    color: '#fbbf24',
+                    borderRadius: '4px',
+                    cursor: 'pointer'
+                  }}>Ativar (R$ 1,00)</button>
+                )}
+
               </div>
             ))}
           </div>
@@ -352,7 +378,7 @@ function LifeDrilldown({ agent }) {
 }
 
 // ─── AGENT DRILLDOWN (detail panel when clicking an agent) ────────
-function AgentDrilldown({ agent, events, onClose }) {
+function AgentDrilldown({ agent, events, onClose, openChat, onNavigate }) {
   const [expandedEmail, setExpandedEmail] = useState(null)
   const [replyText, setReplyText] = useState('')
   const [isProcessing, setIsProcessing] = useState(false)
@@ -398,6 +424,22 @@ function AgentDrilldown({ agent, events, onClose }) {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
         {(agent.capabilities || []).map(c => <span key={c} className="skill-tag">{c}</span>)}
       </div>
+
+        {agent.tier === 2 && (
+        <div className="cc-drill-section" style={{ borderBottom: '1px solid var(--border)', paddingBottom: '16px', marginBottom: '16px' }}>
+          <button 
+            className="btn-primary" 
+            onClick={() => onNavigate('specialist-chat', agent.id)}
+            style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '14px', background: 'var(--accent)', color: 'white' }}
+          >
+            <MessageSquare size={18} />
+            ⚡ ABRIR ESTAÇÃO DE TRABALHO INDIVIDUAL
+          </button>
+          <p style={{ fontSize: '11px', color: 'var(--text-muted)', textAlign: 'center', marginTop: '8px' }}>
+            Inicia uma sessão de chat privada e persistente com {agent.name}.
+          </p>
+        </div>
+      )}
 
       {/* Token Agent */}
       {agent.id === 'agent-token' && agent.monitorData && (<>
@@ -798,37 +840,38 @@ function OpenRouterShowcase() {
   // Featured AI Agents (curated — not from API)
   const featuredAgents = [
     {
-      name: 'Caio Corp',
-      description: 'Plataforma de agentes inteligentes para automação corporativa',
-      icon: '🤖',
-      gradient: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-      tags: ['Multi-Agent', 'Automação', 'Dashboard'],
+      name: 'Especialista em Sites',
+      description: 'Criação profissional de sites e landing pages em segundos.',
+      icon: '🌐',
+      gradient: 'linear-gradient(135deg, #10b981, #059669)',
+      tags: ['Premium', 'Web Design', 'R$ 1,00'],
       url: null,
     },
     {
-      name: 'Replit Agent',
-      description: 'Build full-stack apps from idea to deployment',
-      icon: '🔶',
+      name: 'Mestre dos Prompts',
+      description: 'Engenharia de prompts de elite para qualquer IA.',
+      icon: '✍️',
       gradient: 'linear-gradient(135deg, #f97316, #ef4444)',
-      tags: ['Full-Stack', 'Deploy', 'AI Coding'],
-      url: 'https://replit.com',
+      tags: ['Premium', 'Prompt Eng', 'R$ 1,00'],
+      url: null,
     },
     {
-      name: 'Kilo Code',
-      description: 'Everything you need for agentic development',
-      icon: '⚡',
-      gradient: 'linear-gradient(135deg, #10b981, #059669)',
-      tags: ['VSCode', 'Agentic', 'Multi-Model'],
-      url: 'https://kilocode.ai',
+      name: 'Caio Corp (Core)',
+      description: 'Plataforma oficial com 4 agentes de infra e 2 especialistas.',
+      icon: '🤖',
+      gradient: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+      tags: ['Grátis', 'Open Source', 'Completo'],
+      url: null,
     },
     {
-      name: 'OpenRouter Chat',
-      description: 'Acesse 300+ modelos com uma única interface',
-      icon: '💬',
+      name: 'Loja de Agentes',
+      description: 'Expanda seu Caio com novos especialistas por apenas R$ 1,00.',
+      icon: '💰',
       gradient: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-      tags: ['Chat', '300+ Models', 'Free Tier'],
-      url: 'https://openrouter.ai/chat',
+      tags: ['Store', 'New Roles', 'Expandable'],
+      url: null,
     },
+
   ]
 
   // Provider logo mapping
@@ -1003,14 +1046,13 @@ function OpenRouterShowcase() {
 
 // ─── MAIN DASHBOARD PAGE ──────────────────────────────────────────
 export default function DashboardPage({ onNavigate }) {
-  const [agents, setAgents] = useState([])
+  const { agents, ceo, tier1, tier2, openChat } = useAgents()
   const [events, setEvents] = useState([])
   const [services, setServices] = useState([])
   const [selectedAgent, setSelectedAgent] = useState(null)
 
   const fetchAll = useCallback(async () => {
-    const [a, e, s] = await Promise.all([api.getAgents(), api.getEvents(), api.getServices()])
-    setAgents(a)
+    const [e, s] = await Promise.all([api.getEvents(), api.getServices()])
     setEvents(e)
     setServices(s)
   }, [])
@@ -1021,9 +1063,6 @@ export default function DashboardPage({ onNavigate }) {
     return () => clearInterval(interval)
   }, [fetchAll])
 
-  const ceo = agents.find(a => a.tier === 0)
-  const tier1 = agents.filter(a => a.tier === 1)
-  const tier2 = agents.filter(a => a.tier === 2)
   const drillAgent = agents.find(a => a.id === selectedAgent)
   const drillEvents = events.filter(e => e.agentId === selectedAgent)
   const onlineCount = agents.filter(a => a.status === 'online' || a.status === 'executando').length
@@ -1101,7 +1140,13 @@ export default function DashboardPage({ onNavigate }) {
 
       {/* ── DRILLDOWN ── */}
       {drillAgent && (
-        <AgentDrilldown agent={drillAgent} events={drillEvents} onClose={() => setSelectedAgent(null)} />
+        <AgentDrilldown 
+          agent={drillAgent} 
+          events={drillEvents} 
+          onClose={() => setSelectedAgent(null)} 
+          openChat={openChat}
+          onNavigate={onNavigate}
+        />
       )}
 
       {/* ── BOTTOM: OpenRouter Showcase ── */}

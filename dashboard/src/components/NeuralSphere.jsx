@@ -107,10 +107,6 @@ const NeuralSphere = () => {
         <div className="neural-sphere-container">
             <div className="neural-sphere-glow"></div>
             <canvas ref={canvasRef} className="neural-sphere-canvas" />
-            <div className="neural-sphere-overlay">
-                <h3>Agente Caio</h3>
-                <span>Neural Interface v4.0</span>
-            </div>
         </div>
     );
 };

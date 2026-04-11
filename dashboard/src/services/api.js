@@ -90,7 +90,7 @@ export const EVENT_TYPES = {
 
 // ─── AGENT REGISTRY (METADATA & FALLBACK) ─────────────────────────
 
-const AGENT_UI_META = {
+export const AGENT_UI_META = {
     // ── Tier 0: CEO ────────────────────────────────────
     'caio-ceo': {
         name: 'Caio (CEO)', role: 'Orquestrador Principal', iconEmoji: '🧠', iconClass: 'ceo', type: 'orchestrator', tier: 0, parentId: null,
@@ -124,7 +124,8 @@ const AGENT_UI_META = {
     'spec-pendencias': {
         name: 'Especialista em Pendências', role: 'Data Extractor', iconEmoji: '⚡', iconClass: 'pendencias', type: 'specialist', tier: 2, parentId: 'agent-bd',
         description: 'Monitoramento e extração de pendências (Vazamento, Pavimento, Falta d\'água) com upload ao Supabase.',
-        capabilities: ['SCI Web', 'Supabase', 'Alertas Telegram', 'Automação Selenium']
+        capabilities: ['SCI Web', 'Supabase', 'Alertas Telegram', 'Automação Selenium'],
+        hidden: true
     },
     'spec-email': {
         name: 'Especialista em Email', role: 'Security Guard', iconEmoji: '📧', iconClass: 'email', type: 'specialist', tier: 2, parentId: 'agent-life',
@@ -144,7 +145,70 @@ const AGENT_UI_META = {
     'spec-almox': {
         name: 'Esp. Almoxarifado', role: 'Logistics Analyst', iconEmoji: '📦', iconClass: 'almox', type: 'specialist', tier: 2, parentId: 'agent-bd',
         description: 'Monitoramento de sistema externo de almoxarifado.',
-        capabilities: ['Monitor Externo', 'Detecção de Alterações', 'Notificações'], comingSoon: true
+        capabilities: ['Monitor Externo', 'Detecção de Alterações', 'Notificações'], comingSoon: true,
+        hidden: true
+    },
+
+    // ── Tier 2: CATALOGO PREMIUM (26 Especialistas) ──────────
+    'lovable': {
+        name: 'Lovable Artist', role: 'Design Strategist', iconEmoji: '🎨', iconClass: 'lovable', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Transforma ideias em prompts épicos para o Lovable.dev.', capabilities: ['UX/UI Design', 'Code Generation', 'AI Prompts']
+    },
+    'carrossel': {
+        name: 'Criador de Carrossel', role: 'Viral IG Creator', iconEmoji: '🎠', iconClass: 'carrossel', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Especialista em carrosséis magnéticos de alto engajamento.', capabilities: ['Copywriting', 'Design', 'Growth']
+    },
+    'assistente_geral': {
+        name: 'Assistente Geral', role: 'Brainstorming', iconEmoji: '🧞', iconClass: 'assistente', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Seu braço direito para ideias, rascunhos e documentos.', capabilities: ['Redação', 'Brainstorming', 'QA']
+    },
+    'copywriter': {
+        name: 'Copywriter Sênior', role: 'Vendedor Implacável', iconEmoji: '✍️', iconClass: 'copywriter', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Escrita persuasiva focada em conversão emocional e lucro.', capabilities: ['VSL', 'Ads', 'Landing Pages']
+    },
+    'nps': {
+        name: 'Analista NPS', role: 'Guardião da Satisfação', iconEmoji: '📊', iconClass: 'nps', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Decifra feedbacks e transforma notas em planos de ação.', capabilities: ['NPS', 'Customer Feedback', 'Analytics']
+    },
+    'paginas_vendas': {
+        name: 'Páginas de Venda', role: 'Máquina de Conversão', iconEmoji: '💰', iconClass: 'vendas', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Estrutura landing pages que transformam leads em alunos.', capabilities: ['Psychology', 'Web Design', 'Copy']
+    },
+    'concorrentes': {
+        name: 'Analista de Mercado', role: 'Espião Estratégico', iconEmoji: '🕵️', iconClass: 'concorrentes', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Mapeia o campo de batalha e encontra brechas no mercado.', capabilities: ['Benchmarking', 'Pricing', 'SWOT']
+    },
+    'imprensa': {
+        name: 'Assessor de Imprensa', role: 'Porta-voz de Elite', iconEmoji: '📰', iconClass: 'imprensa', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Artigos e releases com qualidade jornalística para sua marca.', capabilities: ['Publicity', 'Press Release', 'Branding']
+    },
+    'seo': {
+        name: 'Especialista em SEO', role: 'Mestre do Tráfego', iconEmoji: '🚀', iconClass: 'seo', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Otimiza seu conteúdo para dominar o topo do Google.', capabilities: ['Keywords', 'Ranking', 'Backlinks']
+    },
+    'assuntos_email': {
+        name: 'Mestre dos Assuntos', role: 'Sniper de Abertura', iconEmoji: '🎯', iconClass: 'email', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Assuntos de email impossíveis de serem ignorados.', capabilities: ['Open Rate', 'A/B Testing', 'Curiosity']
+    },
+    'posts_instagram': {
+        name: 'Estrategista IG', role: 'Viral Hunter', iconEmoji: '📸', iconClass: 'insta', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Roteiros de Reels e Posts que param o scroll do usuário.', capabilities: ['Scripts', 'Hooks', 'IG SEO']
+    },
+    'iscas_digitais': {
+        name: 'Arquiteto de Iscas', role: 'Imã de Leads', iconEmoji: '🧲', iconClass: 'magnet', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Cria materiais gratuitos que geram desejo imediato.', capabilities: ['Lead Magnets', 'Freebies', 'Value Add']
+    },
+    'vendas': {
+        name: 'Vendedor Elite', role: 'Closer Digital', iconEmoji: '💼', iconClass: 'vendas', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Conduz o lead até o fechamento com argumentos imbatíveis.', capabilities: ['Closing', 'Objection Handling', 'NLP']
+    },
+    'pesquisa_satisfacao': {
+        name: 'Feedback Ativo', role: 'Ouvinte Atencioso', iconEmoji: '👂', iconClass: 'feedback', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Coleta opiniões e NPS com a leveza de uma conversa.', capabilities: ['Surveys', 'Insights', 'Voice of Customer']
+    },
+    'entrega_isca': {
+        name: 'Entrega de Iscas', role: 'Distribuidor Automático', iconEmoji: '🎁', iconClass: 'delivery', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Entrega materiais e cadastra leads no seu CRM sem esforço.', capabilities: ['Automation', 'CRM', 'Lead Gen']
     },
 }
 
@@ -355,7 +419,7 @@ export const api = {
                 };
             }
 
-            return Object.values(agentsMap)
+            return Object.values(agentsMap).filter(a => !a.hidden)
         }, 10000) // 10s TTL — stale-while-revalidate
     },
 
@@ -491,11 +555,11 @@ export const api = {
     },
 
     // ── Chat (LIVE) ──────────────────────────────────
-    async sendChatMessage(message, sessionId = 'dashboard-default') {
+    async sendChatMessage(message, sessionId = 'dashboard-default', agentId = null) {
         const res = await fetchAPI('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message, session_id: sessionId }),
+            body: JSON.stringify({ message, session_id: sessionId, agent_id: agentId }),
             _chatRequest: true // use 120s timeout for AI responses with tool calls
         })
         return res

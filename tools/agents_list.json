@@ -1,0 +1,186 @@
+[
+  {
+    "agent": "caio-ceo",
+    "name": "Caio (CEO)",
+    "role": "Orquestrador Principal",
+    "tier": 0,
+    "description": "Cérebro central que orquestra todos os agentes e especialistas."
+  },
+  {
+    "agent": "agent-token",
+    "name": "Agente Token",
+    "role": "Auditor de Consumo",
+    "tier": 1,
+    "description": "Monitora o uso de tokens e custos de IA em tempo real."
+  },
+  {
+    "agent": "agent-bd",
+    "name": "Agente BD",
+    "role": "Monitor de Dados",
+    "tier": 1,
+    "description": "Garante a integridade e saúde das conexões com bancos de dados."
+  },
+  {
+    "agent": "agent-life",
+    "name": "Agente Life",
+    "role": "Supervisor do Sistema",
+    "tier": 1,
+    "description": "Monitora o uptime e a saúde geral de toda a stack CaioCore."
+  },
+  {
+    "agent": "agent-sso",
+    "name": "Agente SSO",
+    "role": "Infra & Saúde VPS",
+    "tier": 1,
+    "description": "Supervisiona recursos de hardware, CPU e memória do servidor."
+  },
+  {
+    "agent": "spec-email",
+    "name": "Especialista em Email",
+    "role": "Security Guard",
+    "tier": 2,
+    "description": "Gerencia sua caixa de entrada, resume e responde emails com IA."
+  },
+  {
+    "agent": "spec-schedule",
+    "name": "Especialista dos Schedule",
+    "role": "Time Keeper",
+    "tier": 2,
+    "description": "Orquestra agendamentos, tarefas CRON e lembretes inteligentes."
+  },
+  {
+    "agent": "lovable",
+    "name": "Lovable Artist",
+    "role": "Design Strategist",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Transforma ideias em prompts épicos para o Lovable.dev."
+  },
+  {
+    "agent": "carrossel",
+    "name": "Criador de Carrossel",
+    "role": "Viral IG Creator",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Especialista em carrosséis magnéticos de alto engajamento."
+  },
+  {
+    "agent": "assistente_geral",
+    "name": "Assistente Geral",
+    "role": "Brainstorming",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Seu braço direito para ideias, rascunhos e documentos."
+  },
+  {
+    "agent": "copywriter",
+    "name": "Copywriter Sênior",
+    "role": "Vendedor Implacável",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Escrita persuasiva focada em conversão emocional e lucro."
+  },
+  {
+    "agent": "nps",
+    "name": "Analista NPS",
+    "role": "Guardião da Satisfação",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Decifra feedbacks e transforma notas em planos de ação."
+  },
+  {
+    "agent": "paginas_vendas",
+    "name": "Páginas de Venda",
+    "role": "Máquina de Conversão",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Estrutura landing pages que transformam leads em alunos."
+  },
+  {
+    "agent": "concorrentes",
+    "name": "Analista de Mercado",
+    "role": "Espião Estratégico",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Mapeia o campo de batalha e encontra brechas no mercado."
+  },
+  {
+    "agent": "imprensa",
+    "name": "Assessor de Imprensa",
+    "role": "Porta-voz de Elite",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Artigos e releases com qualidade jornalística para sua marca."
+  },
+  {
+    "agent": "seo",
+    "name": "Especialista em SEO",
+    "role": "Mestre do Tráfego",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Otimiza seu conteúdo para dominar o topo do Google."
+  },
+  {
+    "agent": "assuntos_email",
+    "name": "Mestre dos Assuntos",
+    "role": "Sniper de Abertura",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Assuntos de email impossíveis de serem ignorados."
+  },
+  {
+    "agent": "posts_instagram",
+    "name": "Estrategista IG",
+    "role": "Viral Hunter",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Roteiros de Reels e Posts que param o scroll do usuário."
+  },
+  {
+    "agent": "iscas_digitais",
+    "name": "Arquiteto de Iscas",
+    "role": "Imã de Leads",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Cria materiais gratuitos que geram desejo imediato."
+  },
+  {
+    "agent": "vendas",
+    "name": "Vendedor Elite",
+    "role": "Closer Digital",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Conduz o lead até o fechamento com argumentos imbatíveis."
+  },
+  {
+    "agent": "pesquisa_satisfacao",
+    "name": "Feedback Ativo",
+    "role": "Ouvinte Atencioso",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Coleta opiniões e NPS com a leveza de uma conversa."
+  },
+  {
+    "agent": "entrega_isca",
+    "name": "Entrega de Iscas",
+    "role": "Distribuidor Automático",
+    "tier": 2,
+    "isPremium": true,
+    "hideMetrics": true,
+    "description": "Entrega materiais e cadastra leads no seu CRM sem esforço."
+  }
+]

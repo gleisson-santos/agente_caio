@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { api, STATUS_CONFIG, EVENT_TYPES } from '../services/api'
+import { useAgents } from '../context/AgentContext'
 
 function StatusBadge({ status }) {
   const cfg = STATUS_CONFIG[status] || STATUS_CONFIG.offline
@@ -11,7 +12,8 @@ function StatusBadge({ status }) {
   )
 }
 
-export default function AgentsPage({ focusAgent }) {
+export default function AgentsPage({ focusAgent, onNavigate }) {
+  const { openChat } = useAgents()
   const [agents, setAgents] = useState([])
   const [events, setEvents] = useState([])
   const [selected, setSelected] = useState(focusAgent || null)
@@ -79,7 +81,23 @@ export default function AgentsPage({ focusAgent }) {
               {a.comingSoon && <span className="cc-coming-soon">Em breve</span>}
               <div className="cc-card-top">
                 <div className={`cc-card-icon ${a.iconClass}`}>{a.iconEmoji}</div>
-                <div style={{ flex: 1, minWidth: 0 }}><div className="cc-card-name">{a.name}</div><div className="cc-card-role">{a.role}</div></div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div className="cc-card-name" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    {a.name}
+                    {a.is_premium && (
+                      <span className="premium-badge-mini" style={{ 
+                        background: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
+                        color: '#000',
+                        fontSize: '8px',
+                        fontWeight: 'bold',
+                        padding: '1px 4px',
+                        borderRadius: '3px'
+                      }}>PREMIUM</span>
+                    )}
+                  </div>
+                  <div className="cc-card-role">{a.role}</div>
+                </div>
+
                 <StatusBadge status={a.status} />
               </div>
               {a.statusDetail && <span className="skill-tag" style={{ fontSize: '10px', marginTop: '4px' }}>{a.statusDetail}</span>}
@@ -103,8 +121,8 @@ export default function AgentsPage({ focusAgent }) {
             {(selAgent.capabilities || []).map(c => <span key={c} className="skill-tag">{c}</span>)}
           </div>
 
-          {/* Metrics */}
-          {selAgent.metrics && Object.keys(selAgent.metrics).length > 0 && (
+          {/* Metrics - SLIM MODE support */}
+          {selAgent.metrics && Object.keys(selAgent.metrics).length > 0 && !selAgent.hideMetrics && (
             <div className="cc-drill-metrics">
               {Object.entries(selAgent.metrics).map(([key, val]) => (
                 <div key={key} className="cc-drill-metric">
@@ -112,6 +130,31 @@ export default function AgentsPage({ focusAgent }) {
                   <div className="dm-lab">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Individual Chat Trigger for Specialists */}
+          {selAgent.type === 'specialist' && (
+            <div className="cc-action-bar" style={{ marginTop: '16px' }}>
+              <button 
+                className="btn-primary" 
+                style={{ 
+                  width: '100%', 
+                  padding: '14px', 
+                  borderRadius: '10px', 
+                  fontWeight: 700, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  gap: '10px',
+                  background: 'linear-gradient(135deg, var(--accent), #fbbf24)',
+                  color: '#000',
+                  boxShadow: '0 4px 15px rgba(245,158,11,0.2)'
+                }}
+                onClick={() => onNavigate('specialist-chat', selAgent.id)}
+              >
+                <span>⚡ ABRIR ESTAÇÃO DE TRABALHO INDIVIDUAL</span>
+              </button>
             </div>
           )}
 
