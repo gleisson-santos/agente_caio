@@ -33,9 +33,9 @@ services:
     command: [ "gateway" ] ## Inicia o bot Telegram (override do CMD status)
 
     volumes:
-      - caio_workspace:/app/workspace
-      - /root/agente_caio/config.json:/root/.caiocore/config.json ## Caminho correto que o caiocore lê
-      - /root/agente_caio/caio-stack:/app/caio-stack ## Pastas com credenciais (Google Calendar, etc)
+      - caio_workspace:/root/.caiocore/workspace ## Workspace do agente
+      - /root/agente_caio/config.json:/root/.caiocore/config.json ## Config principal do CaioCore
+      - /root/agente_caio/caio-stack:/app/caio-stack ## Credenciais (Google Calendar, etc)
 
     networks:
       - ControllNet ## Nome da rede interna
