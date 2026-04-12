@@ -536,7 +536,7 @@ export const api = {
 
     // ── Chat (LIVE) ──────────────────────────────────
     async sendChatMessage(message, sessionId = 'dashboard-default', agentId = null) {
-        const res = await fetchAPI('/api/chat/', {
+        const res = await fetchAPI('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message, session_id: sessionId, agent_id: agentId }),
