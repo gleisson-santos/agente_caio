@@ -6,6 +6,9 @@ services:
 
   caio-dashboard:
     image: caiocorp/caio-dashboard:latest ## Dashboard React + Nginx
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
 
     networks:
       - ControllNet ## Nome da rede interna
@@ -32,6 +35,9 @@ services:
 
   caio-agent:
     image: caiocorp/caio-agent:latest ## Core do Agente IA
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: [ "gateway" ] ## Inicia o bot Telegram (override do CMD status)
 
     volumes:
