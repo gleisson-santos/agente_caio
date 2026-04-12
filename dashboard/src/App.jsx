@@ -4,6 +4,7 @@ import { AgentProvider } from './context/AgentContext'
 import { TaskProvider } from './context/TaskContext'
 import Sidebar from './components/Sidebar'
 import SpecialistChatTray from './components/SpecialistChatTray'
+import DomainSetupBanner from './components/DomainSetupBanner'
 import DashboardPage from './pages/DashboardPage'
 import AgentsPage from './pages/AgentsPage'
 import TasksPage from './pages/TasksPage'
@@ -28,6 +29,7 @@ export default function App() {
         <div className="app-layout">
           <Sidebar activePage={page} onNavigate={navigate} />
           <main className="main-content">
+            <DomainSetupBanner />
             {page === 'caio' && <CaioPage />}
             {page === 'specialist-chat' && <SpecialistChatPage agentId={focusAgent} />}
             {page === 'dashboard' && <DashboardPage onNavigate={navigate} />}
