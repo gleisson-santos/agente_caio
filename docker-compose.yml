@@ -38,7 +38,7 @@ services:
       - ControllNet ## Nome da rede interna
 
     ports:
-      - "18790:18790"
+      - "18795:18795"
 
     deploy:
       mode: replicated
@@ -50,7 +50,7 @@ services:
         - traefik.http.routers.caio-agent.rule=Host(`${DOMAIN:-localhost}`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
         - traefik.http.routers.caio-agent.entrypoints=websecure
         - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver
-        - traefik.http.services.caio-agent.loadbalancer.server.port=18790
+        - traefik.http.services.caio-agent.loadbalancer.server.port=18795
 
 ## --------------------------- CAIO CORP --------------------------- ##
 
