@@ -1,5 +1,4 @@
 
-
 services:
 
   ## --------------------------- CAIO CORP --------------------------- ##
@@ -20,16 +19,13 @@ services:
       mode: replicated
       replicas: 1
       placement:
-        constraints:
-          - node.role == manager
+        constraints: [node.role == manager]
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-dashboard.rule=Host(`${DOMAIN:-localhost}`) || PathPrefix(`/`)
-        - traefik.http.routers.caio-dashboard.entrypoints=web,websecure
-        - traefik.http.routers.caio-dashboard.priority=1
+        - traefik.http.routers.caio-dashboard.rule=Host(`agentecaio.controllserv.com.br`)
+        - traefik.http.routers.caio-dashboard.entrypoints=websecure
         - traefik.http.routers.caio-dashboard.tls.certresolver=letsencryptresolver
         - traefik.http.services.caio-dashboard.loadbalancer.server.port=80
-        - traefik.http.services.caio-dashboard.loadbalancer.passHostHeader=true
 
   ## --------------------------- CAIO CORP --------------------------- ##
 
@@ -48,8 +44,6 @@ services:
     networks:
       - ControllNet ## Nome da rede interna
 
-
-
     ports:
       - "18790:18790"
 
@@ -57,13 +51,11 @@ services:
       mode: replicated
       replicas: 1
       placement:
-        constraints:
-          - node.role == manager
+        constraints: [node.role == manager]
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-agent.rule=(Host(`${DOMAIN:-localhost}`) && (PathPrefix(`/api`) || PathPrefix(`/events`))) || (PathPrefix(`/api`) || PathPrefix(`/events`))
-        - traefik.http.routers.caio-agent.entrypoints=web,websecure
-        - traefik.http.routers.caio-agent.priority=2
+        - traefik.http.routers.caio-agent.rule=Host(`agentecaio.controllserv.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
+        - traefik.http.routers.caio-agent.entrypoints=websecure
         - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver
         - traefik.http.services.caio-agent.loadbalancer.server.port=18790
 
