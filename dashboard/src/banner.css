@@ -1,0 +1,60 @@
+/* ─── DOMAIN BANNER ────────────────────────────────────────────── */
+.domain-banner {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.1), rgba(167, 139, 250, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin: 20px 24px 10px;
+  backdrop-filter: blur(8px);
+  border-left: 4px solid #3b82f6;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.domain-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.domain-icon {
+  font-size: 1.2rem;
+}
+
+.domain-text {
+  font-size: 13px;
+  color: #a1a1aa;
+  line-height: 1.4;
+}
+
+.domain-text strong {
+  color: #fafafa;
+  margin-right: 4px;
+}
+
+.domain-text code {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #3b82f6;
+}
+
+.domain-close {
+  background: none;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 14px;
+  margin-left: auto;
+  transition: color 0.2s;
+}
+
+.domain-close:hover {
+  color: #fafafa;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

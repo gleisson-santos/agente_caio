@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './index.css'
+import './banner.css'
 import { AgentProvider } from './context/AgentContext'
 import { TaskProvider } from './context/TaskContext'
 import Sidebar from './components/Sidebar'
