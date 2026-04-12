@@ -47,7 +47,21 @@ chmod +x install.sh
 
 ---
 
-## 🪄 Passo 3: O Assistente `caio setup`
+## 🪄 Passo 3: Configuração do `config.json` (Essencial)
+ 
+O projeto não será executado sem um arquivo de configuração válido. O Git fornece apenas um exemplo.
+ 
+1. **Prepare o arquivo**:
+   ```bash
+   cp config.example.json config.json
+   ```
+ 
+2. **Edite as Chaves**: Abra o `config.json` e substitua os campos `XXXXXXXXX` pelas suas chaves reais (OpenRouter, Telegram, etc).
+
+
+---
+
+## 🪄 Passo 4: O Assistente `caio setup`
 
 Execute o comando abaixo para iniciar o wizard (se não usou a instalação automática):
 ```bash
@@ -62,7 +76,7 @@ caio setup
 
 ---
 
-## 📡 Passo 3: Iniciando o Gateway
+## 📡 Passo 5: Iniciando o Gateway
 
 Para que o Dashboard e o Telegram funcionem, você deve iniciar o gateway:
 ```bash

@@ -62,10 +62,11 @@ Esqueça a edição manual de arquivos JSON complexos. O CaioCore agora possui u
    ```
 
 3. **Inicie o Assistente de Configuração:**
-   ```bash
-   caio setup
-   ```
-   *O assistente pedirá seu Token do Telegram, Chave da API (OpenRouter/OpenAI) e configurará seu Workspace automaticamente.*
+    ```bash
+    cp config.example.json config.json
+    nano config.json # Ou use o editor do Termius
+    ```
+    *Preencha suas chaves da OpenAI, OpenRouter e dados do Telegram no config.json.*
 
 ### ⚖️ Instalação Modular (Otimizada)
 O CaioCore é desenhado para ser leve. Você pode escolher o que instalar:
@@ -92,8 +93,14 @@ No arquivo `docker-compose.yml`, altere as linhas de `Host` para o seu domínio 
 - traefik.http.routers.caio-dashboard.rule=Host(`SEU DOMINIO`)
 ```
 
-### Stack Completa
-Acesse o manual completo de deploy em [WALKTHROUGH_SETUP.md](WALKTHROUGH_SETUP.md).
+### Fluxo "Zen Clean" para VPS (Recomendado)
+Para uma instalação limpa e sem erros de rede:
+1. `git clone https://github.com/gleisson-santos/agente_caio.git`
+2. `cp config.example.json config.json` (Edite com suas chaves)
+3. `docker network create ControllNet || true`
+4. Na Stack do Portainer: Aponte para o repositório ou cole o YAML do `docker-compose.yml`.
+
+Acesse o manual detalhado em [WALKTHROUGH_SETUP.md](WALKTHROUGH_SETUP.md).
 
 ---
 
