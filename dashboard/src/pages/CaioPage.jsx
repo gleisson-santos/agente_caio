@@ -48,8 +48,8 @@ export default function CaioPage() {
                     setMessages(history)
                 } else {
                     const welcomeMsg = agentMeta 
-                        ? `Olá! Sou o ${agentMeta.name}, especialista em ${agentMeta.role}. Como posso ajudar você com sua expertise hoje? 🧠✨`
-                        : 'Olá! Sou o Caio, seu assistente inteligente. Como posso ajudar você hoje? 🧠✨\n\nMinha interface neural está ativa e pronta para extrações, análises e comandos.';
+                        ? `*NÚCLEO ${agentMeta.name.toUpperCase()} ATIVO* — Pronto para operações táticas em ${agentMeta.role}. Qual é a diretriz?`
+                        : '### CAIO — NEURAL SOVEREIGN v4.3\n\nDiretriz principal: Impacto e Soberania Executiva. Interface neural estabilizada. Qual é o objetivo prioritário?';
                     
                     setMessages([{ role: 'assistant', content: welcomeMsg }])
                 }
