@@ -32,8 +32,8 @@ services:
 
     volumes:
       - caio_workspace:/root/.caiocore/workspace ## Workspace do agente
-      - ./config.json:/root/.caiocore/config.json ## Config principal do CaioCore
-      - ./caio-stack:/app/caio-stack ## Credenciais (Google Calendar, etc)
+      - /root/agente_caio/config.json:/root/.caiocore/config.json ## Config principal do CaioCore
+      - /root/agente_caio/caio-stack:/app/caio-stack ## Credenciais (Google Calendar, etc)
 
     networks:
       - ControllNet ## Nome da rede interna
