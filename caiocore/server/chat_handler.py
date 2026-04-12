@@ -29,6 +29,7 @@ def get_agent():
     return _agent
 
 @router.post("", response_model=ChatResponse)
+@router.post("/", response_model=ChatResponse)
 async def chat_message(req: ChatRequest, agent = Depends(get_agent)):
     """Process a chat message using the real Caio AgentLoop."""
     logger.info("Chat: '{}' | session: {}", req.message[:60], req.session_id)

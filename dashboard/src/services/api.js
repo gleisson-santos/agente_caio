@@ -147,6 +147,10 @@ export const AGENT_UI_META = {
     },
 
     // ── Tier 2: CATALOGO PREMIUM (26 Especialistas) ──────────
+    'spec-research': {
+        name: 'Especialista em Pesquisa', role: 'Neural Intelligence Hunter', iconEmoji: '🔍', iconClass: 'research', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
+        description: 'Buscas avançadas, extração de dados e alertas agendados sob medida.', capabilities: ['Deep Search', 'Data Extraction', 'Automated Alerts']
+    },
     'lovable': {
         name: 'Lovable Artist', role: 'Design Strategist', iconEmoji: '🎨', iconClass: 'lovable', type: 'specialist', tier: 2, parentId: 'caio-ceo', isPremium: true, hideMetrics: true,
         description: 'Transforma ideias em prompts épicos para o Lovable.dev.', capabilities: ['UX/UI Design', 'Code Generation', 'AI Prompts']
@@ -228,6 +232,14 @@ const SPECIALIST_DEFAULTS = {
         monitorData: {
             crons: [],
             upcomingEvents: [],
+        },
+    },
+    'spec-research': {
+        status: 'online', statusDetail: 'ATIVO',
+        metrics: { queriesPerformed: 0, extractions: 0, activeAlerts: 0 },
+        monitorData: {
+            recentSearches: [],
+            activeSchedules: [],
         },
     },
     'spec-docs': { status: 'online', statusDetail: 'ATIVO', monitorProject: 'nanobot/documentos', metrics: { docsGenerated: 0, lastGeneration: null, successRate: 100 } },
@@ -524,7 +536,7 @@ export const api = {
 
     // ── Chat (LIVE) ──────────────────────────────────
     async sendChatMessage(message, sessionId = 'dashboard-default', agentId = null) {
-        const res = await fetchAPI('/api/chat', {
+        const res = await fetchAPI('/api/chat/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message, session_id: sessionId, agent_id: agentId }),
