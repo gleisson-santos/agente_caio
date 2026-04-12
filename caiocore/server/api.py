@@ -1323,7 +1323,7 @@ def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
     import threading
 
     def run():
-        uvicorn.run(app, host="0.0.0.0", port=18790, log_level="info", proxy_headers=True, forwarded_allow_ips="*")
+        uvicorn.run(app, host="0.0.0.0", port=18790, log_level="info")
 
     thread = threading.Thread(target=run, daemon=True)
     thread.start()

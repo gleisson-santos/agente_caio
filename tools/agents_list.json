@@ -51,6 +51,14 @@
     "tools": ["cron", "google_calendar", "web_search"]
   },
   {
+    "agent": "spec-research",
+    "name": "Especialista em Pesquisa",
+    "role": "Neural Intelligence Hunter",
+    "tier": 2,
+    "description": "Buscas avançadas, extração de dados e alertas agendados sob medida.",
+    "tools": ["web_search", "web_fetch", "cron", "message"]
+  },
+  {
     "agent": "lovable",
     "name": "Lovable Artist",
     "role": "Design Strategist",
