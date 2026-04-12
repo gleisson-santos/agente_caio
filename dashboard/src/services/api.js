@@ -6,7 +6,10 @@
  */
 
 // Fallback no modo DEV local (npm run dev). Na VPS (Produção), usa o próprio domínio para o Traefik rotear
-const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:18795' : '')
+const API_PORT = 18790
+export const BASE_URL = import.meta.env.VITE_API_URL || 
+                 (import.meta.env.DEV ? `http://localhost:${API_PORT}` : 
+                 (window.location.port ? `${window.location.protocol}//${window.location.hostname}:${API_PORT}` : ''))
 
 // ─── UTILS ─────────────────────────────────────────────────────────
 

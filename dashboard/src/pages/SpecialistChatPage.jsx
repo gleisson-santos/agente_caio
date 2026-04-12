@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { api, AGENT_UI_META } from '../services/api'
+import { api, AGENT_UI_META, BASE_URL } from '../services/api'
 import ReactMarkdown from 'react-markdown'
 
 const getAgentSessionId = (agentId) => {
@@ -48,7 +48,6 @@ function FileAttachment({ path }) {
     const filename = path.split('/').pop()
     const ext = filename.split('.').pop().toLowerCase()
     const icons = { html: '🌐', pdf: '📕', docx: '📘', xlsx: '📗', py: '🐍', js: '📜', css: '🎨' }
-    const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:18795' : '')
 
     return (
         <div className="cc-file-attachment">

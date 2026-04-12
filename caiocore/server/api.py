@@ -1404,8 +1404,8 @@ def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
     import threading
 
     def run():
-        uvicorn.run(app, host="0.0.0.0", port=18795, log_level="info")
+        uvicorn.run(app, host="0.0.0.0", port=18790, log_level="info")
 
     thread = threading.Thread(target=run, daemon=True)
     thread.start()
-    logger.info("Nanobot API Server started on port 18795 (with monitoring agents)")
+    logger.info("Nanobot API Server started on port 18790 (with monitoring agents)")

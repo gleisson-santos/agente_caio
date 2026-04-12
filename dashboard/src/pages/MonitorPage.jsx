@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { api, STATUS_CONFIG, EVENT_TYPES } from '../services/api'
+import { api, STATUS_CONFIG, EVENT_TYPES, BASE_URL } from '../services/api'
 
 const MONTHS = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 
@@ -11,7 +11,7 @@ const MOCK_LOGS = [
   { time: '13:47:32', level: 'info', msg: 'Upload Supabase: Vazamento.csv — 45 registros' },
   { time: '13:46:30', level: 'info', msg: '[EXPORT] Download concluído: 3 CSVs' },
   { time: '13:45:20', level: 'info', msg: 'Telegram bot @CaioAgentbot connected' },
-  { time: '13:45:19', level: 'info', msg: 'Uvicorn running on http://0.0.0.0:18795' },
+  { time: '13:45:19', level: 'info', msg: 'Uvicorn running on http://0.0.0.0:18790' },
   { time: '13:45:18', level: 'info', msg: 'Starting Telegram bot (polling mode)...' },
   { time: '13:45:17', level: 'info', msg: 'Starting email channel...' },
   { time: '13:45:16', level: 'debug', msg: 'Agent Caio initialized — model: gemini/gemini-2.0-flash' },
