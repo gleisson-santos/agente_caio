@@ -30,12 +30,11 @@ function AgentCard({ agent, selected, onClick }) {
           {agent.iconClass === 'bd' && <Database size={20} />}
           {agent.iconClass === 'life' && <HeartPulse size={20} />}
           {agent.iconClass === 'sso' && <Server size={20} />}
-          {agent.iconClass === 'pendencias' && <Zap size={20} />}
           {agent.iconClass === 'email' && <Mail size={20} />}
           {agent.iconClass === 'schedule' && <CalendarClock size={20} />}
           {agent.iconClass === 'docs' && <FileText size={20} />}
           {agent.iconClass === 'almox' && <Package size={20} />}
-          {!['ceo', 'token', 'bd', 'life', 'sso', 'pendencias', 'email', 'schedule', 'docs', 'almox'].includes(agent.iconClass) && <Activity size={20} />}
+          {!['ceo', 'token', 'bd', 'life', 'sso', 'email', 'schedule', 'docs', 'almox'].includes(agent.iconClass) && <Activity size={20} />}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div className="cc-card-name">{agent.name}</div>
@@ -69,33 +68,7 @@ function AgentCard({ agent, selected, onClick }) {
       )}
       {!agent.comingSoon && agent.type === 'specialist' && (
         <div className="cc-card-metrics">
-          {agent.id === 'spec-pendencias' && (<>
-            <div className="cc-mini-metric">
-              <span className="mm-val" style={{ color: 'var(--accent)' }}>
-                {agent.monitorData?.today_extractions ?? 0}
-              </span>
-              <span className="mm-lab">Hoje</span>
-            </div>
-            <div className="cc-mini-metric">
-              <span className="mm-val" style={{
-                fontSize: '11px', color: (() => {
-                  const ts = agent.monitorData?.thread_status
-                  if (!ts) return 'var(--text-muted)'
-                  return Object.values(ts).every(s => s.includes('✅')) ? 'var(--green)' : 'var(--amber)'
-                })()
-              }}>
-                {(() => {
-                  const ts = agent.monitorData?.thread_status
-                  if (!ts) return '—'
-                  const all = Object.values(ts)
-                  const ok = all.filter(s => s.includes('✅')).length
-                  return `Threads ${ok}/${all.length}`
-                })()}
-              </span>
-              <span className="mm-lab">Status</span>
-            </div>
-          </>)}
-          {agent.extractionData && agent.id !== 'spec-pendencias' && (<>
+          {agent.extractionData && (<>
             <div className="cc-mini-metric"><span className="mm-val">{agent.extractionData.records?.total || 0}</span><span className="mm-lab">Registros</span></div>
             <div className="cc-mini-metric"><span className="mm-val">{agent.extractionData.duration || '—'}</span><span className="mm-lab">Duração</span></div>
           </>)}
@@ -505,26 +478,6 @@ function AgentDrilldown({ agent, events, onClose, onNavigate }) {
         )}
       </>)}
 
-      {/* Pendências Specialist */}
-      {agent.id === 'spec-pendencias' && agent.extractionData && (<>
-        <div className="cc-drill-metrics">
-          <div className="cc-drill-metric"><div className="dm-val" style={{ color: 'var(--green)' }}>{agent.extractionData.downloads}</div><div className="dm-lab">Downloads</div></div>
-          <div className="cc-drill-metric"><div className="dm-val" style={{ color: 'var(--cyan)' }}>{agent.extractionData.uploads}</div><div className="dm-lab">Uploads</div></div>
-          <div className="cc-drill-metric"><div className="dm-val" style={{ color: 'var(--accent)' }}>{agent.extractionData.records.total}</div><div className="dm-lab">Registros</div></div>
-          <div className="cc-drill-metric"><div className="dm-val">{agent.extractionData.duration}</div><div className="dm-lab">Duração</div></div>
-          <div className="cc-drill-metric"><div className="dm-val" style={{ color: agent.extractionData.errors > 0 ? 'var(--red)' : 'var(--green)' }}>{agent.extractionData.errors}</div><div className="dm-lab">Erros</div></div>
-        </div>
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
-          <span className="skill-tag" style={{ background: 'rgba(245,158,11,.15)', color: '#f59e0b' }}>Vazamento: {agent.extractionData.records.vazamento}</span>
-          <span className="skill-tag" style={{ background: 'rgba(59,130,246,.15)', color: '#3b82f6' }}>Pavimento: {agent.extractionData.records.pavimento}</span>
-          <span className="skill-tag" style={{ background: 'rgba(6,182,212,.15)', color: '#06b6d4' }}>Falta d'água: {agent.extractionData.records.faltaDagua}</span>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px', fontSize: '13px', color: 'var(--text-secondary)' }}>
-          <div><strong>Período</strong><br />{agent.extractionData.period}</div>
-          <div><strong>Última Execução</strong><br />{formatDate(agent.extractionData.lastRun)}</div>
-          <div><strong>Telegram</strong><br />{agent.extractionData.notificationSent ? '✓ Enviada' : '✗ Pendente'}</div>
-        </div>
-      </>)}
 
       {/* Email Specialist */}
       {agent.id === 'spec-email' && agent.monitorData && (<>
@@ -619,173 +572,6 @@ function AgentDrilldown({ agent, events, onClose, onNavigate }) {
         </div>
       </>)}
 
-      {/* Pendencias Specialist */}
-      {agent.id === 'spec-pendencias' && (<>
-        <div className="cc-drill-metrics">
-          <div className="cc-drill-metric"><div className="dm-val">{agent.metrics.totalDownloads || 0}</div><div className="dm-lab">Extrações</div></div>
-          <div className="cc-drill-metric"><div className="dm-val">{agent.metrics.uploadsOk || 0}</div><div className="dm-lab">Sucesso</div></div>
-          <div className="cc-drill-metric"><div className="dm-val" style={{ color: agent.metrics.uploadsError > 0 ? 'var(--red)' : 'inherit' }}>{agent.metrics.uploadsError || 0}</div><div className="dm-lab">Falhas</div></div>
-          <div className="cc-drill-metric"><div className="dm-val">{agent.metrics.lastDuration || '—'}</div><div className="dm-lab">Duração</div></div>
-        </div>
-
-        <div className="cc-drill-section" style={{ marginTop: '16px' }}>
-          <h4>🎮 Controle de Automação</h4>
-          <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-            {agent.status === 'offline' ? (
-              <button
-                className="cc-btn-primary"
-                onClick={async () => {
-                  const res = await api.controlPendencias('start');
-                  alert(res.message);
-                  window.location.reload();
-                }}
-                style={{ padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}
-              >
-                ▶ Iniciar Agendador
-              </button>
-            ) : (
-              <button
-                className="cc-btn-danger"
-                onClick={async () => {
-                  const res = await api.controlPendencias('stop');
-                  alert(res.message);
-                  window.location.reload();
-                }}
-                style={{ background: 'var(--red)', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}
-              >
-                🛑 Parar Agendador
-              </button>
-            )}
-
-            <button
-              className="cc-btn-secondary"
-              onClick={async () => {
-                const res = await api.controlPendencias('run_once');
-                alert(res.message);
-              }}
-              style={{ padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}
-            >
-              🔄 Executar Agora
-            </button>
-          </div>
-
-          {/* ── Progress Bar ── */}
-          {agent.monitorData?.progress_pct != null && agent.status !== 'online' && (
-            <div style={{ marginTop: '16px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: '6px' }}>
-                <span>Progresso Geral</span>
-                <span style={{ fontWeight: 700, color: agent.monitorData.progress_pct === 100 ? 'var(--green)' : 'var(--accent)' }}>
-                  {agent.monitorData.progress_pct}%
-                </span>
-              </div>
-              <div style={{ background: 'var(--surface-3)', borderRadius: '6px', height: '8px', overflow: 'hidden' }}>
-                <div style={{
-                  height: '100%',
-                  width: `${agent.monitorData.progress_pct}%`,
-                  background: agent.monitorData.progress_pct === 100
-                    ? 'var(--green)'
-                    : `linear-gradient(90deg, var(--accent), var(--purple))`,
-                  borderRadius: '6px',
-                  transition: 'width 0.5s ease'
-                }} />
-              </div>
-            </div>
-          )}
-
-          {/* ── Thread Status Table ── */}
-          {agent.monitorData?.thread_status && (
-            <div style={{ marginTop: '16px' }}>
-              <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>
-                🧵 Status das Threads
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {Object.entries(agent.monitorData.thread_status).map(([nome, status]) => {
-                  const isOk = status.includes('✅');
-                  const isErr = status.includes('❌');
-                  const isRunning = status.includes('🔄');
-                  const color = isOk ? 'var(--green)' : isErr ? 'var(--red)' : isRunning ? 'var(--accent)' : 'var(--text-muted)';
-                  return (
-                    <div key={nome} style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      padding: '8px 12px', borderRadius: '6px',
-                      background: isOk ? 'rgba(34,197,94,0.06)' : isErr ? 'rgba(239,68,68,0.06)' : 'var(--surface-3)',
-                      border: `1px solid ${isOk ? 'rgba(34,197,94,0.2)' : isErr ? 'rgba(239,68,68,0.2)' : 'var(--border)'}`,
-                    }}>
-                      <span style={{ fontWeight: 600, fontSize: '13px' }}>{nome}</span>
-                      <span style={{ fontSize: '12px', color, fontWeight: 500 }}>{status}</span>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* ── DB Confirmation Badge ── */}
-          {agent.monitorData?.db_confirmed != null && (
-            <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                display: 'inline-flex', alignItems: 'center', gap: '6px',
-                padding: '5px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 700,
-                background: agent.monitorData.db_confirmed ? 'rgba(34,197,94,0.12)' : 'rgba(82,82,91,0.12)',
-                color: agent.monitorData.db_confirmed ? 'var(--green)' : 'var(--text-muted)',
-                border: `1px solid ${agent.monitorData.db_confirmed ? 'rgba(34,197,94,0.3)' : 'var(--border)'}`,
-              }}>
-                {agent.monitorData.db_confirmed ? '✅ Dados confirmados no Supabase' : '⏳ Aguardando confirmação do banco'}
-              </span>
-            </div>
-          )}
-
-          {/* ── Activity Monitor (detail text) ── */}
-          {(agent.status === 'executando' || agent.status === 'running' || agent.status === 'erro' || agent.status === 'error') && (
-            <div className="cc-activity-monitor" style={{
-              marginTop: '16px',
-              padding: '12px',
-              background: agent.status === 'erro' || agent.status === 'error' ? 'rgba(239, 68, 68, 0.08)' : 'rgba(59, 130, 246, 0.08)',
-              borderRadius: '8px',
-              borderLeft: `4px solid ${agent.status === 'erro' || agent.status === 'error' ? 'var(--red)' : 'var(--blue)'}`,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px'
-            }}>
-              <div className="cc-pulse-dot" style={{
-                width: '10px', height: '10px', borderRadius: '50%',
-                background: agent.status === 'erro' || agent.status === 'error' ? 'var(--red)' : 'var(--blue)',
-                animation: 'pulse 2s infinite', flexShrink: 0,
-              }} />
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: '11px', color: agent.status === 'erro' || agent.status === 'error' ? 'var(--red)' : 'var(--blue)', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '4px' }}>
-                  {agent.status === 'erro' || agent.status === 'error' ? 'Falha Detectada' : 'Processando...'}
-                </div>
-                <div style={{ fontSize: '13px', color: 'var(--text-primary)', fontWeight: '500' }}>
-                  {agent.status_detail || "Sincronizando..."}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* ── Success Summary ── */}
-          {agent.monitorData?.success_summary && (agent.status === 'online') && (
-            <div style={{
-              marginTop: '16px', padding: '14px 16px', borderRadius: '10px',
-              background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.25)',
-            }}>
-              <div style={{ fontSize: '11px', color: 'var(--green)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>
-                📋 Último Resultado
-              </div>
-              <pre style={{ margin: 0, fontFamily: 'inherit', fontSize: '13px', color: 'var(--text-primary)', whiteSpace: 'pre-wrap', lineHeight: '1.8' }}>
-                {agent.monitorData.success_summary}
-              </pre>
-            </div>
-          )}
-        </div>
-
-        <div className="cc-drill-section" style={{ marginTop: '16px' }}>
-          <h4>📅 Próxima Sincronização</h4>
-          <p style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>
-            {agent.monitorData?.next_run ? new Date(agent.monitorData.next_run).toLocaleString() : 'Não agendado'}
-          </p>
-        </div>
-      </>)}
 
 
       {/* Docs Specialist */}

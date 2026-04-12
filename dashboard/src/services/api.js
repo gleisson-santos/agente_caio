@@ -124,12 +124,6 @@ export const AGENT_UI_META = {
     },
 
     // ── Tier 2: Especialistas (Execução de Tarefas) ────
-    'spec-pendencias': {
-        name: 'Especialista em Pendências', role: 'Data Extractor', iconEmoji: '⚡', iconClass: 'pendencias', type: 'specialist', tier: 2, parentId: 'agent-bd',
-        description: 'Monitoramento e extração de pendências (Vazamento, Pavimento, Falta d\'água) com upload ao Supabase.',
-        capabilities: ['SCI Web', 'Supabase', 'Alertas Telegram', 'Automação Selenium'],
-        hidden: true
-    },
     'spec-email': {
         name: 'Especialista em Email', role: 'Security Guard', iconEmoji: '📧', iconClass: 'email', type: 'specialist', tier: 2, parentId: 'agent-life',
         description: 'Monitoramento 24h de e-mails com análise e resumos automáticos.',
@@ -217,15 +211,6 @@ export const AGENT_UI_META = {
 
 // Static specialist data (not served by backend agents yet)
 const SPECIALIST_DEFAULTS = {
-    'spec-pendencias': {
-        status: 'offline', statusDetail: 'Parado', monitorProject: '@extracao_pendencias',
-        metrics: { totalDownloads: 0, lastRun: null, uploadsOk: 0, uploadsError: 0 },
-        monitorData: {
-            lastRun: null,
-            nextRun: null,
-            metrics: { total_downloads: 0, uploads_ok: 0, uploads_error: 0, last_duration: null }
-        },
-    },
     'spec-email': {
         status: 'online', statusDetail: 'ATIVO',
         metrics: { emailsProcessed: 47, unread: 3, urgentAlerts: 1, lastCheck: '2026-02-24T13:44:00' },
@@ -337,26 +322,6 @@ export const api = {
         }
     },
 
-    async getPendenciasStatus() {
-        try {
-            return await fetchAPI('/api/agent/pendencias/status');
-        } catch (e) {
-            console.error("Failed to fetch pendencias status", e);
-            return null;
-        }
-    },
-
-    async controlPendencias(command) {
-        try {
-            return await fetchAPI('/api/agent/pendencias/control', {
-                method: 'POST',
-                body: JSON.stringify({ command })
-            });
-        } catch (e) {
-            console.error("Failed to control pendencias", e);
-            return { status: "error", message: e.message };
-        }
-    },
 
 
     async getAgents() {
@@ -376,11 +341,9 @@ export const api = {
                 })
             }
 
-            // Run all specialist data fetches IN PARALLEL (was sequential = 4s+)
-            const [inbox, schedule, pendStatus] = await Promise.all([
+            const [inbox, schedule] = await Promise.all([
                 api.getEmailInbox().catch(() => null),
                 api.getScheduleData().catch(() => null),
-                api.getPendenciasStatus().catch(() => null),
             ])
 
             if (inbox && agentsMap['spec-email']) {
@@ -405,22 +368,6 @@ export const api = {
                 agentsMap['spec-schedule'].statusDetail = 'Ativo (Sincronizado)';
             }
 
-            if (pendStatus && agentsMap['spec-pendencias']) {
-                agentsMap['spec-pendencias'].status = pendStatus.status;
-                agentsMap['spec-pendencias'].statusDetail = pendStatus.status_detail;
-                agentsMap['spec-pendencias'].status_detail = pendStatus.status_detail;
-                agentsMap['spec-pendencias'].metrics = {
-                    ...agentsMap['spec-pendencias'].metrics,
-                    totalDownloads: pendStatus.metrics?.total_downloads ?? 0,
-                    uploadsOk: pendStatus.metrics?.uploads_ok ?? 0,
-                    uploadsError: pendStatus.metrics?.uploads_error ?? 0,
-                    lastDuration: pendStatus.metrics?.last_duration ?? null
-                };
-                agentsMap['spec-pendencias'].monitorData = {
-                    ...agentsMap['spec-pendencias'].monitorData,
-                    ...pendStatus
-                };
-            }
 
             return Object.values(agentsMap).filter(a => !a.hidden)
         }, 10000) // 10s TTL — stale-while-revalidate
@@ -475,10 +422,6 @@ export const api = {
     // ── SSO Agent (LIVE) ────────────────────────────────
     async getServerMetrics() { return await fetchAPI('/api/agent/server/metrics') },
 
-    // ── Extraction Status ──────────────────────────────
-    async getExtractionStatus() {
-        return SPECIALIST_DEFAULTS['spec-pendencias']?.extractionData || null
-    },
 
     // ── Events (LIVE) ──────────────────────────────────
     async getEvents(limit = 50) {
@@ -518,6 +461,26 @@ export const api = {
         return data?.traces || []
     },
 
+    subscribeToTracingStream(onMessage) {
+        const eventSource = new EventSource(`${BASE_URL}/api/tracing/stream`)
+        
+        eventSource.onmessage = (event) => {
+            try {
+                const data = JSON.parse(event.data)
+                onMessage(data)
+            } catch (err) {
+                console.error('Error parsing tracing SSE:', err)
+            }
+        }
+
+        eventSource.onerror = (err) => {
+            console.error('Tracing SSE Connection Error:', err)
+            eventSource.close()
+        }
+
+        return () => eventSource.close() // cleanup function
+    },
+
     // ── Tasks & Events (Base) ──────────────────────────
 
     // ── Services ───────────────────────────────────────
@@ -528,7 +491,6 @@ export const api = {
             { id: 'tg', name: 'Telegram Bot', status: 'online', uptime: '2h 15m', response: '120ms' },
             { id: 'email', name: 'Email (IMAP)', status: 'online', uptime: '2h 15m', response: '4.2s' },
             { id: 'supabase', name: 'Supabase', status: 'online', uptime: '99.9%', response: '180ms' },
-            { id: 'sciweb', name: 'SCI Web', status: 'online', uptime: '—', response: '2.1s' },
         ]
         if (real?.services) {
             const liveIds = new Set(real.services.map(s => s.id))

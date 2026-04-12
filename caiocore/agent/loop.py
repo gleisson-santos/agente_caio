@@ -31,7 +31,6 @@ from caiocore.agent.tools.registry import ToolRegistry
 from caiocore.agent.tools.shell import ExecTool
 from caiocore.agent.tools.spawn import SpawnTool
 from caiocore.agent.tools.web import WebFetchTool, WebSearchTool
-from caiocore.agent.tools.pendencias import PendenciasTool
 from caiocore.agent.tools.generator import GeneratorTool
 from caiocore.bus.events import InboundMessage, OutboundMessage
 from caiocore.bus.queue import MessageBus
@@ -119,8 +118,6 @@ class AgentLoop:
 
     def _register_default_tools(self) -> None:
         """Register the default set of tools."""
-        # New Specialist Controls
-        self.tools.register(PendenciasTool(workspace=self.workspace))
 
         allowed_dir = self.workspace if self.restrict_to_workspace else None
         for cls in (ReadFileTool, WriteFileTool, EditFileTool, ListDirTool):
@@ -301,6 +298,7 @@ class AgentLoop:
         session: Session | None = None,
         on_progress: Callable[[str], Awaitable[None]] | None = None,
         allowed_tools: list[str] | None = None,
+        agent_id: str = "caio-core",
     ) -> tuple[str | None, list[str]]:
         """Run the agent iteration loop. Returns (final_content, tools_used).
         
@@ -312,12 +310,15 @@ class AgentLoop:
         iteration = 0
         final_content = None
         tools_used: list[str] = []
+        session_id = session.key if session else "unknown"
 
         while iteration < self.max_iterations:
             iteration += 1
 
             # Use filtered tools when operating as a specialist
             tool_defs = self.tools.get_definitions(allowed_tools=allowed_tools)
+
+            await self.tracer.log_thought(session_id, agent_id, step="thought", content="Processando nova interação...")
 
             # Use internal fallback helper
             response = await self._call_provider_with_fallback(
@@ -415,7 +416,9 @@ class AgentLoop:
                             logger.info("Tool {} requires approval. Blocking execution...", tool_call.name)
                             result = f"⛔ EXECUÇÃO PAUSADA: A ação '{tool_call.name}' é crítica. Você DEVE perguntar ao usuário: 'Posso proceder com esta ação? (Sim/Não)'. A ferramenta NÃO foi executada ainda."
                         else:
+                            await self.tracer.log_thought(session_id, agent_id, step="tool_call", content=f"Executando ferramenta: {tool_call.name}", metadata={"args": tool_call.arguments})
                             result = await self.tools.execute(tool_call.name, tool_call.arguments)
+                            await self.tracer.log_thought(session_id, agent_id, step="tool_result", content=f"Ferramenta {tool_call.name} retornou resultado.", metadata={"result_preview": str(result)[:200]})
                     
                     messages = self.context.add_tool_result(
                         messages, tool_call.id, tool_call.name, result
@@ -515,7 +518,7 @@ class AgentLoop:
                 current_message=msg.content, channel=channel, chat_id=chat_id,
             )
             session.add_message("user", msg.content)
-            final_content, _ = await self._run_agent_loop(messages, session=session)
+            final_content, _ = await self._run_agent_loop(messages, session=session, agent_id=f"sys-{channel}")
             # No need to add assistant message here as it's added inside the loop
             self.sessions.save(session)
             return OutboundMessage(channel=channel, chat_id=chat_id,
@@ -627,6 +630,7 @@ class AgentLoop:
         final_content, tools_used = await self._run_agent_loop(
             initial_messages, session=session, on_progress=on_progress or _bus_progress,
             allowed_tools=specialist_allowed_tools,
+            agent_id=target_spec_id or "caio-core"
         )
 
         if final_content is None:

@@ -7,12 +7,13 @@ real-time feeds and historical auditing.
 
 from __future__ import annotations
 
+import asyncio
 import sqlite3
 import threading
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, List, Optional
 
 from loguru import logger
 
@@ -191,3 +192,29 @@ class EventStore:
                 return cursor.rowcount
             finally:
                 conn.close()
+
+
+class EventBroadcaster:
+    """Manages SSE clients for real-time event broadcasting."""
+    def __init__(self):
+        self.subscribers: list[asyncio.Queue] = []
+        self._lock = asyncio.Lock()
+
+    async def subscribe(self) -> asyncio.Queue:
+        queue = asyncio.Queue()
+        async with self._lock:
+            self.subscribers.append(queue)
+        return queue
+
+    async def unsubscribe(self, queue: asyncio.Queue):
+        async with self._lock:
+            if queue in self.subscribers:
+                self.subscribers.remove(queue)
+
+    async def broadcast(self, data: dict):
+        async with self._lock:
+            for queue in self.subscribers:
+                await queue.put(data)
+
+# Global broadcaster instance for the entire gateway
+broadcaster = EventBroadcaster()

@@ -126,107 +126,6 @@ def _uptime_str() -> str:
     return f"{hours}h {mins}m"
 
 
-# ── Pendencias Agent endpoints ───────────────────────────────────────
-
-_pendencias_proc = None
-
-def _get_pendencias_status():
-    """Helper to read pendencias status.json and check process."""
-    status_file = os.path.join(os.path.dirname(__file__), "..", "agents", "extracao_pendencias", "status.json")
-    data = {
-        "status": "offline",
-        "status_detail": "Parado",
-        "last_run": None,
-        "next_run": None,
-        "metrics": {
-            "total_downloads": 0,
-            "uploads_ok": 0,
-            "uploads_error": 0,
-            "last_duration": None
-        }
-    }
-    
-    if os.path.exists(status_file):
-        try:
-            with open(status_file, "r", encoding="utf-8") as f:
-                data.update(json.load(f))
-        except: pass
-
-    # Check if process is actually running
-    is_running = False
-    global _pendencias_proc
-    if _pendencias_proc and _pendencias_proc.poll() is None:
-        is_running = True
-    else:
-        # Search for any process running agendador.py in this folder
-        for proc in psutil.process_iter(['pid', 'cmdline']):
-            try:
-                cmd = proc.info.get('cmdline')
-                if cmd and "agendador.py" in " ".join(cmd):
-                    is_running = True
-                    break
-            except: pass
-
-    if not is_running:
-        data["status"] = "offline"
-        data["status_detail"] = "Parado"
-    
-    return data
-class PendenciasControl(BaseModel):
-    command: str
-
-@app.get("/api/agent/pendencias/status")
-async def get_pendencias_status():
-    return _get_pendencias_status()
-
-@app.post("/api/agent/pendencias/control")
-async def control_pendencias(action: PendenciasControl):
-    global _pendencias_proc
-    cmd = action.command.strip()
-    logger.info(f"Pendencias control - command received: '{cmd}' (len={len(cmd)})")
-    
-    script_path = os.path.join(os.path.dirname(__file__), "..", "agents", "extracao_pendencias", "agendador.py")
-    venv_python = os.path.join(os.path.dirname(__file__), "..", "..", ".venv", "Scripts", "python.exe")
-
-    # Check if any agendador.py is already running
-    active_proc = None
-    for proc in psutil.process_iter(['pid', 'cmdline']):
-        try:
-            c = proc.info.get('cmdline')
-            if c and "agendador.py" in " ".join(c):
-                active_proc = proc
-                break
-        except: pass
-
-    if cmd == "start":
-        if active_proc:
-            return {"status": "error", "message": "O agendador já está rodando."}
-            
-        args = [venv_python, script_path, "--headless", "--intervalo", "10"]
-        _pendencias_proc = subprocess.Popen(args, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
-        return {"status": "success", "message": "Agendador iniciado (10 min)."}
-        
-    elif cmd == "run_once":
-        if active_proc:
-            return {"status": "error", "message": "Aguarde o agendador atual terminar ou pare-o antes de executar manualmente."}
-            
-        args = [venv_python, script_path, "--headless", "--uma-vez"]
-        _pendencias_proc = subprocess.Popen(args, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
-        return {"status": "success", "message": "Extração manual iniciada agora!"}
-
-    elif cmd == "stop":
-        if not active_proc:
-            return {"status": "success", "message": "O agendador não estava rodando."}
-        
-        try:
-            active_proc.terminate()
-            _pendencias_proc = None
-            return {"status": "success", "message": "Agendador interrompido."}
-        except Exception as e:
-            return {"status": "error", "message": f"Erro ao parar: {e}"}
-        
-    return {"status": "error", "message": "Comando inválido"}
-
 
 # ── Core endpoints ──────────────────────────────────────────────────
 
@@ -339,13 +238,8 @@ async def get_agents():
         # Define the set of CORE specialists that should always appear if registered
         core_specs = ["spec-email", "spec-schedule"]
         
-        # 1. Add all agents registered with 'spec-' prefix
         for agent_id_to_check in registry.list_ids():
             if agent_id_to_check.startswith("spec-"):
-                # Always hide pendencias from the live list unless explicitly needed
-                if agent_id_to_check == "spec-pendencias":
-                    continue
-                    
                 spec_agent = registry.get(agent_id_to_check)
                 if spec_agent and hasattr(spec_agent, "get_status"):
                     status_data = spec_agent.get_status()
@@ -355,9 +249,6 @@ async def get_agents():
                         status_data["is_premium"] = True
                     
                     live_agents.append(status_data)
-        
-        # 2. Add Pendencias as a hidden/background agent if needed, 
-        # but for now we follow the user's request to have only Email/Schedule as main ones
         
     except Exception as e:
         logger.error(f"Error adding specialists: {e}")
@@ -636,7 +527,35 @@ async def get_events(
         event_type=event_type,
     )
 
-# ── Tracing endpoint ────────────────────────────────────────────────
+# ── Tracing stream endpoint (SSE) ───────────────────────────────────
+
+from fastapi.responses import StreamingResponse
+
+@app.get("/api/tracing/stream")
+async def tracing_stream():
+    """Server-Sent Events stream for real-time agent tracing."""
+    from caiocore.agents.events import broadcaster
+    
+    async def event_generator():
+        # Register a new queue for this client
+        queue = await broadcaster.subscribe()
+        try:
+            while True:
+                # Wait for data from broadcaster
+                data = await queue.get()
+                # Yield in SSE format: data: <json>\n\n
+                yield f"data: {json.dumps(data, ensure_ascii=False)}\n\n"
+        except asyncio.CancelledError:
+            # Client disconnected
+            await broadcaster.unsubscribe(queue)
+            raise
+        except Exception as e:
+            logger.error(f"SSE Error: {e}")
+            await broadcaster.unsubscribe(queue)
+
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+# ── Tracing history endpoint ────────────────────────────────────────
 
 @app.get("/api/tracing")
 async def get_tracing_logs(limit: int = Query(50, ge=1, le=500)):

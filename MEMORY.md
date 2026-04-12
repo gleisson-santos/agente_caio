@@ -23,7 +23,6 @@ O **Agente Caio** é um ecossistema de inteligência artificial multifuncional p
 - **Funcionalidades:** Monitoramento de métricas, log de eventos em tempo real, controle de especialistas e chat neural interativo.
 
 ### 3. Camada de Especialistas
-- **Especialista em Pendências (SCI Embasa):** Automação extração de dados. Refatorado para maior estabilidade no Linux (subprocess), pronto para loop 24/7 dependendo apenas de túnel SSH ativo.
 - **Especialista em Email (Sentinel):** Análise e gestão de emails via IA. Modelos nativos para Telegram (multi/single) aprovados e ativos.
 - **Agente SSO/Life/Token:** Micro-agentes de observabilidade. O monitor de tokens agora gera resumos semanais dinâmicos em HTML responsivo.
 - **Especialista Podologia 🦶:** Agente integrado ao dashboard, responsável por acompanhamento de clientes e agendamentos.
@@ -40,7 +39,6 @@ O **Agente Caio** é um ecossistema de inteligência artificial multifuncional p
 - **Ergonomia Mobile:** Input de chat fixo na base com auto-resize, garantindo usabilidade em qualquer dispositivo.
 
 ### ⚙️ Evolução dos Especialistas e VPS
-- **Extração SCI:** Código 100% estabilizado e versionado em repositório Git local no VPS.
 - **Dashboard Modular:** Agentes "plug-and-play" (Ex: Podologia subiu automaticamente para a Camada Agentes no painel).
 - **Entrega Multicanal:** Outputs centralizados no diretório `/out/` com disparo direto para o Telegram via ZIP para driblar restrições de SSH do usuário.
 - **Consolidação de Ambiente:** Sincronização de dependências através de um único `.venv` e `requirements.txt` global para evitar redundâncias.
@@ -56,7 +54,6 @@ O Agente Caio deve responder sempre de forma:
 ---
 
 ## 📂 Pontos Importantes de Manutenção
-- **Status JSON:** O arquivo `caiocore/agents/extracao_pendencias/status.json` é a fonte da verdade para o progresso do robô.
 - **Comandos Críticos:** 
   - `python start_api.py` -> Inicia o Gateway.
   - `npm run dev` (em /dashboard) -> Inicia o Frontend.

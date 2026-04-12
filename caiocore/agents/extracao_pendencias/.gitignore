@@ -1,9 +1,0 @@
-.env
-*.pyc
-__pycache__/
-.replit
-.upm/
-downloads/
-.DS_Store
-venv/
-env/

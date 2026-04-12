@@ -27,13 +27,11 @@ from rich.markdown import Markdown
 from rich.table import Table
 from rich.text import Text
 
-from prompt_toolkit import PromptSession
-from prompt_toolkit.formatted_text import HTML
-from prompt_toolkit.history import FileHistory
-from prompt_toolkit.patch_stdout import patch_stdout
-
 from caiocore import __version__, __logo__
 from caiocore.config.schema import Config
+
+_PROMPT_SESSION = None
+_SAVED_TERM_ATTRS = None
 
 app = typer.Typer(
     name="caiocore",
@@ -47,9 +45,6 @@ EXIT_COMMANDS = {"exit", "quit", "/exit", "/quit", ":q"}
 # ---------------------------------------------------------------------------
 # CLI input: prompt_toolkit for editing, paste, history, and display
 # ---------------------------------------------------------------------------
-
-_PROMPT_SESSION: PromptSession | None = None
-_SAVED_TERM_ATTRS = None  # original termios settings, restored on exit
 
 
 def _flush_pending_tty_input() -> None:
@@ -101,6 +96,9 @@ def _init_prompt_session() -> None:
     except Exception:
         pass
 
+    from prompt_toolkit import PromptSession
+    from prompt_toolkit.history import FileHistory
+
     history_file = Path.home() / ".caiocore" / "history" / "cli_history"
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -134,6 +132,9 @@ async def _read_interactive_input_async() -> str:
     - History navigation (up/down arrows)
     - Clean display (no ghost characters or artifacts)
     """
+    from prompt_toolkit.patch_stdout import patch_stdout
+    from prompt_toolkit.formatted_text import HTML
+
     if _PROMPT_SESSION is None:
         raise RuntimeError("Call _init_prompt_session() first")
     try:

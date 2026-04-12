@@ -10,6 +10,9 @@ services:
     networks:
       - ControllNet ## Nome da rede interna
 
+    ports:
+      - "8080:80"
+
     deploy:
       mode: replicated
       replicas: 1
@@ -43,6 +46,9 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       - BRAVE_API_KEY=${BRAVE_API_KEY}
+
+    ports:
+      - "18790:18790"
 
     deploy:
       mode: replicated
