@@ -106,6 +106,7 @@ class AgentLoop:
             exec_config=self.exec_config,
             restrict_to_workspace=restrict_to_workspace,
         )
+        self.status = "initializing"
         self.workflows = WorkflowEngine(self, bus)
 
         self._running = False
@@ -440,6 +441,7 @@ class AgentLoop:
         """Run the agent loop, processing messages from the bus."""
         self._running = True
         await self._connect_mcp()
+        self.status = "ready"
         logger.info("Agent loop started")
 
         while self._running:

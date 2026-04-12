@@ -613,16 +613,19 @@ def gateway(
         logger.error(f"Error registering dynamic specialists: {e}")
     
     # Start the Dashboard API
-    from caiocore.server.api import start_api
+    from caiocore.server.api import start_api, start_api_server
     start_api(agent, bus, config, cron, channels=channels, doc_agent=doc_agent)
     
     async def run():
         try:
             await cron.start()
             await heartbeat.start()
+            
+            # RUN everything in the SAME loop to prevent 504 and thread-safety hangs
             await asyncio.gather(
                 agent.run(),
                 channels.start_all(),
+                start_api_server()
             )
         except KeyboardInterrupt:
             console.print("\nShutting down...")

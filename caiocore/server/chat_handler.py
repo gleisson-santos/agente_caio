@@ -36,6 +36,15 @@ async def chat_message(req: ChatRequest, agent = Depends(get_agent)):
     import uuid
     import asyncio
     
+    # Pre-flight check: Is the agent fully initialized?
+    # Some models take time to load tools/memory
+    if hasattr(agent, "status") and agent.status == "initializing":
+         return ChatResponse(
+            id=uuid.uuid4().hex[:8],
+            content="🚀 O Agente Caio ainda está terminando de inicializar os módulos neurais. Por favor, aguarde uns segundos e tente novamente!",
+            status="initializing"
+        )
+
     try:
         # Inject context hint if from Documents menu
         msg_to_process = req.message
@@ -48,7 +57,8 @@ async def chat_message(req: ChatRequest, agent = Depends(get_agent)):
                 "NUNCA responda simulando a criação de arquivos no chat; você deve usar as ferramentas fornecidas para gerar resultados REAIS.]"
             )
 
-        # Usar o novo método handle_message para consistência neural com timeout
+        # 120s timeout — allows for multiple tool calls in a single thought chain
+        # Note: Traefik must be configured to allow this duration
         final_response = await asyncio.wait_for(
             agent.handle_message(
                 message=msg_to_process,
@@ -56,7 +66,7 @@ async def chat_message(req: ChatRequest, agent = Depends(get_agent)):
                 channel="dashboard",
                 agent_id=req.agent_id
             ),
-            timeout=90.0  # 90s timeout — alinhado com o frontend AbortSignal
+            timeout=120.0 
         )
         
         if not final_response or not final_response.strip():
@@ -69,10 +79,10 @@ async def chat_message(req: ChatRequest, agent = Depends(get_agent)):
         )
         
     except asyncio.TimeoutError:
-        logger.warning("Chat: timeout após 60s para mensagem: {}", req.message[:50])
+        logger.warning("Chat: timeout após 120s para mensagem: {}", req.message[:50])
         return ChatResponse(
             id=uuid.uuid4().hex[:8],
-            content="⏱️ A resposta demorou demais. O modelo de IA pode estar sobrecarregado. Tente novamente em instantes!",
+            content="⏱️ A resposta demorou demais (>120s). O modelo de IA pode estar sobrecarregado ou processando uma tarefa muito complexa. Tente novamente em instantes!",
             status="timeout"
         )
     except Exception as e:

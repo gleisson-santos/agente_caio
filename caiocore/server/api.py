@@ -984,10 +984,18 @@ async def _start_agent_loops():
 
 @app.on_event("startup")
 async def on_startup():
-    """Start monitoring agent loops when FastAPI starts."""
-    # Small delay to let start_api() finish registering agents
-    await asyncio.sleep(1)
-    await _start_agent_loops()
+    """Start monitoring agent loops in the background when FastAPI starts."""
+    # We use a background task to ensure the API becomes responsive IMMEDIATELY
+    # while agents connect to their respective services (Supabase, VPS, etc.)
+    async def run_init():
+        try:
+            # Let the server bind and start accepting requests first
+            await asyncio.sleep(2)
+            await _start_agent_loops()
+        except Exception as e:
+            logger.error(f"Startup: Final agent loop initialization failed: {e}")
+
+    asyncio.create_task(run_init())
 
 
 # ── Tasks API ────────────────────────────────────────────────────────
@@ -1161,7 +1169,7 @@ async def delete_task(task_id: str):
 
 @app.get("/api/settings")
 async def get_settings():
-    """Get current agent configuration."""
+    """Get current agent configuration with robust fallbacks."""
     if not _config:
         return {
             "model": "gpt-4o",
@@ -1170,37 +1178,49 @@ async def get_settings():
             "botName": "CaioAgent",
             "telegramEnabled": False,
             "emailEnabled": False,
-            "whatsappEnabled": False
+            "whatsappEnabled": False,
+            "providerKeys": {},
+            "providerBases": {}
         }
     
-    return {
-        "model": _config.agents.defaults.model,
-        "maxTokens": _config.agents.defaults.max_tokens,
-        "temperature": _config.agents.defaults.temperature,
-        "botName": _config.bot_name if hasattr(_config, "bot_name") else "CaioAgent",
-        "telegramEnabled": _config.channels.telegram.enabled,
-        "emailEnabled": _config.channels.email.enabled,
-        "whatsappEnabled": _config.channels.evolution.enabled,
-        "telegramToken": _config.channels.telegram.token,
-        "telegramAllowList": ",".join(_config.channels.telegram.allow_from),
-        "telegramNotifyChatId": _config.channels.telegram.notify_chat_id or "",
-        "evolutionBaseUrl": _config.channels.evolution.base_url,
-        "evolutionApiKey": _config.channels.evolution.api_key,
-        "evolutionInstance": _config.channels.evolution.instance_name,
-        "providerKeys": {
+    # Safely extract values with getattr to prevent crashes if config structure is partial
+    def safe_get(obj, path, default=None):
+        for part in path.split("."):
+            obj = getattr(obj, part, None)
+            if obj is None: return default
+        return obj
 
-            "openrouter": _config.providers.openrouter.api_key,
-            "gemini": _config.providers.gemini.api_key,
-            "groq": _config.providers.groq.api_key,
-            "openai": _config.providers.openai.api_key,
-            "anthropic": _config.providers.anthropic.api_key,
-            "deepseek": _config.providers.deepseek.api_key,
-            "custom": _config.providers.custom.api_key,
+    return {
+        "model": safe_get(_config, "agents.defaults.model", "gpt-4o"),
+        "maxTokens": safe_get(_config, "agents.defaults.max_tokens", 4096),
+        "temperature": safe_get(_config, "agents.defaults.temperature", 0.7),
+        "botName": getattr(_config, "bot_name", "CaioAgent"),
+        
+        "telegramEnabled": safe_get(_config, "channels.telegram.enabled", False),
+        "emailEnabled": safe_get(_config, "channels.email.enabled", False),
+        "whatsappEnabled": safe_get(_config, "channels.evolution.enabled", False),
+        
+        "telegramToken": safe_get(_config, "channels.telegram.token", ""),
+        "telegramAllowList": ",".join(safe_get(_config, "channels.telegram.allow_from", [])),
+        "telegramNotifyChatId": safe_get(_config, "channels.telegram.notify_chat_id", ""),
+        
+        "evolutionBaseUrl": safe_get(_config, "channels.evolution.base_url", ""),
+        "evolutionApiKey": safe_get(_config, "channels.evolution.api_key", ""),
+        "evolutionInstance": safe_get(_config, "channels.evolution.instance_name", ""),
+        
+        "providerKeys": {
+            "openrouter": safe_get(_config, "providers.openrouter.api_key", ""),
+            "gemini": safe_get(_config, "providers.gemini.api_key", ""),
+            "groq": safe_get(_config, "providers.groq.api_key", ""),
+            "openai": safe_get(_config, "providers.openai.api_key", ""),
+            "anthropic": safe_get(_config, "providers.anthropic.api_key", ""),
+            "deepseek": safe_get(_config, "providers.deepseek.api_key", ""),
+            "custom": safe_get(_config, "providers.custom.api_key", ""),
         },
         "providerBases": {
-            "custom": _config.providers.custom.api_base or "",
+            "custom": safe_get(_config, "providers.custom.api_base", ""),
         },
-        "braveKey": _config.tools.web.search.api_key if hasattr(_config.tools.web.search, "api_key") else "",
+        "braveKey": safe_get(_config, "tools.web.search.api_key", ""),
     }
 
 
@@ -1307,7 +1327,10 @@ async def evolution_webhook(data: dict[str, Any]):
 
 
 def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
-    """Start the FastAPI server with all dependencies injected."""
+    """
+    Initialize the FastAPI server globals and dependencies.
+    DOES NOT start the server itself — use start_api_server() for that.
+    """
     global _agent, _bus, _config, _cron, _channels, _doc_agent
     _agent = agent
     _bus = bus
@@ -1316,15 +1339,19 @@ def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
     _channels = channels
     _doc_agent = doc_agent
 
-    # Initialize monitoring agents
+    # Initialize monitoring agents (synchronously setup registry)
     _init_monitoring_agents(config)
+    
+    logger.info("Nanobot API initialized (monitoring agents registered)")
 
+
+async def start_api_server(host="0.0.0.0", port=18795):
+    """
+    RUN current FastAPI app in the current event loop.
+    This prevents loop conflict errors (504/hangs).
+    """
     import uvicorn
-    import threading
-
-    def run():
-        uvicorn.run(app, host="0.0.0.0", port=18795, log_level="info")
-
-    thread = threading.Thread(target=run, daemon=True)
-    thread.start()
-    logger.info("Nanobot API Server started on port 18795 (with monitoring agents)")
+    config = uvicorn.Config(app, host=host, port=port, log_level="info", access_log=False)
+    server = uvicorn.Server(config)
+    logger.info("Nanobot API Server starting on port {}...", port)
+    await server.serve()
