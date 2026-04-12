@@ -76,4 +76,4 @@ volumes:
 
 networks:
   ControllNet:
-    driver: bridge
+    driver: bridge # Bridge é mais estável para deploy simples via Compose/Portainer
