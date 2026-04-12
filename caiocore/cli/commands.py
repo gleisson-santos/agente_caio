@@ -511,18 +511,14 @@ def gateway(
     if not any(j.name == _briefing_job_name for j in existing_jobs):
         from caiocore.cron.types import CronSchedule
         briefing_prompt = (
-            "TAREFA: Gerar Resumo Diário — 06:00 da manhã\n\n"
-            "Olá Gleisson! Bom dia! Sou o Caio, seu Orquestrador.\n"
-            "Gere um resumo amigável e intuitivo do dia anterior seguindo EXATAMENTE este formato:\n\n"
-            "1. Saudação calorosa de bom dia\n"
-            "2. Resumo de cada especialista ativo (use dados reais: extrações do Especialista em Pendências, "
-            "agendamentos do Especialista dos Schedule, emails do Especialista em Email)\n"
-            "3. Estado dos Agentes (Token, BD, Life, SSO)\n"
-            "4. Mencione compromissos de hoje da agenda se houver\n"
-            "5. Encerre com motivação\n\n"
-            "Seja CONCISO (máx 15 linhas), use emojis e seja PESSOAL. "
-            "Consulte as ferramentas disponíveis para obter dados reais."
-        )
+            "TAREFA: Gerar Resumo Executivo Diário — 06:00 (Soberania Neural)\n\n"
+            "Gleisson, sou seu Orquestrador CAIO. Gerando reporte de status 06:00.\n"
+            "Siga rigorosamente a Arquitetura de 4 Camadas (Ação, Feedback, Cards, Próximo Passo).\n\n"
+            "1. Ação: Relate a consolidação dos logs de infraestrutura do dia anterior.\n"
+            "2. Feedback: Status geral da stack CaioCore.\n"
+            "3. Diagnóstico em Cards (>):\n"
+            "   - Especialistas: Resumo de ações do Sentinel, Schedule e Pesquisa.\n"
+            )
         tg = config.channels.telegram
         tg_chat_id = tg.notify_chat_id or (tg.allow_from[0] if tg.allow_from else "direct") if tg.enabled else "direct"
         cron.add_job(
