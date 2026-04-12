@@ -73,6 +73,4 @@ volumes:
 
 networks:
   ControllNet:
-    ## Nome da rede interna
-    external: true
-    name: ControllNet ## Nome da rede interna
+    driver: bridge
