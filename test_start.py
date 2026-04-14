@@ -1,6 +1,0 @@
-import asyncio
-from caiocore.server.api import app
-import uvicorn
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=18790, log_level="info", proxy_headers=True, forwarded_allow_ips="*")
