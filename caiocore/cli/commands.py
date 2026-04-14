@@ -511,13 +511,12 @@ def gateway(
     if not any(j.name == _briefing_job_name for j in existing_jobs):
         from caiocore.cron.types import CronSchedule
         briefing_prompt = (
-            "TAREFA: Gerar Resumo Executivo Diário — 06:00 (Soberania Neural)\n\n"
-            "Gleisson, sou seu Orquestrador CAIO. Gerando reporte de status 06:00.\n"
-            "Siga rigorosamente a Arquitetura de 4 Camadas (Ação, Feedback, Cards, Próximo Passo).\n\n"
-            "1. Ação: Relate a consolidação dos logs de infraestrutura do dia anterior.\n"
-            "2. Feedback: Status geral da stack CaioCore.\n"
-            "3. Diagnóstico em Cards (>):\n"
-            "   - Especialistas: Resumo de ações do Sentinel, Schedule e Pesquisa.\n"
+            "TAREFA: Gerar Resumo Executivo Diário — 06:00\n\n"
+            "Olá Gleisson! Gerando seu resumo diário de status.\n"
+            "Por favor, apresente um resumo claro e direto sobre as atividades das últimas 24h:\n\n"
+            "1. Atividades: Consolidação do que foi processado ontem.\n"
+            "2. Status: Resumo geral da saúde do sistema.\n"
+            "3. Especialistas: Destaques das ações do Sentinel, Schedule e Pesquisa.\n"
             )
         tg = config.channels.telegram
         tg_chat_id = tg.notify_chat_id or (tg.allow_from[0] if tg.allow_from else "direct") if tg.enabled else "direct"

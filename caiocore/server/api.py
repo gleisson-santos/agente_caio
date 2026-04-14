@@ -1285,6 +1285,32 @@ async def update_settings(data: SettingsUpdate):
         _agent.model = _config.agents.defaults.model
         _agent.max_tokens = _config.agents.defaults.max_tokens
         _agent.temperature = _config.agents.defaults.temperature
+
+        # Hot-reload provider API key (critical: without this, new keys only work after restart)
+        if hasattr(_agent, 'provider') and _agent.provider:
+            # Find which provider is active based on the model prefix
+            active_provider = None
+            model_name = _config.agents.defaults.model or ""
+            for pname in ["openrouter", "gemini", "openai", "anthropic", "groq", "deepseek", "custom"]:
+                prov_cfg = getattr(_config.providers, pname, None)
+                if prov_cfg and prov_cfg.api_key:
+                    # If model starts with provider prefix or this is the first provider with a key
+                    if pname in model_name.lower() or (pname == "openrouter" and "/" in model_name):
+                        active_provider = prov_cfg
+                        break
+            
+            if active_provider and active_provider.api_key:
+                _agent.provider.api_key = active_provider.api_key
+                if active_provider.api_base:
+                    _agent.provider.api_base = active_provider.api_base
+                # Also update env vars for litellm
+                _agent.provider._setup_env(
+                    active_provider.api_key,
+                    active_provider.api_base,
+                    _config.agents.defaults.model
+                )
+                logger.info("Settings: Hot-reloaded provider API key")
+
         logger.info("Settings: Hot-reloaded AI parameters to AgentLoop")
 
     reboot_needed = (

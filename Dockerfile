@@ -35,7 +35,7 @@ WORKDIR /app
 RUN mkdir -p /root/.caiocore
 
 # Gateway default port
-EXPOSE 18790
+EXPOSE 18795
 
 ENTRYPOINT ["caio"]
 CMD ["status"]
