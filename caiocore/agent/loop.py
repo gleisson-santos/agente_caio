@@ -32,6 +32,8 @@ from caiocore.agent.tools.shell import ExecTool
 from caiocore.agent.tools.spawn import SpawnTool
 from caiocore.agent.tools.web import WebFetchTool, WebSearchTool
 from caiocore.agent.tools.generator import GeneratorTool
+from caiocore.agent.tools.system_status import SystemStatusTool
+
 from caiocore.bus.events import InboundMessage, OutboundMessage
 from caiocore.bus.queue import MessageBus
 from caiocore.providers.base import LLMProvider, ToolCallRequest
@@ -143,6 +145,10 @@ class AgentLoop:
         
         # Register Workflow tool
         self.tools.register(WorkflowTool(self.workflows))
+        
+        # Register System Status Tool (monitoring Tier 1 agents)
+        self.tools.register(SystemStatusTool())
+
         
         # Register email reading tool if IMAP credentials are configured
         ec = self.email_config

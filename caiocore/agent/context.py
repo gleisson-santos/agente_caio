@@ -108,6 +108,7 @@ Para usar uma skill, leia seu arquivo SKILL.md usando a tool read_file.
 
 ## Capacidades
 - Você coordena agentes especializados (Email, Schedule, Documentos, Pesquisa, etc.)
+- Você tem acesso à ferramenta `get_system_status` para monitorar em tempo real a saúde de toda a stack CaioCore (Agente BD, Token, SSO, Life). SEMPRE use esta ferramenta antes de responder sobre a saúde do sistema.
 - Você pode executar ferramentas: buscar na web, ler/escrever arquivos, executar comandos, gerar documentos.
 - Quando o usuário pedir uma tarefa que exija ferramentas, EXECUTE IMEDIATAMENTE e reporte o resultado.
 
