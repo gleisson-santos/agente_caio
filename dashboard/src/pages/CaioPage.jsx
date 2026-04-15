@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { api, AGENT_UI_META } from '../services/api'
 
 const getDailySessionId = () => {
@@ -48,8 +50,8 @@ export default function CaioPage() {
                     setMessages(history)
                 } else {
                     const welcomeMsg = agentMeta 
-                        ? `*NÚCLEO ${agentMeta.name.toUpperCase()} ATIVO* — Pronto para operações táticas em ${agentMeta.role}. Qual é a diretriz?`
-                        : '### CAIO — NEURAL SOVEREIGN v4.3\n\nDiretriz principal: Impacto e Soberania Executiva. Interface neural estabilizada. Qual é o objetivo prioritário?';
+                        ? `Olá! Sou o **${agentMeta.name}** — ${agentMeta.role}. Como posso ajudar?`
+                        : 'Boa noite! Como posso ajudar?';
                     
                     setMessages([{ role: 'assistant', content: welcomeMsg }])
                 }
@@ -108,34 +110,13 @@ export default function CaioPage() {
         }
     }
 
-    // Função para renderizar conteúdo estruturado em cards
+    // Renderiza markdown com react-markdown + remark-gfm (tabelas, listas, etc.)
     const renderMessageContent = (content) => {
-        // Se o conteúdo tiver múltiplas seções separadas por "###" ou similar
-        const sections = content.split('\n\n');
-
         return (
-            <div className="cc-structured-content">
-                {sections.map((section, idx) => {
-                    const lines = section.split('\n');
-                    const firstLine = lines[0].trim();
-
-                    // Detecta se é um título ou lista para criar card
-                    if (firstLine.startsWith('###') || firstLine.startsWith('**') || firstLine.includes(':')) {
-                        return (
-                            <div key={idx} className="cc-res-card">
-                                <div className="cc-res-title">
-                                    <span style={{ width: '4px', height: '12px', background: 'var(--blue)', borderRadius: '2px' }}></span>
-                                    {firstLine.replace(/[#*]/g, '')}
-                                </div>
-                                <div style={{ whiteSpace: 'pre-wrap', color: 'var(--text-secondary)' }}>
-                                    {lines.slice(1).join('\n')}
-                                </div>
-                            </div>
-                        );
-                    }
-
-                    return <div key={idx} style={{ whiteSpace: 'pre-wrap' }}>{section}</div>;
-                })}
+            <div className="cc-markdown-body">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {content}
+                </ReactMarkdown>
             </div>
         );
     }

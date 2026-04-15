@@ -33,6 +33,8 @@ from caiocore.agent.tools.spawn import SpawnTool
 from caiocore.agent.tools.web import WebFetchTool, WebSearchTool
 from caiocore.agent.tools.generator import GeneratorTool
 from caiocore.agent.tools.system_status import SystemStatusTool
+from caiocore.agent.tools.pdf_reader import ReadPDFTool
+
 
 from caiocore.bus.events import InboundMessage, OutboundMessage
 from caiocore.bus.queue import MessageBus
@@ -148,6 +150,10 @@ class AgentLoop:
         
         # Register System Status Tool (monitoring Tier 1 agents)
         self.tools.register(SystemStatusTool())
+
+        # Register PDF Reader Tool
+        self.tools.register(ReadPDFTool(workspace=self.workspace, allowed_dir=allowed_dir))
+
 
         
         # Register email reading tool if IMAP credentials are configured
