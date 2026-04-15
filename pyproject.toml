@@ -71,10 +71,6 @@ data = [
     "pandas",
     "openpyxl",
 ]
-browser = [
-    "selenium>=4.14.0",
-    "webdriver-manager>=4.0.1",
-]
 all = [
     "caiocore[social,data,browser]",
 ]
