@@ -34,6 +34,9 @@ from caiocore.agent.tools.web import WebFetchTool, WebSearchTool
 from caiocore.agent.tools.generator import GeneratorTool
 from caiocore.agent.tools.system_status import SystemStatusTool
 from caiocore.agent.tools.pdf_reader import ReadPDFTool
+from caiocore.agent.smart_router import SmartRouter
+from caiocore.agent.tools.voice import VoiceTTSTool
+from caiocore.agent.tools.a2a import A2ASendTool
 
 
 from caiocore.bus.events import InboundMessage, OutboundMessage
@@ -95,6 +98,15 @@ class AgentLoop:
         self.email_config = email_config or {}
         self.gcal_config = gcal_config or {}
         self.fallback_models = fallback_models or []
+        self._start_time = time.time()
+
+        # Smart Routing — route simple queries to lighter models
+        self.smart_router = SmartRouter(
+            default_model=self.model,
+            light_model="google/gemini-2.0-flash-lite",
+            heavy_model=self.model,
+            enabled=True,
+        )
 
         self.context = ContextBuilder(workspace)
         self.sessions = session_manager or SessionManager(workspace)
@@ -154,7 +166,19 @@ class AgentLoop:
         # Register PDF Reader Tool
         self.tools.register(ReadPDFTool(workspace=self.workspace, allowed_dir=allowed_dir))
 
+        # Register Browser Control Tool (requires selenium)
+        try:
+            from caiocore.agent.tools.browser import BrowserTool
+            self.tools.register(BrowserTool(workspace=self.workspace))
+            logger.info("Browser control tool registered")
+        except Exception:
+            logger.debug("selenium not available — browser tool skipped")
 
+        # Register Voice/TTS Tool
+        self.tools.register(VoiceTTSTool(workspace=self.workspace))
+
+        # Register A2A Protocol Tool
+        self.tools.register(A2ASendTool())
         
         # Register email reading tool if IMAP credentials are configured
         ec = self.email_config
@@ -333,11 +357,22 @@ class AgentLoop:
 
             await self.tracer.log_thought(session_id, agent_id, step="thought", content="Processando nova interação...")
 
+            # Smart Routing: pick optimal model for this message
+            effective_model = self.model
+            if iteration == 1 and self.smart_router.enabled:
+                user_msgs = [m for m in messages if m.get("role") == "user"]
+                if user_msgs:
+                    last_user_msg = user_msgs[-1].get("content", "")
+                    routing = self.smart_router.classify(last_user_msg)
+                    effective_model = routing.model
+                    if routing.tier != "default":
+                        logger.info("SmartRouter: {} → {} ({})", routing.tier, routing.model, routing.reason)
+
             # Use internal fallback helper
             response = await self._call_provider_with_fallback(
                 messages, 
                 tool_defs,
-                self.model,
+                effective_model,
                 self.max_tokens,
                 self.temperature
             )
@@ -543,7 +578,11 @@ class AgentLoop:
 
         # Slash commands
         cmd = msg.content.strip().lower()
-        if cmd == "/new":
+        cmd_parts = cmd.split(maxsplit=1)
+        cmd_name = cmd_parts[0] if cmd_parts else ""
+        cmd_arg = cmd_parts[1] if len(cmd_parts) > 1 else ""
+
+        if cmd_name == "/new":
             messages_to_archive = session.messages.copy()
             session.clear()
             self.sessions.save(session)
@@ -556,10 +595,84 @@ class AgentLoop:
 
             asyncio.create_task(_consolidate_and_cleanup())
             return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
-                                  content="New session started. Memory consolidation in progress.")
-        if cmd == "/help":
+                                  content="✅ Nova sessão iniciada. Memória sendo consolidada em background.")
+
+        if cmd_name == "/status":
+            uptime_s = int(time.time() - self._start_time)
+            h, m, s = uptime_s // 3600, (uptime_s % 3600) // 60, uptime_s % 60
+            routing_stats = self.smart_router.get_stats()
+            status_text = (
+                f"### 🐈 Status do Agente Caio\n\n"
+                f"• **Modelo atual:** `{self.model}`\n"
+                f"• **Uptime:** {h}h {m}m {s}s\n"
+                f"• **Sessões ativas:** {len(self.sessions._sessions)}\n"
+                f"• **Ferramentas:** {len(self.tools.tool_names)}\n"
+                f"• **Smart Routing:** {'✅ Ativo' if self.smart_router.enabled else '❌ Desativado'}\n"
+                f"• **MCP conectado:** {'✅' if self._mcp_connected else '❌'}\n"
+                f"• **Modelo leve:** `{routing_stats['models']['light']}`\n"
+                f"• **Roteamentos:** {routing_stats['stats']['total']} total"
+            )
+            return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id, content=status_text)
+
+        if cmd_name == "/model":
+            if cmd_arg:
+                old_model = self.model
+                self.model = cmd_arg.strip()
+                self.smart_router.default_model = self.model
+                self.smart_router.heavy_model = self.model
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content=f"✅ Modelo alterado: `{old_model}` → `{self.model}`")
+            else:
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content=f"**Modelo atual:** `{self.model}`\n\nPara trocar: `/model nome-do-modelo`\nExemplo: `/model google/gemini-2.0-flash`")
+
+        if cmd_name == "/tools":
+            names = sorted(self.tools.tool_names)
+            tool_list = "\n".join(f"• `{n}`" for n in names)
             return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
-                                  content="🐈 nanobot commands:\n/new — Start a new conversation\n/help — Show available commands")
+                content=f"### 🛠️ Ferramentas Disponíveis ({len(names)})\n\n{tool_list}")
+
+        if cmd_name == "/memory":
+            mem_context = self.context.memory.get_memory_context()
+            if mem_context:
+                preview = mem_context[:1500]
+                if len(mem_context) > 1500:
+                    preview += "\n\n_(truncado)_"
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content=f"### 🧠 Memória\n\n{preview}")
+            else:
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content="🧠 Memória vazia. Nenhuma informação foi salva ainda.")
+
+        if cmd_name == "/routing":
+            if cmd_arg == "off":
+                self.smart_router.enabled = False
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content="❌ Smart Routing desativado. Todas as mensagens usarão o modelo padrão.")
+            elif cmd_arg == "on":
+                self.smart_router.enabled = True
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content="✅ Smart Routing ativado.")
+            else:
+                stats = self.smart_router.get_stats()
+                return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                    content=f"### 🔀 Smart Routing\n\n"
+                            f"• **Status:** {'✅ Ativo' if stats['enabled'] else '❌ Desativado'}\n"
+                            f"• **Light:** `{stats['models']['light']}`\n"
+                            f"• **Default:** `{stats['models']['default']}`\n"
+                            f"• **Heavy:** `{stats['models']['heavy']}`\n\n"
+                            f"Uso: `/routing on` · `/routing off`")
+
+        if cmd_name == "/help":
+            return OutboundMessage(channel=msg.channel, chat_id=msg.chat_id,
+                content="### 🐈 Comandos Disponíveis\n\n"
+                        "• `/status` — Status do agente, modelo, uptime\n"
+                        "• `/model [nome]` — Ver ou trocar modelo de IA\n"
+                        "• `/tools` — Listar ferramentas disponíveis\n"
+                        "• `/memory` — Ver memória armazenada\n"
+                        "• `/routing [on/off]` — Smart Routing (economia de tokens)\n"
+                        "• `/new` — Iniciar nova sessão\n"
+                        "• `/help` — Mostrar esta ajuda")
 
         if len(session.messages) > self.memory_window and session.key not in self._consolidating:
             self._consolidating.add(session.key)

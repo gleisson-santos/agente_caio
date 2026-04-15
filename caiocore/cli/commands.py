@@ -232,6 +232,11 @@ def setup():
     console.print("\n[dim]Para suporte e agents premium, acesse o Dashboard.[/dim]")
 
 
+@app.command()
+def onboard():
+    """🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interactively."""
+    from caiocore.cli.onboard import run_onboard
+    run_onboard()
 
 
 

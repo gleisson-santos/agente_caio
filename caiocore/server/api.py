@@ -40,10 +40,12 @@ from loguru import logger
 # logger = logging.get_logger(__name__) # Keeping loguru as primary logger
 
 from caiocore.server.chat_handler import router as chat_router
+from caiocore.server.a2a_server import router as a2a_router
 
 app = FastAPI(title="Nanobot Gateway API", version="2.0.0")
 
 app.include_router(chat_router)
+app.include_router(a2a_router)
 
 app.add_middleware(
     CORSMiddleware,
