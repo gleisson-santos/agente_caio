@@ -61,26 +61,31 @@ class VoiceTTSTool(Tool):
             import os
 
             # Get API key from environment or config
-            api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("OPENROUTER_API_KEY", "")
+            api_key = os.environ.get("OPENAI_API_KEY", "")
             if not api_key:
-                # Try loading from config.json
-                config_path = self._workspace / "config.json" if self._workspace else Path("config.json")
-                if config_path.exists():
-                    cfg = json.loads(config_path.read_text())
-                    providers = cfg.get("providers", {})
-                    # Look for OpenAI key first, then OpenRouter
-                    openai_cfg = providers.get("openai", {})
-                    api_key = openai_cfg.get("api_key", "")
-                    if not api_key:
-                        openrouter_cfg = providers.get("openrouter", {})
-                        api_key = openrouter_cfg.get("api_key", "")
+                api_key = os.environ.get("OPENROUTER_API_KEY", "")
+            if not api_key:
+                # Use the project's config loader
+                try:
+                    from caiocore.config.loader import load_config
+                    cfg = load_config()
+                    # Try OpenAI first (native TTS), then OpenRouter as gateway
+                    openai_provider = cfg.providers.openai
+                    if openai_provider and openai_provider.api_key:
+                        api_key = openai_provider.api_key
+                    else:
+                        # Fall back to any available provider key
+                        api_key = cfg.get_api_key() or ""
+                except Exception:
+                    pass
 
             if not api_key:
-                return "Erro: Nenhuma API key encontrada para TTS. Configure OPENAI_API_KEY ou adicione em config.json."
+                return "Erro: Nenhuma API key encontrada para TTS. Configure OPENAI_API_KEY ou adicione provider OpenAI em config.json."
 
-            # Determine API endpoint
+            # Determine API endpoint — TTS only works with OpenAI directly
             base_url = "https://api.openai.com/v1"
             if "sk-or-" in api_key:
+                # OpenRouter doesn't support TTS natively, try via OpenAI-compatible endpoint
                 base_url = "https://openrouter.ai/api/v1"
 
             # Validate voice

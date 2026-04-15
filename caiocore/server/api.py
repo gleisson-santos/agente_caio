@@ -543,19 +543,25 @@ async def tracing_stream():
         queue = await broadcaster.subscribe()
         try:
             while True:
-                # Wait for data from broadcaster
-                data = await queue.get()
-                # Yield in SSE format: data: <json>\n\n
-                yield f"data: {json.dumps(data, ensure_ascii=False)}\n\n"
+                try:
+                    # Wait for data with timeout for keepalive
+                    data = await asyncio.wait_for(queue.get(), timeout=15.0)
+                    yield f"data: {json.dumps(data, ensure_ascii=False)}\n\n"
+                except asyncio.TimeoutError:
+                    # Send keepalive comment to prevent proxy/Traefik from closing
+                    yield ": keepalive\n\n"
         except asyncio.CancelledError:
-            # Client disconnected
             await broadcaster.unsubscribe(queue)
             raise
         except Exception as e:
             logger.error(f"SSE Error: {e}")
             await broadcaster.unsubscribe(queue)
 
-    return StreamingResponse(event_generator(), media_type="text/event-stream")
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+    )
 
 # ── Tracing history endpoint ────────────────────────────────────────
 

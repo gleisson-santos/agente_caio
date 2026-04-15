@@ -55,6 +55,7 @@ class BrowserTool(Tool):
         """Lazy-initialize the Selenium WebDriver."""
         if self._driver is None:
             try:
+                import os
                 from selenium import webdriver
                 from selenium.webdriver.chrome.options import Options
                 from selenium.webdriver.chrome.service import Service
@@ -68,12 +69,22 @@ class BrowserTool(Tool):
                 options.add_argument("--disable-extensions")
                 options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36")
 
-                try:
-                    from webdriver_manager.chrome import ChromeDriverManager
-                    service = Service(ChromeDriverManager().install())
+                # Check for system chromium (Docker)
+                chrome_bin = os.environ.get("CHROME_BIN")
+                if chrome_bin:
+                    options.binary_location = chrome_bin
+
+                chromedriver_path = os.environ.get("CHROMEDRIVER_PATH")
+                if chromedriver_path:
+                    service = Service(executable_path=chromedriver_path)
                     self._driver = webdriver.Chrome(service=service, options=options)
-                except Exception:
-                    self._driver = webdriver.Chrome(options=options)
+                else:
+                    try:
+                        from webdriver_manager.chrome import ChromeDriverManager
+                        service = Service(ChromeDriverManager().install())
+                        self._driver = webdriver.Chrome(service=service, options=options)
+                    except Exception:
+                        self._driver = webdriver.Chrome(options=options)
 
                 self._driver.set_page_load_timeout(30)
             except ImportError:

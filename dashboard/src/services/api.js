@@ -474,23 +474,40 @@ export const api = {
     },
 
     subscribeToTracingStream(onMessage) {
-        const eventSource = new EventSource(`${BASE_URL}/api/tracing/stream`)
-        
-        eventSource.onmessage = (event) => {
-            try {
-                const data = JSON.parse(event.data)
-                onMessage(data)
-            } catch (err) {
-                console.error('Error parsing tracing SSE:', err)
+        let eventSource = null
+        let reconnectDelay = 1000
+        let stopped = false
+
+        function connect() {
+            if (stopped) return
+            eventSource = new EventSource(`${BASE_URL}/api/tracing/stream`)
+            
+            eventSource.onmessage = (event) => {
+                try {
+                    reconnectDelay = 1000 // Reset on successful message
+                    const data = JSON.parse(event.data)
+                    onMessage(data)
+                } catch (err) {
+                    console.error('Error parsing tracing SSE:', err)
+                }
+            }
+
+            eventSource.onerror = () => {
+                eventSource.close()
+                if (!stopped) {
+                    console.warn(`Tracing SSE reconnecting in ${reconnectDelay}ms...`)
+                    setTimeout(connect, reconnectDelay)
+                    reconnectDelay = Math.min(reconnectDelay * 2, 10000) // Max 10s
+                }
             }
         }
 
-        eventSource.onerror = (err) => {
-            console.error('Tracing SSE Connection Error:', err)
-            eventSource.close()
-        }
+        connect()
 
-        return () => eventSource.close() // cleanup function
+        return () => {
+            stopped = true
+            if (eventSource) eventSource.close()
+        }
     },
 
     // ── Tasks & Events (Base) ──────────────────────────
