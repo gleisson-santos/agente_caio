@@ -1,0 +1,25 @@
+---
+source_file: "caiocore\documentos\generators\generate_xlsx.py"
+type: "code"
+community: "Community None"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_None
+---
+
+# generate_xlsx.py
+
+## Connections
+- [[adicionar_aba()]] - `contains` [EXTRACTED]
+- [[adicionar_grafico_barras()]] - `contains` [EXTRACTED]
+- [[adicionar_grafico_linha()]] - `contains` [EXTRACTED]
+- [[adicionar_grafico_pizza()]] - `contains` [EXTRACTED]
+- [[adicionar_tabela()_1]] - `contains` [EXTRACTED]
+- [[criar_planilha()]] - `contains` [EXTRACTED]
+- [[definir_celula()]] - `contains` [EXTRACTED]
+- [[novo_workbook()]] - `contains` [EXTRACTED]
+- [[salvar_workbook()]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_None

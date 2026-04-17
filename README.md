@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/dashboard_online.png" alt="Agente Caio - Dashboard Oficial" width="800"/>
+  <img src="docs/mascote.png" alt="Mascote Agente Caio" width="250"/>
   <h1>🐱 Agente Caio Core (CaioCore)</h1>
   <p><strong>A Solução Suprema para Operações Inteligentes e Monetização de Agentes IA</strong></p>
   <p>
@@ -13,111 +13,101 @@
 
 ## ⚡ Novidade: Agente Caio v4.0 (Neural Sovereign)
 
-O CaioCore foi elevado para a arquitetura **Neural Sovereign**. Esta atualização redefine a interação entre humano e IA, focando em soberania absoluta e execução técnica de elite.
+O CaioCore foi elevado para a arquitetura **Neural Sovereign**. Esta atualização redefine a interação entre humano e IA, focando em soberania absoluta e execução técnica de elite. 
 
-- **Inteligência Soberana**: O Caio agora opera com autonomia total na descoberta de contexto e execução de tarefas, minimizando a necessidade de comandos manuais.
-- **Arquitetura de Córtex**: Processamento paralelo de múltiplos especialistas com uma nova camada de identidade executiva.
-- **Comunicação Imersiva**: Respostas estruturadas em camadas (Ações Visuais, Sumário Executivo e Cards de Diagnóstico) para máxima clareza e velocidade.
-- **Poder Proativo**: Foco em antecipação de problemas e otimização contínua da infraestrutura.
+Diferente de frameworks tradicionais (como Nanobot, OpenClaw e afins), o Caio foi recriado para orquestração proficiente, economia de API e contexto persistente.
 
----
-
-## 🚀 O que é o CaioCore?
-
-O **CaioCore** é um ecossistema de agentes de IA de alto nível, projetado para ser comercializado e escalado. Diferente de bots simples, o CaioCore utiliza uma arquitetura hierárquica baseada no conceito de **Orquestrador Central (CEO)** e **Especialistas de Execução (Tier 2)**.
-
-Este projeto nasceu da necessidade de entregar uma ferramenta poderosa para automação de negócios, integrando perfeitamente Canais (Telegram, E-mail, Dashboard), Memória de Longo Prazo e Habilidades Avançadas.
-
-> [!IMPORTANT]
-> Inspirado na base do Nanobot, o CaioCore foi totalmente remodelado por **Gleisson Santos** para focar em UX, instalação simplificada e uma "App Store" de agentes premium.
+### 🔥 O que diferencia o Agente Caio?
+*   **🧠 Graphify Indexing + Obsidian 3D:** Chega de "começar do zero" a cada sessão. Todo o seu ambiente é mapeado em um Grafo de Conhecimento AST (Abstract Syntax Tree). O Caio lê a *enciclopédia da estrutura* em vez de abrir mil arquivos, economizando mais de 70% em tokens e abrindo seu projeto em 3D nativamente no Obsidian.
+*   **🔀 Smart Router (Troca Automática de Modelos):** Tarefas simples são designadas para modelos rápidos e baratos (ex: Flash Lite). Se o algoritmo detecta que você pediu uma análise complexa ou código novo, ele faz rotas transparentes para LLMs de alta carga (Claude 3.7 Sonnet / Grok Pro), cobrindo falhas (Fallbacks) automaticamente.
+*   **🧬 Arquitetura de Córtex:** Uma identidade de Orquestrador Central (CEO Caio) liderando em tempo real múltiplos Especialistas de Nível 2 (Especialista em Banco de Dados, Auditor de Infra, Extratores de UI, etc).
+*   **💾 Memória Evolutiva:** O `MEMORY.md` serve como Lobo Frontal, onde todas as decisões que os agentes tomam em código local ou no servidor caem silenciosamente em um cache inter-sessões.
 
 ---
 
-## 💎 Loja de Agentes (Monetização)
-
-O diferencial do CaioCore é a **Loja de Agentes** integrada ao Dashboard. Enquanto o núcleo do agente é open-source, os **Especialistas de Elite** podem ser adquiridos e ativados via Dashboard:
-
-### 🛍️ Agentes Disponíveis na Versão Premium:
-- **📊 Criador de Carrosséis Viral:** Transforma ideias em posts épicos para Instagram.
-- **🎨 Lovable Prompt Artist:** Arquiteto sênior para criar apps no Lovable.dev.
-- **🏠 Prospecção Imobiliária:** Máquina de qualificação de leads para corretores.
-- **🛒 Especialista E-commerce (CRO):** Focado em fechar vendas e recuperar carrinhos.
-- *...e mais de 20 modelos prontos!*
+<div align="center">
+  <img src="docs/dashboard_online.png" alt="Agente Caio - Dashboard Oficial" width="800"/>
+  <p><i>Painel de Controle Central com Monitoramento Real-time do Sistema (SSE)</i></p>
+</div>
 
 ---
 
-## 🛠️ Instalação Rápida (Estilo Pro)
+## 💎 Loja de Agentes (App Store e Monetização)
 
-Esqueça a edição manual de arquivos JSON complexos. O CaioCore agora possui um assistente de instalação interativo.
+O diferencial de mercado do CaioCore é a **Loja de Agentes** embutida dentro do ecossistema. Embora você possua a estrutura núcleo (Open-Source baseada em roteamento Python/FastAPI), os Perfis de Execução podem ser comercializados:
+
+- **📊 Especialista em UI / UX:** Cria front-ends completos e estilizados automaticamente baseados em wireframes.
+- **🏠 Prospecção e Leads:** Pipeline focado em qualificação B2B ou imobiliárias, injetando no Supabase.
+- **☁️ Engenheiro DevOps:** Verifica instâncias Portainer/Docker e aciona webhooks de segurança.
+*...e mais 15 frameworks plug-and-play integrados!*
+
+---
+
+## 🛠️ Guia Completo de Instalação
+
+### 1. Padrão de Execução Local (Testes e Código)
+
+Para desenvolvedores querendo rodar o Agente via terminal local (sem criar toda a nuvem Docker).
 
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/gleisson-santos/agente_caio.git
    cd agente_caio
    ```
-
-2. **Instale as dependências:**
-   ```bash
-   pip install -e .
-   ```
-
-3. **Inicie o Assistente de Configuração:**
+2. **Sistema Virtual (VENV):** Recomendamos utilizar Python 3.11+.
+    ```bash
+    python -m venv .venv
+    # Ative o ambiente local
+    source .venv/bin/activate  # Linux/Mac
+    .venv\Scripts\activate   # Windows
+    ```
+3. **Instale as dependências modulares:**
+   O CaioCore é leve. Escolha o tamanho do seu motor:
+   - *Padrão (Core):* `pip install -e .`
+   - *Browser/Visão (Selenium):* `pip install -e ".[browser]"`
+   - *Full Stack Total:* `pip install -e ".[all]"`
+4. **Crie a configuração do Agente:**
     ```bash
     cp config.example.json config.json
-    nano config.json # Ou use o editor do Termius
     ```
-    *Preencha suas chaves da OpenAI, OpenRouter e dados do Telegram no config.json.*
-
-### ⚖️ Instalação Modular (Otimizada)
-O CaioCore é desenhado para ser leve. Você pode escolher o que instalar:
-- **Core (Lite):** `pip install -e .` (Apenas o essencial: Telegram + AI + Docs)
-- **Com Navegador (Selenium):** `pip install -e ".[browser]"`
-- **Com Análise de Dados (Pandas):** `pip install -e ".[data]"`
-- **Completo:** `pip install -e ".[all]"`
-
-4. **Suba o Motor:**
-
+    *Preencha no arquivo suas chaves da LiteLLM, OpenRouter, e principalmente o Token do Telegram (`@BotFather`).*
+5. **Dê Partida:**
    ```bash
    caio gateway
    ```
 
 ---
 
-## 🐳 Deploy Profissional (Portainer & Traefik)
+### 2. Padrão Produção na VPS (Docker Swarm / Portainer)
 
-O CaioCore foi desenhado para rodar em VPS de alta performance usando Docker Swarm.
+Se você já quer plugar sua ferramenta no universo (via Nuvem), a versão de Servidor utiliza o ecossistema Portainer com roteamentos dinâmicos via Traefik Proxy.
 
-### Configuração do Ingress (IMPORTANTE)
-No arquivo `docker-compose.yml`, altere as linhas de `Host` para o seu domínio real:
-```yaml
-- traefik.http.routers.caio-dashboard.rule=Host(`SEU DOMINIO`)
-```
+Documentamos o passo a passo exato e vitalício, abordando como ligar os volumes, fazer a rede e usar a Stack isolada do Swarm. 
 
-### Fluxo "Zen Clean" para VPS (Recomendado)
-Para uma instalação limpa e sem erros de rede:
-1. `git clone https://github.com/gleisson-santos/agente_caio.git`
-2. `cp config.example.json config.json` (Edite com suas chaves)
-3. `docker network create ControllNet || true`
-4. Na Stack do Portainer: Aponte para o repositório ou cole o YAML do `docker-compose.yml`.
+📋 **LEIA O GUIA AQUI:** ➡️ [**DEPLOY_VPS.md**](DEPLOY_VPS.md) ⬅️
 
-Acesse o manual detalhado em [WALKTHROUGH_SETUP.md](WALKTHROUGH_SETUP.md).
+> **Importante:** Sempre faça o build local da imagem usando o `Dockerfile` antes de subir a stack para refletir customizações! `docker build -t caiocorp/caio-agent:latest .`
 
 ---
 
-## 🧠 Recursos Exclusivos
+## 🧰 Comandos do Terminal 
 
-*   **Fallback Inteligente:** Se o modelo principal (ex: Grok-4.1-fast) falhar, o Caio aciona automaticamente o modelo reserva configurado para garantir que você nunca fique na mão.
+Quando rodado localmente, a CLI `caio` fornece as engrenagens principais do software:
 
-*   **Memória Dual:** Sistema avançado que separa Memória de Curto Prazo (Bus) da Memória de Longo Prazo (`MEMORY.md`), permitindo que o agente "aprenda" sobre você com o tempo.
-*   **Controle de Especialistas:** Use a arroba para invocar um especialista no chat, ex: `@carrossel crie um post sobre IA`.
+```bash
+caio gateway           # Sobe o servidor web FastAPI e o Listening do Telegram
+caio status            # Traz Logs de Saúde e métricas de RAM/DB
+caio cron list         # Visualiza os agendamentos inteligentes atuais
+caio --help            # Menu de orquestração detalhado
+```
 
 ---
 
 ## 🤝 Créditos e Contato
 
-**Desenvolvedor:** Gleisson Santos  
-**Plataforma de Base:** Nanobot AI Framework (HKUDS)  
-**Suporte Premium:** EM BREVE!
+**Arquiteto/Desenvolvedor Chefe:** Gleisson Santos  
+**Ecossistema Principal/Deploy:** Plataforma UomniMind  
+**Motor Open-Source Base:** Nanobot AI Framework 
 
 ---
 <p align="center">

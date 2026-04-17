@@ -1,0 +1,85 @@
+---
+source_file: "caiocore\agent\tracer.py"
+type: "code"
+community: "Community None"
+location: "L9"
+tags:
+  - graphify/code
+  - graphify/INFERRED
+  - community/Community_None
+---
+
+# AgentTracer
+
+## Connections
+- [[.__init__()_1]] - `calls` [INFERRED]
+- [[.__init__()_6]] - `method` [EXTRACTED]
+- [[.get_recent_traces()]] - `method` [EXTRACTED]
+- [[.log_run()]] - `method` [EXTRACTED]
+- [[.log_thought()]] - `method` [EXTRACTED]
+- [[Active and recent alerts.]] - `uses` [INFERRED]
+- [[Agent loop the core processing engine.]] - `uses` [INFERRED]
+- [[AgentLoop]] - `uses` [INFERRED]
+- [[Aggregate status of all monitoring agents + services.]] - `uses` [INFERRED]
+- [[Close MCP connections.]] - `uses` [INFERRED]
+- [[Compute tasks.json path fresh each time — no caching to avoid stale paths.]] - `uses` [INFERRED]
+- [[Connect to configured MCP servers (one-time, lazy).]] - `uses` [INFERRED]
+- [[Database agent status.]] - `uses` [INFERRED]
+- [[Database metrics (response time, queries, errors).]] - `uses` [INFERRED]
+- [[Delegate to MemoryStore.consolidate().]] - `uses` [INFERRED]
+- [[Delete a generated document.]] - `uses` [INFERRED]
+- [[Detailed connection status for each Supabase database.]] - `uses` [INFERRED]
+- [[Diagnóstico rápido do Web Chat.]] - `uses` [INFERRED]
+- [[DocGenerateRequest]] - `uses` [INFERRED]
+- [[Download a generated document.]] - `uses` [INFERRED]
+- [[Execute document generator scripts.]] - `uses` [INFERRED]
+- [[Format tool calls as concise hint, e.g. 'web_search(query)'.]] - `uses` [INFERRED]
+- [[Generate a document (DocAgent quick flow).]] - `uses` [INFERRED]
+- [[Generate a document based on a template with AI filling it.]] - `uses` [INFERRED]
+- [[Generate a document using CAIO (IA) content + Engine formatting.]] - `uses` [INFERRED]
+- [[Get current agent configuration with robust fallbacks.]] - `uses` [INFERRED]
+- [[Get live cron jobs and upcoming Google Calendar events.]] - `uses` [INFERRED]
+- [[Get recent emails from the IMAP inbox cache.]] - `uses` [INFERRED]
+- [[Get status of a specific agent.]] - `uses` [INFERRED]
+- [[Health matrix of all supervised agents.]] - `uses` [INFERRED]
+- [[HeartbeatRequest]] - `uses` [INFERRED]
+- [[Initialize and start all monitoring agents based on config.]] - `uses` [INFERRED]
+- [[Initialize the FastAPI server globals and dependencies.     DOES NOT start the]] - `uses` [INFERRED]
+- [[List all generated documents from out directory and recover strays.]] - `uses` [INFERRED]
+- [[List all registered monitoring agents with real status.]] - `uses` [INFERRED]
+- [[List available document templates.]] - `uses` [INFERRED]
+- [[Load tasks from in-memory store, initializing from disk if needed.]] - `uses` [INFERRED]
+- [[Nanobot Gateway API — serves real monitoring agent data.  Routes   apistat]] - `uses` [INFERRED]
+- [[NotificationRequest]] - `uses` [INFERRED]
+- [[Per-agent token consumption ranking.]] - `uses` [INFERRED]
+- [[Process a message directly (for CLI or cron usage).]] - `uses` [INFERRED]
+- [[Process a single inbound message and return the response.]] - `uses` [INFERRED]
+- [[Public entry point to handle a message from any channel (Web, API, etc.).]] - `uses` [INFERRED]
+- [[RUN current FastAPI app in the current event loop.     This prevents loop confl]] - `uses` [INFERRED]
+- [[Rastreia a execução do Agente, tempos, tokens e uso de ferramentas.     Grava o]] - `rationale_for` [EXTRACTED]
+- [[Real-time event feed from all agents.]] - `uses` [INFERRED]
+- [[Receive heartbeat from an external agent.]] - `uses` [INFERRED]
+- [[Receives WhatsApp events from Evolution API.]] - `uses` [INFERRED]
+- [[Register the default set of tools.]] - `uses` [INFERRED]
+- [[Remove think…think blocks that some models embed in content.]] - `uses` [INFERRED]
+- [[Retrieve recent AI tracing logs.]] - `uses` [INFERRED]
+- [[Run the agent iteration loop. Returns (final_content, tools_used).]] - `uses` [INFERRED]
+- [[Run the agent loop, processing messages from the bus.]] - `uses` [INFERRED]
+- [[Save tasks to in-memory store and persist to disk.]] - `uses` [INFERRED]
+- [[Send a notification directly to Telegram via HTTP API.]] - `uses` [INFERRED]
+- [[Server-Sent Events stream for real-time agent tracing.]] - `uses` [INFERRED]
+- [[SettingsUpdate]] - `uses` [INFERRED]
+- [[Start background loops for all registered agents.]] - `uses` [INFERRED]
+- [[Start monitoring agent loops in the background when FastAPI starts.]] - `uses` [INFERRED]
+- [[TaskCreate]] - `uses` [INFERRED]
+- [[Tenta o modelo principal, depois os fallbacks em ordem.]] - `uses` [INFERRED]
+- [[The agent loop is the core processing engine.      It     1. Receives messag]] - `uses` [INFERRED]
+- [[Token consumption statistics.]] - `uses` [INFERRED]
+- [[Try to extract tool calls from JSON blocks in text content.]] - `uses` [INFERRED]
+- [[Update agent configuration and save to disk.]] - `uses` [INFERRED]
+- [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
+- [[VPS  server metrics (CPU, RAM, Disk, Network, Uptime).]] - `uses` [INFERRED]
+- [[get_tracing_logs()]] - `calls` [INFERRED]
+- [[tracer.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/INFERRED #community/Community_None

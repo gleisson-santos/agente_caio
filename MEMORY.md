@@ -5,6 +5,17 @@
 - **Status**: Operacional & Soberano
 - **Foco**: Orquestração de Elite e Automação de Infraestrutura
 > Este arquivo serve como a memória central do projeto, documentando evolução, arquitetura, melhorias e decisões técnicas críticas.
+> **[DIRETRIZ PARA IA]**: SEMPRE leia o bloco "Histórico Recente de Alterações" abaixo ao iniciar uma nova sessão ou tarefa, para se contextualizar da fase atual.
+
+---
+
+## ⏳ Histórico Recente de Alterações (Auto-Feed)
+*(Este bloco é atualizado automaticamente a cada commit)*
+<!-- DYNAMIC_LOG_START -->
+**2026-04-14 22:57:06 -0300** - `d235a7c` por gleisson-santos
+> **Mensagem:** fix: voice tool config resolution, browser chromium support and monitor page keepalive/reconnect fixes
+> *Arquivos tocados:* Dockerfile, caiocore/agent/tools/browser.py, caiocore/agent/tools/voice.py, caiocore/server/api.py, dashboard/src/services/api.js, etc...
+<!-- DYNAMIC_LOG_END -->
 
 ---
 

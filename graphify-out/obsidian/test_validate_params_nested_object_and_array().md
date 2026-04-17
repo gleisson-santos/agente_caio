@@ -1,0 +1,19 @@
+---
+source_file: "tests\test_tool_validation.py"
+type: "code"
+community: "Community None"
+location: "L65"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_None
+---
+
+# test_validate_params_nested_object_and_array()
+
+## Connections
+- [[.validate_params()]] - `calls` [INFERRED]
+- [[SampleTool]] - `calls` [EXTRACTED]
+- [[test_tool_validation.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_None

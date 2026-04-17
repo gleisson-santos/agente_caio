@@ -15,7 +15,7 @@ Antes de começar, sua VPS precisa ter:
 | **Traefik** | Rodando como proxy reverso com certresolver `letsencryptresolver` |
 | **Portainer** | Acessível para gerenciar stacks |
 | **Rede** | Rede overlay `ControllNet` criada no Swarm |
-| **DNS** | Registro A apontando `agentecaio.controllserv.com.br` → IP da VPS |
+| **DNS** | Registro A apontando `seu-dominio.com.br` → IP da VPS |
 
 ---
 
@@ -75,6 +75,18 @@ Este volume persiste a memória, histórico e habilidades do agente entre restar
 
 ---
 
+## 🏗️ Passo 4.5: Build da Imagem Local (Importante)
+
+Como você clonou o código e pode ter alterações (além da instalação de pacotes como Graphify), é necessário construir a imagem do **caio-agent** na sua VPS antes do Deploy:
+
+```bash
+cd /root/agente_caio
+docker build -t caiocorp/caio-agent:latest .
+```
+> **Nota:** A imagem do *Dashboard* (`caiocorp/caio-dashboard:latest`) será puxada do Docker Hub automaticamente.
+
+---
+
 ## 🐳 Passo 5: Criar a Stack no Portainer
 
 1. Acesse o **Portainer** da sua VPS
@@ -100,7 +112,7 @@ services:
         constraints: [node.role == manager]
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-dashboard.rule=Host(`agentecaio.controllserv.com.br`)
+        - traefik.http.routers.caio-dashboard.rule=Host(`seu-dominio.com.br`)
         - traefik.http.routers.caio-dashboard.entrypoints=websecure
         - traefik.http.routers.caio-dashboard.tls.certresolver=letsencryptresolver
         - traefik.http.services.caio-dashboard.loadbalancer.server.port=80
@@ -124,7 +136,7 @@ services:
         constraints: [node.role == manager]
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-agent.rule=Host(`agentecaio.controllserv.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
+        - traefik.http.routers.caio-agent.rule=Host(`seu-dominio.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
         - traefik.http.routers.caio-agent.entrypoints=websecure
         - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver
         - traefik.http.services.caio-agent.loadbalancer.server.port=18795
@@ -158,14 +170,14 @@ Deve mostrar `1/1` para ambos os serviços.
 
 ### 6.2 — Testar o Dashboard
 
-Acesse: **https://agentecaio.controllserv.com.br/**
+Acesse: **https://seu-dominio.com.br/**
 
 O Dashboard deve carregar com a interface do Caio.
 
 ### 6.3 — Testar a API
 
 ```bash
-curl https://agentecaio.controllserv.com.br/api/status
+curl https://seu-dominio.com.br/api/status
 ```
 
 Deve retornar JSON com `"status": "online"`.
@@ -231,7 +243,7 @@ Internet
   ▼
 Traefik (ControllNet)
   │
-  ├── Host: agentecaio.controllserv.com.br
+  ├── Host: seu-dominio.com.br
   │     ├── / → caio-dashboard (Nginx :80)
   │     ├── /api/* → caio-agent (FastAPI :18795)
   │     └── /events → caio-agent (FastAPI :18795)

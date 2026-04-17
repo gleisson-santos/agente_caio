@@ -261,10 +261,14 @@ class AgentLoop:
                 cron_tool.set_context(channel, chat_id)
 
     @staticmethod
-    def _strip_think(text: str | None) -> str | None:
+    def _strip_think(text: Any) -> str | None:
         """Remove <think>…</think> blocks that some models embed in content."""
         if not text:
             return None
+        if isinstance(text, list):
+            text = "".join(str(item.get("text", item)) if isinstance(item, dict) else str(item) for item in text)
+        if not isinstance(text, str):
+            text = str(text)
         return re.sub(r"<think>[\s\S]*?</think>", "", text).strip() or None
 
     @staticmethod
@@ -406,6 +410,10 @@ class AgentLoop:
                                 clean_content = clean_content.replace(m, "")
                         except Exception:
                             pass
+                if isinstance(clean_content, list):
+                    clean_content = "".join(str(item.get("text", item)) if isinstance(item, dict) else str(item) for item in clean_content)
+                if not isinstance(clean_content, str):
+                    clean_content = str(clean_content)
                 response.content = clean_content.strip()
 
             if response.has_tool_calls:
@@ -543,6 +551,11 @@ class AgentLoop:
         session = self.sessions.get_or_create(key)
         
         # --- HUMAN IN THE LOOP APPROVAL INTERCEPT ---
+        if isinstance(msg.content, list):
+            msg.content = "".join(str(item.get("text", item)) if isinstance(item, dict) else str(item) for item in msg.content)
+        if not isinstance(msg.content, str):
+            msg.content = str(msg.content)
+            
         lower_msg = msg.content.strip().lower()
         # Se for uma confirmação (adicionar flexibilidade se ele explicou que autoriza)
         if lower_msg in ["sim", "yes", "aprovar", "pode", "y", "confirmo", "autorizo", "pode fazer", "pode executar", "ok", "autorizado"]:
