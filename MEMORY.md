@@ -12,6 +12,24 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-04-16 22:38:19 -0300** - `cb31ab0` por gleisson-santos
+> **Mensagem:** docs: add warning for users with existing traefik networks in DEPLOY_VPS.md
+> *Arquivos tocados:* DEPLOY_VPS.md
+
+***
+
+**2026-04-16 22:36:17 -0300** - `f5f5ced` por gleisson-santos
+> **Mensagem:** docs: align yaml in DEPLOY_VPS.md with dynamic DOMAIN var from docker-compose.yml
+> *Arquivos tocados:* DEPLOY_VPS.md
+
+***
+
+**2026-04-16 22:30:41 -0300** - `4188253` por gleisson-santos
+> **Mensagem:** chore: purge remaining nanobot references replacing with caio/caiocore to finalize rebranding
+> *Arquivos tocados:* Dockerfile, SECURITY.md, bridge/src/index.ts, bridge/src/whatsapp.ts, caiocore/__init__.py, etc...
+
+***
+
 **2026-04-16 22:23:57 -0300** - `0209b59` por gleisson-santos
 > **Mensagem:** docs: overhaul visual identity, add mascot, update README and DEPLOY_VPS
 > *Arquivos tocados:* DEPLOY_VPS.md, README.md, caiocore/agent/loop.py, docs/mascote.png, graphify-out/GRAPH_REPORT.md, etc...
