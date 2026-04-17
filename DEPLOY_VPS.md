@@ -31,6 +31,10 @@ docker swarm init
 docker network create --driver=overlay --attachable ControllNet
 ```
 
+> [!IMPORTANT]
+> **Já possui Traefik e Portainer rodando?**
+> Se você já tem uma infraestrutura própria e o seu Traefik usa um nome de rede diferente (ex: `traefik-public` ou `web`), você **não** precisa criar a rede `ControllNet` ou instalar o Traefik de novo. Basta pular esse passo e, na hora de fazer o Deploy (Passo 5), substituir todas as menções à rede `ControllNet` para o **nome exato da rede do seu Traefik** no `docker-compose.yml`. Se você não fizer isso, o Traefik não achará os containers e você receberá o erro `504 Gateway Timeout`!
+
 ---
 
 ## 📦 Passo 2: Clonar o Repositório
