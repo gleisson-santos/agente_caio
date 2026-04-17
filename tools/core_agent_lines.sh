@@ -2,7 +2,7 @@
 # Count core agent lines (excluding channels/, cli/, providers/ adapters)
 cd "$(dirname "$0")" || exit 1
 
-echo "nanobot core agent line count"
+echo "caio core agent line count"
 echo "================================"
 echo ""
 
@@ -15,7 +15,7 @@ root=$(cat caiocore/__init__.py caiocore/__main__.py | wc -l)
 printf "  %-16s %5s lines\n" "(root)" "$root"
 
 echo ""
-total=$(find nanobot -name "*.py" ! -path "*/channels/*" ! -path "*/cli/*" ! -path "*/providers/*" | xargs cat | wc -l)
+total=$(find caio -name "*.py" ! -path "*/channels/*" ! -path "*/cli/*" ! -path "*/providers/*" | xargs cat | wc -l)
 echo "  Core total:     $total lines"
 echo ""
 echo "  (excludes: channels/, cli/, providers/)"

@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-04-16 22:23:57 -0300** - `0209b59` por gleisson-santos
+> **Mensagem:** docs: overhaul visual identity, add mascot, update README and DEPLOY_VPS
+> *Arquivos tocados:* DEPLOY_VPS.md, README.md, caiocore/agent/loop.py, docs/mascote.png, graphify-out/GRAPH_REPORT.md, etc...
+
+***
+
 **2026-04-14 22:57:06 -0300** - `d235a7c` por gleisson-santos
 > **Mensagem:** fix: voice tool config resolution, browser chromium support and monitor page keepalive/reconnect fixes
 > *Arquivos tocados:* Dockerfile, caiocore/agent/tools/browser.py, caiocore/agent/tools/voice.py, caiocore/server/api.py, dashboard/src/services/api.js, etc...

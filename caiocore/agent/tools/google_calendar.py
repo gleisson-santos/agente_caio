@@ -101,7 +101,7 @@ class GoogleCalendarTool(Tool):
                     raise FileNotFoundError(
                         f"Google Calendar credentials not found at {self.credentials_path}. "
                         "Please place a 'credentials.json' file from Google Cloud Console in "
-                        "your nanobot directory."
+                        "your caiocore directory."
                     )
                 flow = InstalledAppFlow.from_client_secrets_file(self.credentials_path, SCOPES)
                 creds = flow.run_local_server(port=0)

@@ -1,5 +1,5 @@
 """
-Nanobot Gateway API — serves real monitoring agent data.
+Caio Gateway API — serves real monitoring agent data.
 
 Routes:
   /api/status          — aggregate status of all agents
@@ -42,7 +42,7 @@ from loguru import logger
 from caiocore.server.chat_handler import router as chat_router
 from caiocore.server.a2a_server import router as a2a_router
 
-app = FastAPI(title="Nanobot Gateway API", version="2.0.0")
+app = FastAPI(title="Caio Gateway API", version="2.0.0")
 
 app.include_router(chat_router)
 app.include_router(a2a_router)
@@ -571,7 +571,7 @@ async def get_tracing_logs(limit: int = Query(50, ge=1, le=500)):
     try:
         from caiocore.agent.tracer import AgentTracer
         # In a real setup, we might persist this instance in api.py, but for now we create reading instance
-        workspace_dir = _Path(os.path.expanduser("~")) / ".nanobot" / "workspace"
+        workspace_dir = _Path(os.path.expanduser("~")) / ".caiocore" / "workspace"
         if not workspace_dir.exists():
             workspace_dir = _Path(os.getcwd())
             
@@ -646,7 +646,7 @@ async def list_documents():
     
     # Check both the project local /out and the global agent workspace /out
     out_dir_local = _Path(_DOCS_OUT)
-    out_dir_agent = _Path(os.path.expanduser("~")) / ".nanobot" / "workspace" / "out"
+    out_dir_agent = _Path(os.path.expanduser("~")) / ".caiocore" / "workspace" / "out"
     
     # Optional fallback for the user's desktop folder 'Direta' to ensure files are visible
     desktop_direta = _Path(os.path.expanduser("~")) / "Desktop" / "Direta"
@@ -841,7 +841,7 @@ async def download_document(filename: str):
     from starlette.responses import FileResponse
     
     file_path_local = os.path.join(_DOCS_OUT, filename)
-    file_path_agent = os.path.join(os.path.expanduser("~"), ".nanobot", "workspace", "out", filename)
+    file_path_agent = os.path.join(os.path.expanduser("~"), ".caiocore", "workspace", "out", filename)
     
     target_path = file_path_local if os.path.exists(file_path_local) else file_path_agent
     
@@ -854,7 +854,7 @@ async def download_document(filename: str):
 async def delete_document(filename: str):
     """Delete a generated document."""
     file_path_local = os.path.join(_DOCS_OUT, filename)
-    file_path_agent = os.path.join(os.path.expanduser("~"), ".nanobot", "workspace", "out", filename)
+    file_path_agent = os.path.join(os.path.expanduser("~"), ".caiocore", "workspace", "out", filename)
     
     target_path = file_path_local if os.path.exists(file_path_local) else file_path_agent
     
@@ -1376,7 +1376,7 @@ def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
     # Initialize monitoring agents (synchronously setup registry)
     _init_monitoring_agents(config)
     
-    logger.info("Nanobot API initialized (monitoring agents registered)")
+    logger.info("Caio API initialized (monitoring agents registered)")
 
 
 async def start_api_server(host="0.0.0.0", port=18795):
@@ -1387,5 +1387,5 @@ async def start_api_server(host="0.0.0.0", port=18795):
     import uvicorn
     config = uvicorn.Config(app, host=host, port=port, log_level="info", access_log=False)
     server = uvicorn.Server(config)
-    logger.info("Nanobot API Server starting on port {}...", port)
+    logger.info("Caio API Server starting on port {}...", port)
     await server.serve()

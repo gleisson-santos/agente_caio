@@ -71,7 +71,7 @@ const MOCK_LOGS = [
   { time: '13:45:18', level: 'info', msg: 'Starting Telegram bot (polling mode)...' },
   { time: '13:45:17', level: 'info', msg: 'Starting email channel...' },
   { time: '13:45:16', level: 'debug', msg: 'Agent Caio initialized — model: gemini/gemini-2.0-flash' },
-  { time: '13:45:15', level: 'info', msg: 'Gateway starting — nanobot v3.0' },
+  { time: '13:45:15', level: 'info', msg: 'Gateway starting — caio v3.0' },
 ]
 
 export default function MonitorPage() {

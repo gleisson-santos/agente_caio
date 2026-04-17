@@ -1,6 +1,6 @@
-# nanobot Skills
+# Caio Skills
 
-This directory contains built-in skills that extend nanobot's capabilities.
+This directory contains built-in skills that extend caio's capabilities.
 
 ## Skill Format
 

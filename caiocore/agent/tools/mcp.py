@@ -1,4 +1,4 @@
-"""MCP client: connects to MCP servers and wraps their tools as native nanobot tools."""
+"""MCP client: connects to MCP servers and wraps their tools as native caio tools."""
 
 from contextlib import AsyncExitStack
 from typing import Any
@@ -11,7 +11,7 @@ from caiocore.agent.tools.registry import ToolRegistry
 
 
 class MCPToolWrapper(Tool):
-    """Wraps a single MCP server tool as a nanobot Tool."""
+    """Wraps a single MCP server tool as a caio Tool."""
 
     def __init__(self, session, server_name: str, tool_def):
         self._session = session

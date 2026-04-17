@@ -1,5 +1,5 @@
 """
-Entry point for running nanobot as a module: python -m nanobot
+Entry point for running caio as a module: python -m caio
 """
 
 from caiocore.cli.commands import app

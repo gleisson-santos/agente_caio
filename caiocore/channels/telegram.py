@@ -335,7 +335,7 @@ class TelegramChannel(BaseChannel):
         if not update.message:
             return
         await update.message.reply_text(
-            "🐈 nanobot commands:\n"
+            "🐈 caio commands:\n"
             "/new — Start a new conversation\n"
             "/help — Show available commands"
         )
@@ -409,7 +409,7 @@ class TelegramChannel(BaseChannel):
                 
                 # Save to workspace/media/
                 from pathlib import Path
-                media_dir = Path.home() / ".nanobot" / "media"
+                media_dir = Path.home() / ".caiocore" / "media"
                 media_dir.mkdir(parents=True, exist_ok=True)
                 
                 file_path = media_dir / f"{media_file.file_id[:16]}{ext}"

@@ -18,7 +18,7 @@ from typing import Any, List, Optional
 from loguru import logger
 
 # Default DB path
-_DEFAULT_DB = Path.home() / ".nanobot" / "agent_events.db"
+_DEFAULT_DB = Path.home() / ".caiocore" / "agent_events.db"
 
 
 class EventStore:
