@@ -112,7 +112,8 @@ services:
         constraints: [node.role == manager]
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-dashboard.rule=Host(`seu-dominio.com.br`)
+        - traefik.docker.network=ControllNet
+        - traefik.http.routers.caio-dashboard.rule=Host(`${DOMAIN:-localhost}`)
         - traefik.http.routers.caio-dashboard.entrypoints=websecure
         - traefik.http.routers.caio-dashboard.tls.certresolver=letsencryptresolver
         - traefik.http.services.caio-dashboard.loadbalancer.server.port=80
@@ -136,7 +137,8 @@ services:
         constraints: [node.role == manager]
       labels:
         - traefik.enable=true
-        - traefik.http.routers.caio-agent.rule=Host(`seu-dominio.com.br`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
+        - traefik.docker.network=ControllNet
+        - traefik.http.routers.caio-agent.rule=Host(`${DOMAIN:-localhost}`) && (PathPrefix(`/api`) || PathPrefix(`/events`))
         - traefik.http.routers.caio-agent.entrypoints=websecure
         - traefik.http.routers.caio-agent.tls.certresolver=letsencryptresolver
         - traefik.http.services.caio-agent.loadbalancer.server.port=18795
@@ -243,7 +245,7 @@ Internet
   ▼
 Traefik (ControllNet)
   │
-  ├── Host: seu-dominio.com.br
+  ├── Host: ${DOMAIN:-localhost}
   │     ├── / → caio-dashboard (Nginx :80)
   │     ├── /api/* → caio-agent (FastAPI :18795)
   │     └── /events → caio-agent (FastAPI :18795)
