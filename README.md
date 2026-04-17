@@ -1,5 +1,6 @@
 <div align="center">
-  <h1>🛸 Agente Caio Core (CaioCore)</h1>
+  <img src="docs/mascote.png" alt="Mascote Agente Caio" width="200"/>
+  <h1>Agente Caio Core (CaioCore)</h1>
   <p><strong>A Solução Suprema para Operações Inteligentes e Framework Unificado de IA</strong></p>
   <p>
     <img src="https://img.shields.io/badge/Versão-Premium_v4.0-violet?style=for-the-badge" alt="Versão Premium">
