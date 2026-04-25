@@ -1361,10 +1361,11 @@ async def setup_google_credentials(req: GoogleCredsRequest):
         cred_path.write_text(conteudo_str, encoding="utf-8")
         
         from google_auth_oauthlib.flow import Flow
+        redirect_uri = cred_data.get('installed', cred_data.get('web', {})).get('redirect_uris', ['http://localhost'])[0]
         flow = Flow.from_client_secrets_file(
             str(cred_path), 
             scopes=["https://www.googleapis.com/auth/calendar"],
-            redirect_uri='http://localhost:8080/'
+            redirect_uri=redirect_uri
         )
         auth_url, state = flow.authorization_url(prompt='consent', access_type='offline')
         
@@ -1393,6 +1394,9 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
             raise HTTPException(status_code=400, detail="credentials.json not found")
             
         import json
+        cred_data = json.loads(cred_path.read_text(encoding="utf-8"))
+        redirect_uri = cred_data.get('installed', cred_data.get('web', {})).get('redirect_uris', ['http://localhost'])[0]
+        
         state = None
         if state_path.exists():
             state = json.loads(state_path.read_text(encoding="utf-8")).get("state")
@@ -1402,7 +1406,7 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
             str(cred_path), 
             scopes=["https://www.googleapis.com/auth/calendar"],
             state=state,
-            redirect_uri='http://localhost:8080/'
+            redirect_uri=redirect_uri
         )
         
         flow.fetch_token(authorization_response=req.response_url.strip())

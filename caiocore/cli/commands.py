@@ -351,10 +351,11 @@ def setup():
                     
                     # Inicia OAuth sem abrir navegador automaticamente (VPS friendly)
                     from google_auth_oauthlib.flow import Flow
+                    redirect_uri = cred_data.get('installed', cred_data.get('web', {})).get('redirect_uris', ['http://localhost'])[0]
                     flow = Flow.from_client_secrets_file(
                         str(cred_path), 
                         scopes=["https://www.googleapis.com/auth/calendar"],
-                        redirect_uri='http://localhost:8080/'
+                        redirect_uri=redirect_uri
                     )
                     auth_url, state = flow.authorization_url(prompt='consent', access_type='offline')
                     
