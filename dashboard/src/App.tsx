@@ -7,10 +7,8 @@ import AgentsPage from './pages/AgentsPage';
 
 function MainChatArea() {
   return (
-    <div className="flex w-full h-full p-2 h-screen max-w-[100vw] overflow-hidden bg-black text-white relative">
-      <div className="w-full max-w-5xl mx-auto flex flex-col relative h-full">
-         <AnimatedAIChat />
-      </div>
+    <div className="w-full h-full overflow-hidden bg-[#050505]">
+       <AnimatedAIChat />
     </div>
   );
 }
