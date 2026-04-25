@@ -8,7 +8,7 @@ import AgentPlan from './components/ui/agent-plan';
 function MainChatArea() {
   return (
     <div className="flex flex-col lg:flex-row w-full h-full p-2 h-screen max-w-[100vw] overflow-hidden bg-black text-white relative">
-      <div className="w-full lg:w-[60%] flex items-center justify-center relative">
+      <div className="w-full lg:w-[60%] flex flex-col relative h-full">
          <AnimatedAIChat />
       </div>
       <div className="w-full lg:w-[40%] flex flex-col p-4 z-10 border-l border-white/5 relative">
@@ -90,8 +90,20 @@ function App() {
       {/* Area Principal */}
       <main className="flex-1 overflow-hidden relative bg-[#050505]">
         {currentPage === 'chat' && <MainChatArea />}
-        {currentPage === 'monitor' && <MonitorPage />}
-        {currentPage === 'settings' && <SettingsPage />}
+        {currentPage === 'monitor' && (
+          <div className="h-full w-full overflow-y-auto p-4 md:p-6 lg:p-8">
+            <div className="max-w-7xl mx-auto">
+              <MonitorPage />
+            </div>
+          </div>
+        )}
+        {currentPage === 'settings' && (
+          <div className="h-full w-full overflow-y-auto p-4 md:p-6 lg:p-8">
+            <div className="max-w-7xl mx-auto">
+              <SettingsPage />
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

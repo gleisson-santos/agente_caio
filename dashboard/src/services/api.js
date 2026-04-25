@@ -242,7 +242,7 @@ const SPECIALIST_DEFAULTS = {
             activeSchedules: [],
         },
     },
-    'spec-docs': { status: 'online', statusDetail: 'ATIVO', monitorProject: 'nanobot/documentos', metrics: { docsGenerated: 0, lastGeneration: null, successRate: 100 } },
+    'spec-docs': { status: 'online', statusDetail: 'ATIVO', monitorProject: 'agentecaio/documentos', metrics: { docsGenerated: 0, lastGeneration: null, successRate: 100 } },
     'spec-almox': { status: 'offline', statusDetail: 'FUTURO', metrics: {}, comingSoon: true },
 }
 

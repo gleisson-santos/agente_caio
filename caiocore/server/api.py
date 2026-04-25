@@ -1379,7 +1379,7 @@ def start_api(agent, bus, config, cron, channels=None, doc_agent=None):
     logger.info("Caio API initialized (monitoring agents registered)")
 
 
-async def start_api_server(host="0.0.0.0", port=18795):
+async def start_api_server(host="0.0.0.0", port=18790):
     """
     RUN current FastAPI app in the current event loop.
     This prevents loop conflict errors (504/hangs).

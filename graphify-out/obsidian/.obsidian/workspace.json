@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "33ef1072bf04cf59",
+        "id": "296b55c6e57145ad",
         "type": "tabs",
         "children": [
           {
-            "id": "6ca7f2e4346bcd73",
+            "id": "859ecae94db17768",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -176,8 +176,10 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "6ca7f2e4346bcd73",
+  "active": "859ecae94db17768",
   "lastOpenFiles": [
+    "Start the nanobot gateway..md",
+    "SkillsLoader.md",
     "_start_agent_loops().md",
     "MochatChannel.md"
   ]

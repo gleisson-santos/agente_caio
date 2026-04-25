@@ -18,6 +18,9 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as React from "react"
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { api } from "../../services/api"
 
 interface UseAutoResizeTextareaProps {
     minHeight: number;
@@ -123,6 +126,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = "Textarea"
 
 export function AnimatedAIChat() {
+    const [messages, setMessages] = useState<any[]>([]);
+    const [sessionId] = useState(() => {
+        const today = new Date().toISOString().split('T')[0];
+        return `dashboard-daily-${today}`;
+    });
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
     const [value, setValue] = useState("");
     const [attachments, setAttachments] = useState<string[]>([]);
     const [isTyping, setIsTyping] = useState(false);
@@ -164,6 +174,24 @@ export function AnimatedAIChat() {
             prefix: "/shell" 
         },
     ];
+
+    useEffect(() => {
+        const loadHistory = async () => {
+            try {
+                const history = await api.getChatHistory(sessionId)
+                if (history && history.length > 0) {
+                    setMessages(history)
+                }
+            } catch (e) {
+                console.error("Erro ao carregar histórico", e)
+            }
+        }
+        loadHistory()
+    }, [sessionId])
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }, [messages, isTyping])
 
     useEffect(() => {
         if (value.startsWith('/') && !value.includes(' ')) {
@@ -246,16 +274,36 @@ export function AnimatedAIChat() {
         }
     };
 
-    const handleSendMessage = () => {
-        if (value.trim()) {
-            startTransition(() => {
-                setIsTyping(true);
-                setTimeout(() => {
-                    setIsTyping(false);
-                    setValue("");
-                    adjustHeight(true);
-                }, 3000); // Emulates generating
-            });
+    const handleSendMessage = async () => {
+        if (!value.trim() || isTyping) return;
+        
+        const msg = value.trim();
+        setValue("");
+        adjustHeight(true);
+        setMessages(prev => [...prev, { role: 'user', content: msg }]);
+        setIsTyping(true);
+
+        try {
+            const response = await api.sendChatMessage(msg, sessionId, null);
+            if (response && response.content) {
+                setMessages(prev => [...prev, { role: 'assistant', content: response.content }]);
+            } else if (response && response.status === 'error') {
+                const isTimeout = response.message?.toLowerCase().includes('timeout') || response.message?.toLowerCase().includes('abort')
+                const errMsg = isTimeout
+                    ? '⏳ A tarefa está demorando mais que o esperado (modelo processando tool calls). Verifique o Dashboard — a extração pode ter iniciado em segundo plano!'
+                    : `⚠️ Erro: ${response.message || 'Resposta inesperada do servidor.'}`
+                setMessages(prev => [...prev, { role: 'assistant', content: errMsg }]);
+            } else {
+                setMessages(prev => [...prev, { role: 'assistant', content: 'Erro de processamento neural. Tente novamente.' }]);
+            }
+        } catch(e: any) {
+            const isTimeout = e.name === 'AbortError' || e.message?.includes('timeout')
+            const errMsg = isTimeout
+                ? '⏳ A tarefa está demorando mais que o esperado. Verifique o Dashboard para acompanhar o progresso!'
+                : '🔴 Núcleo offline. Verifique a conexão com o servidor gateway.'
+            setMessages(prev => [...prev, { role: 'assistant', content: errMsg }]);
+        } finally {
+            setIsTyping(false);
         }
     };
 
@@ -285,14 +333,35 @@ export function AnimatedAIChat() {
                 <div className="absolute top-1/4 right-1/3 w-64 h-64 bg-fuchsia-500/10 rounded-full mix-blend-normal filter blur-[96px] animate-pulse delay-1000" />
             </div>
             
-            <div className="w-full max-w-2xl relative z-10 pt-10">
+            <div className={`w-full max-w-3xl relative z-10 flex flex-col ${messages.length > 0 ? "h-full justify-end pb-8 flex-1 overflow-hidden" : "pt-10"}`}>
+               {messages.length > 0 && (
+                   <div className="flex-1 overflow-y-auto w-full space-y-6 pr-4 pt-8 mb-4 max-h-full flex flex-col scrollbar-thin">
+                       {messages.map((msg, i) => (
+                           <div key={i} className={`flex w-full ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                               <div className={`max-w-[85%] rounded-2xl px-5 py-3 ${
+                                   msg.role === 'user' 
+                                   ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20 rounded-br-none' 
+                                   : 'bg-[#18181b]/80 border border-white/10 text-white/90 backdrop-blur-md rounded-bl-none prose prose-invert max-w-none'
+                               }`}>
+                                   {msg.role === 'user' ? msg.content : (
+                                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                           {msg.content}
+                                       </ReactMarkdown>
+                                   )}
+                               </div>
+                           </div>
+                       ))}
+                       <div ref={messagesEndRef} />
+                   </div>
+               )}
+
                 <motion.div 
-                    className="relative z-10 space-y-12"
+                    className="relative z-10 space-y-12 shrink-0 mb-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <div className="text-center space-y-3">
+                    <div className={cn("text-center space-y-3", messages.length > 0 && "hidden")}>
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}

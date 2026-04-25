@@ -391,4 +391,4 @@ class Config(BaseSettings):
 
         return None
 
-    model_config = ConfigDict(env_prefix="NANOBOT_", env_nested_delimiter="__", extra="allow")
+    model_config = ConfigDict(env_prefix="AGENTECAIO_", env_nested_delimiter="__", extra="allow")

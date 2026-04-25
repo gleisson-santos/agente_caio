@@ -172,64 +172,187 @@ def main(
 def setup():
     """Interactive setup wizard for CaioCore."""
     from caiocore.config.loader import get_config_path, load_config, save_config
-    from caiocore.config.schema import Config
+    from caiocore.config.schema import Config, ProviderConfig
     from caiocore.utils.helpers import get_workspace_path
-    
-    console.print(f"\n{__logo__} [bold cyan]Bem-vindo ao Setup do Agente Caio Core![/bold cyan]")
-    console.print("Este assistente irá guiar você na configuração inicial da sua Stack de IA.\n")
+    from rich.panel import Panel
+    from rich.prompt import Prompt, Confirm
+    import sys
     
     config_path = get_config_path()
     config = load_config()
-    
-    # 1. Telegram
-    console.print("[bold yellow][1/4] Configuração do Telegram[/bold yellow]")
-    if typer.confirm("Deseja configurar o Telegram agora?", default=True):
-        token = typer.prompt("Digite o Token do seu Bot (obtido no @BotFather)", default=config.channels.telegram.token or "XXXXXXXXX")
-        chat_id = typer.prompt("Digite o seu Chat ID do Telegram (use o @userinfobot)", default=config.channels.telegram.notify_chat_id or "XXXXXXXXX")
-        config.channels.telegram.enabled = True
-        config.channels.telegram.token = token
-        config.channels.telegram.notify_chat_id = chat_id
-        config.channels.telegram.allow_from = [chat_id]
-        console.print("[green]✓ Telegram configurado.[/green]\n")
 
-    # 2. AI Provider
-    console.print("[bold yellow][2/4] Configuração de Inteligência Artificial[/bold yellow]")
-    console.print("[dim]Recomendado: OpenRouter (Grok, Gemini, GPT em um só lugar)[/dim]")
-    provider_name = typer.prompt("Escolha o provedor (openrouter, openai, gemini)", default="openrouter")
-    
-    if provider_name == "openrouter":
-        console.print("[blue]Obtenha sua chave em: https://openrouter.ai/keys[/blue]")
-        if not config.providers.openrouter:
-            from caiocore.config.schema import ProviderConfig
-            config.providers.openrouter = ProviderConfig(api_key=api_key) if 'api_key' in locals() else ProviderConfig(api_key=typer.prompt("Digite sua API Key para OpenRouter", hide_input=True))
-        config.agents.defaults.model = "x-ai/grok-4.1-fast"
-    elif provider_name == "openai":
-        console.print("[blue]Obtenha sua chave em: https://platform.openai.com/api-keys[/blue]")
-        if not config.providers.openai:
-            from caiocore.config.schema import ProviderConfig
-            config.providers.openai = ProviderConfig(api_key=typer.prompt("Digite sua API Key para OpenAI", hide_input=True))
-        config.agents.defaults.model = "gpt-4o-mini"
-    
-    console.print("[green]✓ Provedor de IA configurado.[/green]\n")
+    def print_header():
+        console.clear()
+        console.print(Panel(
+            "[bold white]CaioCore - Assistente de Configuração[/bold white]\n"
+            "[blue]Escolha uma das categorias abaixo para configurar o sistema de forma assistida.[/blue]",
+            border_style="blue",
+            expand=False
+        ))
 
+    def pause():
+        console.input("\n[dim]Pressione Enter para voltar ao menu...[/dim]")
 
-    # 3. Workspace
-    console.print("[bold yellow][3/4] Configuração do Workspace[/bold yellow]")
-    workspace = get_workspace_path()
-    if not workspace.exists():
-        workspace.mkdir(parents=True, exist_ok=True)
-        _create_workspace_templates(workspace)
-        console.print(f"[green]✓ Workspace criado em {workspace}[/green]\n")
-    else:
-        console.print(f"[dim]Workspace já existe em {workspace}[/dim]\n")
+    while True:
+        print_header()
+        console.print("\n[bold white]Menu Mestre:[/bold white]")
+        console.print("  [bold blue]1.[/bold blue] 🧠 Configurar Inteligência Artificial (Providers)")
+        console.print("  [bold blue]2.[/bold blue] 💬 Configurar Canais de Chat (Telegram, WhatsApp, Discord)")
+        console.print("  [bold blue]3.[/bold blue] 🛠️  Configurar Ferramentas (Calendário, Buscador)")
+        console.print("  [bold blue]4.[/bold blue] 📁 Inicializar Workspace")
+        console.print("  [bold blue]0.[/bold blue] 💾 Salvar e Sair")
+        
+        choice = Prompt.ask("\n[bold white]Selecione uma opção[/bold white]", choices=["0", "1", "2", "3", "4"], default="0")
+        
+        if choice == "0":
+            save_config(config)
+            console.print(f"\n[bold green]✓ Toda a configuração foi salva com sucesso em: {config_path}[/bold green]")
+            console.print("\n[blue]Próximos passos:[/blue]")
+            console.print("  Para iniciar o servidor: [bold white]caiocore gateway[/bold white]")
+            break
+            
+        elif choice == "1":
+            print_header()
+            console.print("\n[bold white]1. Inteligência Artificial[/bold white]")
+            console.print("[dim]Selecione qual central de IAs você deseja usar primariamente.[/dim]\n")
+            prov = Prompt.ask(
+                "[blue]Escolha o provedor[/blue]", 
+                choices=["openrouter", "openai", "gemini", "anthropic", "voltar"], 
+                default="openrouter"
+            )
+            
+            if prov == "voltar": continue
+            
+            if prov == "openrouter":
+                console.print("\n[blue]Obtenha sua chave em: https://openrouter.ai/keys[/blue]")
+                api_key = Prompt.ask("Cole sua API Key", password=True)
+                if api_key:
+                    if not getattr(config.providers, "openrouter", None):
+                        config.providers.openrouter = ProviderConfig()
+                    config.providers.openrouter.api_key = api_key
+                    config.agents.defaults.model = "x-ai/grok-4.1-fast"
+                    console.print("[green]✓ OpenRouter ativo (Modelo padrão ajustado para grok-4.1-fast).[/green]")
+            elif prov == "openai":
+                console.print("\n[blue]Obtenha sua chave em: https://platform.openai.com/api-keys[/blue]")
+                api_key = Prompt.ask("Cole sua API Key", password=True)
+                if api_key:
+                    if not getattr(config.providers, "openai", None):
+                        config.providers.openai = ProviderConfig()
+                    config.providers.openai.api_key = api_key
+                    config.agents.defaults.model = "gpt-4o-mini"
+                    console.print("[green]✓ OpenAI ativa (Modelo padrão ajustado para gpt-4o-mini).[/green]")
+            elif prov == "gemini":
+                console.print("\n[blue]Obtenha sua chave do Google Gemini API.[/blue]")
+                api_key = Prompt.ask("Cole sua API Key", password=True)
+                if api_key:
+                    if not getattr(config.providers, "gemini", None):
+                        config.providers.gemini = ProviderConfig()
+                    config.providers.gemini.api_key = api_key
+                    config.agents.defaults.model = "gemini/gemini-2.5-flash"
+                    console.print("[green]✓ Gemini ativo (Modelo Padrão ajustado para gemini-2.5-flash).[/green]")
+            elif prov == "anthropic":
+                console.print("\n[blue]Obtenha sua chave da Anthropic API.[/blue]")
+                api_key = Prompt.ask("Cole sua API Key", password=True)
+                if api_key:
+                    if not getattr(config.providers, "anthropic", None):
+                        config.providers.anthropic = ProviderConfig()
+                    config.providers.anthropic.api_key = api_key
+                    config.agents.defaults.model = "anthropic/claude-3-5-haiku-20241022"
+                    console.print("[green]✓ Anthropic ativa (Modelo Padrão ajustado).[/green]")
+            
+            pause()
+            
+        elif choice == "2":
+            print_header()
+            console.print("\n[bold white]2. Canais de Chat[/bold white]")
+            channel = Prompt.ask(
+                "[blue]Escolha o canal[/blue]", 
+                choices=["telegram", "whatsapp", "discord", "voltar"],
+                default="telegram"
+            )
+            
+            if channel == "voltar": continue
+            
+            if channel == "telegram":
+                console.print("\n[bold blue]-- Telegram --[/bold blue]")
+                console.print("[dim]Use o @BotFather no Telegram para criar seu bot e pegar o Token.[/dim]")
+                token = Prompt.ask("Token do Bot (ENTER para pular)", default=config.channels.telegram.token or "")
+                chat_id = Prompt.ask("Seu Chat ID (descubra com @userinfobot)", default=config.channels.telegram.notify_chat_id or "")
+                if token and token != "XXXXXXXXX":
+                    config.channels.telegram.enabled = True
+                    config.channels.telegram.token = token
+                    config.channels.telegram.notify_chat_id = chat_id
+                    if chat_id:
+                        config.channels.telegram.allow_from = [chat_id]
+                    console.print("[green]✓ Telegram configurado e ativado.[/green]")
+                    
+            elif channel == "whatsapp":
+                console.print("\n[bold blue]-- WhatsApp (via Evolution API) --[/bold blue]")
+                base_url = Prompt.ask("URL base da Evolution", default=config.channels.evolution.base_url or "")
+                api_key = Prompt.ask("Global API Key da Evolution", default=config.channels.evolution.api_key or "")
+                instance = Prompt.ask("Nome da Instância para este Agente", default=config.channels.evolution.instance_name or "Caio")
+                if base_url and api_key:
+                    config.channels.evolution.enabled = True
+                    config.channels.evolution.base_url = base_url
+                    config.channels.evolution.api_key = api_key
+                    config.channels.evolution.instance_name = instance
+                    console.print("[green]✓ WhatsApp via Evolution ativado e configurado.[/green]")
+                    
+            elif channel == "discord":
+                console.print("\n[bold blue]-- Discord --[/bold blue]")
+                console.print("[dim]Você precisará de um Bot Token do Discord Developer Portal.[/dim]")
+                token = Prompt.ask("Token do seu Bot", password=True)
+                if token:
+                    config.channels.discord.enabled = True
+                    config.channels.discord.token = token
+                    console.print("[green]✓ Discord configurado e ativado.[/green]")
+                    
+            pause()
+            
+        elif choice == "3":
+            print_header()
+            console.print("\n[bold white]3. Ferramentas e Integrações do Agente[/bold white]")
+            ferramenta = Prompt.ask(
+                "[blue]Escolha a ferramenta[/blue]", 
+                choices=["calendario", "buscador", "voltar"],
+                default="voltar"
+            )
+            
+            if ferramenta == "voltar": continue
+            
+            if ferramenta == "calendario":
+                console.print("\n[bold blue]-- Google Calendar --[/bold blue]")
+                if Confirm.ask("Deseja ATIVAR a manipulação de Google Calendar?"):
+                    config.tools.google_calendar.enabled = True
+                    console.print("[dim]O arquivo `credentials.json` deve estar presente na raiz do sistema.[/dim]")
+                    config.tools.google_calendar.credentials_path = Prompt.ask("Caminho do credentials.json", default=config.tools.google_calendar.credentials_path)
+                    console.print("[green]✓ Calendário ativado.[/green]")
+                else:
+                    config.tools.google_calendar.enabled = False
+                    console.print("[yellow]Calendário desativado.[/yellow]")
+            
+            elif ferramenta == "buscador":
+                console.print("\n[bold blue]-- Brave Search Engine --[/bold blue]")
+                console.print("[dim]Para permitir buscas em tempo real, crie uma chave gratuita no Brave Search API.[/dim]")
+                api_key = Prompt.ask("Brave API Key", password=True)
+                if api_key:
+                    config.tools.web.search.api_key = api_key
+                    console.print("[green]✓ Buscador Web ativado.[/green]")
 
-    # 4. Save
-    save_config(config)
-    console.print(f"\n{__logo__} [bold green]CaioCore está pronto![/bold green]")
-    console.print("\nPróximos passos:")
-    console.print(f"  1. Verifique seu config em: [cyan]{config_path}[/cyan]")
-    console.print("  2. Inicie o Agente: [cyan]caio gateway[/cyan]")
-    console.print("\n[dim]Para suporte e agents premium, acesse o Dashboard.[/dim]")
+            pause()
+            
+        elif choice == "4":
+            print_header()
+            console.print("\n[bold white]4. Inicialização de Workspace[/bold white]")
+            workspace = get_workspace_path()
+            if not workspace.exists():
+                workspace.mkdir(parents=True, exist_ok=True)
+                _create_workspace_templates(workspace)
+                console.print(f"[green]✓ Espaço de trabalho inicializado perfeitamente em {workspace}[/green]")
+            else:
+                console.print(f"\n[dim]Excelente: O Workspace já existe e está pronto em {workspace}[/dim]")
+            
+            pause()
 
 
 @app.command()
@@ -629,7 +752,7 @@ def gateway(
             await asyncio.gather(
                 agent.run(),
                 channels.start_all(),
-                start_api_server()
+                start_api_server(host=config.gateway.host, port=config.gateway.port)
             )
         except KeyboardInterrupt:
             console.print("\nShutting down...")

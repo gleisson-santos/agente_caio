@@ -13,7 +13,7 @@ def ensure_dir(path: Path) -> Path:
 def get_data_path() -> Path:
     """Get the caiocore data directory (~/.caiocore or CAIOCORE_HOME)."""
     import os
-    home = os.environ.get("CAIOCORE_HOME") or os.environ.get("NANOBOT_HOME")
+    home = os.environ.get("CAIOCORE_HOME") or os.environ.get("AGENTECAIO_HOME")
     if home:
         return ensure_dir(Path(home))
     return ensure_dir(Path.home() / ".caiocore")
