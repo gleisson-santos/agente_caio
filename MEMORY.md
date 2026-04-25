@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-04-24 22:55:45 -0300** - `abed559` por gleisson-santos
+> **Mensagem:** feat(auth): unified google calendar oauth via dashboard and cli
+> *Arquivos tocados:* caio-stack/core/.gitkeep, caiocore/cli/commands.py, caiocore/server/api.py, dashboard/src/pages/SettingsPage.jsx, dashboard/src/services/api.js, etc...
+
+***
+
 **2026-04-24 22:29:45 -0300** - `da7d6ea` por gleisson-santos
 > **Mensagem:** chore: remove legacy nanobot vestiges and fix graph export
 > *Arquivos tocados:* .dockerignore, README.md, bridge/package.json, graphify-out/GRAPH_REPORT.md, graphify-out/cache/0c4c208ce96f537436aa8c276c17d78a3a5bf56dd28d444876f1ef9ed1991afd.json, etc...
@@ -33,12 +39,6 @@
 **2026-04-16 23:20:59 -0300** - `4851598` por gleisson-santos
 > **Mensagem:** docs: overhaul README with architecture, setup details and features
 > *Arquivos tocados:* README.md, dashboard/SKILL22.md
-
-***
-
-**2026-04-16 23:14:50 -0300** - `d8ae7d2` por gleisson-santos
-> **Mensagem:** feat: unify agent model and overhaul dashboard with tailwind, shadcn and tsx
-> *Arquivos tocados:* caiocore/agents/premium/assistente_geral.md, caiocore/agents/premium/assuntos_email.md, caiocore/agents/premium/carrossel.md, caiocore/agents/premium/concorrentes.md, caiocore/agents/premium/copywriter.md, etc...
 <!-- DYNAMIC_LOG_END -->
 
 ---
