@@ -3,17 +3,13 @@ import { Settings, BarChart2, MessageSquare, Menu, Settings2Icon, Activity } fro
 import SettingsPage from './pages/SettingsPage';
 import MonitorPage from './pages/MonitorPage';
 import { AnimatedAIChat } from './components/ui/animated-ai-chat';
-import AgentPlan from './components/ui/agent-plan';
+import AgentsPage from './pages/AgentsPage';
 
 function MainChatArea() {
   return (
-    <div className="flex flex-col lg:flex-row w-full h-full p-2 h-screen max-w-[100vw] overflow-hidden bg-black text-white relative">
-      <div className="w-full lg:w-[60%] flex flex-col relative h-full">
+    <div className="flex w-full h-full p-2 h-screen max-w-[100vw] overflow-hidden bg-black text-white relative">
+      <div className="w-full max-w-5xl mx-auto flex flex-col relative h-full">
          <AnimatedAIChat />
-      </div>
-      <div className="w-full lg:w-[40%] flex flex-col p-4 z-10 border-l border-white/5 relative">
-         <div className="absolute inset-0 top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-violet-500/5 to-transparent pointer-events-none" />
-         <AgentPlan />
       </div>
     </div>
   );
@@ -71,6 +67,20 @@ function App() {
             </button>
 
             <button
+              onClick={() => setCurrentPage('agents')}
+              className={`w-full flex items-center ${
+                sidebarOpen ? 'justify-start px-4' : 'justify-center'
+              } p-3 rounded-lg transition-colors ${
+                currentPage === 'agents'
+                  ? 'bg-white/10 text-white'
+                  : 'text-white/60 hover:bg-white/5 hover:text-white'
+              }`}
+            >
+              <BarChart2 className="w-5 h-5 flex-shrink-0" />
+              {sidebarOpen && <span className="ml-3 font-medium text-sm">Especialistas</span>}
+            </button>
+
+            <button
               onClick={() => setCurrentPage('settings')}
               className={`w-full flex items-center ${
                 sidebarOpen ? 'justify-start px-4' : 'justify-center'
@@ -94,6 +104,13 @@ function App() {
           <div className="h-full w-full overflow-y-auto p-4 md:p-6 lg:p-8">
             <div className="max-w-7xl mx-auto">
               <MonitorPage />
+            </div>
+          </div>
+        )}
+        {currentPage === 'agents' && (
+          <div className="h-full w-full overflow-y-auto p-4 md:p-6 lg:p-8">
+            <div className="max-w-7xl mx-auto h-full">
+              <AgentsPage />
             </div>
           </div>
         )}

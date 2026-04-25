@@ -21,6 +21,7 @@ import * as React from "react"
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { api } from "../../services/api"
+import AgentThinking from "./agent-plan"
 
 interface UseAutoResizeTextareaProps {
     minHeight: number;
@@ -341,7 +342,7 @@ export function AnimatedAIChat() {
                                <div className={`max-w-[85%] rounded-2xl px-5 py-3 ${
                                    msg.role === 'user' 
                                    ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20 rounded-br-none' 
-                                   : 'bg-[#18181b]/80 border border-white/10 text-white/90 backdrop-blur-md rounded-bl-none prose prose-invert max-w-none'
+                                   : 'bg-[#0f0f13]/90 border border-white/[0.06] text-white/90 backdrop-blur-xl rounded-bl-none prose prose-invert max-w-none shadow-xl shadow-black/20'
                                }`}>
                                    {msg.role === 'user' ? msg.content : (
                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -351,6 +352,12 @@ export function AnimatedAIChat() {
                                </div>
                            </div>
                        ))}
+                       {/* Inline Thinking indicator */}
+                       {isTyping && (
+                           <div className="flex w-full justify-start">
+                               <AgentThinking isThinking={true} />
+                           </div>
+                       )}
                        <div ref={messagesEndRef} />
                    </div>
                )}
@@ -560,27 +567,6 @@ export function AnimatedAIChat() {
                     </div>
                 </motion.div>
             </div>
-
-            <AnimatePresence>
-                {isTyping && (
-                    <motion.div 
-                        className="fixed bottom-8 mx-auto transform -translate-x-1/2 backdrop-blur-2xl bg-white/[0.02] rounded-full px-4 py-2 shadow-lg border border-white/[0.05] z-50 text-white"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                    >
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-7 rounded-full bg-violet-600/30 flex items-center justify-center text-center">
-                                <span className="text-[10px] font-bold text-violet-300">CAIO</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-white/70">
-                                <span>Raciocinando</span>
-                                <TypingDots />
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
 }
