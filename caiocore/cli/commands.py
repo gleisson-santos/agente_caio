@@ -368,6 +368,8 @@ def setup():
                     url_resposta = console.input("\nCole a URL aqui: ")
                     
                     if url_resposta.strip():
+                        import os
+                        os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
                         flow.fetch_token(authorization_response=url_resposta.strip())
                         token_path = caio_stack_core / "token.json"
                         token_path.write_text(flow.credentials.to_json(), encoding="utf-8")

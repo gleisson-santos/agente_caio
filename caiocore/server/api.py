@@ -1409,6 +1409,8 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
             redirect_uri=redirect_uri
         )
         
+        import os
+        os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
         flow.fetch_token(authorization_response=req.response_url.strip())
         
         token_path = caio_stack_core / "token.json"
