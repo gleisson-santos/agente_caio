@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\engine.py"
 type: "code"
-community: "Community None"
+community: "Community 6"
 location: "L301"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # create_xlsx()
@@ -21,4 +21,4 @@ tags:
 - [[generate_from_ai_content()]] - `calls` [EXTRACTED]
 - [[quick_generate()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_6

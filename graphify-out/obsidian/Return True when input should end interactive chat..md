@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L123"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Return True when input should end interactive chat.
@@ -31,4 +31,4 @@ tags:
 - [[SpecialistAgent]] - `uses` [INFERRED]
 - [[_is_exit_command()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\manager.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L17"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Manages chat channels and coordinates message routing.          Responsibiliti
@@ -28,4 +28,4 @@ tags:
 - [[TelegramChannel]] - `uses` [INFERRED]
 - [[WhatsAppChannel]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

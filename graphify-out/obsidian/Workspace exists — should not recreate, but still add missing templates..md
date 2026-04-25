@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L86"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Workspace exists — should not recreate, but still add missing templates.
@@ -16,4 +16,4 @@ tags:
 - [[LiteLLMProvider]] - `uses` [INFERRED]
 - [[test_onboard_existing_workspace_safe_create()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\email_agent.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L53"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Test IMAP connectivity without fetching messages.
@@ -15,4 +15,4 @@ tags:
 - [[._test_imap_connection()]] - `rationale_for` [EXTRACTED]
 - [[BaseAgent_1]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_3

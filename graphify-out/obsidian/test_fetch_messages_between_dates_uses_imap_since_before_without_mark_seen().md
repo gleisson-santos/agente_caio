@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_email_channel.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L268"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # test_fetch_messages_between_dates_uses_imap_since_before_without_mark_seen()
@@ -19,4 +19,4 @@ tags:
 - [[_make_raw_email()]] - `calls` [EXTRACTED]
 - [[test_email_channel.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

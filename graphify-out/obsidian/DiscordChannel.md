@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\discord.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L45"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # DiscordChannel
@@ -44,4 +44,4 @@ tags:
 - [[Sync running channels with the provided config (Hot-reload).]] - `uses` [INFERRED]
 - [[discord.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L78"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Restore terminal to its original state (echo, line buffering, etc.).
@@ -31,4 +31,4 @@ tags:
 - [[SpecialistAgent]] - `uses` [INFERRED]
 - [[_restore_terminal()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

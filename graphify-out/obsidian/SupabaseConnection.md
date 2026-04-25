@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\bd_agent.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # SupabaseConnection
@@ -18,4 +18,4 @@ tags:
 - [[Configuration for a single Supabase connection.]] - `rationale_for` [EXTRACTED]
 - [[bd_agent.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_3

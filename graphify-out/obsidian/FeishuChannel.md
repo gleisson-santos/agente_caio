@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\feishu.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L230"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # FeishuChannel
@@ -49,4 +49,4 @@ tags:
 - [[Sync running channels with the provided config (Hot-reload).]] - `uses` [INFERRED]
 - [[feishu.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "diag_agents.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L11"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # diag()
@@ -18,4 +18,4 @@ tags:
 - [[diag_agents.py]] - `contains` [EXTRACTED]
 - [[get_status()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_3

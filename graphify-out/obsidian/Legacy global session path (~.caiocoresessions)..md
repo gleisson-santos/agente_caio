@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\session\manager.py"
 type: "rationale"
-community: "Community None"
+community: "Community 4"
 location: "L81"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # Legacy global session path (~/.caiocore/sessions/).
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[._get_legacy_session_path()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_4

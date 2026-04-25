@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\workflow.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # workflow.py
@@ -18,4 +18,4 @@ tags:
 - [[name()_12]] - `contains` [EXTRACTED]
 - [[parameters()_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_1

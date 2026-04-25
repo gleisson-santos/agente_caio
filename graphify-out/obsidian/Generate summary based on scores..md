@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\performance-profiling\scripts\lighthouse_audit.py"
 type: "rationale"
-community: "Community None"
+community: "Community 5"
 location: "L61"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # Generate summary based on scores.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[get_summary()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_5

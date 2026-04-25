@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\workflow.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L15"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # WorkflowEngine
@@ -36,11 +36,11 @@ tags:
 - [[Remove think…think blocks that some models embed in content.]] - `uses` [INFERRED]
 - [[Run the agent iteration loop. Returns (final_content, tools_used).]] - `uses` [INFERRED]
 - [[Run the agent loop, processing messages from the bus.]] - `uses` [INFERRED]
-- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of s]] - `rationale_for` [EXTRACTED]
+- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of]] - `rationale_for` [EXTRACTED]
 - [[Tenta o modelo principal, depois os fallbacks em ordem.]] - `uses` [INFERRED]
 - [[The agent loop is the core processing engine.      It     1. Receives messag]] - `uses` [INFERRED]
 - [[Try to extract tool calls from JSON blocks in text content.]] - `uses` [INFERRED]
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[workflow.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

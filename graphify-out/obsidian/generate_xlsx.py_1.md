@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\extras\generate_xlsx.py"
 type: "code"
-community: "Community None"
+community: "Community 13"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_13
 ---
 
 # generate_xlsx.py
@@ -22,4 +22,4 @@ tags:
 - [[novo_workbook()]] - `contains` [EXTRACTED]
 - [[salvar_workbook()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_13

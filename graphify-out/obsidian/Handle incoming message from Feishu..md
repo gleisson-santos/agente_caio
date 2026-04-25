@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\feishu.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L640"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Handle incoming message from Feishu.
@@ -18,4 +18,4 @@ tags:
 - [[MessageBus]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

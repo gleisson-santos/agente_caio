@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_tool_validation.py"
 type: "code"
-community: "Community None"
+community: "Community 7"
 location: "L84"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_7
 ---
 
 # test_registry_returns_validation_error()
@@ -18,4 +18,4 @@ tags:
 - [[ToolRegistry]] - `calls` [INFERRED]
 - [[test_tool_validation.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_7

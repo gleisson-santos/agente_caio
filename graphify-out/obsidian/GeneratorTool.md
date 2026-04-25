@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\generator.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # GeneratorTool
@@ -20,7 +20,7 @@ tags:
 - [[Close MCP connections.]] - `uses` [INFERRED]
 - [[Connect to configured MCP servers (one-time, lazy).]] - `uses` [INFERRED]
 - [[Delegate to MemoryStore.consolidate().]] - `uses` [INFERRED]
-- [[Ferramenta para geração de mídia e assets (Imagens, Prompts, etc).     Integrada]] - `rationale_for` [EXTRACTED]
+- [[Ferramenta para geração de mídia e assets (Imagens, Prompts, etc).     Integrad]] - `rationale_for` [EXTRACTED]
 - [[Format tool calls as concise hint, e.g. 'web_search(query)'.]] - `uses` [INFERRED]
 - [[Process a message directly (for CLI or cron usage).]] - `uses` [INFERRED]
 - [[Process a single inbound message and return the response.]] - `uses` [INFERRED]
@@ -37,4 +37,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[generator.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

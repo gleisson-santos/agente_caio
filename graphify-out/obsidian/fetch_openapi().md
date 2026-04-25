@@ -1,12 +1,12 @@
 ---
 source_file: "tools\export_db.py"
 type: "code"
-community: "Community None"
+community: "Community 60"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_60
 ---
 
 # fetch_openapi()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[export_db.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_60

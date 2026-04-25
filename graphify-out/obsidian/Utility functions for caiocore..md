@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\utils\__init__.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Utility functions for caiocore.
@@ -40,4 +40,4 @@ tags:
 - [[__init__.py_13]] - `rationale_for` [EXTRACTED]
 - [[__init__.py_14]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

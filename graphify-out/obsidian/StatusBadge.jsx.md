@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\components\StatusBadge.jsx"
 type: "code"
-community: "Community None"
+community: "Community 55"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_55
 ---
 
 # StatusBadge.jsx
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[StatusBadge()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_55

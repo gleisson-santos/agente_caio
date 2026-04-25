@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L490"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # VPS / server metrics (CPU, RAM, Disk, Network, Uptime).
@@ -20,4 +20,4 @@ tags:
 - [[SSOAgent]] - `uses` [INFERRED]
 - [[get_server_metrics()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_3

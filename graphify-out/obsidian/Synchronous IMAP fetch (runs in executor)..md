@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\email_read.py"
 type: "rationale"
-community: "Community None"
+community: "Community 21"
 location: "L146"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_21
 ---
 
 # Synchronous IMAP fetch (runs in executor).
@@ -15,4 +15,4 @@ tags:
 - [[._fetch_emails()]] - `rationale_for` [EXTRACTED]
 - [[Tool_1]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_21

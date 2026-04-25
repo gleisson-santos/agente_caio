@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L1027"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Load tasks from in-memory store, initializing from disk if needed.
@@ -20,4 +20,4 @@ tags:
 - [[SSOAgent]] - `uses` [INFERRED]
 - [[_load_tasks()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_3

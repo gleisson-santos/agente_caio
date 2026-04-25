@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\doc_agent.py"
 type: "rationale"
-community: "Community None"
+community: "Community 6"
 location: "L85"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # Custom heartbeat that includes fresh metrics.
@@ -15,4 +15,4 @@ tags:
 - [[.heartbeat()]] - `rationale_for` [EXTRACTED]
 - [[BaseAgent_1]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_6

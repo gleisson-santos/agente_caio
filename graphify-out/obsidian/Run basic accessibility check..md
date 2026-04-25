@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\webapp-testing\scripts\playwright_runner.py"
 type: "rationale"
-community: "Community None"
+community: "Community 38"
 location: "L116"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_38
 ---
 
 # Run basic accessibility check.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[run_accessibility_check()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_38

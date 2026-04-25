@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\vulnerability-scanner\scripts\security_scan.py"
 type: "code"
-community: "Community None"
+community: "Community 5"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # security_scan.py
@@ -19,4 +19,4 @@ tags:
 - [[scan_dependencies()]] - `contains` [EXTRACTED]
 - [[scan_secrets()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_5

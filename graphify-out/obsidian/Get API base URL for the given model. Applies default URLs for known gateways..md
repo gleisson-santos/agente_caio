@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\schema.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L378"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Get API base URL for the given model. Applies default URLs for known gateways.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.get_api_base()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

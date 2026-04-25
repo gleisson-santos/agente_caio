@@ -1,0 +1,284 @@
+---
+type: community
+members: 238
+---
+
+# Community 3
+
+**Members:** 238 nodes
+
+## Members
+- [[.__init__()_6]] - code - caiocore\agent\tracer.py
+- [[.__init__()_18]] - code - caiocore\agent\tools\google_calendar.py
+- [[.__init__()_26]] - code - caiocore\agent\tools\web.py
+- [[.__init__()_29]] - code - caiocore\agents\bd_agent.py
+- [[.__init__()_31]] - code - caiocore\agents\email_agent.py
+- [[.__init__()_34]] - code - caiocore\agents\life_agent.py
+- [[.__init__()_36]] - code - caiocore\agents\sdk.py
+- [[.__init__()_38]] - code - caiocore\agents\sso_agent.py
+- [[.__init__()_59]] - code - caiocore\providers\transcription.py
+- [[._check_agent()]] - code - caiocore\agents\life_agent.py
+- [[._check_connection()]] - code - caiocore\agents\bd_agent.py
+- [[._check_thresholds()]] - code - caiocore\agents\sso_agent.py
+- [[._collect_fallback()]] - code - caiocore\agents\sso_agent.py
+- [[._collect_psutil()]] - code - caiocore\agents\sso_agent.py
+- [[._create_event()]] - code - caiocore\agent\tools\google_calendar.py
+- [[._delete_emails()]] - code - caiocore\agent\tools\email_delete.py
+- [[._delete_event()]] - code - caiocore\agent\tools\google_calendar.py
+- [[._ensure_fallback_workers()]] - code - caiocore\channels\mochat.py
+- [[._get_service()]] - code - caiocore\agent\tools\google_calendar.py
+- [[._handle_watch_payload()]] - code - caiocore\channels\mochat.py
+- [[._list_events()]] - code - caiocore\agent\tools\google_calendar.py
+- [[._load_session_cursors()]] - code - caiocore\channels\mochat.py
+- [[._mark_session_cursor()]] - code - caiocore\channels\mochat.py
+- [[._panel_poll_worker()]] - code - caiocore\channels\mochat.py
+- [[._post_json()]] - code - caiocore\channels\mochat.py
+- [[._refresh_loop()]] - code - caiocore\channels\mochat.py
+- [[._refresh_panels()]] - code - caiocore\channels\mochat.py
+- [[._refresh_sessions_directory()]] - code - caiocore\channels\mochat.py
+- [[._refresh_targets()]] - code - caiocore\channels\mochat.py
+- [[._run_loop()]] - code - caiocore\agents\bd_agent.py
+- [[._run_loop()_2]] - code - caiocore\agents\email_agent.py
+- [[._run_loop()_3]] - code - caiocore\agents\life_agent.py
+- [[._run_loop()_5]] - code - caiocore\agents\sso_agent.py
+- [[._safe_loop()]] - code - caiocore\agents\sdk.py
+- [[._search_events()]] - code - caiocore\agent\tools\google_calendar.py
+- [[._session_watch_worker()]] - code - caiocore\channels\mochat.py
+- [[._socket_call()]] - code - caiocore\channels\mochat.py
+- [[._subscribe_all()]] - code - caiocore\channels\mochat.py
+- [[._subscribe_panels()]] - code - caiocore\channels\mochat.py
+- [[._subscribe_sessions()]] - code - caiocore\channels\mochat.py
+- [[._test_imap_connection()]] - code - caiocore\agents\email_agent.py
+- [[._update_event()]] - code - caiocore\agent\tools\google_calendar.py
+- [[._update_self_in_matrix()]] - code - caiocore\agents\life_agent.py
+- [[._uptime_str()]] - code - caiocore\agents\sdk.py
+- [[.acknowledge_alert()]] - code - caiocore\agents\life_agent.py
+- [[.add_connection()]] - code - caiocore\agents\bd_agent.py
+- [[.emit()]] - code - caiocore\agents\events.py
+- [[.emit_event()]] - code - caiocore\agents\sdk.py
+- [[.emit_event_upsert()]] - code - caiocore\agents\sdk.py
+- [[.execute()_1]] - code - caiocore\agent\tools\a2a.py
+- [[.execute()_13]] - code - caiocore\agent\tools\google_calendar.py
+- [[.execute()_20]] - code - caiocore\agent\tools\system_status.py
+- [[.execute()_22]] - code - caiocore\agent\tools\web.py
+- [[.get()_1]] - code - caiocore\agents\registry.py
+- [[.get_alerts()]] - code - caiocore\agents\life_agent.py
+- [[.get_channel()]] - code - caiocore\channels\manager.py
+- [[.get_connection_status()]] - code - caiocore\agents\bd_agent.py
+- [[.get_detailed_metrics()]] - code - caiocore\agents\sso_agent.py
+- [[.get_health_matrix()]] - code - caiocore\agents\life_agent.py
+- [[.get_metrics()]] - code - caiocore\agents\bd_agent.py
+- [[.get_metrics()_2]] - code - caiocore\agents\email_agent.py
+- [[.get_metrics()_3]] - code - caiocore\agents\life_agent.py
+- [[.get_metrics()_5]] - code - caiocore\agents\sdk.py
+- [[.get_metrics()_6]] - code - caiocore\agents\sso_agent.py
+- [[.get_recent_traces()]] - code - caiocore\agent\tracer.py
+- [[.get_status()]] - code - caiocore\agents\sdk.py
+- [[.heartbeat()_1]] - code - caiocore\agents\sdk.py
+- [[.list_all()]] - code - caiocore\agents\registry.py
+- [[.list_ids()]] - code - caiocore\agents\registry.py
+- [[.query()]] - code - caiocore\agents\events.py
+- [[.remove_from_cache()]] - code - caiocore\channels\email.py
+- [[.set_registry()]] - code - caiocore\agents\life_agent.py
+- [[.start()_1]] - code - caiocore\agents\sdk.py
+- [[.start()_7]] - code - caiocore\channels\mochat.py
+- [[.start()_13]] - code - caiocore\heartbeat\service.py
+- [[.stop()_2]] - code - caiocore\agents\sdk.py
+- [[ABC]] - code
+- [[Abstract base class for all monitoring agents.]] - rationale - caiocore\agents\sdk.py
+- [[Active and recent alerts.]] - rationale - caiocore\server\api.py
+- [[Add a Supabase connection at runtime.]] - rationale - caiocore\agents\bd_agent.py
+- [[AddUpdate the LifeAgent's own status in the health matrix.]] - rationale - caiocore\agents\life_agent.py
+- [[Agent SDK — BaseAgent abstract class.  Every monitoring agent extends BaseAgen]] - rationale - caiocore\agents\sdk.py
+- [[AgentTracer]] - code - caiocore\agent\tracer.py
+- [[Aggregate status of all monitoring agents + services.]] - rationale - caiocore\server\api.py
+- [[Authenticate and get the Google Calendar service.]] - rationale - caiocore\agent\tools\google_calendar.py
+- [[BD Agent — monitors Supabase database connections.  Supports multiple Supabase]] - rationale - caiocore\agents\bd_agent.py
+- [[BDAgent]] - code - caiocore\agents\bd_agent.py
+- [[BaseAgent]] - code
+- [[BaseAgent_1]] - code - caiocore\agents\sdk.py
+- [[BaseModel]] - code
+- [[Caio Gateway API — serves real monitoring agent data.  Routes   apistatus]] - rationale - caiocore\server\api.py
+- [[Collect metrics every N seconds.]] - rationale - caiocore\agents\sso_agent.py
+- [[Collect metrics using OS commands (fallback when psutil unavailable).]] - rationale - caiocore\agents\sso_agent.py
+- [[Collect metrics using psutil.]] - rationale - caiocore\agents\sso_agent.py
+- [[Compute tasks.json path fresh each time — no caching to avoid stale paths.]] - rationale - caiocore\server\api.py
+- [[Configuration for a single Supabase connection.]] - rationale - caiocore\agents\bd_agent.py
+- [[Database agent status.]] - rationale - caiocore\server\api.py
+- [[Database metrics (response time, queries, errors).]] - rationale - caiocore\server\api.py
+- [[Database monitoring agent for Supabase.      - Pings each connection every 30]] - rationale - caiocore\agents\bd_agent.py
+- [[Delete a generated document.]] - rationale - caiocore\server\api.py
+- [[Detailed connection status for each Supabase database.]] - rationale - caiocore\server\api.py
+- [[Detailed status per connection for agentdbconnections.]] - rationale - caiocore\agents\bd_agent.py
+- [[Diagnóstico rápido do Web Chat.]] - rationale - caiocore\server\api.py
+- [[DocGenerateRequest]] - code - caiocore\server\api.py
+- [[Download a generated document.]] - rationale - caiocore\server\api.py
+- [[Email Agent — monitoring specialist for the email channel.  Tracks email chann]] - rationale - caiocore\agents\email_agent.py
+- [[Email monitoring specialist.          Monitors the health of the email channel]] - rationale - caiocore\agents\email_agent.py
+- [[EmailAgent]] - code - caiocore\agents\email_agent.py
+- [[Emit alerts if thresholds are exceeded.]] - rationale - caiocore\agents\sso_agent.py
+- [[EventStore]] - code - caiocore\agents\events.py
+- [[Execute document generator scripts.]] - rationale - caiocore\server\api.py
+- [[Extended metrics for agentservermetrics endpoint.]] - rationale - caiocore\agents\sso_agent.py
+- [[Full health status for all monitored agents and specialists.]] - rationale - caiocore\agents\life_agent.py
+- [[Generate a document (DocAgent quick flow).]] - rationale - caiocore\server\api.py
+- [[Generate a document based on a template with AI filling it.]] - rationale - caiocore\server\api.py
+- [[Generate a document using CAIO (IA) content + Engine formatting.]] - rationale - caiocore\server\api.py
+- [[Get current agent configuration with robust fallbacks.]] - rationale - caiocore\server\api.py
+- [[Get live cron jobs and upcoming Google Calendar events.]] - rationale - caiocore\server\api.py
+- [[Get recent emails from the IMAP inbox cache.]] - rationale - caiocore\server\api.py
+- [[Get status of a specific agent.]] - rationale - caiocore\server\api.py
+- [[Google Calendar tool list, search and create events.]] - rationale - caiocore\agent\tools\google_calendar.py
+- [[GoogleCalendarTool]] - code - caiocore\agent\tools\google_calendar.py
+- [[Health matrix of all supervised agents.]] - rationale - caiocore\server\api.py
+- [[HeartbeatRequest]] - code - caiocore\server\api.py
+- [[Initialize and start all monitoring agents based on config.]] - rationale - caiocore\server\api.py
+- [[Initialize the FastAPI server globals and dependencies.     DOES NOT start the]] - rationale - caiocore\server\api.py
+- [[Life Agent — supervisor that monitors health of all agents AND specialists.  P]] - rationale - caiocore\agents\life_agent.py
+- [[LifeAgent]] - code - caiocore\agents\life_agent.py
+- [[List all generated documents from out directory and recover strays.]] - rationale - caiocore\server\api.py
+- [[List all registered monitoring agents with real status.]] - rationale - caiocore\server\api.py
+- [[List available document templates.]] - rationale - caiocore\server\api.py
+- [[List available templates with metadata.]] - rationale - caiocore\documentos\engine.py
+- [[Load tasks from in-memory store, initializing from disk if needed.]] - rationale - caiocore\server\api.py
+- [[Lê os últimos traces armazenados para exibir no dashboard.]] - rationale - caiocore\agent\tracer.py
+- [[NotificationRequest]] - code - caiocore\server\api.py
+- [[Per-agent token consumption ranking.]] - rationale - caiocore\server\api.py
+- [[Periodic IMAP health check.]] - rationale - caiocore\agents\email_agent.py
+- [[Periodic connection health checks.]] - rationale - caiocore\agents\bd_agent.py
+- [[Periodic health check loop.]] - rationale - caiocore\agents\life_agent.py
+- [[Ping a single Supabase connection and discover tables.]] - rationale - caiocore\agents\bd_agent.py
+- [[Ping a single agent via heartbeat.]] - rationale - caiocore\agents\life_agent.py
+- [[Push a NEW event to the shared EventStore (creates new row every time).]] - rationale - caiocore\agents\sdk.py
+- [[Query events with optional filters.]] - rationale - caiocore\agents\events.py
+- [[RUN current FastAPI app in the current event loop.     This prevents loop confl]] - rationale - caiocore\server\api.py
+- [[Rastreia a execução do Agente, tempos, tokens e uso de ferramentas.     Grava o]] - rationale - caiocore\agent\tracer.py
+- [[Real-time event feed from all agents.]] - rationale - caiocore\server\api.py
+- [[Receive heartbeat from an external agent.]] - rationale - caiocore\server\api.py
+- [[Receives WhatsApp events from Evolution API.]] - rationale - caiocore\server\api.py
+- [[Respond to a Life-agent ping. Returns status + response time.]] - rationale - caiocore\agents\sdk.py
+- [[Retrieve recent AI tracing logs.]] - rationale - caiocore\server\api.py
+- [[Return agent-specific metrics (override in subclass for extras).]] - rationale - caiocore\agents\sdk.py
+- [[Return all registered agent IDs.]] - rationale - caiocore\agents\registry.py
+- [[Return status of all registered agents (real and passive).]] - rationale - caiocore\agents\registry.py
+- [[SSO Agent — VPS  server metrics monitoring.  Collects OS-level metrics (CPU,]] - rationale - caiocore\agents\sso_agent.py
+- [[SSOAgent]] - code - caiocore\agents\sso_agent.py
+- [[Save tasks to in-memory store and persist to disk.]] - rationale - caiocore\server\api.py
+- [[Send a notification directly to Telegram via HTTP API.]] - rationale - caiocore\server\api.py
+- [[Server-Sent Events stream for real-time agent tracing.]] - rationale - caiocore\server\api.py
+- [[SettingsUpdate]] - code - caiocore\server\api.py
+- [[Standard status payload consumed by the Gateway API.]] - rationale - caiocore\agents\sdk.py
+- [[Start background loops for all registered agents.]] - rationale - caiocore\server\api.py
+- [[Start monitoring agent loops in the background when FastAPI starts.]] - rationale - caiocore\server\api.py
+- [[Start the agent's background loop.]] - rationale - caiocore\agents\sdk.py
+- [[Start the heartbeat service.]] - rationale - caiocore\heartbeat\service.py
+- [[Stop the agent's background loop.]] - rationale - caiocore\agents\sdk.py
+- [[Store a new event. Returns the event ID.]] - rationale - caiocore\agents\events.py
+- [[SupabaseConnection]] - code - caiocore\agents\bd_agent.py
+- [[Supervisor agent — monitors all registered agents and known specialists.]] - rationale - caiocore\agents\life_agent.py
+- [[Synchronous IMAP delete (runs in executor).]] - rationale - caiocore\agent\tools\email_delete.py
+- [[TaskCreate]] - code - caiocore\server\api.py
+- [[Test IMAP connectivity without fetching messages.]] - rationale - caiocore\agents\email_agent.py
+- [[Thread-safe SQLite event store for agent events.]] - rationale - caiocore\agents\events.py
+- [[Token consumption statistics.]] - rationale - caiocore\server\api.py
+- [[Tool to interact with Google Calendar.]] - rationale - caiocore\agent\tools\google_calendar.py
+- [[Update agent configuration and save to disk.]] - rationale - caiocore\server\api.py
+- [[Update the latest event of this type, or create if none exists.]] - rationale - caiocore\agents\sdk.py
+- [[VPS  server metrics (CPU, RAM, Disk, Network, Uptime).]] - rationale - caiocore\server\api.py
+- [[VPS  server monitoring agent.      Collects system metrics every N seconds]] - rationale - caiocore\agents\sso_agent.py
+- [[Wrapper that catches exceptions in the run loop.]] - rationale - caiocore\agents\sdk.py
+- [[_format_uptime()]] - code - caiocore\agents\sso_agent.py
+- [[_get_event_store()]] - code - caiocore\server\api.py
+- [[_get_registry()]] - code - caiocore\server\api.py
+- [[_init_monitoring_agents()]] - code - caiocore\server\api.py
+- [[_load_tasks()]] - code - caiocore\server\api.py
+- [[_run_loop()]] - code - caiocore\agents\sdk.py
+- [[_save_tasks()]] - code - caiocore\server\api.py
+- [[_start_agent_loops()]] - code - caiocore\server\api.py
+- [[_tasks_json_path()]] - code - caiocore\server\api.py
+- [[_uptime_str()]] - code - caiocore\server\api.py
+- [[ai_generate_document()]] - code - caiocore\server\api.py
+- [[api.py]] - code - caiocore\server\api.py
+- [[bd_agent.py]] - code - caiocore\agents\bd_agent.py
+- [[chat_ping()]] - code - caiocore\server\api.py
+- [[create_task()]] - code - caiocore\server\api.py
+- [[delete_document()]] - code - caiocore\server\api.py
+- [[delete_task()]] - code - caiocore\server\api.py
+- [[diag()]] - code - diag_agents.py
+- [[diag_agents.py]] - code - diag_agents.py
+- [[download_document()]] - code - caiocore\server\api.py
+- [[email_agent.py]] - code - caiocore\agents\email_agent.py
+- [[evolution_webhook()]] - code - caiocore\server\api.py
+- [[execute_task()]] - code - caiocore\server\api.py
+- [[generate_document()]] - code - caiocore\server\api.py
+- [[generate_extra()]] - code - caiocore\server\api.py
+- [[generate_from_template()]] - code - caiocore\server\api.py
+- [[get_agent_status()]] - code - caiocore\server\api.py
+- [[get_agents()]] - code - caiocore\server\api.py
+- [[get_db_connections()]] - code - caiocore\server\api.py
+- [[get_db_metrics()]] - code - caiocore\server\api.py
+- [[get_db_status()]] - code - caiocore\server\api.py
+- [[get_email_inbox()]] - code - caiocore\server\api.py
+- [[get_events()]] - code - caiocore\server\api.py
+- [[get_life_alerts()]] - code - caiocore\server\api.py
+- [[get_life_health()]] - code - caiocore\server\api.py
+- [[get_schedule_data()]] - code - caiocore\server\api.py
+- [[get_server_metrics()]] - code - caiocore\server\api.py
+- [[get_settings()]] - code - caiocore\server\api.py
+- [[get_status()]] - code - caiocore\server\api.py
+- [[get_tasks()]] - code - caiocore\server\api.py
+- [[get_template_detail()]] - code - caiocore\server\api.py
+- [[get_templates()]] - code - caiocore\documentos\engine.py
+- [[get_token_ranking()]] - code - caiocore\server\api.py
+- [[get_token_stats()]] - code - caiocore\server\api.py
+- [[get_tracing_logs()]] - code - caiocore\server\api.py
+- [[google_calendar.py]] - code - caiocore\agent\tools\google_calendar.py
+- [[life_agent.py]] - code - caiocore\agents\life_agent.py
+- [[list_documents()]] - code - caiocore\server\api.py
+- [[list_templates()]] - code - caiocore\server\api.py
+- [[on_startup()]] - code - caiocore\server\api.py
+- [[post_heartbeat()]] - code - caiocore\server\api.py
+- [[sdk.py]] - code - caiocore\agents\sdk.py
+- [[send_notification()]] - code - caiocore\server\api.py
+- [[sso_agent.py]] - code - caiocore\agents\sso_agent.py
+- [[start_api()]] - code - caiocore\server\api.py
+- [[start_api_server()]] - code - caiocore\server\api.py
+- [[tracer.py]] - code - caiocore\agent\tracer.py
+- [[tracing_stream()]] - code - caiocore\server\api.py
+- [[update_settings()]] - code - caiocore\server\api.py
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_3
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 82 edges to [[_COMMUNITY_Community 0]]
+- 77 edges to [[_COMMUNITY_Community 1]]
+- 35 edges to [[_COMMUNITY_Community 2]]
+- 18 edges to [[_COMMUNITY_Community 6]]
+- 13 edges to [[_COMMUNITY_Community 7]]
+- 12 edges to [[_COMMUNITY_Community 5]]
+- 7 edges to [[_COMMUNITY_Community 9]]
+- 6 edges to [[_COMMUNITY_Community 8]]
+- 5 edges to [[_COMMUNITY_Community 14]]
+- 4 edges to [[_COMMUNITY_Community 4]]
+- 3 edges to [[_COMMUNITY_Community 20]]
+- 2 edges to [[_COMMUNITY_Community 21]]
+- 1 edge to [[_COMMUNITY_Community 17]]
+- 1 edge to [[_COMMUNITY_Community 15]]
+- 1 edge to [[_COMMUNITY_Community 26]]
+- 1 edge to [[_COMMUNITY_Community 27]]
+- 1 edge to [[_COMMUNITY_Community 18]]
+- 1 edge to [[_COMMUNITY_Community 24]]
+- 1 edge to [[_COMMUNITY_Community 12]]
+- 1 edge to [[_COMMUNITY_Community 28]]
+
+## Top bridge nodes
+- [[.get()_1]] - degree 165, connects to 19 communities
+- [[create_task()]] - degree 24, connects to 4 communities
+- [[BaseModel]] - degree 10, connects to 3 communities
+- [[.start()_7]] - degree 9, connects to 3 communities
+- [[ABC]] - degree 8, connects to 3 communities

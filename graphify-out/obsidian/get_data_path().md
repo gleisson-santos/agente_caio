@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\utils\helpers.py"
 type: "code"
-community: "Community None"
+community: "Community 12"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_12
 ---
 
 # get_data_path()
@@ -20,4 +20,4 @@ tags:
 - [[get_sessions_path()]] - `calls` [EXTRACTED]
 - [[helpers.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_12

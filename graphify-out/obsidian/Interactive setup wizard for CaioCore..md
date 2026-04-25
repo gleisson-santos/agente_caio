@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L173"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Interactive setup wizard for CaioCore.
@@ -31,4 +31,4 @@ tags:
 - [[SpecialistAgent]] - `uses` [INFERRED]
 - [[setup()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

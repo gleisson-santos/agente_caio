@@ -1,18 +1,18 @@
 ---
 source_file: "caiocore\config\loader.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L17"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # get_data_dir()
 
 ## Connections
-- [[Get the nanobot data directory.]] - `rationale_for` [EXTRACTED]
+- [[Get the caio data directory.]] - `rationale_for` [EXTRACTED]
 - [[agent()]] - `calls` [INFERRED]
 - [[cron_add()]] - `calls` [INFERRED]
 - [[cron_enable()]] - `calls` [INFERRED]
@@ -24,4 +24,4 @@ tags:
 - [[get_data_path()]] - `calls` [INFERRED]
 - [[loader.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

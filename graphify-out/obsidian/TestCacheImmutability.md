@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_consolidate_offset.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L318"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # TestCacheImmutability
@@ -20,4 +20,4 @@ tags:
 - [[Test that consolidation doesn't modify session.messages (cache safety).]] - `rationale_for` [EXTRACTED]
 - [[test_consolidate_offset.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_4

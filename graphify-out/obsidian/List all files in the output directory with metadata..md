@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\engine.py"
 type: "rationale"
-community: "Community None"
+community: "Community 6"
 location: "L493"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # List all files in the output directory with metadata.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[list_generated_documents()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_6

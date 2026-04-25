@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_consolidate_offset.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L405"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # TestEmptyAndBoundarySessions
@@ -23,4 +23,4 @@ tags:
 - [[Test empty sessions and boundary conditions.]] - `rationale_for` [EXTRACTED]
 - [[test_consolidate_offset.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_4

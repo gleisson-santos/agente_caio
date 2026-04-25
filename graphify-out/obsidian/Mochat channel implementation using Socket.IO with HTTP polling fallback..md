@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Mochat channel implementation using Socket.IO with HTTP polling fallback.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[mochat.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

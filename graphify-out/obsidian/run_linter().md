@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\lint-and-validate\scripts\lint_runner.py"
 type: "code"
-community: "Community None"
+community: "Community 5"
 location: "L72"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # run_linter()
@@ -17,4 +17,4 @@ tags:
 - [[lint_runner.py]] - `contains` [EXTRACTED]
 - [[main()_7]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_5

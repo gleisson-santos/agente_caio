@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "rationale"
-community: "Community None"
-location: "L1149"
+community: "Community 2"
+location: "L1272"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Enable or disable a job.
@@ -31,4 +31,4 @@ tags:
 - [[SpecialistAgent]] - `uses` [INFERRED]
 - [[cron_enable()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

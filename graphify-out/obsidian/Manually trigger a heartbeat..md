@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\heartbeat\service.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L137"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Manually trigger a heartbeat.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.trigger_now()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

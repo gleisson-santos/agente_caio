@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_consolidate_offset.py"
 type: "rationale"
-community: "Community None"
+community: "Community 4"
 location: "L277"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # Test archive_all mode (used by /new command).
@@ -16,4 +16,4 @@ tags:
 - [[SessionManager]] - `uses` [INFERRED]
 - [[TestArchiveAllMode]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_4

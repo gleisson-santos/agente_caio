@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\loader.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L66"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Save configuration to file.      Args:         config: Configuration to save.
@@ -15,4 +15,4 @@ tags:
 - [[Config]] - `uses` [INFERRED]
 - [[save_config()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

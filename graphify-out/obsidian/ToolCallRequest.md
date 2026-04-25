@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\base.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L9"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # ToolCallRequest
@@ -55,4 +55,4 @@ tags:
 - [[_consume_sse()]] - `calls` [INFERRED]
 - [[base.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

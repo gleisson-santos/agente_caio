@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\engine.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L515"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # get_templates()
@@ -17,4 +17,4 @@ tags:
 - [[engine.py]] - `contains` [EXTRACTED]
 - [[list_templates()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_3

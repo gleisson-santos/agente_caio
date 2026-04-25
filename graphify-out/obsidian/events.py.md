@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\events.py"
 type: "code"
-community: "Community None"
+community: "Community 9"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_9
 ---
 
 # events.py
@@ -16,4 +16,4 @@ tags:
 - [[EventBroadcaster]] - `contains` [EXTRACTED]
 - [[EventStore]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_9

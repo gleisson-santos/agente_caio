@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L644"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # List all generated documents from out/ directory and recover strays.
@@ -20,4 +20,4 @@ tags:
 - [[SSOAgent]] - `uses` [INFERRED]
 - [[list_documents()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_3

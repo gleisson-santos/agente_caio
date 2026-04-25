@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L339"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # get_schedule_data()
@@ -20,4 +20,4 @@ tags:
 - [[GoogleCalendarTool]] - `calls` [INFERRED]
 - [[api.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_3

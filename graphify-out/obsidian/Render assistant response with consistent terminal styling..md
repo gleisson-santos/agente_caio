@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L113"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Render assistant response with consistent terminal styling.
@@ -31,4 +31,4 @@ tags:
 - [[SpecialistAgent]] - `uses` [INFERRED]
 - [[_print_agent_response()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

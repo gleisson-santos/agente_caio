@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_consolidate_offset.py"
 type: "rationale"
-community: "Community None"
+community: "Community 4"
 location: "L303"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # Test difference between archive_all and normal consolidation.
@@ -16,4 +16,4 @@ tags:
 - [[Session]] - `uses` [INFERRED]
 - [[SessionManager]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_4

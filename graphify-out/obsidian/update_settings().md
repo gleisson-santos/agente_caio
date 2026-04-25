@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L1238"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # update_settings()
@@ -19,4 +19,4 @@ tags:
 - [[create_task()]] - `calls` [EXTRACTED]
 - [[save_config()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_3

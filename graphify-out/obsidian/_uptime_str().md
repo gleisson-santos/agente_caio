@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L119"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # _uptime_str()
@@ -18,4 +18,4 @@ tags:
 - [[get_agents()]] - `calls` [EXTRACTED]
 - [[get_status()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_3

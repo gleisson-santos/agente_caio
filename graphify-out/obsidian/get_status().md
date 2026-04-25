@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L145"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # get_status()
@@ -26,4 +26,4 @@ tags:
 - [[get_agents()]] - `calls` [EXTRACTED]
 - [[get_db_status()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_3

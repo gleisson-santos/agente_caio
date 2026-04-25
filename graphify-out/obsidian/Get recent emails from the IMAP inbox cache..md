@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L315"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Get recent emails from the IMAP inbox cache.
@@ -20,4 +20,4 @@ tags:
 - [[SSOAgent]] - `uses` [INFERRED]
 - [[get_email_inbox()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_3

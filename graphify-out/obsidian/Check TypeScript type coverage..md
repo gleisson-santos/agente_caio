@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\lint-and-validate\scripts\type_coverage.py"
 type: "rationale"
-community: "Community None"
+community: "Community 32"
 location: "L19"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_32
 ---
 
 # Check TypeScript type coverage.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[check_typescript_coverage()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_32

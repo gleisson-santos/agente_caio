@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\utils\helpers.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L62"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # safe_filename()
@@ -17,4 +17,4 @@ tags:
 - [[Convert a string to a safe filename.]] - `rationale_for` [EXTRACTED]
 - [[helpers.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_4

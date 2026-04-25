@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\session\manager.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L62"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # SessionManager
@@ -56,7 +56,7 @@ tags:
 - [[Return True when input should end interactive chat.]] - `uses` [INFERRED]
 - [[Run the agent iteration loop. Returns (final_content, tools_used).]] - `uses` [INFERRED]
 - [[Run the agent loop, processing messages from the bus.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Tenta o modelo principal, depois os fallbacks em ordem.]] - `uses` [INFERRED]
 - [[Test Session message immutability for cache efficiency.]] - `uses` [INFERRED]
 - [[Test Session persistence and reload.]] - `uses` [INFERRED]
@@ -121,4 +121,4 @@ tags:
 - [[temp_manager()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_4

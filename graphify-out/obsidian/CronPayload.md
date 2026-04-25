@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\types.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L22"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # CronPayload
@@ -30,4 +30,4 @@ tags:
 - [[What to do when the job runs.]] - `rationale_for` [EXTRACTED]
 - [[types.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L59"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Config exists, user declines overwrite — should refresh (load-merge-save).
@@ -16,4 +16,4 @@ tags:
 - [[LiteLLMProvider]] - `uses` [INFERRED]
 - [[test_onboard_existing_config_refresh()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

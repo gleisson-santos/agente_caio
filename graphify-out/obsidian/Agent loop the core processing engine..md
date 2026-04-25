@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\loop.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Agent loop: the core processing engine.
@@ -53,4 +53,4 @@ tags:
 - [[WriteFileTool]] - `uses` [INFERRED]
 - [[loop.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

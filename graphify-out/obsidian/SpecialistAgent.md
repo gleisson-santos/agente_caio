@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\specialist.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # SpecialistAgent
@@ -50,9 +50,9 @@ tags:
 - [[Return True when input should end interactive chat.]] - `uses` [INFERRED]
 - [[Return all registered agent IDs.]] - `uses` [INFERRED]
 - [[Return status of all registered agents (real and passive).]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[gateway()]] - `calls` [INFERRED]
 - [[specialist.py]] - `contains` [EXTRACTED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

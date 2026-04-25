@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\registry.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L77"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Return all registered agent IDs.
@@ -15,4 +15,4 @@ tags:
 - [[.list_ids()]] - `rationale_for` [EXTRACTED]
 - [[SpecialistAgent]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_3

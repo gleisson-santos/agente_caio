@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\schema.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L122"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # MochatConfig
@@ -39,4 +39,4 @@ tags:
 - [[Unified send helper for session and panel messages.]] - `uses` [INFERRED]
 - [[schema.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\slack.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L77"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Send a message through Slack.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[SlackConfig]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

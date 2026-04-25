@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\pages\MonitorPage.jsx"
 type: "code"
-community: "Community None"
+community: "Community 47"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_47
 ---
 
 # LiveTraceConsole()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[MonitorPage.jsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_47

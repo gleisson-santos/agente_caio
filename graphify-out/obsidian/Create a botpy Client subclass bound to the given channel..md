@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\qq.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L29"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Create a botpy Client subclass bound to the given channel.
@@ -18,4 +18,4 @@ tags:
 - [[QQConfig]] - `uses` [INFERRED]
 - [[_make_bot_class()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

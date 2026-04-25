@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L272"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Stop all workers and clean up resources.
@@ -18,4 +18,4 @@ tags:
 - [[MochatConfig]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

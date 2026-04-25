@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\bus\queue.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L33"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Consume the next outbound message (blocks until available).
@@ -16,4 +16,4 @@ tags:
 - [[InboundMessage]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

@@ -1,11 +1,11 @@
 ---
 source_file: ""
 type: "code"
-community: "Community None"
+community: "Community 0"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # BaseChannel
@@ -22,4 +22,4 @@ tags:
 - [[TelegramChannel]] - `inherits` [EXTRACTED]
 - [[WhatsAppChannel]] - `inherits` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

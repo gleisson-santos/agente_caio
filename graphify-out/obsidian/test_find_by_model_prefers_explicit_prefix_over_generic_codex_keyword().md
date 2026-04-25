@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_commands.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L113"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # test_find_by_model_prefers_explicit_prefix_over_generic_codex_keyword()
@@ -15,4 +15,4 @@ tags:
 - [[find_by_model()]] - `calls` [INFERRED]
 - [[test_commands.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

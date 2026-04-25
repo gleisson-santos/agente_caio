@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\whatsapp.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # WhatsApp channel implementation using Node.js bridge.
@@ -18,4 +18,4 @@ tags:
 - [[WhatsAppConfig]] - `uses` [INFERRED]
 - [[whatsapp.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\loader.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Configuration loading utilities.
@@ -15,4 +15,4 @@ tags:
 - [[Config]] - `uses` [INFERRED]
 - [[loader.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

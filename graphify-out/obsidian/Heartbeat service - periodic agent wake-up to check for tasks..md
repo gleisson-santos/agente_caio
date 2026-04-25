@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\heartbeat\service.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Heartbeat service - periodic agent wake-up to check for tasks.
@@ -20,4 +20,4 @@ tags:
 - [[service.py]] - `rationale_for` [EXTRACTED]
 - [[service.py_1]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

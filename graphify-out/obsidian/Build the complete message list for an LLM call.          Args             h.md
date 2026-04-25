@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\context.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L153"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Build the complete message list for an LLM call.          Args:             h
@@ -16,4 +16,4 @@ tags:
 - [[MemoryStore]] - `uses` [INFERRED]
 - [[SkillsLoader]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\database-design\scripts\schema_validator.py"
 type: "code"
-community: "Community None"
+community: "Community 30"
 location: "L94"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_30
 ---
 
 # main()
@@ -16,4 +16,4 @@ tags:
 - [[schema_validator.py]] - `contains` [EXTRACTED]
 - [[validate_prisma_schema()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_30

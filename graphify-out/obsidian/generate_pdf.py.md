@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\generators\generate_pdf.py"
 type: "code"
-community: "Community None"
+community: "Community 11"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_11
 ---
 
 # generate_pdf.py
@@ -22,4 +22,4 @@ tags:
 - [[criar_tabela()]] - `contains` [EXTRACTED]
 - [[novo_documento()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_11

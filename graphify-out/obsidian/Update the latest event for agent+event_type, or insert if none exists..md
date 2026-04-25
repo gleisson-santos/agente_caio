@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\events.py"
 type: "rationale"
-community: "Community None"
+community: "Community 7"
 location: "L91"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_7
 ---
 
 # Update the latest event for agent+event_type, or insert if none exists.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.upsert()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_7

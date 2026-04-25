@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\subagent.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L256"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Return the number of currently running subagents.
@@ -26,4 +26,4 @@ tags:
 - [[WebSearchTool]] - `uses` [INFERRED]
 - [[WriteFileTool]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\api-patterns\scripts\api_validator.py"
 type: "code"
-community: "Community None"
+community: "Community 22"
 location: "L162"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_22
 ---
 
 # main()
@@ -17,4 +17,4 @@ tags:
 - [[check_openapi_spec()]] - `calls` [EXTRACTED]
 - [[find_api_files()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_22

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\registry.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L457"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # find_by_name()
@@ -19,4 +19,4 @@ tags:
 - [[find_gateway()]] - `calls` [EXTRACTED]
 - [[registry.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

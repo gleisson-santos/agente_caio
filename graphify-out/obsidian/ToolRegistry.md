@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\registry.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # ToolRegistry
@@ -33,7 +33,7 @@ tags:
 - [[Delegate to MemoryStore.consolidate().]] - `uses` [INFERRED]
 - [[Execute the subagent task and announce the result.]] - `uses` [INFERRED]
 - [[Format tool calls as concise hint, e.g. 'web_search(query)'.]] - `uses` [INFERRED]
-- [[MCP client connects to MCP servers and wraps their tools as native nanobot tool]] - `uses` [INFERRED]
+- [[MCP client connects to MCP servers and wraps their tools as native caio tools.]] - `uses` [INFERRED]
 - [[MCPToolWrapper]] - `uses` [INFERRED]
 - [[Manages background subagent execution.          Subagents are lightweight agen]] - `uses` [INFERRED]
 - [[Process a message directly (for CLI or cron usage).]] - `uses` [INFERRED]
@@ -54,8 +54,8 @@ tags:
 - [[Tool_1]] - `uses` [INFERRED]
 - [[Try to extract tool calls from JSON blocks in text content.]] - `uses` [INFERRED]
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
-- [[Wraps a single MCP server tool as a nanobot Tool.]] - `uses` [INFERRED]
+- [[Wraps a single MCP server tool as a caio Tool.]] - `uses` [INFERRED]
 - [[registry.py]] - `contains` [EXTRACTED]
 - [[test_registry_returns_validation_error()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

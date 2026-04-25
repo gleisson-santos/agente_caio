@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\schema.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L265"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # ExecToolConfig
@@ -43,4 +43,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[schema.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

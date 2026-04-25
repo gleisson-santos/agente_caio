@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\bus\queue.py"
 type: "code"
-community: "Community None"
+community: "Community 41"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_41
 ---
 
 # queue.py
@@ -17,4 +17,4 @@ tags:
 - [[inbound_size()]] - `contains` [EXTRACTED]
 - [[outbound_size()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_41

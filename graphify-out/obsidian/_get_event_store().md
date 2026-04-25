@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L114"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # _get_event_store()
@@ -17,4 +17,4 @@ tags:
 - [[get_events()]] - `calls` [EXTRACTED]
 - [[post_heartbeat()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_3

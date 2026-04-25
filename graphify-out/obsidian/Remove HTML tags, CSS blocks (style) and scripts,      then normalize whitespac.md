@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\email.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L26"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Remove HTML tags, CSS blocks (style) and scripts,      then normalize whitespac
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[clean_email_body()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

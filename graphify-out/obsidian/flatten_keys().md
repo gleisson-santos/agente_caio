@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\i18n-localization\scripts\i18n_checker.py"
 type: "code"
-community: "Community None"
+community: "Community 6"
 location: "L120"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # flatten_keys()
@@ -17,4 +17,4 @@ tags:
 - [[check_locale_completeness()]] - `calls` [EXTRACTED]
 - [[i18n_checker.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_6

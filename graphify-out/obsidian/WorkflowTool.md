@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\workflow.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # WorkflowTool
@@ -32,9 +32,9 @@ tags:
 - [[The agent loop is the core processing engine.      It     1. Receives messag]] - `uses` [INFERRED]
 - [[Tool]] - `inherits` [EXTRACTED]
 - [[Tool_1]] - `uses` [INFERRED]
-- [[Tool to define and execute structured workflows.          Workflows are sequence]] - `rationale_for` [EXTRACTED]
+- [[Tool to define and execute structured workflows.          Workflows are sequen]] - `rationale_for` [EXTRACTED]
 - [[Try to extract tool calls from JSON blocks in text content.]] - `uses` [INFERRED]
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[workflow.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\chat_handler.py"
 type: "code"
-community: "Community None"
+community: "Community 20"
 location: "L109"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_20
 ---
 
 # get_chat_history()
@@ -17,4 +17,4 @@ tags:
 - [[Retrieve chat history for a dashboard session.]] - `rationale_for` [EXTRACTED]
 - [[chat_handler.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_20

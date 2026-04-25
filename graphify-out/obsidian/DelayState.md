@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L55"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # DelayState
@@ -21,4 +21,4 @@ tags:
 - [[Per-target delayed message state.]] - `rationale_for` [EXTRACTED]
 - [[mochat.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

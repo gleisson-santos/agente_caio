@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\base.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L7"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Tool
@@ -15,7 +15,7 @@ tags:
 - [[._validate()]] - `method` [EXTRACTED]
 - [[.to_schema()]] - `method` [EXTRACTED]
 - [[.validate_params()]] - `method` [EXTRACTED]
-- [[A2A Protocol — Agent-to-Agent communication tool.  Enables Caio to send messages]] - `uses` [INFERRED]
+- [[A2A Protocol — Agent-to-Agent communication tool.  Enables Caio to send messag]] - `uses` [INFERRED]
 - [[A2ASendTool]] - `uses` [INFERRED]
 - [[ABC]] - `inherits` [EXTRACTED]
 - [[Abstract base class for agent tools.          Tools are capabilities that the]] - `rationale_for` [EXTRACTED]
@@ -49,7 +49,7 @@ tags:
 - [[Execute the workflow.]] - `uses` [INFERRED]
 - [[Extract plain text body from email message.]] - `uses` [INFERRED]
 - [[Ferramenta para criação de documentos profissionais formatados.     Permite que]] - `uses` [INFERRED]
-- [[Ferramenta para geração de mídia e assets (Imagens, Prompts, etc).     Integrada]] - `uses` [INFERRED]
+- [[Ferramenta para geração de mídia e assets (Imagens, Prompts, etc).     Integrad]] - `uses` [INFERRED]
 - [[Fetch and extract content from a URL using Readability.]] - `uses` [INFERRED]
 - [[File system tools read, write, edit.]] - `uses` [INFERRED]
 - [[GeneratorTool]] - `uses` [INFERRED]
@@ -60,7 +60,7 @@ tags:
 - [[GoogleCalendarTool]] - `uses` [INFERRED]
 - [[Lazy-initialize the Selenium WebDriver.]] - `uses` [INFERRED]
 - [[ListDirTool]] - `uses` [INFERRED]
-- [[MCP client connects to MCP servers and wraps their tools as native nanobot tool]] - `uses` [INFERRED]
+- [[MCP client connects to MCP servers and wraps their tools as native caio tools.]] - `uses` [INFERRED]
 - [[MCPToolWrapper]] - `uses` [INFERRED]
 - [[Message tool for sending messages to users.]] - `uses` [INFERRED]
 - [[MessageTool]] - `uses` [INFERRED]
@@ -92,7 +92,7 @@ tags:
 - [[SystemStatusTool]] - `uses` [INFERRED]
 - [[Tool for managing and executing workflows.]] - `uses` [INFERRED]
 - [[Tool to check the real-time health and metrics of CaioCore infrastructure agents]] - `uses` [INFERRED]
-- [[Tool to define and execute structured workflows.          Workflows are sequence]] - `uses` [INFERRED]
+- [[Tool to define and execute structured workflows.          Workflows are sequen]] - `uses` [INFERRED]
 - [[Tool to edit a file by replacing text.]] - `uses` [INFERRED]
 - [[Tool to execute shell commands.]] - `uses` [INFERRED]
 - [[Tool to extract text content from PDF files.]] - `uses` [INFERRED]
@@ -113,8 +113,8 @@ tags:
 - [[WebFetchTool]] - `uses` [INFERRED]
 - [[WebSearchTool]] - `uses` [INFERRED]
 - [[WorkflowTool]] - `uses` [INFERRED]
-- [[Wraps a single MCP server tool as a nanobot Tool.]] - `uses` [INFERRED]
+- [[Wraps a single MCP server tool as a caio Tool.]] - `uses` [INFERRED]
 - [[WriteFileTool]] - `uses` [INFERRED]
 - [[base.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

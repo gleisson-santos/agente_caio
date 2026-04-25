@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\telegram.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L240"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # _get_media_type()
@@ -15,4 +15,4 @@ tags:
 - [[.send()_8]] - `calls` [EXTRACTED]
 - [[telegram.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

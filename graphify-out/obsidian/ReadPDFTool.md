@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\pdf_reader.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L9"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # ReadPDFTool
@@ -37,4 +37,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[pdf_reader.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

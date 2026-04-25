@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\extras\generate_docx.py"
 type: "rationale"
-community: "Community None"
+community: "Community 15"
 location: "L155"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_15
 ---
 
 # Adiciona tabela ao documento (dados = lista de listas)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[adicionar_tabela()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_15

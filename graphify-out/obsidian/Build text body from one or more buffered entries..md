@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L183"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Build text body from one or more buffered entries.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[build_buffered_body()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

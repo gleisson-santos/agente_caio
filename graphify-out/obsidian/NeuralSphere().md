@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\components\NeuralSphere.jsx"
 type: "code"
-community: "Community None"
+community: "Community 6"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # NeuralSphere()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[NeuralSphere.jsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_6

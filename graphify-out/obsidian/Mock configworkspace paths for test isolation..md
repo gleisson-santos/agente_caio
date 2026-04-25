@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_commands.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L19"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Mock config/workspace paths for test isolation.
@@ -16,4 +16,4 @@ tags:
 - [[LiteLLMProvider]] - `uses` [INFERRED]
 - [[mock_paths()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

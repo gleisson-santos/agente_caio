@@ -1,0 +1,278 @@
+---
+type: community
+members: 243
+---
+
+# Community 2
+
+**Members:** 243 nodes
+
+## Members
+- [[.__init__()_35]] - code - caiocore\agents\registry.py
+- [[.__init__()_37]] - code - caiocore\agents\specialist.py
+- [[.__init__()_47]] - code - caiocore\channels\manager.py
+- [[.__init__()_53]] - code - caiocore\cron\service.py
+- [[.__init__()_54]] - code - caiocore\heartbeat\service.py
+- [[.__init__()_56]] - code - caiocore\providers\custom_provider.py
+- [[.__init__()_57]] - code - caiocore\providers\litellm_provider.py
+- [[.__init__()_58]] - code - caiocore\providers\openai_codex_provider.py
+- [[._add_job()]] - code - caiocore\agent\tools\cron.py
+- [[._arm_timer()]] - code - caiocore\cron\service.py
+- [[._execute_job()]] - code - caiocore\cron\service.py
+- [[._get_next_wake_ms()]] - code - caiocore\cron\service.py
+- [[._list_jobs()]] - code - caiocore\agent\tools\cron.py
+- [[._load_instructions()]] - code - caiocore\agents\specialist.py
+- [[._load_store()]] - code - caiocore\cron\service.py
+- [[._match_provider()]] - code - caiocore\config\schema.py
+- [[._on_timer()]] - code - caiocore\cron\service.py
+- [[._read_heartbeat_file()]] - code - caiocore\heartbeat\service.py
+- [[._recompute_next_runs()]] - code - caiocore\cron\service.py
+- [[._remove_job()]] - code - caiocore\agent\tools\cron.py
+- [[._resolve_model()]] - code - caiocore\providers\litellm_provider.py
+- [[._run_loop()_4]] - code - caiocore\agents\specialist.py
+- [[._run_loop()_6]] - code - caiocore\heartbeat\service.py
+- [[._save_store()]] - code - caiocore\cron\service.py
+- [[._setup_env()]] - code - caiocore\providers\litellm_provider.py
+- [[._tick()]] - code - caiocore\heartbeat\service.py
+- [[.add_job()]] - code - caiocore\cron\service.py
+- [[.enable_job()]] - code - caiocore\cron\service.py
+- [[.execute()_3]] - code - caiocore\agent\tools\cron.py
+- [[.execute()_21]] - code - caiocore\agent\tools\voice.py
+- [[.generate_ai()]] - code - caiocore\agents\doc_agent.py
+- [[.get_allowed_tools()]] - code - caiocore\agents\specialist.py
+- [[.get_api_base()]] - code - caiocore\config\schema.py
+- [[.get_api_key()]] - code - caiocore\config\schema.py
+- [[.get_default_model()]] - code - caiocore\providers\custom_provider.py
+- [[.get_default_model()_1]] - code - caiocore\providers\litellm_provider.py
+- [[.get_instructions()]] - code - caiocore\agents\specialist.py
+- [[.get_metrics()_4]] - code - caiocore\agents\registry.py
+- [[.get_provider()]] - code - caiocore\config\schema.py
+- [[.get_provider_name()]] - code - caiocore\config\schema.py
+- [[.get_status()_1]] - code - caiocore\agents\specialist.py
+- [[.get_status()_2]] - code - caiocore\channels\manager.py
+- [[.get_templates()]] - code - caiocore\agents\doc_agent.py
+- [[.heartbeat_all()]] - code - caiocore\agents\registry.py
+- [[.list_jobs()]] - code - caiocore\cron\service.py
+- [[.record_tokens()]] - code - caiocore\agents\registry.py
+- [[.register_passive()]] - code - caiocore\agents\registry.py
+- [[.remove_job()]] - code - caiocore\cron\service.py
+- [[.run_job()]] - code - caiocore\cron\service.py
+- [[.set_context()]] - code - caiocore\agent\tools\cron.py
+- [[.set_event_store()]] - code - caiocore\agents\registry.py
+- [[.start()_12]] - code - caiocore\cron\service.py
+- [[.status()]] - code - caiocore\cron\service.py
+- [[.stop()_13]] - code - caiocore\cron\service.py
+- [[.trigger_now()]] - code - caiocore\heartbeat\service.py
+- [[A passive specialist agent that holds specific instructions (prompts)      inten]] - rationale - caiocore\agents\specialist.py
+- [[AI-driven generation.          Note The actual LLM call is usually handled by]] - rationale - caiocore\agents\doc_agent.py
+- [[Agent responsible for all document-related tasks.          Can be delegated ta]] - rationale - caiocore\agents\doc_agent.py
+- [[AgentRegistry]] - code - caiocore\agents\registry.py
+- [[Assign the shared EventStore to the registry.]] - rationale - caiocore\agents\registry.py
+- [[Authenticate with an OAuth provider.]] - rationale - caiocore\cli\commands.py
+- [[BaseSettings]] - code
+- [[CLI commands for caiocore.]] - rationale - caiocore\cli\commands.py
+- [[CaioCore - Operações Inteligentes.]] - rationale - caiocore\cli\commands.py
+- [[Central registry for all monitoring agents.]] - rationale - caiocore\agents\registry.py
+- [[ChannelManager]] - code - caiocore\channels\manager.py
+- [[Check if HEARTBEAT.md has no actionable content.]] - rationale - caiocore\heartbeat\service.py
+- [[Compute next run time in ms.]] - rationale - caiocore\cron\service.py
+- [[Config]] - code - caiocore\config\schema.py
+- [[Config exists, user confirms overwrite — should reset to defaults.]] - rationale - tests\test_commands.py
+- [[Config exists, user declines overwrite — should refresh (load-merge-save).]] - rationale - tests\test_commands.py
+- [[Configuration loading utilities.]] - rationale - caiocore\config\loader.py
+- [[Create default workspace template files.]] - rationale - caiocore\cli\commands.py
+- [[Create the appropriate LLM provider from config.]] - rationale - caiocore\cli\commands.py
+- [[Create the prompt_toolkit session with persistent file history.]] - rationale - caiocore\cli\commands.py
+- [[Cron tool for scheduling reminders and tasks.]] - rationale - caiocore\agent\tools\cron.py
+- [[CronJob]] - code - caiocore\cron\types.py
+- [[CronJobState]] - code - caiocore\cron\types.py
+- [[CronPayload]] - code - caiocore\cron\types.py
+- [[CronSchedule]] - code - caiocore\cron\types.py
+- [[CronService]] - code - caiocore\cron\service.py
+- [[CronStore]] - code - caiocore\cron\types.py
+- [[CustomProvider]] - code - caiocore\providers\custom_provider.py
+- [[Detect gatewaylocal provider.      Priority       1. provider_name — if it]] - rationale - caiocore\providers\registry.py
+- [[DocAgent]] - code - caiocore\agents\doc_agent.py
+- [[DocAgent — Specialist agent for professional document generation.  Handles DOC]] - rationale - caiocore\agents\doc_agent.py
+- [[Drop unread keypresses typed while the model was generating output.]] - rationale - caiocore\cli\commands.py
+- [[Enable or disable a job.]] - rationale - caiocore\cli\commands.py
+- [[Enable or disable a job._1]] - rationale - caiocore\cron\service.py
+- [[Execute a single heartbeat tick.]] - rationale - caiocore\heartbeat\service.py
+- [[Execute a single job.]] - rationale - caiocore\cron\service.py
+- [[Find a provider spec by config field name, e.g. dashscope.]] - rationale - caiocore\providers\registry.py
+- [[Get API base URL for the given model. Applies default URLs for known gateways.]] - rationale - caiocore\config\schema.py
+- [[Get API key for the given model. Falls back to first available key.]] - rationale - caiocore\config\schema.py
+- [[Get current timestamp in ISO format.]] - rationale - caiocore\utils\helpers.py
+- [[Get matched provider config (api_key, api_base, extra_headers). Falls back to fi]] - rationale - caiocore\config\schema.py
+- [[Get metrics for a specific agent.]] - rationale - caiocore\agents\registry.py
+- [[Get the bridge directory, setting it up if needed.]] - rationale - caiocore\cli\commands.py
+- [[Get the caio data directory.]] - rationale - caiocore\config\loader.py
+- [[Get the default configuration file path. Favor local config.json if present.]] - rationale - caiocore\config\loader.py
+- [[Get the earliest next run time across all jobs.]] - rationale - caiocore\cron\service.py
+- [[Get the registry name of the matched provider (e.g. deepseek, openrouter).]] - rationale - caiocore\config\schema.py
+- [[Handle timer tick - run due jobs.]] - rationale - caiocore\cron\service.py
+- [[Heartbeat service - periodic agent wake-up to check for tasks.]] - rationale - caiocore\heartbeat\service.py
+- [[HeartbeatService]] - code - caiocore\heartbeat\service.py
+- [[Interact with the agent directly.]] - rationale - caiocore\cli\commands.py
+- [[Interactive setup wizard for CaioCore.]] - rationale - caiocore\cli\commands.py
+- [[LLM provider configuration.]] - rationale - caiocore\config\schema.py
+- [[LLMProvider_1]] - code
+- [[Link device via QR code.]] - rationale - caiocore\cli\commands.py
+- [[LiteLLMProvider]] - code - caiocore\providers\litellm_provider.py
+- [[Load configuration from file or create default.      Args         config_pat]] - rationale - caiocore\config\loader.py
+- [[Manually trigger a heartbeat.]] - rationale - caiocore\heartbeat\service.py
+- [[Match a standard provider by model-name keyword (case-insensitive).     Skips g]] - rationale - caiocore\providers\registry.py
+- [[Match provider config and its registry name. Returns (config, spec_name).]] - rationale - caiocore\config\schema.py
+- [[Migrate old config formats to current.]] - rationale - caiocore\config\loader.py
+- [[Mock configworkspace paths for test isolation.]] - rationale - tests\test_commands.py
+- [[Mock the global prompt session.]] - rationale - tests\test_cli_input.py
+- [[No existing config — should create from scratch.]] - rationale - tests\test_commands.py
+- [[One LLM provider's metadata. See PROVIDERS below for real examples.      Place]] - rationale - caiocore\providers\registry.py
+- [[OpenAICodexProvider]] - code - caiocore\providers\openai_codex_provider.py
+- [[Periodic heartbeat service that wakes the agent to check for tasks.          T]] - rationale - caiocore\heartbeat\service.py
+- [[Persistent store for cron jobs.]] - rationale - caiocore\cron\types.py
+- [[Ping all agents and return heartbeat responses.]] - rationale - caiocore\agents\registry.py
+- [[Provider Registry — single source of truth for LLM provider metadata.  Adding]] - rationale - caiocore\providers\registry.py
+- [[ProviderConfig]] - code - caiocore\config\schema.py
+- [[ProviderSpec]] - code - caiocore\providers\registry.py
+- [[Read HEARTBEAT.md content.]] - rationale - caiocore\heartbeat\service.py
+- [[Read user input using prompt_toolkit (handles paste, history, display).      p]] - rationale - caiocore\cli\commands.py
+- [[Recompute next run times for all enabled jobs.]] - rationale - caiocore\cron\service.py
+- [[Record token usage from an LLM call. Called by the LiteLLM provider hook.]] - rationale - caiocore\agents\registry.py
+- [[Register a passive agent (specialist) using the SpecialistAgent class.]] - rationale - caiocore\agents\registry.py
+- [[Remove a scheduled job.]] - rationale - caiocore\cli\commands.py
+- [[Render assistant response with consistent terminal styling.]] - rationale - caiocore\cli\commands.py
+- [[Restore terminal to its original state (echo, line buffering, etc.).]] - rationale - caiocore\cli\commands.py
+- [[Return True when input should end interactive chat.]] - rationale - caiocore\cli\commands.py
+- [[Return the list of tools this specialist is allowed to use.         None means n]] - rationale - caiocore\agents\specialist.py
+- [[Root configuration for caiocore.]] - rationale - caiocore\config\schema.py
+- [[Runtime state of a job.]] - rationale - caiocore\cron\types.py
+- [[Save configuration to file.      Args         config Configuration to save.]] - rationale - caiocore\config\loader.py
+- [[Schedule definition for a cron job.]] - rationale - caiocore\cron\types.py
+- [[Schedule the next timer tick.]] - rationale - caiocore\cron\service.py
+- [[Service for managing and executing scheduled jobs.]] - rationale - caiocore\cron\service.py
+- [[Set the current session context for delivery.]] - rationale - caiocore\agent\tools\cron.py
+- [[SpecialistAgent]] - code - caiocore\agents\specialist.py
+- [[Specialists are usually passive, but we can implement a periodic health check.]] - rationale - caiocore\agents\specialist.py
+- [[Start the caio gateway.]] - rationale - caiocore\cli\commands.py
+- [[Start the cron service.]] - rationale - caiocore\cron\service.py
+- [[Stop the cron service.]] - rationale - caiocore\cron\service.py
+- [[Test that EOFError converts to KeyboardInterrupt.]] - rationale - tests\test_cli_input.py
+- [[Test that _init_prompt_session initializes the global session.]] - rationale - tests\test_cli_input.py
+- [[Test that _read_interactive_input_async returns the user input from prompt_sessi]] - rationale - tests\test_cli_input.py
+- [[Tool to schedule reminders and recurring tasks.]] - rationale - caiocore\agent\tools\cron.py
+- [[Utility functions for caiocore.]] - rationale - caiocore\utils\__init__.py
+- [[Validate schedule fields that would otherwise create non-runnable jobs.]] - rationale - caiocore\cron\service.py
+- [[What to do when the job runs.]] - rationale - caiocore\cron\types.py
+- [[Workspace exists — should not recreate, but still add missing templates.]] - rationale - tests\test_commands.py
+- [[__init__.py]] - code - caiocore\__init__.py
+- [[__init__.py_3]] - code - caiocore\agents\__init__.py
+- [[__init__.py_4]] - code - caiocore\bus\__init__.py
+- [[__init__.py_5]] - code - caiocore\channels\__init__.py
+- [[__init__.py_6]] - code - caiocore\cli\__init__.py
+- [[__init__.py_7]] - code - caiocore\config\__init__.py
+- [[__init__.py_8]] - code - caiocore\cron\__init__.py
+- [[__init__.py_11]] - code - caiocore\heartbeat\__init__.py
+- [[__init__.py_12]] - code - caiocore\providers\__init__.py
+- [[__init__.py_13]] - code - caiocore\session\__init__.py
+- [[__init__.py_14]] - code - caiocore\utils\__init__.py
+- [[_canonicalize_explicit_prefix()]] - code - caiocore\providers\litellm_provider.py
+- [[_compute_next_run()]] - code - caiocore\cron\service.py
+- [[_create_workspace_templates()]] - code - caiocore\cli\commands.py
+- [[_flush_pending_tty_input()]] - code - caiocore\cli\commands.py
+- [[_get_bridge_dir()]] - code - caiocore\cli\commands.py
+- [[_init_prompt_session()]] - code - caiocore\cli\commands.py
+- [[_is_exit_command()]] - code - caiocore\cli\commands.py
+- [[_is_heartbeat_empty()]] - code - caiocore\heartbeat\service.py
+- [[_login_github_copilot()]] - code - caiocore\cli\commands.py
+- [[_login_openai_codex()]] - code - caiocore\cli\commands.py
+- [[_make_provider()]] - code - caiocore\cli\commands.py
+- [[_migrate_config()]] - code - caiocore\config\loader.py
+- [[_now_ms()]] - code - caiocore\cron\service.py
+- [[_print_agent_response()]] - code - caiocore\cli\commands.py
+- [[_read_interactive_input_async()]] - code - caiocore\cli\commands.py
+- [[_register_login()]] - code - caiocore\cli\commands.py
+- [[_restore_terminal()]] - code - caiocore\cli\commands.py
+- [[_sanitize_messages()]] - code - caiocore\providers\litellm_provider.py
+- [[_validate_schedule_for_add()]] - code - caiocore\cron\service.py
+- [[agent()]] - code - caiocore\cli\commands.py
+- [[channels_login()]] - code - caiocore\cli\commands.py
+- [[channels_status()]] - code - caiocore\cli\commands.py
+- [[commands.py]] - code - caiocore\cli\commands.py
+- [[cron_add()]] - code - caiocore\cli\commands.py
+- [[cron_enable()]] - code - caiocore\cli\commands.py
+- [[cron_list()]] - code - caiocore\cli\commands.py
+- [[cron_remove()]] - code - caiocore\cli\commands.py
+- [[cron_run()]] - code - caiocore\cli\commands.py
+- [[custom_provider.py]] - code - caiocore\providers\custom_provider.py
+- [[doc_agent.py]] - code - caiocore\agents\doc_agent.py
+- [[find_by_model()]] - code - caiocore\providers\registry.py
+- [[find_by_name()]] - code - caiocore\providers\registry.py
+- [[find_gateway()]] - code - caiocore\providers\registry.py
+- [[gateway()]] - code - caiocore\cli\commands.py
+- [[get_config_path()]] - code - caiocore\config\loader.py
+- [[get_data_dir()]] - code - caiocore\config\loader.py
+- [[heartbeat_file()]] - code - caiocore\heartbeat\service.py
+- [[label()]] - code - caiocore\providers\registry.py
+- [[litellm_provider.py]] - code - caiocore\providers\litellm_provider.py
+- [[load_config()]] - code - caiocore\config\loader.py
+- [[loader.py]] - code - caiocore\config\loader.py
+- [[main()]] - code - caiocore\cli\commands.py
+- [[mock_paths()]] - code - tests\test_commands.py
+- [[mock_prompt_session()]] - code - tests\test_cli_input.py
+- [[provider_login()]] - code - caiocore\cli\commands.py
+- [[registry.py]] - code - caiocore\agent\tools\registry.py
+- [[registry.py_1]] - code - caiocore\agents\registry.py
+- [[registry.py_2]] - code - caiocore\providers\registry.py
+- [[save_config()]] - code - caiocore\config\loader.py
+- [[service.py]] - code - caiocore\cron\service.py
+- [[service.py_1]] - code - caiocore\heartbeat\service.py
+- [[setup()]] - code - caiocore\cli\commands.py
+- [[specialist.py]] - code - caiocore\agents\specialist.py
+- [[status()]] - code - caiocore\cli\commands.py
+- [[test_add_job_accepts_valid_timezone()]] - code - tests\test_cron_service.py
+- [[test_add_job_rejects_unknown_timezone()]] - code - tests\test_cron_service.py
+- [[test_cli_input.py]] - code - tests\test_cli_input.py
+- [[test_commands.py]] - code - tests\test_commands.py
+- [[test_config_matches_github_copilot_codex_with_hyphen_prefix()]] - code - tests\test_commands.py
+- [[test_config_matches_openai_codex_with_hyphen_prefix()]] - code - tests\test_commands.py
+- [[test_cron_service.py]] - code - tests\test_cron_service.py
+- [[test_find_by_model_prefers_explicit_prefix_over_generic_codex_keyword()]] - code - tests\test_commands.py
+- [[test_init_prompt_session_creates_session()]] - code - tests\test_cli_input.py
+- [[test_litellm_provider_canonicalizes_github_copilot_hyphen_prefix()]] - code - tests\test_commands.py
+- [[test_onboard_existing_config_overwrite()]] - code - tests\test_commands.py
+- [[test_onboard_existing_config_refresh()]] - code - tests\test_commands.py
+- [[test_onboard_existing_workspace_safe_create()]] - code - tests\test_commands.py
+- [[test_onboard_fresh_install()]] - code - tests\test_commands.py
+- [[test_read_interactive_input_async_handles_eof()]] - code - tests\test_cli_input.py
+- [[test_read_interactive_input_async_returns_input()]] - code - tests\test_cli_input.py
+- [[timestamp()]] - code - caiocore\utils\helpers.py
+- [[tool_names()]] - code - caiocore\agent\tools\registry.py
+- [[types.py]] - code - caiocore\cron\types.py
+- [[version_callback()]] - code - caiocore\cli\commands.py
+- [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - rationale - caiocore\cli\commands.py
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_2
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 108 edges to [[_COMMUNITY_Community 1]]
+- 83 edges to [[_COMMUNITY_Community 0]]
+- 35 edges to [[_COMMUNITY_Community 3]]
+- 22 edges to [[_COMMUNITY_Community 4]]
+- 10 edges to [[_COMMUNITY_Community 6]]
+- 8 edges to [[_COMMUNITY_Community 5]]
+- 3 edges to [[_COMMUNITY_Community 12]]
+- 3 edges to [[_COMMUNITY_Community 14]]
+- 1 edge to [[_COMMUNITY_Community 42]]
+
+## Top bridge nodes
+- [[gateway()]] - degree 22, connects to 5 communities
+- [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - degree 18, connects to 4 communities
+- [[Utility functions for caiocore.]] - degree 27, connects to 3 communities
+- [[CLI commands for caiocore.]] - degree 18, connects to 3 communities
+- [[Drop unread keypresses typed while the model was generating output.]] - degree 18, connects to 3 communities

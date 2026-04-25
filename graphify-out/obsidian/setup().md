@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L172"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # setup()
@@ -21,4 +21,4 @@ tags:
 - [[load_config()]] - `calls` [INFERRED]
 - [[save_config()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\dingtalk.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L88"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # DingTalk channel using Stream Mode.      Uses WebSocket to receive events via
@@ -18,4 +18,4 @@ tags:
 - [[MessageBus]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

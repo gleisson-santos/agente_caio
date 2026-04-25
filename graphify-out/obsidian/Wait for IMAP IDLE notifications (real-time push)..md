@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\email.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L187"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Wait for IMAP IDLE notifications (real-time push).
@@ -18,4 +18,4 @@ tags:
 - [[MessageBus]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

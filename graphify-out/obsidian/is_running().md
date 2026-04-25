@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\base.py"
 type: "code"
-community: "Community None"
+community: "Community 9"
 location: "L126"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_9
 ---
 
 # is_running()
@@ -16,4 +16,4 @@ tags:
 - [[.log_run()]] - `calls` [INFERRED]
 - [[base.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_9

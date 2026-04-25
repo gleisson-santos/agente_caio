@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\base.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L48"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Stop the channel and clean up resources.
@@ -16,4 +16,4 @@ tags:
 - [[MessageBus]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

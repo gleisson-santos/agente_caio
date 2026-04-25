@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\email_send.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L14"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # EmailSendTool
@@ -37,4 +37,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[email_send.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

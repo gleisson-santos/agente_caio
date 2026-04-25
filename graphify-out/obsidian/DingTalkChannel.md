@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\dingtalk.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L87"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # DingTalkChannel
@@ -39,4 +39,4 @@ tags:
 - [[Sync running channels with the provided config (Hot-reload).]] - `uses` [INFERRED]
 - [[dingtalk.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\service.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L62"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # CronService
@@ -67,7 +67,7 @@ tags:
 - [[Run the agent loop, processing messages from the bus.]] - `uses` [INFERRED]
 - [[Service for managing and executing scheduled jobs.]] - `rationale_for` [EXTRACTED]
 - [[Set the current session context for delivery.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Tenta o modelo principal, depois os fallbacks em ordem.]] - `uses` [INFERRED]
 - [[The agent loop is the core processing engine.      It     1. Receives messag]] - `uses` [INFERRED]
 - [[Tool to schedule reminders and recurring tasks.]] - `uses` [INFERRED]
@@ -86,4 +86,4 @@ tags:
 - [[test_add_job_rejects_unknown_timezone()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

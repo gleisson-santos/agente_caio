@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\schema.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L216"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # LLM provider configuration.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[ProviderConfig]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

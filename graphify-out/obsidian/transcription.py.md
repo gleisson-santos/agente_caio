@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\transcription.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # transcription.py
@@ -15,4 +15,4 @@ tags:
 - [[GroqTranscriptionProvider]] - `contains` [EXTRACTED]
 - [[Voice transcription provider using Groq.]] - `rationale_for` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

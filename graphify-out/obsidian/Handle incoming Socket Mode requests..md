@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\slack.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L113"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Handle incoming Socket Mode requests.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[SlackConfig]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

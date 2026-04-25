@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\litellm_provider.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L174"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Send a chat completion request via LiteLLM.                  Args:
@@ -17,4 +17,4 @@ tags:
 - [[LLMResponse]] - `uses` [INFERRED]
 - [[ToolCallRequest]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

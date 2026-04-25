@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\documentos.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L7"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # GeradorDocumentosTool
@@ -36,4 +36,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[documentos.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\litellm_provider.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L155"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # _sanitize_messages()
@@ -16,4 +16,4 @@ tags:
 - [[.get()_1]] - `calls` [INFERRED]
 - [[litellm_provider.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

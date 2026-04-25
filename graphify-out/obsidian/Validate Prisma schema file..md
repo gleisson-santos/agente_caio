@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\database-design\scripts\schema_validator.py"
 type: "rationale"
-community: "Community None"
+community: "Community 30"
 location: "L48"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_30
 ---
 
 # Validate Prisma schema file.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[validate_prisma_schema()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_30

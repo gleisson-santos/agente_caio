@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\message.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L10"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Tool to send messages to users on chat channels.
@@ -16,4 +16,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[Tool_1]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

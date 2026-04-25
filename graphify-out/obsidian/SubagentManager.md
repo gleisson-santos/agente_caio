@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\subagent.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L20"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # SubagentManager
@@ -56,4 +56,4 @@ tags:
 - [[WriteFileTool]] - `uses` [INFERRED]
 - [[subagent.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\sdk.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L21"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # BaseAgent
@@ -67,4 +67,4 @@ tags:
 - [[Wrapper for quick generation flow.]] - `uses` [INFERRED]
 - [[sdk.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_3

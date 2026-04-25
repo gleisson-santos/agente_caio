@@ -1,17 +1,17 @@
 ---
 source_file: "caiocore\__main__.py"
 type: "code"
-community: "Community None"
+community: "Community 49"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_49
 ---
 
 # __main__.py
 
 ## Connections
-- [[Entry point for running nanobot as a module python -m nanobot]] - `rationale_for` [EXTRACTED]
+- [[Entry point for running caio as a module python -m caio]] - `rationale_for` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_49

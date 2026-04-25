@@ -1,0 +1,414 @@
+---
+type: community
+members: 378
+---
+
+# Community 0
+
+**Members:** 378 nodes
+
+## Members
+- [[.__init__()_39]] - code - caiocore\bus\queue.py
+- [[.__init__()_40]] - code - caiocore\channels\base.py
+- [[.__init__()_41]] - code - caiocore\channels\dingtalk.py
+- [[.__init__()_42]] - code - caiocore\channels\dingtalk.py
+- [[.__init__()_43]] - code - caiocore\channels\discord.py
+- [[.__init__()_44]] - code - caiocore\channels\email.py
+- [[.__init__()_45]] - code - caiocore\channels\evolution.py
+- [[.__init__()_46]] - code - caiocore\channels\feishu.py
+- [[.__init__()_49]] - code - caiocore\channels\qq.py
+- [[.__init__()_50]] - code - caiocore\channels\slack.py
+- [[.__init__()_51]] - code - caiocore\channels\telegram.py
+- [[.__init__()_52]] - code - caiocore\channels\whatsapp.py
+- [[._add_reaction()]] - code - caiocore\channels\feishu.py
+- [[._add_reaction_sync()]] - code - caiocore\channels\feishu.py
+- [[._api_send()]] - code - caiocore\channels\mochat.py
+- [[._build_card_elements()]] - code - caiocore\channels\feishu.py
+- [[._check_and_notify()]] - code - caiocore\channels\email.py
+- [[._delay_flush_after()]] - code - caiocore\channels\mochat.py
+- [[._dispatch_entries()]] - code - caiocore\channels\mochat.py
+- [[._dispatch_outbound()]] - code - caiocore\channels\manager.py
+- [[._download_and_save_media()]] - code - caiocore\channels\feishu.py
+- [[._download_file_sync()]] - code - caiocore\channels\feishu.py
+- [[._download_image_sync()]] - code - caiocore\channels\feishu.py
+- [[._enqueue_delayed_entry()]] - code - caiocore\channels\mochat.py
+- [[._fetch_messages()]] - code - caiocore\channels\email.py
+- [[._fetch_new_messages()]] - code - caiocore\channels\email.py
+- [[._flush_delayed_entries()]] - code - caiocore\channels\mochat.py
+- [[._forward_command()]] - code - caiocore\channels\telegram.py
+- [[._gateway_loop()]] - code - caiocore\channels\discord.py
+- [[._get_access_token()]] - code - caiocore\channels\dingtalk.py
+- [[._get_extension()]] - code - caiocore\channels\telegram.py
+- [[._handle_bridge_message()]] - code - caiocore\channels\whatsapp.py
+- [[._handle_message()]] - code - caiocore\channels\base.py
+- [[._handle_message_create()]] - code - caiocore\channels\discord.py
+- [[._handle_notify_chat_message()]] - code - caiocore\channels\mochat.py
+- [[._handle_notify_inbox_append()]] - code - caiocore\channels\mochat.py
+- [[._identify()]] - code - caiocore\channels\discord.py
+- [[._idle_loop()]] - code - caiocore\channels\email.py
+- [[._init_channels()]] - code - caiocore\channels\manager.py
+- [[._is_allowed()]] - code - caiocore\channels\slack.py
+- [[._on_error()]] - code - caiocore\channels\telegram.py
+- [[._on_help()]] - code - caiocore\channels\telegram.py
+- [[._on_message()]] - code - caiocore\channels\dingtalk.py
+- [[._on_message()_1]] - code - caiocore\channels\feishu.py
+- [[._on_message()_2]] - code - caiocore\channels\qq.py
+- [[._on_message()_3]] - code - caiocore\channels\telegram.py
+- [[._on_message_sync()]] - code - caiocore\channels\feishu.py
+- [[._on_socket_request()]] - code - caiocore\channels\slack.py
+- [[._on_start()]] - code - caiocore\channels\telegram.py
+- [[._process_inbound_event()]] - code - caiocore\channels\mochat.py
+- [[._remember_message_id()]] - code - caiocore\channels\mochat.py
+- [[._reply_subject()]] - code - caiocore\channels\email.py
+- [[._run_bot()]] - code - caiocore\channels\qq.py
+- [[._send_message_sync()]] - code - caiocore\channels\feishu.py
+- [[._send_payload()]] - code - caiocore\channels\discord.py
+- [[._should_respond_in_channel()]] - code - caiocore\channels\slack.py
+- [[._smtp_send()]] - code - caiocore\channels\email.py
+- [[._split_headings()]] - code - caiocore\channels\feishu.py
+- [[._start_channel()]] - code - caiocore\channels\manager.py
+- [[._start_heartbeat()]] - code - caiocore\channels\discord.py
+- [[._start_typing()]] - code - caiocore\channels\discord.py
+- [[._start_typing()_1]] - code - caiocore\channels\telegram.py
+- [[._stop_typing()]] - code - caiocore\channels\discord.py
+- [[._stop_typing()_1]] - code - caiocore\channels\telegram.py
+- [[._strip_bot_mention()]] - code - caiocore\channels\slack.py
+- [[._typing_loop()]] - code - caiocore\channels\telegram.py
+- [[._upload_file_sync()]] - code - caiocore\channels\feishu.py
+- [[._upload_image_sync()]] - code - caiocore\channels\feishu.py
+- [[._validate_config()]] - code - caiocore\channels\email.py
+- [[.consume_outbound()]] - code - caiocore\bus\queue.py
+- [[.fetch_messages_between_dates()]] - code - caiocore\channels\email.py
+- [[.get_recent_emails()]] - code - caiocore\channels\email.py
+- [[.handle_webhook()]] - code - caiocore\channels\evolution.py
+- [[.is_allowed()]] - code - caiocore\channels\base.py
+- [[.process()]] - code - caiocore\channels\dingtalk.py
+- [[.publish_inbound()]] - code - caiocore\bus\queue.py
+- [[.send()]] - code - caiocore\channels\dingtalk.py
+- [[.send()_1]] - code - caiocore\channels\discord.py
+- [[.send()_2]] - code - caiocore\channels\email.py
+- [[.send()_3]] - code - caiocore\channels\evolution.py
+- [[.send()_4]] - code - caiocore\channels\feishu.py
+- [[.send()_5]] - code - caiocore\channels\mochat.py
+- [[.send()_6]] - code - caiocore\channels\qq.py
+- [[.send()_7]] - code - caiocore\channels\slack.py
+- [[.send()_8]] - code - caiocore\channels\telegram.py
+- [[.send()_9]] - code - caiocore\channels\whatsapp.py
+- [[.start()_2]] - code - caiocore\channels\dingtalk.py
+- [[.start()_3]] - code - caiocore\channels\discord.py
+- [[.start()_4]] - code - caiocore\channels\email.py
+- [[.start()_5]] - code - caiocore\channels\evolution.py
+- [[.start()_6]] - code - caiocore\channels\feishu.py
+- [[.start()_8]] - code - caiocore\channels\qq.py
+- [[.start()_9]] - code - caiocore\channels\slack.py
+- [[.start()_10]] - code - caiocore\channels\telegram.py
+- [[.start()_11]] - code - caiocore\channels\whatsapp.py
+- [[.start_all()]] - code - caiocore\channels\manager.py
+- [[.stop()_3]] - code - caiocore\channels\dingtalk.py
+- [[.stop()_4]] - code - caiocore\channels\discord.py
+- [[.stop()_5]] - code - caiocore\channels\email.py
+- [[.stop()_6]] - code - caiocore\channels\evolution.py
+- [[.stop()_7]] - code - caiocore\channels\feishu.py
+- [[.stop()_9]] - code - caiocore\channels\qq.py
+- [[.stop()_10]] - code - caiocore\channels\slack.py
+- [[.stop()_11]] - code - caiocore\channels\telegram.py
+- [[.stop()_12]] - code - caiocore\channels\whatsapp.py
+- [[.stop()_14]] - code - caiocore\heartbeat\service.py
+- [[.stop_all()]] - code - caiocore\channels\manager.py
+- [[.sync_with_config()]] - code - caiocore\channels\manager.py
+- [[.transcribe()]] - code - caiocore\providers\transcription.py
+- [[Abstract base class for chat channel implementations.          Each channel (T]] - rationale - caiocore\channels\base.py
+- [[Add a reaction emoji to a message (non-blocking).                  Common emoj]] - rationale - caiocore\channels\feishu.py
+- [[AgentDefaults]] - code - caiocore\config\schema.py
+- [[AgentsConfig]] - code - caiocore\config\schema.py
+- [[Async message bus that decouples chat channels from the agent core.      Chann]] - rationale - caiocore\bus\queue.py
+- [[Base]] - code - caiocore\config\schema.py
+- [[Base model that accepts both camelCase and snake_case keys.]] - rationale - caiocore\config\schema.py
+- [[BaseChannel]] - code - caiocore\channels\base.py
+- [[BaseChannel_1]] - code
+- [[Best-effort extraction of readable body text.]] - rationale - caiocore\channels\email.py
+- [[Buffered inbound entry for delayed dispatch.]] - rationale - caiocore\channels\mochat.py
+- [[Build a synthetic ``message.add`` event dict.]] - rationale - caiocore\channels\mochat.py
+- [[Build sender_id for allowlist matching.                  IMPORTANTE Retorna a]] - rationale - caiocore\channels\telegram.py
+- [[Build text body from one or more buffered entries.]] - rationale - caiocore\channels\mochat.py
+- [[CaioDingTalkHandler]] - code - caiocore\channels\dingtalk.py
+- [[CallbackHandler]] - code
+- [[ChannelsConfig]] - code - caiocore\config\schema.py
+- [[Check if a sender is allowed to use this bot.                  Args]] - rationale - caiocore\channels\base.py
+- [[Check if the channel is running.]] - rationale - caiocore\channels\base.py
+- [[Configuration for LLM providers.]] - rationale - caiocore\config\schema.py
+- [[Configuration for chat channels.]] - rationale - caiocore\config\schema.py
+- [[Configuration schema using Pydantic.]] - rationale - caiocore\config\schema.py
+- [[Consume the next outbound message (blocks until available).]] - rationale - caiocore\bus\queue.py
+- [[Convert Markdown to Slack mrkdwn, including tables.]] - rationale - caiocore\channels\slack.py
+- [[Convert a Markdown table to a Slack-readable list.]] - rationale - caiocore\channels\slack.py
+- [[Convert markdown to Telegram-safe HTML.     Handles , , __, _, ~~ and protec]] - rationale - caiocore\channels\telegram.py
+- [[Create a botpy Client subclass bound to the given channel.]] - rationale - caiocore\channels\qq.py
+- [[Default agent configuration.]] - rationale - caiocore\config\schema.py
+- [[DelayState]] - code - caiocore\channels\mochat.py
+- [[DingTalk channel configuration using Stream mode.]] - rationale - caiocore\config\schema.py
+- [[DingTalk channel using Stream Mode.      Uses WebSocket to receive events via]] - rationale - caiocore\channels\dingtalk.py
+- [[DingTalkDingDing channel implementation using Stream Mode.]] - rationale - caiocore\channels\dingtalk.py
+- [[DingTalkChannel]] - code - caiocore\channels\dingtalk.py
+- [[DingTalkConfig]] - code - caiocore\config\schema.py
+- [[Discord channel configuration.]] - rationale - caiocore\config\schema.py
+- [[Discord channel implementation using Discord Gateway websocket.]] - rationale - caiocore\channels\discord.py
+- [[Discord channel using Gateway websocket.]] - rationale - caiocore\channels\discord.py
+- [[DiscordChannel]] - code - caiocore\channels\discord.py
+- [[DiscordConfig]] - code - caiocore\config\schema.py
+- [[Dispatch outbound messages to the appropriate channel.]] - rationale - caiocore\channels\manager.py
+- [[Download a file from Feishu by file_key.]] - rationale - caiocore\channels\feishu.py
+- [[Download an image from Feishu message by message_id and image_key.]] - rationale - caiocore\channels\feishu.py
+- [[Download media from Feishu and save to local disk.          Returns]] - rationale - caiocore\channels\feishu.py
+- [[Email channel configuration (IMAP inbound + SMTP outbound).]] - rationale - caiocore\config\schema.py
+- [[Email channel implementation using IMAP polling + SMTP replies.]] - rationale - caiocore\channels\email.py
+- [[Email channel.      Inbound     - Poll IMAP mailbox for unread messages.]] - rationale - caiocore\channels\email.py
+- [[EmailChannel]] - code - caiocore\channels\email.py
+- [[EmailConfig]] - code - caiocore\config\schema.py
+- [[EvolutionChannel]] - code - caiocore\channels\evolution.py
+- [[EvolutionConfig]] - code - caiocore\config\schema.py
+- [[Extract content from a single card element.]] - rationale - caiocore\channels\feishu.py
+- [[Extract mention ids from heterogeneous mention payload.]] - rationale - caiocore\channels\mochat.py
+- [[Extract plain text from Feishu post (rich text) message content.          Supp]] - rationale - caiocore\channels\feishu.py
+- [[Extract text representation from share cards and interactive messages.]] - rationale - caiocore\channels\feishu.py
+- [[FeishuLark channel configuration using WebSocket long connection.]] - rationale - caiocore\config\schema.py
+- [[FeishuLark channel implementation using lark-oapi SDK with WebSocket long conne]] - rationale - caiocore\channels\feishu.py
+- [[FeishuLark channel using WebSocket long connection.          Uses WebSocket t]] - rationale - caiocore\channels\feishu.py
+- [[FeishuChannel]] - code - caiocore\channels\feishu.py
+- [[FeishuConfig]] - code - caiocore\config\schema.py
+- [[Fetch messages by arbitrary IMAP search criteria.]] - rationale - caiocore\channels\email.py
+- [[Fetch messages in start_date, end_date) by IMAP date search.          This is]] - rationale - caiocore\channels\email.py
+- [[Fetch new messages and send notifications if needed.]] - rationale - caiocore\channels\email.py
+- [[Format date for IMAP search (always English month abbreviations).]] - rationale - caiocore\channels\email.py
+- [[Forward slash commands to the bus for unified handling in AgentLoop.]] - rationale - caiocore\channels\telegram.py
+- [[Gatewayserver configuration.]] - rationale - caiocore\config\schema.py
+- [[GatewayConfig]] - code - caiocore\config\schema.py
+- [[Get a channel by name.]] - rationale - caiocore\channels\manager.py
+- [[Get file extension based on media type.]] - rationale - caiocore\channels\telegram.py
+- [[Get list of enabled channel names.]] - rationale - caiocore\channels\manager.py
+- [[Get or refresh Access Token.]] - rationale - caiocore\channels\dingtalk.py
+- [[Get status of all channels.]] - rationale - caiocore\channels\manager.py
+- [[Google Calendar tool configuration.]] - rationale - caiocore\config\schema.py
+- [[GoogleCalendarConfig]] - code - caiocore\config\schema.py
+- [[GroqTranscriptionProvider]] - code - caiocore\providers\transcription.py
+- [[Guess media type from file extension.]] - rationale - caiocore\channels\telegram.py
+- [[Handle help command, bypassing ACL so all users can access it.]] - rationale - caiocore\channels\telegram.py
+- [[Handle start command.]] - rationale - caiocore\channels\telegram.py
+- [[Handle a message from the bridge.]] - rationale - caiocore\channels\whatsapp.py
+- [[Handle an incoming message from the chat platform.                  This metho]] - rationale - caiocore\channels\base.py
+- [[Handle incoming Discord messages.]] - rationale - caiocore\channels\discord.py
+- [[Handle incoming Socket Mode requests.]] - rationale - caiocore\channels\slack.py
+- [[Handle incoming message (called by CaioDingTalkHandler).          Delegates to]] - rationale - caiocore\channels\dingtalk.py
+- [[Handle incoming message from Feishu.]] - rationale - caiocore\channels\feishu.py
+- [[Handle incoming message from QQ.]] - rationale - caiocore\channels\qq.py
+- [[Handle incoming messages (text, photos, voice, documents).]] - rationale - caiocore\channels\telegram.py
+- [[Initialize channels based on config. Only creates if not already exists.]] - rationale - caiocore\channels\manager.py
+- [[Initialize the channel.                  Args             config Channel-sp]] - rationale - caiocore\channels\base.py
+- [[Log polling  handler errors instead of silently swallowing them.]] - rationale - caiocore\channels\telegram.py
+- [[MCP server connection configuration (stdio or HTTP).]] - rationale - caiocore\config\schema.py
+- [[MCPServerConfig]] - code - caiocore\config\schema.py
+- [[Main gateway loop identify, heartbeat, dispatch events.]] - rationale - caiocore\channels\discord.py
+- [[Manages chat channels and coordinates message routing.          Responsibiliti]] - rationale - caiocore\channels\manager.py
+- [[Message to send to a chat channel.]] - rationale - caiocore\bus\events.py
+- [[MessageBus]] - code - caiocore\bus\queue.py
+- [[Mochat channel configuration.]] - rationale - caiocore\config\schema.py
+- [[Mochat channel implementation using Socket.IO with HTTP polling fallback.]] - rationale - caiocore\channels\mochat.py
+- [[Mochat channel using socket.io with fallback polling workers.]] - rationale - caiocore\channels\mochat.py
+- [[Mochat mention behavior configuration.]] - rationale - caiocore\config\schema.py
+- [[Mochat per-group mention requirement.]] - rationale - caiocore\config\schema.py
+- [[MochatBufferedEntry]] - code - caiocore\channels\mochat.py
+- [[MochatChannel]] - code - caiocore\channels\mochat.py
+- [[MochatConfig]] - code - caiocore\config\schema.py
+- [[MochatGroupRule]] - code - caiocore\config\schema.py
+- [[MochatMentionConfig]] - code - caiocore\config\schema.py
+- [[MochatTarget]] - code - caiocore\channels\mochat.py
+- [[Normalize content payload to text.]] - rationale - caiocore\channels\mochat.py
+- [[Outbound target resolution result.]] - rationale - caiocore\channels\mochat.py
+- [[OutboundMessage]] - code - caiocore\bus\events.py
+- [[Parse a markdown table into a Feishu table element.]] - rationale - caiocore\channels\feishu.py
+- [[Parse event timestamp to epoch milliseconds.]] - rationale - caiocore\channels\mochat.py
+- [[Per-target delayed message state.]] - rationale - caiocore\channels\mochat.py
+- [[Poll IMAP and return parsed unread messages.]] - rationale - caiocore\channels\email.py
+- [[Process incoming stream message.]] - rationale - caiocore\channels\dingtalk.py
+- [[Process incoming webhook from Evolution API.         Called by the FastAPI route]] - rationale - caiocore\channels\evolution.py
+- [[ProvidersConfig]] - code - caiocore\config\schema.py
+- [[Publish a message from a channel to the agent.]] - rationale - caiocore\bus\queue.py
+- [[QQ channel configuration using botpy SDK.]] - rationale - caiocore\config\schema.py
+- [[QQ channel implementation using botpy SDK.]] - rationale - caiocore\channels\qq.py
+- [[QQ channel using botpy SDK with WebSocket connection.]] - rationale - caiocore\channels\qq.py
+- [[QQChannel]] - code - caiocore\channels\qq.py
+- [[QQConfig]] - code - caiocore\config\schema.py
+- [[Recursively extract text and links from interactive card content.]] - rationale - caiocore\channels\feishu.py
+- [[Remove HTML tags, CSS blocks (style) and scripts,      then normalize whitespac]] - rationale - caiocore\channels\email.py
+- [[Remove emails from the recent cache matching subject or sender.]] - rationale - caiocore\channels\email.py
+- [[Repeatedly send 'typing' action until cancelled.]] - rationale - caiocore\channels\telegram.py
+- [[Resolve id and target kind from user-provided target string.]] - rationale - caiocore\channels\mochat.py
+- [[Resolve mention requirement for grouppanel conversations.]] - rationale - caiocore\channels\mochat.py
+- [[Resolve mention state from payload metadata and text fallback.]] - rationale - caiocore\channels\mochat.py
+- [[Return value if it's a dict, else empty dict.]] - rationale - caiocore\channels\mochat.py
+- [[Return the first non-empty str value found for keys, stripped.]] - rationale - caiocore\channels\mochat.py
+- [[Return the most recently cached emails for dashboard display.]] - rationale - caiocore\channels\email.py
+- [[Run the bot connection with auto-reconnect.]] - rationale - caiocore\channels\qq.py
+- [[Send IDENTIFY payload.]] - rationale - caiocore\channels\discord.py
+- [[Send a message through DingTalk.]] - rationale - caiocore\channels\dingtalk.py
+- [[Send a message through Discord REST API.]] - rationale - caiocore\channels\discord.py
+- [[Send a message through Evolution API.]] - rationale - caiocore\channels\evolution.py
+- [[Send a message through Feishu, including media (imagesfiles) if present.]] - rationale - caiocore\channels\feishu.py
+- [[Send a message through QQ.]] - rationale - caiocore\channels\qq.py
+- [[Send a message through Slack.]] - rationale - caiocore\channels\slack.py
+- [[Send a message through Telegram.]] - rationale - caiocore\channels\telegram.py
+- [[Send a message through WhatsApp.]] - rationale - caiocore\channels\whatsapp.py
+- [[Send a message through this channel.                  Args             msg]] - rationale - caiocore\channels\base.py
+- [[Send a single Discord API payload with retry on rate-limit. Returns True on succ]] - rationale - caiocore\channels\discord.py
+- [[Send a single message (textimagefileinteractive) synchronously.]] - rationale - caiocore\channels\feishu.py
+- [[Send outbound message to session or panel.]] - rationale - caiocore\channels\mochat.py
+- [[Session management for conversation history.]] - rationale - caiocore\session\manager.py
+- [[Slack DM policy configuration.]] - rationale - caiocore\config\schema.py
+- [[Slack channel configuration.]] - rationale - caiocore\config\schema.py
+- [[Slack channel implementation using Socket Mode.]] - rationale - caiocore\channels\slack.py
+- [[Slack channel using Socket Mode.]] - rationale - caiocore\channels\slack.py
+- [[SlackChannel]] - code - caiocore\channels\slack.py
+- [[SlackConfig]] - code - caiocore\config\schema.py
+- [[SlackDMConfig]] - code - caiocore\config\schema.py
+- [[Split content by headings, converting headings to div elements.]] - rationale - caiocore\channels\feishu.py
+- [[Split content into chunks within max_len, preferring line breaks.]] - rationale - caiocore\channels\discord.py
+- [[Split content into chunks within max_len, preferring line breaks._1]] - rationale - caiocore\channels\telegram.py
+- [[Split content into divmarkdown + table elements for Feishu card.]] - rationale - caiocore\channels\feishu.py
+- [[Standard DingTalk Stream SDK Callback Handler.     Parses incoming messages and]] - rationale - caiocore\channels\dingtalk.py
+- [[Start Mochat channel workers and websocket connection.]] - rationale - caiocore\channels\mochat.py
+- [[Start a channel and log any exceptions.]] - rationale - caiocore\channels\manager.py
+- [[Start all channels and the outbound dispatcher.]] - rationale - caiocore\channels\manager.py
+- [[Start or restart the heartbeat loop.]] - rationale - caiocore\channels\discord.py
+- [[Start periodic typing indicator for a channel.]] - rationale - caiocore\channels\discord.py
+- [[Start polling IMAP for inbound emails.]] - rationale - caiocore\channels\email.py
+- [[Start sending 'typing...' indicator for a chat.]] - rationale - caiocore\channels\telegram.py
+- [[Start the DingTalk bot with Stream Mode.]] - rationale - caiocore\channels\dingtalk.py
+- [[Start the Discord gateway connection.]] - rationale - caiocore\channels\discord.py
+- [[Start the Evolution channel.]] - rationale - caiocore\channels\evolution.py
+- [[Start the Feishu bot with WebSocket long connection.]] - rationale - caiocore\channels\feishu.py
+- [[Start the Slack Socket Mode client.]] - rationale - caiocore\channels\slack.py
+- [[Start the Telegram bot with long polling.]] - rationale - caiocore\channels\telegram.py
+- [[Start the WhatsApp channel by connecting to the bridge.]] - rationale - caiocore\channels\whatsapp.py
+- [[Start the channel and begin listening for messages.                  This shou]] - rationale - caiocore\channels\base.py
+- [[Stop all channels and the dispatcher.]] - rationale - caiocore\channels\manager.py
+- [[Stop all workers and clean up resources.]] - rationale - caiocore\channels\mochat.py
+- [[Stop the DingTalk bot.]] - rationale - caiocore\channels\dingtalk.py
+- [[Stop the Discord channel.]] - rationale - caiocore\channels\discord.py
+- [[Stop the Evolution channel.]] - rationale - caiocore\channels\evolution.py
+- [[Stop the Slack client.]] - rationale - caiocore\channels\slack.py
+- [[Stop the Telegram bot.]] - rationale - caiocore\channels\telegram.py
+- [[Stop the WhatsApp channel.]] - rationale - caiocore\channels\whatsapp.py
+- [[Stop the channel and clean up resources.]] - rationale - caiocore\channels\base.py
+- [[Stop the heartbeat service.]] - rationale - caiocore\heartbeat\service.py
+- [[Stop the typing indicator for a chat.]] - rationale - caiocore\channels\telegram.py
+- [[Stop typing indicator for a channel.]] - rationale - caiocore\channels\discord.py
+- [[Sync handler for incoming messages (called from WebSocket thread).         Sche]] - rationale - caiocore\channels\feishu.py
+- [[Sync helper for adding reaction (runs in thread pool).]] - rationale - caiocore\channels\feishu.py
+- [[Sync running channels with the provided config (Hot-reload).]] - rationale - caiocore\channels\manager.py
+- [[Telegram channel configuration.]] - rationale - caiocore\config\schema.py
+- [[Telegram channel implementation using python-telegram-bot.]] - rationale - caiocore\channels\telegram.py
+- [[Telegram channel using long polling.          Simple and reliable - no webhook]] - rationale - caiocore\channels\telegram.py
+- [[TelegramChannel]] - code - caiocore\channels\telegram.py
+- [[TelegramConfig]] - code - caiocore\config\schema.py
+- [[ToolsConfig]] - code - caiocore\config\schema.py
+- [[Transcribe an audio file using Groq.                  Args             file_]] - rationale - caiocore\providers\transcription.py
+- [[Unified send helper for session and panel messages.]] - rationale - caiocore\channels\mochat.py
+- [[Upload a file to Feishu and return the file_key.]] - rationale - caiocore\channels\feishu.py
+- [[Upload an image to Feishu and return the image_key.]] - rationale - caiocore\channels\feishu.py
+- [[Voice transcription provider using Groq's Whisper API.          Groq offers ex]] - rationale - caiocore\providers\transcription.py
+- [[Voice transcription provider using Groq.]] - rationale - caiocore\providers\transcription.py
+- [[Wait for IMAP IDLE notifications (real-time push).]] - rationale - caiocore\channels\email.py
+- [[Web search tool configuration.]] - rationale - caiocore\config\schema.py
+- [[Web tools configuration.]] - rationale - caiocore\config\schema.py
+- [[WebSearchConfig]] - code - caiocore\config\schema.py
+- [[WebToolsConfig]] - code - caiocore\config\schema.py
+- [[WhatsApp channel configuration.]] - rationale - caiocore\config\schema.py
+- [[WhatsApp channel implementation using Node.js bridge.]] - rationale - caiocore\channels\whatsapp.py
+- [[WhatsApp channel that connects to a Node.js bridge.          The bridge uses @]] - rationale - caiocore\channels\whatsapp.py
+- [[WhatsApp channel using the Evolution API.          Outbound via Evolution REST]] - rationale - caiocore\channels\evolution.py
+- [[WhatsApp integration via Evolution API.]] - rationale - caiocore\channels\evolution.py
+- [[WhatsApp integration via Evolution API._1]] - rationale - caiocore\config\schema.py
+- [[WhatsAppChannel]] - code - caiocore\channels\whatsapp.py
+- [[WhatsAppConfig]] - code - caiocore\config\schema.py
+- [[_convert_table()]] - code - caiocore\channels\slack.py
+- [[_decode_header_value()]] - code - caiocore\channels\email.py
+- [[_extract_element_content()]] - code - caiocore\channels\feishu.py
+- [[_extract_interactive_content()]] - code - caiocore\channels\feishu.py
+- [[_extract_message_bytes()]] - code - caiocore\channels\email.py
+- [[_extract_post_text()]] - code - caiocore\channels\feishu.py
+- [[_extract_share_card_content()]] - code - caiocore\channels\feishu.py
+- [[_extract_text_body()]] - code - caiocore\channels\email.py
+- [[_extract_uid()]] - code - caiocore\channels\email.py
+- [[_format_imap_date()]] - code - caiocore\channels\email.py
+- [[_get_media_type()]] - code - caiocore\channels\telegram.py
+- [[_html_to_text()]] - code - caiocore\channels\email.py
+- [[_make_bot_class()]] - code - caiocore\channels\qq.py
+- [[_make_config()]] - code - tests\test_email_channel.py
+- [[_make_raw_email()]] - code - tests\test_email_channel.py
+- [[_make_synthetic_event()]] - code - caiocore\channels\mochat.py
+- [[_markdown_to_telegram_html()]] - code - caiocore\channels\telegram.py
+- [[_parse_md_table()]] - code - caiocore\channels\feishu.py
+- [[_read_group_id()]] - code - caiocore\channels\mochat.py
+- [[_safe_dict()]] - code - caiocore\channels\mochat.py
+- [[_sender_id()]] - code - caiocore\channels\telegram.py
+- [[_split_message()]] - code - caiocore\channels\discord.py
+- [[_split_message()_1]] - code - caiocore\channels\telegram.py
+- [[_str_field()]] - code - caiocore\channels\mochat.py
+- [[_to_mrkdwn()]] - code - caiocore\channels\slack.py
+- [[build_buffered_body()]] - code - caiocore\channels\mochat.py
+- [[clean_email_body()]] - code - caiocore\channels\email.py
+- [[dingtalk.py]] - code - caiocore\channels\dingtalk.py
+- [[discord.py]] - code - caiocore\channels\discord.py
+- [[email.py]] - code - caiocore\channels\email.py
+- [[enabled_channels()]] - code - caiocore\channels\manager.py
+- [[evolution.py]] - code - caiocore\channels\evolution.py
+- [[extract_mention_ids()]] - code - caiocore\channels\mochat.py
+- [[feishu.py]] - code - caiocore\channels\feishu.py
+- [[manager.py]] - code - caiocore\channels\manager.py
+- [[mochat.py]] - code - caiocore\channels\mochat.py
+- [[normalize_mochat_content()]] - code - caiocore\channels\mochat.py
+- [[parse_timestamp()]] - code - caiocore\channels\mochat.py
+- [[qq.py]] - code - caiocore\channels\qq.py
+- [[resolve_mochat_target()]] - code - caiocore\channels\mochat.py
+- [[resolve_require_mention()]] - code - caiocore\channels\mochat.py
+- [[resolve_was_mentioned()]] - code - caiocore\channels\mochat.py
+- [[schema.py]] - code - caiocore\config\schema.py
+- [[slack.py]] - code - caiocore\channels\slack.py
+- [[telegram.py]] - code - caiocore\channels\telegram.py
+- [[test_email_channel.py]] - code - tests\test_email_channel.py
+- [[test_extract_text_body_falls_back_to_html()]] - code - tests\test_email_channel.py
+- [[test_fetch_messages_between_dates_uses_imap_since_before_without_mark_seen()]] - code - tests\test_email_channel.py
+- [[test_fetch_new_messages_parses_unseen_and_marks_seen()]] - code - tests\test_email_channel.py
+- [[test_send_skips_when_auto_reply_disabled()]] - code - tests\test_email_channel.py
+- [[test_send_skips_when_consent_not_granted()]] - code - tests\test_email_channel.py
+- [[test_send_uses_smtp_and_reply_subject()]] - code - tests\test_email_channel.py
+- [[test_start_returns_immediately_without_consent()]] - code - tests\test_email_channel.py
+- [[transcription.py]] - code - caiocore\providers\transcription.py
+- [[whatsapp.py]] - code - caiocore\channels\whatsapp.py
+- [[workspace_path()]] - code - caiocore\config\schema.py
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_0
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 83 edges to [[_COMMUNITY_Community 2]]
+- 83 edges to [[_COMMUNITY_Community 1]]
+- 82 edges to [[_COMMUNITY_Community 3]]
+- 11 edges to [[_COMMUNITY_Community 4]]
+- 6 edges to [[_COMMUNITY_Community 7]]
+- 5 edges to [[_COMMUNITY_Community 9]]
+- 2 edges to [[_COMMUNITY_Community 41]]
+- 2 edges to [[_COMMUNITY_Community 6]]
+- 1 edge to [[_COMMUNITY_Community 36]]
+- 1 edge to [[_COMMUNITY_Community 12]]
+
+## Top bridge nodes
+- [[MochatChannel]] - degree 55, connects to 6 communities
+- [[OutboundMessage]] - degree 221, connects to 5 communities
+- [[MessageBus]] - degree 222, connects to 4 communities
+- [[BaseChannel]] - degree 155, connects to 4 communities
+- [[Base]] - degree 28, connects to 3 communities

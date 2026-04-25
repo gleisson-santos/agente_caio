@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\engine.py"
 type: "code"
-community: "Community None"
+community: "Community 6"
 location: "L492"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # list_generated_documents()
@@ -17,4 +17,4 @@ tags:
 - [[List all files in the output directory with metadata.]] - `rationale_for` [EXTRACTED]
 - [[engine.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_6

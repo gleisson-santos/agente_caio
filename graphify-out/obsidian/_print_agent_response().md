@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # _print_agent_response()
@@ -16,4 +16,4 @@ tags:
 - [[commands.py]] - `contains` [EXTRACTED]
 - [[cron_run()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

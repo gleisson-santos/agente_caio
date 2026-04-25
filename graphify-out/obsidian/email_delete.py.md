@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\email_delete.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # email_delete.py
@@ -16,4 +16,4 @@ tags:
 - [[EmailDeleteTool]] - `contains` [EXTRACTED]
 - [[_decode_header()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_1

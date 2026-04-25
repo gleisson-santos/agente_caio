@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\engine.py"
 type: "code"
-community: "Community None"
+community: "Community 6"
 location: "L440"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_6
 ---
 
 # generate_from_ai_content()
@@ -22,4 +22,4 @@ tags:
 - [[engine.py]] - `contains` [EXTRACTED]
 - [[generate_from_template()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_6

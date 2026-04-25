@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\service.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # _validate_schedule_for_add()
@@ -16,4 +16,4 @@ tags:
 - [[Validate schedule fields that would otherwise create non-runnable jobs.]] - `rationale_for` [EXTRACTED]
 - [[service.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

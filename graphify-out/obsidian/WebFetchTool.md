@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\web.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L93"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # WebFetchTool
@@ -47,4 +47,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[web.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

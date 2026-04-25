@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "code"
-community: "Community None"
-location: "L368"
+community: "Community 2"
+location: "L491"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # gateway()
@@ -27,7 +27,7 @@ tags:
 - [[MessageBus]] - `calls` [INFERRED]
 - [[SessionManager]] - `calls` [INFERRED]
 - [[SpecialistAgent]] - `calls` [INFERRED]
-- [[Start the nanobot gateway.]] - `rationale_for` [EXTRACTED]
+- [[Start the caio gateway.]] - `rationale_for` [EXTRACTED]
 - [[_make_provider()]] - `calls` [EXTRACTED]
 - [[commands.py]] - `contains` [EXTRACTED]
 - [[get_data_dir()]] - `calls` [INFERRED]
@@ -35,4 +35,4 @@ tags:
 - [[start_api()]] - `calls` [INFERRED]
 - [[status()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

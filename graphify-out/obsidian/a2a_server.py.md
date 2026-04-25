@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\server\a2a_server.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # a2a_server.py
@@ -18,4 +18,4 @@ tags:
 - [[a2a_info()]] - `contains` [EXTRACTED]
 - [[receive_a2a_message()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_1

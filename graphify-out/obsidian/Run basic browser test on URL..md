@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\webapp-testing\scripts\playwright_runner.py"
 type: "rationale"
-community: "Community None"
+community: "Community 38"
 location: "L32"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_38
 ---
 
 # Run basic browser test on URL.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[run_basic_test()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_38

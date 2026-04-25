@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\manager.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L16"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # ChannelManager
@@ -51,7 +51,7 @@ tags:
 - [[Restore terminal to its original state (echo, line buffering, etc.).]] - `uses` [INFERRED]
 - [[Return True when input should end interactive chat.]] - `uses` [INFERRED]
 - [[SlackChannel]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[TelegramChannel]] - `uses` [INFERRED]
 - [[Utility functions for caiocore.]] - `uses` [INFERRED]
 - [[WhatsAppChannel]] - `uses` [INFERRED]
@@ -59,4 +59,4 @@ tags:
 - [[manager.py]] - `contains` [EXTRACTED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

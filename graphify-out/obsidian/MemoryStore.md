@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\memory.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L45"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # MemoryStore
@@ -52,4 +52,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[memory.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

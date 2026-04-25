@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\base.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L12"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # BaseChannel
@@ -23,6 +23,7 @@ tags:
 - [[Build a synthetic ``message.add`` event dict.]] - `uses` [INFERRED]
 - [[Build sender_id for allowlist matching.                  IMPORTANTE Retorna a]] - `uses` [INFERRED]
 - [[Build text body from one or more buffered entries.]] - `uses` [INFERRED]
+- [[CaioDingTalkHandler]] - `uses` [INFERRED]
 - [[ChannelManager]] - `uses` [INFERRED]
 - [[Convert Markdown to Slack mrkdwn, including tables.]] - `uses` [INFERRED]
 - [[Convert a Markdown table to a Slack-readable list.]] - `uses` [INFERRED]
@@ -66,7 +67,7 @@ tags:
 - [[Handle a message from the bridge.]] - `uses` [INFERRED]
 - [[Handle incoming Discord messages.]] - `uses` [INFERRED]
 - [[Handle incoming Socket Mode requests.]] - `uses` [INFERRED]
-- [[Handle incoming message (called by NanobotDingTalkHandler).          Delegates]] - `uses` [INFERRED]
+- [[Handle incoming message (called by CaioDingTalkHandler).          Delegates to]] - `uses` [INFERRED]
 - [[Handle incoming message from Feishu.]] - `uses` [INFERRED]
 - [[Handle incoming message from QQ.]] - `uses` [INFERRED]
 - [[Handle incoming messages (text, photos, voice, documents).]] - `uses` [INFERRED]
@@ -81,7 +82,6 @@ tags:
 - [[MochatBufferedEntry]] - `uses` [INFERRED]
 - [[MochatChannel]] - `uses` [INFERRED]
 - [[MochatTarget]] - `uses` [INFERRED]
-- [[NanobotDingTalkHandler]] - `uses` [INFERRED]
 - [[Normalize content payload to text.]] - `uses` [INFERRED]
 - [[Outbound target resolution result.]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
@@ -168,4 +168,4 @@ tags:
 - [[WhatsAppChannel]] - `uses` [INFERRED]
 - [[base.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\email.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L58"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # EmailChannel
@@ -53,4 +53,4 @@ tags:
 - [[test_send_uses_smtp_and_reply_subject()]] - `calls` [INFERRED]
 - [[test_start_returns_immediately_without_consent()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

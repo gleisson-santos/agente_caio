@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\heartbeat\service.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L82"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Start the heartbeat service.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.start()_13]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_3

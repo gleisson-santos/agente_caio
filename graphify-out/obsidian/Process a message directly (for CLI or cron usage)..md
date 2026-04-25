@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\loop.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L916"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Process a message directly (for CLI or cron usage).
@@ -53,4 +53,4 @@ tags:
 - [[WorkflowTool]] - `uses` [INFERRED]
 - [[WriteFileTool]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\geo-fundamentals\scripts\geo_checker.py"
 type: "code"
-community: "Community None"
+community: "Community 23"
 location: "L99"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_23
 ---
 
 # check_page()
@@ -16,4 +16,4 @@ tags:
 - [[geo_checker.py]] - `contains` [EXTRACTED]
 - [[main()_5]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_23

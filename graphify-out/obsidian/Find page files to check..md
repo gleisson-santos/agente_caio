@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\seo-fundamentals\scripts\seo_checker.py"
 type: "rationale"
-community: "Community None"
+community: "Community 24"
 location: "L79"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_24
 ---
 
 # Find page files to check.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[find_pages()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_24

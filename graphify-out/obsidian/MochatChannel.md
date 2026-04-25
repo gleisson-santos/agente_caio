@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L215"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # MochatChannel
@@ -68,4 +68,4 @@ tags:
 - [[Sync running channels with the provided config (Hot-reload).]] - `uses` [INFERRED]
 - [[mochat.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

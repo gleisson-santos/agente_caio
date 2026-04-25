@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\litellm_provider.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L103"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Normalize explicit provider prefixes like `github-copilot/...`.
@@ -16,4 +16,4 @@ tags:
 - [[LLMResponse]] - `uses` [INFERRED]
 - [[ToolCallRequest]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

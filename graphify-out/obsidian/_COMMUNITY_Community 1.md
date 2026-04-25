@@ -1,0 +1,343 @@
+---
+type: community
+members: 295
+---
+
+# Community 1
+
+**Members:** 295 nodes
+
+## Members
+- [[.__contains__()]] - code - caiocore\agent\tools\registry.py
+- [[.__del__()]] - code - caiocore\agent\tools\browser.py
+- [[.__init__()]] - code - caiocore\agent\context.py
+- [[.__init__()_1]] - code - caiocore\agent\loop.py
+- [[.__init__()_4]] - code - caiocore\agent\smart_router.py
+- [[.__init__()_5]] - code - caiocore\agent\subagent.py
+- [[.__init__()_7]] - code - caiocore\agent\workflow.py
+- [[.__init__()_8]] - code - caiocore\agent\tools\a2a.py
+- [[.__init__()_9]] - code - caiocore\agent\tools\browser.py
+- [[.__init__()_10]] - code - caiocore\agent\tools\cron.py
+- [[.__init__()_11]] - code - caiocore\agent\tools\email_delete.py
+- [[.__init__()_12]] - code - caiocore\agent\tools\email_read.py
+- [[.__init__()_13]] - code - caiocore\agent\tools\email_send.py
+- [[.__init__()_14]] - code - caiocore\agent\tools\filesystem.py
+- [[.__init__()_15]] - code - caiocore\agent\tools\filesystem.py
+- [[.__init__()_16]] - code - caiocore\agent\tools\filesystem.py
+- [[.__init__()_17]] - code - caiocore\agent\tools\filesystem.py
+- [[.__init__()_19]] - code - caiocore\agent\tools\mcp.py
+- [[.__init__()_20]] - code - caiocore\agent\tools\message.py
+- [[.__init__()_21]] - code - caiocore\agent\tools\pdf_reader.py
+- [[.__init__()_22]] - code - caiocore\agent\tools\registry.py
+- [[.__init__()_23]] - code - caiocore\agent\tools\shell.py
+- [[.__init__()_24]] - code - caiocore\agent\tools\spawn.py
+- [[.__init__()_25]] - code - caiocore\agent\tools\voice.py
+- [[.__init__()_27]] - code - caiocore\agent\tools\web.py
+- [[.__init__()_28]] - code - caiocore\agent\tools\workflow.py
+- [[.__init__()_55]] - code - caiocore\providers\base.py
+- [[.__len__()]] - code - caiocore\agent\tools\registry.py
+- [[._announce_result()]] - code - caiocore\agent\subagent.py
+- [[._apply_cache_control()]] - code - caiocore\providers\litellm_provider.py
+- [[._build_subagent_prompt()]] - code - caiocore\agent\subagent.py
+- [[._build_user_content()]] - code - caiocore\agent\context.py
+- [[._call_provider_with_fallback()]] - code - caiocore\agent\loop.py
+- [[._connect_mcp()]] - code - caiocore\agent\loop.py
+- [[._consolidate_memory()]] - code - caiocore\agent\loop.py
+- [[._get_api_key()]] - code - caiocore\agent\tools\generator.py
+- [[._get_driver()]] - code - caiocore\agent\tools\browser.py
+- [[._guard_command()]] - code - caiocore\agent\tools\shell.py
+- [[._handle_llm()]] - code - caiocore\agent\workflow.py
+- [[._handle_notify()]] - code - caiocore\agent\workflow.py
+- [[._handle_tool()]] - code - caiocore\agent\workflow.py
+- [[._parse()]] - code - caiocore\providers\custom_provider.py
+- [[._parse_response()]] - code - caiocore\providers\litellm_provider.py
+- [[._process_message()]] - code - caiocore\agent\loop.py
+- [[._register_default_tools()]] - code - caiocore\agent\loop.py
+- [[._render_template_obj()]] - code - caiocore\agent\workflow.py
+- [[._render_template_str()]] - code - caiocore\agent\workflow.py
+- [[._run_agent_loop()]] - code - caiocore\agent\loop.py
+- [[._run_subagent()]] - code - caiocore\agent\subagent.py
+- [[._set_tool_context()]] - code - caiocore\agent\loop.py
+- [[._supports_cache_control()]] - code - caiocore\providers\litellm_provider.py
+- [[._try_extract_tool_calls()]] - code - caiocore\agent\loop.py
+- [[.add_assistant_message()]] - code - caiocore\agent\context.py
+- [[.add_tool_result()]] - code - caiocore\agent\context.py
+- [[.append_history()]] - code - caiocore\agent\memory.py
+- [[.build_messages()]] - code - caiocore\agent\context.py
+- [[.chat()]] - code - caiocore\providers\custom_provider.py
+- [[.chat()_1]] - code - caiocore\providers\litellm_provider.py
+- [[.classify()]] - code - caiocore\agent\smart_router.py
+- [[.close_mcp()]] - code - caiocore\agent\loop.py
+- [[.consolidate()]] - code - caiocore\agent\memory.py
+- [[.consume_inbound()]] - code - caiocore\bus\queue.py
+- [[.execute()]] - code - caiocore\agent\workflow.py
+- [[.execute()_2]] - code - caiocore\agent\tools\browser.py
+- [[.execute()_5]] - code - caiocore\agent\tools\email_delete.py
+- [[.execute()_6]] - code - caiocore\agent\tools\email_read.py
+- [[.execute()_7]] - code - caiocore\agent\tools\email_send.py
+- [[.execute()_8]] - code - caiocore\agent\tools\filesystem.py
+- [[.execute()_9]] - code - caiocore\agent\tools\filesystem.py
+- [[.execute()_10]] - code - caiocore\agent\tools\filesystem.py
+- [[.execute()_11]] - code - caiocore\agent\tools\filesystem.py
+- [[.execute()_12]] - code - caiocore\agent\tools\generator.py
+- [[.execute()_14]] - code - caiocore\agent\tools\mcp.py
+- [[.execute()_15]] - code - caiocore\agent\tools\message.py
+- [[.execute()_17]] - code - caiocore\agent\tools\registry.py
+- [[.execute()_18]] - code - caiocore\agent\tools\shell.py
+- [[.execute()_19]] - code - caiocore\agent\tools\spawn.py
+- [[.execute()_24]] - code - caiocore\agent\tools\workflow.py
+- [[.get()]] - code - caiocore\agent\tools\registry.py
+- [[.get_default_model()_2]] - code - caiocore\providers\openai_codex_provider.py
+- [[.get_definitions()]] - code - caiocore\agent\tools\registry.py
+- [[.get_memory_context()]] - code - caiocore\agent\memory.py
+- [[.get_running_count()]] - code - caiocore\agent\subagent.py
+- [[.get_stats()]] - code - caiocore\agent\smart_router.py
+- [[.get_stats()_1]] - code - caiocore\agent\tools\a2a.py
+- [[.handle_message()]] - code - caiocore\agent\loop.py
+- [[.has()]] - code - caiocore\agent\tools\registry.py
+- [[.process_direct()]] - code - caiocore\agent\loop.py
+- [[.publish_outbound()]] - code - caiocore\bus\queue.py
+- [[.read_long_term()]] - code - caiocore\agent\memory.py
+- [[.register()]] - code - caiocore\agent\tools\registry.py
+- [[.register()_1]] - code - caiocore\agents\registry.py
+- [[.run()]] - code - caiocore\agent\loop.py
+- [[.set_context()_1]] - code - caiocore\agent\tools\message.py
+- [[.set_context()_2]] - code - caiocore\agent\tools\spawn.py
+- [[.set_send_callback()]] - code - caiocore\agent\tools\message.py
+- [[.spawn()]] - code - caiocore\agent\subagent.py
+- [[.start_turn()]] - code - caiocore\agent\tools\message.py
+- [[.stop()_1]] - code - caiocore\agent\loop.py
+- [[.to_schema()]] - code - caiocore\agent\tools\base.py
+- [[.unregister()]] - code - caiocore\agent\tools\registry.py
+- [[.write_long_term()]] - code - caiocore\agent\memory.py
+- [[A tool call request from the LLM.]] - rationale - caiocore\providers\base.py
+- [[A2A (Agent-to-Agent) server endpoint — receives messages from remote agents.]] - rationale - caiocore\server\a2a_server.py
+- [[A2AInboundMessage]] - code - caiocore\server\a2a_server.py
+- [[A2AResponse]] - code - caiocore\server\a2a_server.py
+- [[A2ASendTool]] - code - caiocore\agent\tools\a2a.py
+- [[Abstract base class for LLM providers.          Implementations should handle]] - rationale - caiocore\providers\base.py
+- [[Abstract base class for agent tools.          Tools are capabilities that the]] - rationale - caiocore\agent\tools\base.py
+- [[Add a tool result to the message list.                  Args             mes]] - rationale - caiocore\agent\context.py
+- [[Add an assistant message to the message list.                  Args]] - rationale - caiocore\agent\context.py
+- [[Agent loop the core processing engine.]] - rationale - caiocore\agent\loop.py
+- [[AgentLoop]] - code - caiocore\agent\loop.py
+- [[Announce the subagent result to the main agent via the message bus.]] - rationale - caiocore\agent\subagent.py
+- [[Apply model-specific parameter overrides from the registry.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Best-effort safety guard for potentially destructive commands.]] - rationale - caiocore\agent\tools\shell.py
+- [[Browse URLs, take screenshots, extract text, and interact with web pages.]] - rationale - caiocore\agent\tools\browser.py
+- [[BrowserTool]] - code - caiocore\agent\tools\browser.py
+- [[Build a focused system prompt for the subagent.]] - rationale - caiocore\agent\subagent.py
+- [[Build a helpful error when old_text is not found.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[Build the complete message list for an LLM call.          Args             h]] - rationale - caiocore\agent\context.py
+- [[Build user message content with optional base64-encoded images.]] - rationale - caiocore\agent\context.py
+- [[Builds the context (system prompt + messages) for the agent.          Assemble]] - rationale - caiocore\agent\context.py
+- [[Classify a message and return the optimal model.          Classification tiers]] - rationale - caiocore\agent\smart_router.py
+- [[Clean up the driver on garbage collection.]] - rationale - caiocore\agent\tools\browser.py
+- [[Close MCP connections.]] - rationale - caiocore\agent\loop.py
+- [[Connect to configured MCP servers (one-time, lazy).]] - rationale - caiocore\agent\loop.py
+- [[Connect to configured MCP servers and register their tools.]] - rationale - caiocore\agent\tools\mcp.py
+- [[Consolidate old messages into MEMORY.md + HISTORY.md via LLM tool call.]] - rationale - caiocore\agent\memory.py
+- [[Consume the next inbound message (blocks until available).]] - rationale - caiocore\bus\queue.py
+- [[Context builder for assembling agent prompts.]] - rationale - caiocore\agent\context.py
+- [[ContextBuilder]] - code - caiocore\agent\context.py
+- [[Convert OpenAI function-calling schema to Codex flat format.]] - rationale - caiocore\providers\openai_codex_provider.py
+- [[Convert text to speech using OpenAI's TTS API.]] - rationale - caiocore\agent\tools\voice.py
+- [[Convert tool to OpenAI function schema format.]] - rationale - caiocore\agent\tools\base.py
+- [[CronTool]] - code - caiocore\agent\tools\cron.py
+- [[Decode encoded email header.]] - rationale - caiocore\agent\tools\email_delete.py
+- [[Delegate to MemoryStore.consolidate().]] - rationale - caiocore\agent\loop.py
+- [[Delete emails from the user's IMAP inbox.]] - rationale - caiocore\agent\tools\email_delete.py
+- [[Direct OpenAI-compatible provider — bypasses LiteLLM.]] - rationale - caiocore\providers\custom_provider.py
+- [[EditFileTool]] - code - caiocore\agent\tools\filesystem.py
+- [[Email delete tool delete emails from IMAP inbox.]] - rationale - caiocore\agent\tools\email_delete.py
+- [[Email sending tool send emails via SMTP.]] - rationale - caiocore\agent\tools\email_send.py
+- [[EmailDeleteTool]] - code - caiocore\agent\tools\email_delete.py
+- [[EmailReadTool]] - code - caiocore\agent\tools\email_read.py
+- [[EmailSendTool]] - code - caiocore\agent\tools\email_send.py
+- [[ExecTool]] - code - caiocore\agent\tools\shell.py
+- [[ExecToolConfig]] - code - caiocore\config\schema.py
+- [[Executa a geração de mídia via OpenRouter.]] - rationale - caiocore\agent\tools\generator.py
+- [[Execute a defined workflow.                  definition {             name]] - rationale - caiocore\agent\workflow.py
+- [[Execute a tool by name with given parameters.                  Args]] - rationale - caiocore\agent\tools\registry.py
+- [[Execute email deletion.]] - rationale - caiocore\agent\tools\email_delete.py
+- [[Execute the email sending tool.]] - rationale - caiocore\agent\tools\email_send.py
+- [[Execute the subagent task and announce the result.]] - rationale - caiocore\agent\subagent.py
+- [[Execute the workflow.]] - rationale - caiocore\agent\tools\workflow.py
+- [[Ferramenta para criação de documentos profissionais formatados.     Permite que]] - rationale - caiocore\agent\tools\documentos.py
+- [[Ferramenta para geração de mídia e assets (Imagens, Prompts, etc).     Integrad]] - rationale - caiocore\agent\tools\generator.py
+- [[Fetch and extract content from a URL using Readability.]] - rationale - caiocore\agent\tools\web.py
+- [[File system tools read, write, edit.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[Format tool calls as concise hint, e.g. 'web_search(query)'.]] - rationale - caiocore\agent\loop.py
+- [[GeneratorTool]] - code - caiocore\agent\tools\generator.py
+- [[GeradorDocumentosTool]] - code - caiocore\agent\tools\documentos.py
+- [[Get list of registered tool names.]] - rationale - caiocore\agent\tools\registry.py
+- [[Get the default model.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Get tool definitions in OpenAI format, optionally filtered.                  A]] - rationale - caiocore\agent\tools\registry.py
+- [[InboundMessage]] - code - caiocore\bus\events.py
+- [[LLM provider using LiteLLM for multi-provider support.          Supports OpenR]] - rationale - caiocore\providers\litellm_provider.py
+- [[LLMProvider]] - code - caiocore\providers\base.py
+- [[LLMResponse]] - code - caiocore\providers\base.py
+- [[Lazy-initialize the Selenium WebDriver.]] - rationale - caiocore\agent\tools\browser.py
+- [[ListDirTool]] - code - caiocore\agent\tools\filesystem.py
+- [[LiteLLM provider implementation for multi-provider support.]] - rationale - caiocore\providers\litellm_provider.py
+- [[MCP client connects to MCP servers and wraps their tools as native caio tools.]] - rationale - caiocore\agent\tools\mcp.py
+- [[MCPToolWrapper]] - code - caiocore\agent\tools\mcp.py
+- [[Manages background subagent execution.          Subagents are lightweight agen]] - rationale - caiocore\agent\subagent.py
+- [[Memory system for persistent agent memory.]] - rationale - caiocore\agent\memory.py
+- [[MemoryStore]] - code - caiocore\agent\memory.py
+- [[Message received from a chat channel.]] - rationale - caiocore\bus\events.py
+- [[MessageTool]] - code - caiocore\agent\tools\message.py
+- [[Normalize explicit provider prefixes like `github-copilot...`.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Number of pending inbound messages.]] - rationale - caiocore\bus\queue.py
+- [[Number of pending outbound messages.]] - rationale - caiocore\bus\queue.py
+- [[OpenAI Codex Responses Provider.]] - rationale - caiocore\providers\openai_codex_provider.py
+- [[Parse LiteLLM response into our standard format.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Parse page selection like '1-3', '1,3,5', '2-5,8'.]] - rationale - caiocore\agent\tools\pdf_reader.py
+- [[Process a message directly (for CLI or cron usage).]] - rationale - caiocore\agent\loop.py
+- [[Process a single inbound message and return the response.]] - rationale - caiocore\agent\loop.py
+- [[Public entry point to handle a message from any channel (Web, API, etc.).]] - rationale - caiocore\agent\loop.py
+- [[Publish a response from the agent to channels.]] - rationale - caiocore\bus\queue.py
+- [[ReadFileTool]] - code - caiocore\agent\tools\filesystem.py
+- [[ReadPDFTool]] - code - caiocore\agent\tools\pdf_reader.py
+- [[Receive a message from a remote agent via A2A protocol.]] - rationale - caiocore\server\a2a_server.py
+- [[Register a monitoring agent.]] - rationale - caiocore\agents\registry.py
+- [[Register the default set of tools.]] - rationale - caiocore\agent\loop.py
+- [[Registry for agent tools.          Allows dynamic registration and execution o]] - rationale - caiocore\agent\tools\registry.py
+- [[Remove think…think blocks that some models embed in content.]] - rationale - caiocore\agent\loop.py
+- [[Reset per-turn send tracking.]] - rationale - caiocore\agent\tools\message.py
+- [[Resolve model name by applying providergateway prefixes.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Resolve path against workspace (if relative) and enforce directory restriction.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[Response from an LLM provider.]] - rationale - caiocore\providers\base.py
+- [[Result of the smart routing classification.]] - rationale - caiocore\agent\smart_router.py
+- [[Return A2A endpoint metadata for agent discovery.]] - rationale - caiocore\server\a2a_server.py
+- [[Return True when the provider supports cache_control on content blocks.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Return copies of messages and tools with cache_control injected.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Return routing statistics.]] - rationale - caiocore\agent\smart_router.py
+- [[Return the number of currently running subagents.]] - rationale - caiocore\agent\subagent.py
+- [[Routes messages to the optimal model based on complexity analysis.]] - rationale - caiocore\agent\smart_router.py
+- [[RoutingDecision]] - code - caiocore\agent\smart_router.py
+- [[Run the agent iteration loop. Returns (final_content, tools_used).]] - rationale - caiocore\agent\loop.py
+- [[Run the agent loop, processing messages from the bus.]] - rationale - caiocore\agent\loop.py
+- [[Search and read emails from the user's IMAP inbox.]] - rationale - caiocore\agent\tools\email_read.py
+- [[Search the web using Brave Search API.]] - rationale - caiocore\agent\tools\web.py
+- [[Send a chat completion request via LiteLLM.                  Args]] - rationale - caiocore\providers\litellm_provider.py
+- [[Send a message to a remote agent via HTTP.]] - rationale - caiocore\agent\tools\a2a.py
+- [[Set environment variables based on detected provider.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Set the callback for sending messages.]] - rationale - caiocore\agent\tools\message.py
+- [[Set the current message context.]] - rationale - caiocore\agent\tools\message.py
+- [[Set the origin context for subagent announcements.]] - rationale - caiocore\agent\tools\spawn.py
+- [[Shell exec tool configuration.]] - rationale - caiocore\config\schema.py
+- [[Smart Router — classifies message complexity and selects the optimal model.  I]] - rationale - caiocore\agent\smart_router.py
+- [[SmartRouter]] - code - caiocore\agent\smart_router.py
+- [[Spawn a subagent to execute a task in the background.                  Args]] - rationale - caiocore\agent\subagent.py
+- [[Spawn a subagent to execute the given task.]] - rationale - caiocore\agent\tools\spawn.py
+- [[Spawn tool for creating background subagents.]] - rationale - caiocore\agent\tools\spawn.py
+- [[SpawnTool]] - code - caiocore\agent\tools\spawn.py
+- [[Strip non-standard keys and ensure assistant messages have a content key.]] - rationale - caiocore\providers\litellm_provider.py
+- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of]] - rationale - caiocore\agent\workflow.py
+- [[Subagent manager for background task execution.]] - rationale - caiocore\agent\subagent.py
+- [[SubagentManager]] - code - caiocore\agent\subagent.py
+- [[SystemStatusTool]] - code - caiocore\agent\tools\system_status.py
+- [[Tenta o modelo principal, depois os fallbacks em ordem.]] - rationale - caiocore\agent\loop.py
+- [[The agent loop is the core processing engine.      It     1. Receives messag]] - rationale - caiocore\agent\loop.py
+- [[Tool]] - code
+- [[Tool_1]] - code - caiocore\agent\tools\base.py
+- [[Tool for managing and executing workflows.]] - rationale - caiocore\agent\tools\workflow.py
+- [[Tool to check the real-time health and metrics of CaioCore infrastructure agents]] - rationale - caiocore\agent\tools\system_status.py
+- [[Tool to define and execute structured workflows.          Workflows are sequen]] - rationale - caiocore\agent\tools\workflow.py
+- [[Tool to edit a file by replacing text.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[Tool to execute shell commands.]] - rationale - caiocore\agent\tools\shell.py
+- [[Tool to extract text content from PDF files.]] - rationale - caiocore\agent\tools\pdf_reader.py
+- [[Tool to list directory contents.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[Tool to read file contents.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[Tool to send emails via SMTP.]] - rationale - caiocore\agent\tools\email_send.py
+- [[Tool to send messages to users on chat channels.]] - rationale - caiocore\agent\tools\message.py
+- [[Tool to spawn a subagent for background task execution.          The subagent]] - rationale - caiocore\agent\tools\spawn.py
+- [[Tool to write content to a file.]] - rationale - caiocore\agent\tools\filesystem.py
+- [[ToolCallRequest]] - code - caiocore\providers\base.py
+- [[ToolRegistry]] - code - caiocore\agent\tools\registry.py
+- [[Try to extract tool calls from JSON blocks in text content.]] - rationale - caiocore\agent\loop.py
+- [[Two-layer memory MEMORY.md (long-term facts) + HISTORY.md (grep-searchable log)]] - rationale - caiocore\agent\memory.py
+- [[Unregister a tool by name.]] - rationale - caiocore\agent\tools\registry.py
+- [[Update context for all tools that need routing info.]] - rationale - caiocore\agent\loop.py
+- [[Use Codex OAuth to call the Responses API.]] - rationale - caiocore\providers\openai_codex_provider.py
+- [[VoiceTTSTool]] - code - caiocore\agent\tools\voice.py
+- [[WebFetchTool]] - code - caiocore\agent\tools\web.py
+- [[WebSearchTool]] - code - caiocore\agent\tools\web.py
+- [[WorkflowEngine]] - code - caiocore\agent\workflow.py
+- [[WorkflowTool]] - code - caiocore\agent\tools\workflow.py
+- [[Wraps a single MCP server tool as a caio Tool.]] - rationale - caiocore\agent\tools\mcp.py
+- [[WriteFileTool]] - code - caiocore\agent\tools\filesystem.py
+- [[_decode_header()]] - code - caiocore\agent\tools\email_delete.py
+- [[_not_found_message()]] - code - caiocore\agent\tools\filesystem.py
+- [[_resolve_path()]] - code - caiocore\agent\tools\filesystem.py
+- [[_strip_think()]] - code - caiocore\agent\loop.py
+- [[_tool_hint()]] - code - caiocore\agent\loop.py
+- [[a2a_info()]] - code - caiocore\server\a2a_server.py
+- [[a2a_server.py]] - code - caiocore\server\a2a_server.py
+- [[connect_mcp_servers()]] - code - caiocore\agent\tools\mcp.py
+- [[context.py]] - code - caiocore\agent\context.py
+- [[description()_4]] - code - caiocore\agent\tools\filesystem.py
+- [[description()_6]] - code - caiocore\agent\tools\mcp.py
+- [[description()_10]] - code - caiocore\agent\tools\spawn.py
+- [[description()_12]] - code - caiocore\agent\tools\workflow.py
+- [[documentos.py]] - code - caiocore\agent\tools\documentos.py
+- [[email_delete.py]] - code - caiocore\agent\tools\email_delete.py
+- [[email_send.py]] - code - caiocore\agent\tools\email_send.py
+- [[filesystem.py]] - code - caiocore\agent\tools\filesystem.py
+- [[loop.py]] - code - caiocore\agent\loop.py
+- [[mcp.py]] - code - caiocore\agent\tools\mcp.py
+- [[memory.py]] - code - caiocore\agent\memory.py
+- [[name()_4]] - code - caiocore\agent\tools\filesystem.py
+- [[name()_6]] - code - caiocore\agent\tools\mcp.py
+- [[name()_10]] - code - caiocore\agent\tools\spawn.py
+- [[name()_12]] - code - caiocore\agent\tools\workflow.py
+- [[parameters()_4]] - code - caiocore\agent\tools\filesystem.py
+- [[parameters()_6]] - code - caiocore\agent\tools\mcp.py
+- [[parameters()_10]] - code - caiocore\agent\tools\spawn.py
+- [[parameters()_12]] - code - caiocore\agent\tools\workflow.py
+- [[receive_a2a_message()]] - code - caiocore\server\a2a_server.py
+- [[smart_router.py]] - code - caiocore\agent\smart_router.py
+- [[spawn.py]] - code - caiocore\agent\tools\spawn.py
+- [[subagent.py]] - code - caiocore\agent\subagent.py
+- [[system_status.py]] - code - caiocore\agent\tools\system_status.py
+- [[workflow.py]] - code - caiocore\agent\workflow.py
+- [[workflow.py_1]] - code - caiocore\agent\tools\workflow.py
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_1
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 108 edges to [[_COMMUNITY_Community 2]]
+- 83 edges to [[_COMMUNITY_Community 0]]
+- 77 edges to [[_COMMUNITY_Community 3]]
+- 45 edges to [[_COMMUNITY_Community 4]]
+- 16 edges to [[_COMMUNITY_Community 8]]
+- 10 edges to [[_COMMUNITY_Community 7]]
+- 9 edges to [[_COMMUNITY_Community 17]]
+- 8 edges to [[_COMMUNITY_Community 9]]
+- 7 edges to [[_COMMUNITY_Community 14]]
+- 6 edges to [[_COMMUNITY_Community 21]]
+- 4 edges to [[_COMMUNITY_Community 6]]
+- 3 edges to [[_COMMUNITY_Community 25]]
+- 2 edges to [[_COMMUNITY_Community 34]]
+- 2 edges to [[_COMMUNITY_Community 35]]
+- 2 edges to [[_COMMUNITY_Community 36]]
+- 2 edges to [[_COMMUNITY_Community 29]]
+- 2 edges to [[_COMMUNITY_Community 37]]
+- 1 edge to [[_COMMUNITY_Community 20]]
+- 1 edge to [[_COMMUNITY_Community 12]]
+- 1 edge to [[_COMMUNITY_Community 42]]
+- 1 edge to [[_COMMUNITY_Community 40]]
+- 1 edge to [[_COMMUNITY_Community 41]]
+
+## Top bridge nodes
+- [[Tool_1]] - degree 104, connects to 12 communities
+- [[._process_message()]] - degree 24, connects to 5 communities
+- [[InboundMessage]] - degree 80, connects to 4 communities
+- [[AgentLoop]] - degree 77, connects to 4 communities
+- [[Agent loop the core processing engine.]] - degree 40, connects to 4 communities

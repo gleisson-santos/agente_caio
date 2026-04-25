@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\base.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L31"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # LLMProvider
@@ -65,4 +65,4 @@ tags:
 - [[Utility functions for caiocore.]] - `uses` [INFERRED]
 - [[base.py_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

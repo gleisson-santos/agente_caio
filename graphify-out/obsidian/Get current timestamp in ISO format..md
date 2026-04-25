@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\utils\helpers.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L51"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Get current timestamp in ISO format.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[timestamp()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\bus\events.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L27"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # OutboundMessage
@@ -33,6 +33,7 @@ tags:
 - [[Build text body from one or more buffered entries.]] - `uses` [INFERRED]
 - [[CLI commands for caiocore.]] - `uses` [INFERRED]
 - [[CaioCore - Operações Inteligentes.]] - `uses` [INFERRED]
+- [[CaioDingTalkHandler]] - `uses` [INFERRED]
 - [[ChannelManager]] - `uses` [INFERRED]
 - [[Check if a sender is allowed to use this bot.                  Args]] - `uses` [INFERRED]
 - [[Check if the channel is running.]] - `uses` [INFERRED]
@@ -92,7 +93,7 @@ tags:
 - [[Handle an incoming message from the chat platform.                  This metho]] - `uses` [INFERRED]
 - [[Handle incoming Discord messages.]] - `uses` [INFERRED]
 - [[Handle incoming Socket Mode requests.]] - `uses` [INFERRED]
-- [[Handle incoming message (called by NanobotDingTalkHandler).          Delegates]] - `uses` [INFERRED]
+- [[Handle incoming message (called by CaioDingTalkHandler).          Delegates to]] - `uses` [INFERRED]
 - [[Handle incoming message from Feishu.]] - `uses` [INFERRED]
 - [[Handle incoming message from QQ.]] - `uses` [INFERRED]
 - [[Handle incoming messages (text, photos, voice, documents).]] - `uses` [INFERRED]
@@ -113,7 +114,6 @@ tags:
 - [[MochatBufferedEntry]] - `uses` [INFERRED]
 - [[MochatChannel]] - `uses` [INFERRED]
 - [[MochatTarget]] - `uses` [INFERRED]
-- [[NanobotDingTalkHandler]] - `uses` [INFERRED]
 - [[Normalize content payload to text.]] - `uses` [INFERRED]
 - [[Number of pending inbound messages.]] - `uses` [INFERRED]
 - [[Number of pending outbound messages.]] - `uses` [INFERRED]
@@ -191,8 +191,8 @@ tags:
 - [[Start the Slack Socket Mode client.]] - `uses` [INFERRED]
 - [[Start the Telegram bot with long polling.]] - `uses` [INFERRED]
 - [[Start the WhatsApp channel by connecting to the bridge.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Start the channel and begin listening for messages.                  This shou]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
 - [[Stop all channels and the dispatcher.]] - `uses` [INFERRED]
 - [[Stop all workers and clean up resources.]] - `uses` [INFERRED]
 - [[Stop the DingTalk bot.]] - `uses` [INFERRED]
@@ -204,7 +204,7 @@ tags:
 - [[Stop the channel and clean up resources.]] - `uses` [INFERRED]
 - [[Stop the typing indicator for a chat.]] - `uses` [INFERRED]
 - [[Stop typing indicator for a channel.]] - `uses` [INFERRED]
-- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of s]] - `uses` [INFERRED]
+- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of]] - `uses` [INFERRED]
 - [[Sync handler for incoming messages (called from WebSocket thread).         Sche]] - `uses` [INFERRED]
 - [[Sync helper for adding reaction (runs in thread pool).]] - `uses` [INFERRED]
 - [[Sync running channels with the provided config (Hot-reload).]] - `uses` [INFERRED]
@@ -234,4 +234,4 @@ tags:
 - [[test_send_uses_smtp_and_reply_subject()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

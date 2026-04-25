@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\nextjs-react-expert\scripts\convert_rules.py"
 type: "code"
-community: "Community None"
+community: "Community 18"
 location: "L85"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_18
 ---
 
 # parse_rule_file()
@@ -18,4 +18,4 @@ tags:
 - [[group_rules_by_section()]] - `calls` [EXTRACTED]
 - [[parse_frontmatter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_18

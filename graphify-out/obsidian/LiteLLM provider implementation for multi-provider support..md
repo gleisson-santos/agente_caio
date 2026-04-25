@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\litellm_provider.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # LiteLLM provider implementation for multi-provider support.
@@ -17,4 +17,4 @@ tags:
 - [[ToolCallRequest]] - `uses` [INFERRED]
 - [[litellm_provider.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

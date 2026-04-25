@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\vulnerability-scanner\scripts\security_scan.py"
 type: "rationale"
-community: "Community None"
+community: "Community 5"
 location: "L98"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # Validate supply chain security (OWASP A03).     Checks: npm audit, lock file pr
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[scan_dependencies()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_5

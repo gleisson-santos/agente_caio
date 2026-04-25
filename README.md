@@ -15,7 +15,7 @@
 
 Deixamos para trás a era dos multi-agentes fragmentados. Nesta evolução massiva, o **CaioCore** se tornou o *Mestre dos Magos*, aglomerando e absorvendo as habilidades de diversos especialistas (Vendas, Design, Automação, Programação, E-mails e Monitoramento) em **um único super-agente inteligente**. 
 
-Diferente de frameworks tradicionais como Nanobot ou OpenClaw, nós priorizamos uma visão ampla. O Caio enxerga a arquitetura do seu projeto, cria UI modernas, marca reuniões e executa tarefas corporativas, tudo da mesma matriz.
+Diferente de frameworks tradicionais como outros bots genéricos ou OpenClaw, nós priorizamos uma visão ampla. O Caio enxerga a arquitetura do seu projeto, cria UI modernas, marca reuniões e executa tarefas corporativas, tudo da mesma matriz.
 
 ### 🏗️ Arquitetura do Sistema (CaioCore)
 
@@ -52,9 +52,9 @@ graph TD
 
 ### 🔥 Comparativo de Tecnologias
 
-Abaixo, veja de relance o que o **CaioCore** faz em comparação à base original do nanobot e do openclaw:
+Abaixo, veja de relance o que o **CaioCore** faz em comparação à base de outros frameworks e do openclaw:
 
-| Funcionalidade Estratégica | 🛸 CaioCore (Mestre dos Magos) | 🤖 Nanobot (Base) | 🦁 OpenClaw |
+| Funcionalidade Estratégica | 🛸 CaioCore (Mestre dos Magos) | 🤖 CaioBot (Base Antiga) | 🦁 OpenClaw |
 | :--- | :--- | :--- | :--- |
 | **Identidade do Agente** | Universal Onipotente (Tudo em 1) | Multi-agentes isolados em JSON | Limitado a fluxo de terminal |
 | **Visual / Interface UI** | Dashboard Moderno **React + Tailwind V3 + Shadcn**, Animações Visuais no Fluxo | Apenas linha de comando ou web-view estática | Apenas Prompt / Shell |
@@ -162,7 +162,7 @@ Se você quer a nuvem privada, utilize o ecossistema pronto para Portainer + Tra
 
 **Arquiteto/Desenvolvedor Chefe:** Gleisson Santos  
 **Ecossistema Principal/Deploy:** Plataforma UomniMind  
-**Motor Open-Source Base:** Estrutura originária refatorada a partir do conhecimento nanobot.
+**Motor Open-Source Base:** Estrutura originária refatorada a partir do conhecimento CaioBot.
 
 ---
 <p align="center">

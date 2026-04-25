@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\doc_agent.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L24"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # DocAgent
@@ -42,9 +42,9 @@ tags:
 - [[Render assistant response with consistent terminal styling.]] - `uses` [INFERRED]
 - [[Restore terminal to its original state (echo, line buffering, etc.).]] - `uses` [INFERRED]
 - [[Return True when input should end interactive chat.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[doc_agent.py]] - `contains` [EXTRACTED]
 - [[gateway()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

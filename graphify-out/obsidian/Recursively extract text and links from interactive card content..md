@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\feishu.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L71"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Recursively extract text and links from interactive card content.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[_extract_interactive_content()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

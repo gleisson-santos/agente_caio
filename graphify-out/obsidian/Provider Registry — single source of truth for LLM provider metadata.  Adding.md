@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\registry.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Provider Registry — single source of truth for LLM provider metadata.  Adding
@@ -18,4 +18,4 @@ tags:
 - [[registry.py_1]] - `rationale_for` [EXTRACTED]
 - [[registry.py_2]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

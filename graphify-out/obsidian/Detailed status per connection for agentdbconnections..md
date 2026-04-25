@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\bd_agent.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L94"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Detailed status per connection for /agent/db/connections.
@@ -15,4 +15,4 @@ tags:
 - [[.get_connection_status()]] - `rationale_for` [EXTRACTED]
 - [[BaseAgent_1]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_3

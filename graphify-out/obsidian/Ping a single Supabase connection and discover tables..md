@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\bd_agent.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L111"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Ping a single Supabase connection and discover tables.
@@ -15,4 +15,4 @@ tags:
 - [[._check_connection()]] - `rationale_for` [EXTRACTED]
 - [[BaseAgent_1]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_3

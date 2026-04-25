@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\performance-profiling\scripts\lighthouse_audit.py"
 type: "code"
-community: "Community None"
+community: "Community 5"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # run_lighthouse()
@@ -18,4 +18,4 @@ tags:
 - [[get_summary()]] - `calls` [EXTRACTED]
 - [[lighthouse_audit.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_5

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\telegram.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L241"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Guess media type from file extension.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[TelegramConfig]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

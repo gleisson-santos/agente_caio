@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L43"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # MochatBufferedEntry
@@ -20,4 +20,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[mochat.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

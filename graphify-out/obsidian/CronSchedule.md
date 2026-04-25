@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\types.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L8"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # CronSchedule
@@ -45,8 +45,8 @@ tags:
 - [[Schedule the next timer tick.]] - `uses` [INFERRED]
 - [[Service for managing and executing scheduled jobs.]] - `uses` [INFERRED]
 - [[Set the current session context for delivery.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Start the cron service.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
 - [[Stop the cron service.]] - `uses` [INFERRED]
 - [[Tool to schedule reminders and recurring tasks.]] - `uses` [INFERRED]
 - [[Utility functions for caiocore.]] - `uses` [INFERRED]
@@ -58,4 +58,4 @@ tags:
 - [[types.py]] - `contains` [EXTRACTED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

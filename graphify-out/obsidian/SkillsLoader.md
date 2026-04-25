@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\skills.py"
 type: "code"
-community: "Community None"
+community: "Community 8"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_8
 ---
 
 # SkillsLoader
@@ -18,7 +18,7 @@ tags:
 - [[._get_missing_requirements()]] - `method` [EXTRACTED]
 - [[._get_skill_description()]] - `method` [EXTRACTED]
 - [[._get_skill_meta()]] - `method` [EXTRACTED]
-- [[._parse_nanobot_metadata()]] - `method` [EXTRACTED]
+- [[._parse_caio_metadata()]] - `method` [EXTRACTED]
 - [[._strip_frontmatter()]] - `method` [EXTRACTED]
 - [[.build_skills_summary()]] - `method` [EXTRACTED]
 - [[.get_always_skills()]] - `method` [EXTRACTED]
@@ -39,4 +39,4 @@ tags:
 - [[Loader for agent skills.          Skills are markdown files (SKILL.md) that te]] - `rationale_for` [EXTRACTED]
 - [[skills.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_8

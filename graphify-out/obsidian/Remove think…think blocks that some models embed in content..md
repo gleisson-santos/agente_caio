@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\loop.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L265"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Remove <think>…</think> blocks that some models embed in content.
@@ -52,4 +52,4 @@ tags:
 - [[WorkflowTool]] - `uses` [INFERRED]
 - [[WriteFileTool]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

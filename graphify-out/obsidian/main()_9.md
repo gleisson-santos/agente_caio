@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\mobile-design\scripts\mobile_audit.py"
 type: "code"
-community: "Community None"
+community: "Community 27"
 location: "L631"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_27
 ---
 
 # main()
@@ -18,4 +18,4 @@ tags:
 - [[MobileAuditor]] - `calls` [EXTRACTED]
 - [[mobile_audit.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_27

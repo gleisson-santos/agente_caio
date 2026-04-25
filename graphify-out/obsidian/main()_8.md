@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\lint-and-validate\scripts\type_coverage.py"
 type: "code"
-community: "Community None"
+community: "Community 32"
 location: "L128"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_32
 ---
 
 # main()
@@ -16,4 +16,4 @@ tags:
 - [[check_typescript_coverage()]] - `calls` [EXTRACTED]
 - [[type_coverage.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_32

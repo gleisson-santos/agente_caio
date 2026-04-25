@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\whatsapp.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L15"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # WhatsAppChannel
@@ -38,4 +38,4 @@ tags:
 - [[WhatsAppConfig]] - `uses` [INFERRED]
 - [[whatsapp.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

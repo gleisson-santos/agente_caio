@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\loader.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L83"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Migrate old config formats to current.
@@ -15,4 +15,4 @@ tags:
 - [[Config]] - `uses` [INFERRED]
 - [[_migrate_config()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

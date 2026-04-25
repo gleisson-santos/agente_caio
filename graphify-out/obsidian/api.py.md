@@ -1,20 +1,20 @@
 ---
 source_file: "caiocore\server\api.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # api.py
 
 ## Connections
+- [[Caio Gateway API — serves real monitoring agent data.  Routes   apistatus]] - `rationale_for` [EXTRACTED]
 - [[DocGenerateRequest]] - `contains` [EXTRACTED]
 - [[HeartbeatRequest]] - `contains` [EXTRACTED]
-- [[Nanobot Gateway API — serves real monitoring agent data.  Routes   apistat]] - `rationale_for` [EXTRACTED]
 - [[NotificationRequest]] - `contains` [EXTRACTED]
 - [[SettingsUpdate]] - `contains` [EXTRACTED]
 - [[TaskCreate]] - `contains` [EXTRACTED]
@@ -65,4 +65,4 @@ tags:
 - [[tracing_stream()]] - `contains` [EXTRACTED]
 - [[update_settings()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_3

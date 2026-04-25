@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\registry.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L21"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # One LLM provider's metadata. See PROVIDERS below for real examples.      Place
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[ProviderSpec]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

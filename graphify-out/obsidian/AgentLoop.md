@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\loop.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L52"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # AgentLoop
@@ -72,7 +72,7 @@ tags:
 - [[SessionManager]] - `uses` [INFERRED]
 - [[SmartRouter]] - `uses` [INFERRED]
 - [[SpawnTool]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[SubagentManager]] - `uses` [INFERRED]
 - [[SystemStatusTool]] - `uses` [INFERRED]
 - [[The agent loop is the core processing engine.      It     1. Receives messag]] - `rationale_for` [EXTRACTED]
@@ -90,4 +90,4 @@ tags:
 - [[loop.py]] - `contains` [EXTRACTED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

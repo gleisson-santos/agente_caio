@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_commands.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L120"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # test_litellm_provider_canonicalizes_github_copilot_hyphen_prefix()
@@ -16,4 +16,4 @@ tags:
 - [[LiteLLMProvider]] - `calls` [INFERRED]
 - [[test_commands.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

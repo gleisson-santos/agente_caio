@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\evolution.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L80"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Process incoming webhook from Evolution API.         Called by the FastAPI route
@@ -18,4 +18,4 @@ tags:
 - [[MessageBus]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

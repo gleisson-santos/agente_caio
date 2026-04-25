@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\types.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L42"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # CronJob
@@ -41,12 +41,12 @@ tags:
 - [[Return True when input should end interactive chat.]] - `uses` [INFERRED]
 - [[Schedule the next timer tick.]] - `uses` [INFERRED]
 - [[Service for managing and executing scheduled jobs.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Start the cron service.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
 - [[Stop the cron service.]] - `uses` [INFERRED]
 - [[Utility functions for caiocore.]] - `uses` [INFERRED]
 - [[Validate schedule fields that would otherwise create non-runnable jobs.]] - `uses` [INFERRED]
 - [[types.py]] - `contains` [EXTRACTED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

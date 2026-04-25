@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\service.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L237"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Execute a single job.
@@ -19,4 +19,4 @@ tags:
 - [[CronSchedule]] - `uses` [INFERRED]
 - [[CronStore]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

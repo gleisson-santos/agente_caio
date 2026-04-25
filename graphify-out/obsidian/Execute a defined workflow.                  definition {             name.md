@@ -1,15 +1,15 @@
 ---
 source_file: "caiocore\agent\workflow.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L29"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
-# Execute a defined workflow.                  definition: {             "name": "
+# Execute a defined workflow.                  definition: {             "name"
 
 ## Connections
 - [[.execute()]] - `rationale_for` [EXTRACTED]
@@ -17,4 +17,4 @@ tags:
 - [[MessageBus]] - `uses` [INFERRED]
 - [[OutboundMessage]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

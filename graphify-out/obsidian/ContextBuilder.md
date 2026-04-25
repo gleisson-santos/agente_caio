@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\context.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L15"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # ContextBuilder
@@ -43,4 +43,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[context.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

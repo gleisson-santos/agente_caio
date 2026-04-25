@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\pages\TasksPage.jsx"
 type: "code"
-community: "Community None"
+community: "Community 10"
 location: "L7"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_10
 ---
 
 # TasksPage()
@@ -16,4 +16,4 @@ tags:
 - [[useAgents()]] - `calls` [INFERRED]
 - [[useTasks()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_10

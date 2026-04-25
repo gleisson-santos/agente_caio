@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\types.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L33"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # CronJobState
@@ -30,4 +30,4 @@ tags:
 - [[Validate schedule fields that would otherwise create non-runnable jobs.]] - `uses` [INFERRED]
 - [[types.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

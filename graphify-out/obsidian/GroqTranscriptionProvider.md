@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\transcription.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L11"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # GroqTranscriptionProvider
@@ -37,4 +37,4 @@ tags:
 - [[Voice transcription provider using Groq's Whisper API.          Groq offers ex]] - `rationale_for` [EXTRACTED]
 - [[transcription.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

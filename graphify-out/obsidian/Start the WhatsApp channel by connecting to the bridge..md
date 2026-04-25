@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\whatsapp.py"
 type: "rationale"
-community: "Community None"
+community: "Community 0"
 location: "L32"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # Start the WhatsApp channel by connecting to the bridge.
@@ -18,4 +18,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[WhatsAppConfig]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_consolidate_offset.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # get_old_messages()
@@ -29,4 +29,4 @@ tags:
 - [[Extract messages that would be consolidated using the standard slice logic.]] - `rationale_for` [EXTRACTED]
 - [[test_consolidate_offset.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_4

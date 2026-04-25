@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\types.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L57"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Persistent store for cron jobs.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[CronStore]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

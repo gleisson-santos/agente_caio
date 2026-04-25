@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\subagent.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L195"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Announce the subagent result to the main agent via the message bus.
@@ -26,4 +26,4 @@ tags:
 - [[WebSearchTool]] - `uses` [INFERRED]
 - [[WriteFileTool]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

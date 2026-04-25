@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\context\AgentContext.jsx"
 type: "code"
-community: "Community None"
+community: "Community 10"
 location: "L53"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_10
 ---
 
 # useAgents()
@@ -17,4 +17,4 @@ tags:
 - [[SpecialistChatTray()]] - `calls` [INFERRED]
 - [[TasksPage()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_10

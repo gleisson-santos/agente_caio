@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\testing-patterns\scripts\test_runner.py"
 type: "code"
-community: "Community None"
+community: "Community 5"
 location: "L79"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # run_tests()
@@ -17,4 +17,4 @@ tags:
 - [[main()_13]] - `calls` [EXTRACTED]
 - [[test_runner.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_5

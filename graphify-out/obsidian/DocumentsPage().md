@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\pages\DocumentsPage.jsx"
 type: "code"
-community: "Community None"
+community: "Community 57"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_57
 ---
 
 # DocumentsPage()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[DocumentsPage.jsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_57

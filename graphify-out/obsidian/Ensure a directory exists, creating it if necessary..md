@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\utils\helpers.py"
 type: "rationale"
-community: "Community None"
+community: "Community 12"
 location: "L8"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_12
 ---
 
 # Ensure a directory exists, creating it if necessary.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[ensure_dir()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_12

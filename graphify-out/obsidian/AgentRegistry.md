@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\registry.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # AgentRegistry
@@ -26,4 +26,4 @@ tags:
 - [[SpecialistAgent]] - `uses` [INFERRED]
 - [[registry.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

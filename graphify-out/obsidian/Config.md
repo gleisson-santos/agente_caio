@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\schema.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L300"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Config
@@ -35,8 +35,8 @@ tags:
 - [[Get list of enabled channel names.]] - `uses` [INFERRED]
 - [[Get status of all channels.]] - `uses` [INFERRED]
 - [[Get the bridge directory, setting it up if needed.]] - `uses` [INFERRED]
+- [[Get the caio data directory.]] - `uses` [INFERRED]
 - [[Get the default configuration file path. Favor local config.json if present.]] - `uses` [INFERRED]
-- [[Get the nanobot data directory.]] - `uses` [INFERRED]
 - [[Initialize channels based on config. Only creates if not already exists.]] - `uses` [INFERRED]
 - [[Interact with the agent directly.]] - `uses` [INFERRED]
 - [[Interactive setup wizard for CaioCore.]] - `uses` [INFERRED]
@@ -56,7 +56,7 @@ tags:
 - [[Session management for conversation history.]] - `uses` [INFERRED]
 - [[Start a channel and log any exceptions.]] - `uses` [INFERRED]
 - [[Start all channels and the outbound dispatcher.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Stop all channels and the dispatcher.]] - `uses` [INFERRED]
 - [[Sync running channels with the provided config (Hot-reload).]] - `uses` [INFERRED]
 - [[Utility functions for caiocore.]] - `uses` [INFERRED]
@@ -68,4 +68,4 @@ tags:
 - [[test_config_matches_openai_codex_with_hyphen_prefix()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

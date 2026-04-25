@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_email_channel.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L116"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # test_send_uses_smtp_and_reply_subject()
@@ -19,4 +19,4 @@ tags:
 - [[_make_config()]] - `calls` [EXTRACTED]
 - [[test_email_channel.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

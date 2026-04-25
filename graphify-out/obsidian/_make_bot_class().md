@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\qq.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # _make_bot_class()
@@ -16,4 +16,4 @@ tags:
 - [[Create a botpy Client subclass bound to the given channel.]] - `rationale_for` [EXTRACTED]
 - [[qq.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

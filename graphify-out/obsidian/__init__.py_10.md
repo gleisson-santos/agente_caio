@@ -1,14 +1,14 @@
 ---
 source_file: "caiocore\documentos\generators\__init__.py"
 type: "code"
-community: "Community None"
+community: "Community 74"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_74
 ---
 
 # __init__.py
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_74

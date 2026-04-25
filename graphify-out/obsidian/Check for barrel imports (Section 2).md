@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\nextjs-react-expert\scripts\react_performance_checker.py"
 type: "rationale"
-community: "Community None"
+community: "Community 5"
 location: "L47"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # Check for barrel imports (Section 2)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.check_barrel_imports()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_5

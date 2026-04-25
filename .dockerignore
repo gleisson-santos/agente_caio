@@ -11,9 +11,9 @@ __pycache__
 env/
 venv/
 *.log
-.nanobot/
+.caiocore/
 .gemini/
-nanobot_temp/
+caiocore_temp/
 workspace/history/
 workspace/memory/HISTORY.md
 node_modules/

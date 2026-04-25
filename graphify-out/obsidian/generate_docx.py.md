@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\documentos\generators\generate_docx.py"
 type: "code"
-community: "Community None"
+community: "Community 15"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_15
 ---
 
 # generate_docx.py
@@ -19,4 +19,4 @@ tags:
 - [[criar_documento()]] - `contains` [EXTRACTED]
 - [[criar_documento_personalizado()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_15

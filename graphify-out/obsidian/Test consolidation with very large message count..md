@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_consolidate_offset.py"
 type: "rationale"
-community: "Community None"
+community: "Community 4"
 location: "L451"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # Test consolidation with very large message count.
@@ -16,4 +16,4 @@ tags:
 - [[Session]] - `uses` [INFERRED]
 - [[SessionManager]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_4

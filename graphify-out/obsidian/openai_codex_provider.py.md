@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\openai_codex_provider.py"
 type: "code"
-community: "Community None"
+community: "Community 14"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_14
 ---
 
 # openai_codex_provider.py
@@ -27,4 +27,4 @@ tags:
 - [[_split_tool_call_id()]] - `contains` [EXTRACTED]
 - [[_strip_model_prefix()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_14

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\session\manager.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L15"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # Session
@@ -105,4 +105,4 @@ tags:
 - [[create_session_with_messages()]] - `calls` [INFERRED]
 - [[manager.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_4

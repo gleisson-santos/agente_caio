@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\email_agent.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # EmailAgent
@@ -21,4 +21,4 @@ tags:
 - [[Email monitoring specialist.          Monitors the health of the email channel]] - `rationale_for` [EXTRACTED]
 - [[email_agent.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_3

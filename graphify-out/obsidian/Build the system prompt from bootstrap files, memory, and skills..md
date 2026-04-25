@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\context.py"
 type: "rationale"
-community: "Community None"
+community: "Community 8"
 location: "L31"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_8
 ---
 
 # Build the system prompt from bootstrap files, memory, and skills.
@@ -16,4 +16,4 @@ tags:
 - [[MemoryStore]] - `uses` [INFERRED]
 - [[SkillsLoader]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_8

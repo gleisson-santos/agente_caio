@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\bus\events.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L9"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # InboundMessage
@@ -76,10 +76,10 @@ tags:
 - [[Run the agent loop, processing messages from the bus.]] - `uses` [INFERRED]
 - [[Send a message through this channel.                  Args             msg]] - `uses` [INFERRED]
 - [[Spawn a subagent to execute a task in the background.                  Args]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[Start the channel and begin listening for messages.                  This shou]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
 - [[Stop the channel and clean up resources.]] - `uses` [INFERRED]
-- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of s]] - `uses` [INFERRED]
+- [[Structured Workflow Engine for AgentOS.          Allows defining a sequence of]] - `uses` [INFERRED]
 - [[Subagent manager for background task execution.]] - `uses` [INFERRED]
 - [[SubagentManager]] - `uses` [INFERRED]
 - [[Tenta o modelo principal, depois os fallbacks em ordem.]] - `uses` [INFERRED]
@@ -93,4 +93,4 @@ tags:
 - [[receive_a2a_message()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

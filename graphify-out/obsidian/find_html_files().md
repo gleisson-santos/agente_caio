@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\frontend-design\scripts\accessibility_checker.py"
 type: "code"
-community: "Community None"
+community: "Community 31"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_31
 ---
 
 # find_html_files()
@@ -16,4 +16,4 @@ tags:
 - [[accessibility_checker.py]] - `contains` [EXTRACTED]
 - [[main()_3]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_31

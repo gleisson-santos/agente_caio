@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_tool_validation.py"
 type: "code"
-community: "Community None"
+community: "Community 7"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_7
 ---
 
 # SampleTool
@@ -24,4 +24,4 @@ tags:
 - [[test_validate_params_nested_object_and_array()]] - `calls` [EXTRACTED]
 - [[test_validate_params_type_and_range()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_7

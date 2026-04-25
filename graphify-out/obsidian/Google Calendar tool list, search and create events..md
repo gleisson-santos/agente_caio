@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\google_calendar.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Google Calendar tool: list, search and create events.
@@ -15,4 +15,4 @@ tags:
 - [[Tool_1]] - `uses` [INFERRED]
 - [[google_calendar.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_3

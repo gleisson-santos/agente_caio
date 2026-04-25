@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\base.py"
 type: "rationale"
-community: "Community None"
+community: "Community 9"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_9
 ---
 
 # Base LLM provider interface.
@@ -19,4 +19,4 @@ tags:
 - [[base.py_1]] - `rationale_for` [EXTRACTED]
 - [[base.py_2]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_9

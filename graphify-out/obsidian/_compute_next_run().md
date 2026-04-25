@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\service.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # _compute_next_run()
@@ -20,4 +20,4 @@ tags:
 - [[service.py]] - `contains` [EXTRACTED]
 - [[timestamp()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

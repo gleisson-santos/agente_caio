@@ -1,12 +1,12 @@
 ---
 source_file: "dashboard\src\components\SpecialistChat.jsx"
 type: "code"
-community: "Community None"
+community: "Community 54"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_54
 ---
 
 # SpecialistChat.jsx
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[SpecialistChat()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_54

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\seo-fundamentals\scripts\seo_checker.py"
 type: "rationale"
-community: "Community None"
+community: "Community 24"
 location: "L49"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_24
 ---
 
 # Check if this file is likely a public-facing page.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[is_page_file()_1]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_24

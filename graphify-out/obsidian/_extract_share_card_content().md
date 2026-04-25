@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\feishu.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L50"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # _extract_share_card_content()
@@ -18,4 +18,4 @@ tags:
 - [[_extract_interactive_content()]] - `calls` [EXTRACTED]
 - [[feishu.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

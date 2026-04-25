@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\spawn.py"
 type: "code"
-community: "Community None"
+community: "Community 1"
 location: "L11"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # SpawnTool
@@ -39,4 +39,4 @@ tags:
 - [[Update context for all tools that need routing info.]] - `uses` [INFERRED]
 - [[spawn.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_1

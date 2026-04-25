@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\base.py"
 type: "rationale"
-community: "Community None"
+community: "Community 7"
 location: "L61"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_7
 ---
 
 # Validate tool parameters against JSON schema. Returns error list (empty if valid
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.validate_params()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_7

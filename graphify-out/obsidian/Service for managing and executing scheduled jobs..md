@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cron\service.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L63"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Service for managing and executing scheduled jobs.
@@ -19,4 +19,4 @@ tags:
 - [[CronService]] - `rationale_for` [EXTRACTED]
 - [[CronStore]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_2

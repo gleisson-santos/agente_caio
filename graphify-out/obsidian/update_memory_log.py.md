@@ -1,12 +1,12 @@
 ---
 source_file: "tools\update_memory_log.py"
 type: "code"
-community: "Community None"
+community: "Community 5"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # update_memory_log.py
@@ -15,4 +15,4 @@ tags:
 - [[get_latest_commit()]] - `contains` [EXTRACTED]
 - [[update_memory_file()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_5

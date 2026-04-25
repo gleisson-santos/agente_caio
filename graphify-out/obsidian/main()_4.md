@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\frontend-design\scripts\ux_audit.py"
 type: "code"
-community: "Community None"
+community: "Community 26"
 location: "L691"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_26
 ---
 
 # main()
@@ -18,4 +18,4 @@ tags:
 - [[UXAuditor]] - `calls` [EXTRACTED]
 - [[ux_audit.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_26

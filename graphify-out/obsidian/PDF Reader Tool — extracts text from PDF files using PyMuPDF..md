@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\pdf_reader.py"
 type: "rationale"
-community: "Community None"
+community: "Community 25"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_25
 ---
 
 # PDF Reader Tool — extracts text from PDF files using PyMuPDF.
@@ -15,4 +15,4 @@ tags:
 - [[Tool_1]] - `uses` [INFERRED]
 - [[pdf_reader.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_25

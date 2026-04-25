@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\bus\events.py"
 type: "code"
-community: "Community None"
+community: "Community 9"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_9
 ---
 
 # session_key()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[events.py_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_9

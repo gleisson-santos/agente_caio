@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\litellm_provider.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L19"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # LiteLLMProvider
@@ -46,7 +46,7 @@ tags:
 - [[Render assistant response with consistent terminal styling.]] - `uses` [INFERRED]
 - [[Restore terminal to its original state (echo, line buffering, etc.).]] - `uses` [INFERRED]
 - [[Return True when input should end interactive chat.]] - `uses` [INFERRED]
-- [[Start the nanobot gateway.]] - `uses` [INFERRED]
+- [[Start the caio gateway.]] - `uses` [INFERRED]
 - [[ToolCallRequest]] - `uses` [INFERRED]
 - [[Utility functions for caiocore.]] - `uses` [INFERRED]
 - [[Workspace exists — should not recreate, but still add missing templates.]] - `uses` [INFERRED]
@@ -55,4 +55,4 @@ tags:
 - [[test_litellm_provider_canonicalizes_github_copilot_hyphen_prefix()]] - `calls` [INFERRED]
 - [[🐈 Full onboarding wizard — configure VPS, Traefik, domain, and API keys interact]] - `uses` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_2

@@ -1,12 +1,12 @@
 ---
 source_file: "tests\test_commands.py"
 type: "code"
-community: "Community None"
+community: "Community 2"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # test_commands.py
@@ -23,4 +23,4 @@ tags:
 - [[test_onboard_fresh_install()]] - `contains` [EXTRACTED]
 - [[test_openai_codex_strip_prefix_supports_hyphen_and_underscore()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

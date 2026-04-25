@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\seo-fundamentals\scripts\seo_checker.py"
 type: "code"
-community: "Community None"
+community: "Community 24"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_24
 ---
 
 # find_pages()
@@ -17,4 +17,4 @@ tags:
 - [[main()_12]] - `calls` [EXTRACTED]
 - [[seo_checker.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_24

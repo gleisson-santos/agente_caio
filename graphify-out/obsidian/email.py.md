@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\email.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # email.py
@@ -22,4 +22,4 @@ tags:
 - [[_html_to_text()]] - `contains` [EXTRACTED]
 - [[clean_email_body()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_0

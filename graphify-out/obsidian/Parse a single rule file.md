@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\nextjs-react-expert\scripts\convert_rules.py"
 type: "rationale"
-community: "Community None"
+community: "Community 18"
 location: "L86"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_18
 ---
 
 # Parse a single rule file
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[parse_rule_file()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_18

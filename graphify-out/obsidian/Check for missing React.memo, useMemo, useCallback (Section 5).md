@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\nextjs-react-expert\scripts\react_performance_checker.py"
 type: "rationale"
-community: "Community None"
+community: "Community 5"
 location: "L132"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # Check for missing React.memo, useMemo, useCallback (Section 5)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.check_missing_memoization()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_5

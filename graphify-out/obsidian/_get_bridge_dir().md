@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\cli\commands.py"
 type: "code"
-community: "Community None"
-location: "L931"
+community: "Community 2"
+location: "L1054"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # _get_bridge_dir()
@@ -17,4 +17,4 @@ tags:
 - [[channels_login()]] - `calls` [EXTRACTED]
 - [[commands.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_2

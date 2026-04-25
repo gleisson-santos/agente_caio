@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\memory.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L46"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Two-layer memory: MEMORY.md (long-term facts) + HISTORY.md (grep-searchable log)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[MemoryStore]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_1

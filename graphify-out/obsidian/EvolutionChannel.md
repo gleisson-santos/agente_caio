@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\evolution.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L14"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # EvolutionChannel
@@ -38,4 +38,4 @@ tags:
 - [[WhatsApp channel using the Evolution API.          Outbound via Evolution REST]] - `rationale_for` [EXTRACTED]
 - [[evolution.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

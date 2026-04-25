@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\providers\custom_provider.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Direct OpenAI-compatible provider — bypasses LiteLLM.
@@ -17,4 +17,4 @@ tags:
 - [[ToolCallRequest]] - `uses` [INFERRED]
 - [[custom_provider.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1

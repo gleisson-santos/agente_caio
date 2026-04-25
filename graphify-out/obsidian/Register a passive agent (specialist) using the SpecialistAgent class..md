@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\registry.py"
 type: "rationale"
-community: "Community None"
+community: "Community 2"
 location: "L43"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_2
 ---
 
 # Register a passive agent (specialist) using the SpecialistAgent class.
@@ -15,4 +15,4 @@ tags:
 - [[.register_passive()]] - `rationale_for` [EXTRACTED]
 - [[SpecialistAgent]] - `uses` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_2

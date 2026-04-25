@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\mochat.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L63"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # MochatTarget
@@ -20,4 +20,4 @@ tags:
 - [[mochat.py]] - `contains` [EXTRACTED]
 - [[resolve_mochat_target()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\channels\telegram.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L108"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # TelegramChannel
@@ -47,4 +47,4 @@ tags:
 - [[TelegramConfig]] - `uses` [INFERRED]
 - [[telegram.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

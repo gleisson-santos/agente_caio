@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\utils\helpers.py"
 type: "code"
-community: "Community None"
+community: "Community 12"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_12
 ---
 
 # get_workspace_path()
@@ -18,4 +18,4 @@ tags:
 - [[helpers.py]] - `contains` [EXTRACTED]
 - [[setup()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_12

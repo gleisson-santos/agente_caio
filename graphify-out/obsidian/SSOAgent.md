@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\sso_agent.py"
 type: "code"
-community: "Community None"
+community: "Community 3"
 location: "L29"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # SSOAgent
@@ -23,6 +23,7 @@ tags:
 - [[Aggregate status of all monitoring agents + services.]] - `uses` [INFERRED]
 - [[BaseAgent]] - `inherits` [EXTRACTED]
 - [[BaseAgent_1]] - `uses` [INFERRED]
+- [[Caio Gateway API — serves real monitoring agent data.  Routes   apistatus]] - `uses` [INFERRED]
 - [[Compute tasks.json path fresh each time — no caching to avoid stale paths.]] - `uses` [INFERRED]
 - [[Database agent status.]] - `uses` [INFERRED]
 - [[Database metrics (response time, queries, errors).]] - `uses` [INFERRED]
@@ -47,7 +48,6 @@ tags:
 - [[List all registered monitoring agents with real status.]] - `uses` [INFERRED]
 - [[List available document templates.]] - `uses` [INFERRED]
 - [[Load tasks from in-memory store, initializing from disk if needed.]] - `uses` [INFERRED]
-- [[Nanobot Gateway API — serves real monitoring agent data.  Routes   apistat]] - `uses` [INFERRED]
 - [[NotificationRequest]] - `uses` [INFERRED]
 - [[Per-agent token consumption ranking.]] - `uses` [INFERRED]
 - [[RUN current FastAPI app in the current event loop.     This prevents loop confl]] - `uses` [INFERRED]
@@ -69,4 +69,4 @@ tags:
 - [[_init_monitoring_agents()]] - `calls` [INFERRED]
 - [[sso_agent.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_3

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tracer.py"
 type: "rationale"
-community: "Community None"
+community: "Community 9"
 location: "L27"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_9
 ---
 
 # Emite um 'pensamento' ou passo intermediário do agente para o Stream SSE.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.log_thought()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_9

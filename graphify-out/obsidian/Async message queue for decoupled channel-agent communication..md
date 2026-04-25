@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\bus\queue.py"
 type: "rationale"
-community: "Community None"
+community: "Community 41"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_41
 ---
 
 # Async message queue for decoupled channel-agent communication.
@@ -16,4 +16,4 @@ tags:
 - [[OutboundMessage]] - `uses` [INFERRED]
 - [[queue.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_41

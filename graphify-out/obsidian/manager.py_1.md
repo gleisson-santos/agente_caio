@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\session\manager.py"
 type: "code"
-community: "Community None"
+community: "Community 4"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_4
 ---
 
 # manager.py
@@ -16,4 +16,4 @@ tags:
 - [[Session management for conversation history.]] - `rationale_for` [EXTRACTED]
 - [[SessionManager]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_4

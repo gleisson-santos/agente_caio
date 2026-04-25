@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\skills\nextjs-react-expert\scripts\react_performance_checker.py"
 type: "code"
-community: "Community None"
+community: "Community 5"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_5
 ---
 
 # PerformanceChecker
@@ -24,4 +24,4 @@ tags:
 - [[main()_11]] - `calls` [EXTRACTED]
 - [[react_performance_checker.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_None
+#graphify/code #graphify/EXTRACTED #community/Community_5

@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-04-24 21:43:49 -0300** - `9cdaf67` por gleisson-santos
+> **Mensagem:** chore: sync state and update ast graphify memory
+> *Arquivos tocados:* .gitignore, INICIAR_PROJETO.md, caiocore/cli/commands.py, caiocore/config/schema.py, caiocore/server/api.py, etc...
+
+***
+
 **2026-04-16 23:23:46 -0300** - `cb0edde` por gleisson-santos
 > **Mensagem:** docs: add mascote, dashboard screenshot and README updates
 > *Arquivos tocados:* README.md, docs/dashboard.png, docs/mascote.png
@@ -32,12 +38,6 @@
 
 **2026-04-16 22:38:19 -0300** - `cb31ab0` por gleisson-santos
 > **Mensagem:** docs: add warning for users with existing traefik networks in DEPLOY_VPS.md
-> *Arquivos tocados:* DEPLOY_VPS.md
-
-***
-
-**2026-04-16 22:36:17 -0300** - `f5f5ced` por gleisson-santos
-> **Mensagem:** docs: align yaml in DEPLOY_VPS.md with dynamic DOMAIN var from docker-compose.yml
 > *Arquivos tocados:* DEPLOY_VPS.md
 <!-- DYNAMIC_LOG_END -->
 

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\config\schema.py"
 type: "code"
-community: "Community None"
+community: "Community 0"
 location: "L46"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_0
 ---
 
 # FeishuConfig
@@ -38,4 +38,4 @@ tags:
 - [[Upload an image to Feishu and return the image_key.]] - `uses` [INFERRED]
 - [[schema.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_None
+#graphify/code #graphify/INFERRED #community/Community_0

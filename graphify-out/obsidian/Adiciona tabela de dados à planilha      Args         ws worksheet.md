@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\extras\generate_xlsx.py"
 type: "rationale"
-community: "Community None"
+community: "Community 13"
 location: "L167"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_13
 ---
 
 # Adiciona tabela de dados à planilha      Args:         ws: worksheet
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[adicionar_tabela()_1]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_13

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\extras\generate_pptx.py"
 type: "rationale"
-community: "Community None"
+community: "Community 16"
 location: "L206"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_16
 ---
 
 # Cria nova apresentação
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[nova_apresentacao()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_16

@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agents\sdk.py"
 type: "rationale"
-community: "Community None"
+community: "Community 3"
 location: "L121"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_None
+  - community/Community_3
 ---
 
 # Wrapper that catches exceptions in the run loop.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[._safe_loop()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_None
+#graphify/rationale #graphify/EXTRACTED #community/Community_3

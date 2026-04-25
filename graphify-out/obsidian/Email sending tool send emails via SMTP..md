@@ -1,12 +1,12 @@
 ---
 source_file: "caiocore\agent\tools\email_send.py"
 type: "rationale"
-community: "Community None"
+community: "Community 1"
 location: "L1"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Community_None
+  - community/Community_1
 ---
 
 # Email sending tool: send emails via SMTP.
@@ -15,4 +15,4 @@ tags:
 - [[Tool_1]] - `uses` [INFERRED]
 - [[email_send.py]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Community_None
+#graphify/rationale #graphify/INFERRED #community/Community_1
