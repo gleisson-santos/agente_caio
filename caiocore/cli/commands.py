@@ -321,15 +321,63 @@ def setup():
             if ferramenta == "voltar": continue
             
             if ferramenta == "calendario":
-                console.print("\n[bold blue]-- Google Calendar --[/bold blue]")
-                if Confirm.ask("Deseja ATIVAR a manipulação de Google Calendar?"):
-                    config.tools.google_calendar.enabled = True
-                    console.print("[dim]O arquivo `credentials.json` deve estar presente na raiz do sistema.[/dim]")
-                    config.tools.google_calendar.credentials_path = Prompt.ask("Caminho do credentials.json", default=config.tools.google_calendar.credentials_path)
-                    console.print("[green]✓ Calendário ativado.[/green]")
-                else:
-                    config.tools.google_calendar.enabled = False
-                    console.print("[yellow]Calendário desativado.[/yellow]")
+                console.print("\n[bold blue]-- Google Calendar (Setup Interativo) --[/bold blue]")
+                console.print("Desejo facilitar a vida: Mova seus dados do Google Cloud para cá.")
+                console.print("[dim]Abra seu arquivo credentials.json baixado do Google, copie todo o conteúdo e cole aqui.[/dim]")
+                console.print("[dim](Quando terminar de colar, digite FIM e aperte ENTER)[/dim]")
+                
+                linhas = []
+                while True:
+                    linha = console.input("> ")
+                    if linha.strip().upper() == "FIM":
+                        break
+                    linhas.append(linha)
+                    
+                conteudo_str = "\n".join(linhas)
+                if not conteudo_str.strip() or "client_id" not in conteudo_str:
+                    console.print("[yellow]Não reconheci um JSON válido ou você não colou nada.[/yellow]")
+                    continue
+                    
+                import json
+                try:
+                    cred_data = json.loads(conteudo_str)
+                    from caiocore.config.loader import get_data_dir
+                    caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+                    caio_stack_core.mkdir(parents=True, exist_ok=True)
+                    
+                    cred_path = caio_stack_core / "credentials.json"
+                    cred_path.write_text(conteudo_str, encoding="utf-8")
+                    console.print(f"[green]✓ Credenciais gravadas em {cred_path.absolute()}[/green]")
+                    
+                    # Inicia OAuth sem abrir navegador automaticamente (VPS friendly)
+                    from google_auth_oauthlib.flow import Flow
+                    flow = Flow.from_client_secrets_file(
+                        str(cred_path), 
+                        scopes=["https://www.googleapis.com/auth/calendar"],
+                        redirect_uri='http://localhost:8080/'
+                    )
+                    auth_url, state = flow.authorization_url(prompt='consent', access_type='offline')
+                    
+                    console.print("\n[bold yellow]PASSO 2: Autorização[/bold yellow]")
+                    console.print("Clique (ou copie) esse link e abra no seu navegador:")
+                    console.print(f"\n[cyan]{auth_url}[/cyan]\n")
+                    console.print("Após aceitar no Google, seu navegador vai redirecionar e dar um erro [dim]\"Falha na conexão com localhost\"[/dim].")
+                    console.print("Copie A URL INTEIRA da barra de endereços (a que tem erro) e cole aqui.")
+                    
+                    url_resposta = console.input("\nCole a URL aqui: ")
+                    
+                    if url_resposta.strip():
+                        flow.fetch_token(authorization_response=url_resposta.strip())
+                        token_path = caio_stack_core / "token.json"
+                        token_path.write_text(flow.credentials.to_json(), encoding="utf-8")
+                        
+                        config.tools.google_calendar.enabled = True
+                        config.tools.google_calendar.credentials_path = str(cred_path)
+                        console.print(f"[bold green]✓ SUCESSO![/bold green] Calendário ativado e token registrado.")
+                    else:
+                        console.print("[red]Nenhuma URL informada. Abortado.[/red]")
+                except Exception as e:
+                    console.print(f"[bold red]Erro ao processar as credenciais: {str(e)}[/bold red]")
             
             elif ferramenta == "buscador":
                 console.print("\n[bold blue]-- Brave Search Engine --[/bold blue]")

@@ -649,5 +649,20 @@ export const api = {
             body: JSON.stringify({ template_id: templateId, format }),
         })
     },
+
+    // ── Google Calendar OAuth Workflow ───────────────────
+    async setupGoogleCredentials(content) {
+        return await fetchAPI('/api/settings/credentials/google', {
+            method: 'POST',
+            body: JSON.stringify({ content }),
+        })
+    },
+
+    async confirmGoogleOAuth(responseUrl) {
+        return await fetchAPI('/api/settings/credentials/google/confirm', {
+            method: 'POST',
+            body: JSON.stringify({ response_url: responseUrl }),
+        })
+    },
 }
 

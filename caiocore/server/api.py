@@ -1339,6 +1339,89 @@ async def update_settings(data: SettingsUpdate):
         "message": "Configurações salvas com sucesso." + (" Reinicie o sistema para aplicar mudanças nos canais." if reboot_needed else "")
     }
 
+class GoogleCredsRequest(BaseModel):
+    content: str
+
+@app.post("/api/settings/credentials/google")
+async def setup_google_credentials(req: GoogleCredsRequest):
+    """Receives credentials.json content, saves it, and returns the Authorization URL."""
+    try:
+        conteudo_str = req.content
+        if not conteudo_str.strip() or "client_id" not in conteudo_str:
+            raise HTTPException(status_code=400, detail="Invalid credentials.json content")
+            
+        import json
+        cred_data = json.loads(conteudo_str)
+        
+        from caiocore.config.loader import get_data_dir
+        caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+        caio_stack_core.mkdir(parents=True, exist_ok=True)
+        
+        cred_path = caio_stack_core / "credentials.json"
+        cred_path.write_text(conteudo_str, encoding="utf-8")
+        
+        from google_auth_oauthlib.flow import Flow
+        flow = Flow.from_client_secrets_file(
+            str(cred_path), 
+            scopes=["https://www.googleapis.com/auth/calendar"],
+            redirect_uri='http://localhost:8080/'
+        )
+        auth_url, state = flow.authorization_url(prompt='consent', access_type='offline')
+        
+        # Save state temporarily to be used in the confirmation step
+        state_path = caio_stack_core / "oauth_state.json"
+        state_path.write_text(json.dumps({"state": state}), encoding="utf-8")
+        
+        return {"status": "ok", "auth_url": auth_url, "message": "Credencial válida. Autorize no Google."}
+    except Exception as e:
+        logger.error(f"Erro em setup_google_credentials: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+class GoogleConfirmRequest(BaseModel):
+    response_url: str
+
+@app.post("/api/settings/credentials/google/confirm")
+async def confirm_google_oauth(req: GoogleConfirmRequest):
+    """Exchanges the authorization_response URL for a token and enables Calendar."""
+    try:
+        from caiocore.config.loader import get_data_dir
+        caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+        cred_path = caio_stack_core / "credentials.json"
+        state_path = caio_stack_core / "oauth_state.json"
+        
+        if not cred_path.exists():
+            raise HTTPException(status_code=400, detail="credentials.json not found")
+            
+        import json
+        state = None
+        if state_path.exists():
+            state = json.loads(state_path.read_text(encoding="utf-8")).get("state")
+            
+        from google_auth_oauthlib.flow import Flow
+        flow = Flow.from_client_secrets_file(
+            str(cred_path), 
+            scopes=["https://www.googleapis.com/auth/calendar"],
+            state=state,
+            redirect_uri='http://localhost:8080/'
+        )
+        
+        flow.fetch_token(authorization_response=req.response_url.strip())
+        
+        token_path = caio_stack_core / "token.json"
+        token_path.write_text(flow.credentials.to_json(), encoding="utf-8")
+        
+        if _config:
+            from caiocore.config.loader import save_config
+            _config.tools.google_calendar.enabled = True
+            _config.tools.google_calendar.credentials_path = str(cred_path)
+            save_config(_config)
+            
+        return {"status": "success", "message": "Google Calendar configurado com sucesso!"}
+    except Exception as e:
+        logger.error(f"Erro efetuando fetch_token: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 
 
 # ── Channel Webhooks ─────────────────────────────────────────────────

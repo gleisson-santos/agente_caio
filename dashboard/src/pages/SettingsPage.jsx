@@ -4,6 +4,50 @@ import { api } from '../services/api'
 export default function SettingsPage() {
   const [settings, setSettings] = useState(null)
   const [saving, setSaving] = useState(false)
+  
+  // Google Calendar States
+  const [gcalCreds, setGcalCreds] = useState('')
+  const [gcalAuthUrl, setGcalAuthUrl] = useState('')
+  const [gcalResponseUrl, setGcalResponseUrl] = useState('')
+  const [gcalLoading, setGcalLoading] = useState(false)
+  const [gcalSuccess, setGcalSuccess] = useState('')
+  const [gcalError, setGcalError] = useState('')
+
+  const handleGcalSetup = async () => {
+    setGcalLoading(true)
+    setGcalError('')
+    try {
+        const res = await api.setupGoogleCredentials(gcalCreds)
+        if (res.status === 'ok') {
+            setGcalAuthUrl(res.auth_url)
+        } else {
+            setGcalError(res.message || 'Erro ao processar credenciais')
+        }
+    } catch (err) {
+        setGcalError(err.message)
+    }
+    setGcalLoading(false)
+  }
+
+  const handleGcalConfirm = async () => {
+    setGcalLoading(true)
+    setGcalError('')
+    try {
+        const res = await api.confirmGoogleOAuth(gcalResponseUrl)
+        if (res.status === 'success') {
+            setGcalSuccess('Autenticação concluída! GCal ativado com sucesso.')
+            setGcalAuthUrl('')
+            setGcalCreds('')
+            setGcalResponseUrl('')
+        } else {
+            setGcalError(res.message || 'Erro ao validar token')
+        }
+    } catch (err) {
+        setGcalError(err.message)
+    }
+    setGcalLoading(false)
+  }
+
 
   useEffect(() => {
     api.getSettings().then(setSettings)
@@ -158,6 +202,83 @@ export default function SettingsPage() {
                   </div>
                 </div>
               )}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Tools */}
+        <div className="rounded-xl border border-border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+          <div className="px-3 py-2 border-b border-border bg-muted/20">
+            <h3 className="text-sm font-semibold flex items-center gap-2">🛠️ Integrações & Ferramentas</h3>
+          </div>
+          <div className="p-3 space-y-4">
+            
+            <div className="pb-2">
+                <div className="flex items-center justify-between mb-2">
+                  <div>
+                    <h4 className="text-sm font-medium">Google Calendar</h4>
+                    <p className="text-xs text-muted-foreground">Assistente Visual para configurar autorização (Desktop App)</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 bg-muted/30 p-3 rounded-lg border border-border mt-2">
+                  {gcalSuccess && <div className="text-sm text-green-500 font-medium p-2 bg-green-500/10 rounded">{gcalSuccess}</div>}
+                  {gcalError && <div className="text-sm text-red-500 font-medium p-2 bg-red-500/10 rounded">{gcalError}</div>}
+                  
+                  {!gcalAuthUrl ? (
+                      <div className="space-y-2">
+                        <label className={labelClass}>Passo 1: Cole seu credentials.json</label>
+                        <textarea 
+                           className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
+                           placeholder='{"installed": {"client_id": "...", ...}}'
+                           value={gcalCreds}
+                           onChange={e => setGcalCreds(e.target.value)}
+                        />
+                        <button 
+                           onClick={handleGcalSetup} 
+                           disabled={gcalLoading || !gcalCreds}
+                           className="h-8 px-4 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded hover:bg-primary/90 disabled:opacity-50"
+                        >
+                           {gcalLoading ? "Processando..." : "Gerar Link de Autorização"}
+                        </button>
+                      </div>
+                  ) : (
+                      <div className="space-y-4 animate-in slide-in-from-top-2">
+                        <div className="p-3 border border-yellow-500/50 bg-yellow-500/10 rounded space-y-2">
+                            <label className="text-sm font-bold text-yellow-600 block">Passo 2: Autorize no Google</label>
+                            <a href={gcalAuthUrl} target="_blank" rel="noreferrer" className="text-xs text-blue-500 hover:underline break-all block">
+                                {gcalAuthUrl}
+                            </a>
+                            <p className="text-xs opacity-80 mt-1">Clique no link acima. Após permitir, seu navegador mostrará uma página de erro (Falha ao conectar). Copie a URL DESSA página de erro completa.</p>
+                        </div>
+                        <div className="space-y-2">
+                            <label className={labelClass}>Passo 3: Cole a URL de Resposta (Erro do Localhost)</label>
+                            <input 
+                               className={inputClass}
+                               placeholder="http://localhost:8080/?state=...&code=..."
+                               value={gcalResponseUrl}
+                               onChange={e => setGcalResponseUrl(e.target.value)}
+                            />
+                            <div className="flex gap-2">
+                                <button 
+                                   onClick={handleGcalConfirm} 
+                                   disabled={gcalLoading || !gcalResponseUrl}
+                                   className="h-8 px-4 py-1 bg-green-600 text-white text-xs font-semibold rounded hover:bg-green-700 disabled:opacity-50"
+                                >
+                                   {gcalLoading ? "Validando..." : "Confirmar Token"}
+                                </button>
+                                <button 
+                                   onClick={() => setGcalAuthUrl('')}
+                                   className="h-8 px-4 py-1 border border-input text-xs font-semibold rounded hover:bg-muted"
+                                >
+                                   Cancelar
+                                </button>
+                            </div>
+                        </div>
+                      </div>
+                  )}
+                </div>
             </div>
 
           </div>
