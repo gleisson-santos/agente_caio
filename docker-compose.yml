@@ -34,6 +34,7 @@ services:
     volumes:
       - caio_workspace:/root/.caiocore/workspace ## Workspace do agente
       - /root/agente_caio/config.json:/root/.caiocore/config.json ## Config principal do CaioCore
+      - /root/agente_caio/caio-stack:/caio-stack ## Sincroniza a pasta de segredos
 
     networks:
       - ControllNet ## Nome da rede interna
