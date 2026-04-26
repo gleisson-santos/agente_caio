@@ -93,15 +93,21 @@ class GoogleCalendarTool(Tool):
             if creds and creds.expired and creds.refresh_token:
                 try:
                     creds.refresh(Request())
-                except Exception:
-                    creds = None
+                except Exception as e:
+                    raise RuntimeError(
+                        f"O token de acesso expirou e a tentativa de renová-lo (refresh) falhou. "
+                        f"Erro do Google: {e}. "
+                        "Isso geralmente ocorre se o App OAuth no Google Cloud estiver em modo 'Teste' (o que faz "
+                        "o refresh token expirar em 7 dias) ou se o token foi revogado manualmente. "
+                        "Gere um novo token.json e cole novamente no painel."
+                    )
 
             if not creds or not creds.valid:
                 if not os.path.exists(self.credentials_path):
                     raise FileNotFoundError(
-                        f"Google Calendar credentials not found at {self.credentials_path}. "
-                        "Please place a 'credentials.json' file from Google Cloud Console in "
-                        "your caiocore directory."
+                        f"Falha na autenticação: O token.json não é válido e o fallback "
+                        f"credentials.json não foi encontrado em {self.credentials_path}. "
+                        "Configure a integração via painel de configurações."
                     )
                 flow = InstalledAppFlow.from_client_secrets_file(self.credentials_path, SCOPES)
                 creds = flow.run_local_server(port=0)
