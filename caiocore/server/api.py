@@ -1420,6 +1420,7 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
             from caiocore.config.loader import save_config
             _config.tools.google_calendar.enabled = True
             _config.tools.google_calendar.credentials_path = str(cred_path)
+            _config.tools.google_calendar.token_path = str(token_path)
             save_config(_config)
             
         return {"status": "success", "message": "Google Calendar configurado com sucesso!"}
@@ -1457,6 +1458,11 @@ async def save_google_token_direct(req: GoogleTokenDirectRequest):
         # O credentials.json é opcional se o token.json tiver tudo, mas ativamos a tool mesmo assim
         if _config:
             _config.tools.google_calendar.enabled = True
+            _config.tools.google_calendar.token_path = str(token_path)
+            # Tenta referenciar credentials.json no mesmo lugar, se existir
+            cred_path = caio_stack_core / "credentials.json"
+            if cred_path.exists():
+                _config.tools.google_calendar.credentials_path = str(cred_path)
             save_config(_config)
             
         return {"status": "success", "message": "Token do Google ativado com sucesso!"}
