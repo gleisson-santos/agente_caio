@@ -1,58 +1,57 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class"],
   content: [
     "./index.html",
     "./src/**/*.{ts,tsx,js,jsx}"
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
+      fontFamily: {
+        sans: ["'Inter'", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+      },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background:  "var(--background)",
+        "bg-secondary": "var(--background-secondary)",
+        foreground:  "var(--foreground)",
+        "foreground-secondary": "var(--foreground-secondary)",
+        border:      "var(--border)",
+        "border-hover": "var(--border-hover)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT:    "var(--primary)",
+          hover:      "var(--primary-hover)",
+          foreground: "var(--primary-foreground)",
+          soft:       "var(--primary-soft)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT:    "var(--accent)",
+          soft:       "var(--accent-soft)",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+        sidebar: {
+          DEFAULT:    "var(--sidebar-bg)",
+          foreground: "var(--sidebar-foreground)",
+          active:     "var(--sidebar-active)",
+          "active-text": "var(--sidebar-active-text)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT:    "var(--card)",
+          foreground: "var(--card-foreground)",
         },
+        muted: {
+          DEFAULT:    "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        success:     "var(--success)",
+        warning:     "var(--warning)",
+        destructive: "var(--destructive)",
+        info:        "var(--info)",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
       },
     },
   },

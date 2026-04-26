@@ -1,197 +1,86 @@
-import { useState, useEffect, useCallback } from 'react'
-import { api, STATUS_CONFIG, EVENT_TYPES } from '../services/api'
+import React, { useState, Suspense } from 'react';
+import { Search, Database, Globe, Wrench, Cpu, Mail, Calendar, Shield, Zap, ChevronRight, LayoutGrid, Share2, Activity, Loader2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { cn } from '../lib/utils';
 
+const agents = [
+  { id: 'ceo',   name: 'CaioCore',           role: 'Orquestrador',    desc: 'Coordena todos os especialistas e centraliza notificações.', status: 'online', icon: Cpu,      color: 'bg-violet-50 text-violet-500' },
+  { id: 'code',  name: 'Código',              role: 'Desenvolvedor',   desc: 'Gera, debugga e refatora código em Python, TypeScript, SQL.', status: 'online', icon: Zap,      color: 'bg-blue-50 text-blue-500' },
+  { id: 'web',   name: 'Web Research',        role: 'Pesquisador',     desc: 'Pesquisa e extrai dados de qualquer URL ou API pública.', status: 'online', icon: Globe,    color: 'bg-sky-50 text-sky-500' },
+  { id: 'db',    name: 'Banco de Dados',      role: 'DBA',             desc: 'Gerencia DDL/DML, Supabase, PGVector e backups.', status: 'online', icon: Database,  color: 'bg-emerald-50 text-emerald-500' },
+  { id: 'email', name: 'E-mail',              role: 'Comunicação',     desc: 'Monitora caixa IMAP e gera resumos automáticos.', status: 'offline', icon: Mail,     color: 'bg-amber-50 text-amber-500' },
+  { id: 'gcal',  name: 'Google Calendar',     role: 'Agenda',          desc: 'Cria eventos, consulta agenda e gerencia lembretes.', status: 'online', icon: Calendar,  color: 'bg-rose-50 text-rose-500' },
+  { id: 'auth',  name: 'Segurança',           role: 'Auth & Security', desc: 'Gerencia tokens OAuth, credenciais e permissões.', status: 'online', icon: Shield,    color: 'bg-indigo-50 text-indigo-500' },
+  { id: 'cli',   name: 'CLI Tools',           role: 'Automação',       desc: 'Executa comandos shell, scripts no servidor.', status: 'online', icon: Wrench,    color: 'bg-orange-50 text-orange-500' },
+];
 
-function StatusBadge({ status }) {
-  const cfg = STATUS_CONFIG[status] || STATUS_CONFIG.offline
-  return (
-    <span className={`cc-status ${status}`}>
-      <span className="cc-status-dot" />
-      {cfg.label}
-    </span>
-  )
-}
+const NeuralGraphLazy = React.lazy(() => import('../components/graph/NeuralGraph'));
 
-export default function AgentsPage({ focusAgent, onNavigate }) {
-
-  const [agents, setAgents] = useState([])
-  const [events, setEvents] = useState([])
-  const [selected, setSelected] = useState(focusAgent || null)
-
-  const fetchData = useCallback(async () => {
-    const [a, e] = await Promise.all([api.getAgents(), api.getEvents()])
-    setAgents(a)
-    setEvents(e)
-  }, [])
-
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => { fetchData() }, [fetchData])
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => { if (focusAgent) setSelected(focusAgent) }, [focusAgent])
-
-  const ceo = agents.find(a => a.tier === 0)
-  const tier1 = agents.filter(a => a.tier === 1)
-  const tier2 = agents.filter(a => a.tier === 2)
-  const selAgent = agents.find(a => a.id === selected)
-  const selEvents = events.filter(e => e.agentId === selected)
-
-  const formatDate = (iso) => iso ? new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '—'
+export default function AgentsPage() {
+  const [view, setView] = useState('grid');
+  const [search, setSearch] = useState('');
+  const filtered = agents.filter(a => a.name.toLowerCase().includes(search.toLowerCase()) || a.desc.toLowerCase().includes(search.toLowerCase()));
+  const online = agents.filter(a => a.status === 'online').length;
 
   return (
-    <>
-      <div className="page-header fade-in-up">
-        <h2>Agentes & Especialistas</h2>
-        <p>Hierarquia completa, métricas de performance e detalhamento por agente.</p>
+    <div className="space-y-8 pb-10">
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="text-[22px] font-semibold text-zinc-900 tracking-tight">Especialistas</h1>
+          <p className="text-[13px] text-zinc-400 mt-0.5">{online} de {agents.length} módulos ativos</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-300" />
+            <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar..."
+              className="pl-9 pr-3 py-1.5 rounded-xl bg-zinc-100 border-0 text-[13px] focus:outline-none focus:ring-2 focus:ring-violet-200 w-44 text-zinc-600 placeholder:text-zinc-300 transition-all" />
+          </div>
+          <div className="flex rounded-xl bg-zinc-100 p-0.5">
+            <button onClick={() => setView('grid')} className={cn("p-1.5 rounded-[10px] transition-all", view==='grid'?"bg-white text-zinc-700 shadow-sm":"text-zinc-300 hover:text-zinc-500")}><LayoutGrid className="w-4 h-4" /></button>
+            <button onClick={() => setView('graph')} className={cn("p-1.5 rounded-[10px] transition-all", view==='graph'?"bg-white text-zinc-700 shadow-sm":"text-zinc-300 hover:text-zinc-500")}><Share2 className="w-4 h-4" /></button>
+          </div>
+        </div>
       </div>
 
-      <div className="cc-hierarchy fade-in-up" style={{ marginBottom: '16px' }}>
-        {/* CEO */}
-        {ceo && (
-          <div className={`cc-ceo-card ${selected === ceo.id ? 'selected' : ''}`} onClick={() => setSelected(selected === ceo.id ? null : ceo.id)} style={{ border: selected === ceo.id ? '1px solid var(--accent)' : undefined }}>
-            <div className="cc-ceo-icon">{ceo.iconEmoji}</div>
-            <div className="cc-ceo-info">
-              <h3>{ceo.name}</h3>
-              <div className="cc-role">{ceo.role}</div>
-              <div className="cc-desc">{ceo.description}</div>
+      <AnimatePresence mode="wait">
+        {view === 'grid' ? (
+          <motion.div key="grid" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            {filtered.map((a, i) => {
+              const Icon = a.icon;
+              return (
+                <motion.div key={a.id} initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{delay:i*0.04}}
+                  className="group p-4 rounded-2xl bg-zinc-50/60 hover:bg-white hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-200 cursor-default">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105", a.color)}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className={cn("w-1.5 h-1.5 rounded-full", a.status==='online'?"bg-emerald-400":"bg-zinc-200")} />
+                      <span className="text-[10px] text-zinc-300 font-medium">{a.status==='online'?'Online':'Off'}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-[14px] font-semibold text-zinc-800 mb-0.5 group-hover:text-violet-600 transition-colors">{a.name}</h3>
+                  <p className="text-[11px] text-violet-500 font-medium mb-2">{a.role}</p>
+                  <p className="text-[12px] text-zinc-400 leading-relaxed line-clamp-2 mb-3">{a.desc}</p>
+                  <button className="text-[12px] font-medium text-zinc-300 group-hover:text-violet-500 flex items-center gap-0.5 transition-colors">
+                    Abrir <ChevronRight className="w-3 h-3" />
+                  </button>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        ) : (
+          <motion.div key="graph" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="rounded-2xl bg-zinc-50/60 overflow-hidden min-h-[500px] relative">
+            <div className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-white/90 backdrop-blur rounded-xl shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
+              <span className="text-[11px] font-medium text-zinc-600">Grafo Neural</span>
             </div>
-            <StatusBadge status={ceo.status} />
-          </div>
+            <Suspense fallback={<div className="flex items-center justify-center h-full"><Loader2 className="w-6 h-6 text-violet-400 animate-spin" /></div>}>
+              <NeuralGraphLazy />
+            </Suspense>
+          </motion.div>
         )}
-        <div className="cc-connector" />
-        <div className="cc-fan-line" />
-        <div className="cc-tier-label">Camada de Agentes</div>
-        <div className="cc-agents-row tier-1">
-          {tier1.map(a => (
-            <div key={a.id} className={`cc-agent-card ${selected === a.id ? 'selected' : ''}`} onClick={() => setSelected(selected === a.id ? null : a.id)}>
-              <div className="cc-card-top">
-                <div className={`cc-card-icon ${a.iconClass}`}>{a.iconEmoji}</div>
-                <div style={{ flex: 1, minWidth: 0 }}><div className="cc-card-name">{a.name}</div><div className="cc-card-role">{a.role}</div></div>
-                <StatusBadge status={a.status} />
-              </div>
-              <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                {(a.capabilities || []).slice(0, 3).map(c => <span key={c} className="skill-tag">{c}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="cc-connector" />
-        <div className="cc-fan-line" />
-        <div className="cc-tier-label">Camada de Especialistas</div>
-        <div className="cc-agents-row tier-2">
-          {tier2.map(a => (
-            <div key={a.id} className={`cc-agent-card ${selected === a.id ? 'selected' : ''} ${a.comingSoon ? 'coming-soon' : ''}`} onClick={() => !a.comingSoon && setSelected(selected === a.id ? null : a.id)}>
-              {a.comingSoon && <span className="cc-coming-soon">Em breve</span>}
-              <div className="cc-card-top">
-                <div className={`cc-card-icon ${a.iconClass}`}>{a.iconEmoji}</div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div className="cc-card-name" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    {a.name}
-                    {a.is_premium && (
-                      <span className="premium-badge-mini" style={{ 
-                        background: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
-                        color: '#000',
-                        fontSize: '8px',
-                        fontWeight: 'bold',
-                        padding: '1px 4px',
-                        borderRadius: '3px'
-                      }}>PREMIUM</span>
-                    )}
-                  </div>
-                  <div className="cc-card-role">{a.role}</div>
-                </div>
-
-                <StatusBadge status={a.status} />
-              </div>
-              {a.statusDetail && <span className="skill-tag" style={{ fontSize: '10px', marginTop: '4px' }}>{a.statusDetail}</span>}
-              {a.monitorProject && <span style={{ fontSize: '11px', color: 'var(--text-muted)', display: 'block', marginTop: '2px' }}>{a.monitorProject}</span>}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Detail Panel */}
-      {selAgent && (
-        <div className="cc-drilldown fade-in-up">
-          <div className="cc-drill-header">
-            <div className={`cc-card-icon ${selAgent.iconClass}`}>{selAgent.iconEmoji}</div>
-            <h3>{selAgent.name} <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '14px' }}>— {selAgent.role}</span></h3>
-            <StatusBadge status={selAgent.status} />
-            <button className="btn-secondary" onClick={() => setSelected(null)} style={{ padding: '4px 12px', fontSize: '12px' }}>✕</button>
-          </div>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '16px' }}>{selAgent.description}</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
-            {(selAgent.capabilities || []).map(c => <span key={c} className="skill-tag">{c}</span>)}
-          </div>
-
-          {/* Metrics - SLIM MODE support */}
-          {selAgent.metrics && Object.keys(selAgent.metrics).length > 0 && !selAgent.hideMetrics && (
-            <div className="cc-drill-metrics">
-              {Object.entries(selAgent.metrics).map(([key, val]) => (
-                <div key={key} className="cc-drill-metric">
-                  <div className="dm-val">{typeof val === 'string' && val.includes('T') ? formatDate(val) : String(val)}</div>
-                  <div className="dm-lab">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Individual Chat Trigger for Specialists */}
-          {selAgent.type === 'specialist' && (
-            <div className="cc-action-bar" style={{ marginTop: '16px' }}>
-              <button 
-                className="btn-primary" 
-                style={{ 
-                  width: '100%', 
-                  padding: '14px', 
-                  borderRadius: '10px', 
-                  fontWeight: 700, 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  gap: '10px',
-                  background: 'linear-gradient(135deg, var(--accent), #fbbf24)',
-                  color: '#000',
-                  boxShadow: '0 4px 15px rgba(245,158,11,0.2)'
-                }}
-                onClick={() => onNavigate('specialist-chat', selAgent.id)}
-              >
-                <span>⚡ ABRIR ESTAÇÃO DE TRABALHO INDIVIDUAL</span>
-              </button>
-            </div>
-          )}
-
-          {/* Extraction data for specialists */}
-          {selAgent.extractionData && (
-            <div style={{ marginTop: '12px' }}>
-              <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>⚡ Dados da Extração</h4>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                <span className="skill-tag" style={{ background: 'rgba(245,158,11,.15)', color: '#f59e0b' }}>Vazamento: {selAgent.extractionData.records?.vazamento}</span>
-                <span className="skill-tag" style={{ background: 'rgba(59,130,246,.15)', color: '#3b82f6' }}>Pavimento: {selAgent.extractionData.records?.pavimento}</span>
-                <span className="skill-tag" style={{ background: 'rgba(6,182,212,.15)', color: '#06b6d4' }}>Falta d'água: {selAgent.extractionData.records?.faltaDagua}</span>
-              </div>
-              <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' }}>
-                Período: {selAgent.extractionData.period} · Telegram: {selAgent.extractionData.notificationSent ? '✓ Enviada' : '✗ Pendente'}
-              </div>
-            </div>
-          )}
-
-          {/* Events */}
-          {selEvents.length > 0 && (
-            <div style={{ marginTop: '16px' }}>
-              <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>📋 Eventos Recentes</h4>
-              <div className="cc-db-ops">
-                {selEvents.map((ev, i) => (
-                  <div key={i} className="cc-db-op-item" style={{ gridTemplateColumns: '46px 28px 1fr' }}>
-                    <span className="cc-db-op-time">{ev.time}</span>
-                    <span className={`cc-event-type-icon ${ev.type}`}>{EVENT_TYPES[ev.type]?.icon || '●'}</span>
-                    <span style={{ color: 'var(--text-secondary)' }}>{ev.msg}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </>
-  )
+      </AnimatePresence>
+    </div>
+  );
 }

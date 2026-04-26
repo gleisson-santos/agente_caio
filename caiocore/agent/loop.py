@@ -37,6 +37,7 @@ from caiocore.agent.tools.pdf_reader import ReadPDFTool
 from caiocore.agent.smart_router import SmartRouter
 from caiocore.agent.tools.voice import VoiceTTSTool
 from caiocore.agent.tools.a2a import A2ASendTool
+from caiocore.agent.tools.weather import WeatherTool
 
 
 from caiocore.bus.events import InboundMessage, OutboundMessage
@@ -162,6 +163,9 @@ class AgentLoop:
         
         # Register System Status Tool (monitoring Tier 1 agents)
         self.tools.register(SystemStatusTool())
+
+        # Register Weather Tool
+        self.tools.register(WeatherTool())
 
         # Register PDF Reader Tool
         self.tools.register(ReadPDFTool(workspace=self.workspace, allowed_dir=allowed_dir))

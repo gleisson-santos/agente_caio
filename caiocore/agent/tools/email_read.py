@@ -49,12 +49,16 @@ def _extract_body(msg: email.message.Message, max_chars: int = 3000) -> str:
             body_parts.append(payload.decode(charset, errors="replace"))
 
     body = "\n".join(body_parts).strip()
+    
+    # Clean up ugly links from preview to keep dashboard clean
+    body = re.sub(r'https?://[^\s]+', '[link]', body)
+    
     # Clean up excessive whitespace
     body = re.sub(r"\n{3,}", "\n\n", body)
     body = re.sub(r"[ \t]+", " ", body)
 
     if len(body) > max_chars:
-        body = body[:max_chars] + f"\n\n[... email truncated at {max_chars} chars ...]"
+        body = body[:max_chars] + "..."
 
     return body or "(no text body)"
 
@@ -226,15 +230,16 @@ class EmailReadTool(Tool):
                     to = _decode_header(msg.get("To"))
 
                     entry = [
-                        f"👤 **Remetente:** {sender}",
-                        f"📌 **Assunto:** {subject}",
-                        f"🕒 **Data:** {date}",
+                        f"> 👤 **Remetente:** {sender}",
+                        f"> 📌 **Assunto:** {subject}",
+                        f"> 🕒 **Data:** {date}",
                     ]
 
                     if include_body:
                         body = _extract_body(msg)
-                        # [vHTML-Final] - using ** as requested by user
-                        entry.append(f"💬 **Prévia**\n{body[:200]}...")
+                        # Clean body to fit blockquote visually
+                        clean_body = body[:200].replace('\n', ' ')
+                        entry.append(f"> 💬 **Prévia:** {clean_body}...")
 
                     results.append("\n".join(entry))
                 except Exception as e:
@@ -244,8 +249,16 @@ class EmailReadTool(Tool):
             if not results:
                 return f"Não foi possível ler os e-mails encontrados para '{query}'."
 
+            instruction_to_ai = (
+                "INSTRUÇÃO IMPORTANTE E ABSOLUTA:\n"
+                "Você DEVE exibir os e-mails para o usuário no exato formato de Blockquote (usando '>') abaixo.\n"
+                "Isso é fundamental porque o front-end transforma esses blockquotes em Cards visuais elegantes.\n"
+                "Não remova os sinais de '>' do início das linhas.\n\n"
+            )
+            
             header = f"Encontrei {len(results)} e-mail(s) para '{query}' na pasta {mailbox}:\n\n"
-            return header + "\n\n---\n\n".join(results)
+            data = header + "\n\n".join(results)
+            return instruction_to_ai + data
 
         finally:
             try:

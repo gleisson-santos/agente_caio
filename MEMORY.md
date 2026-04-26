@@ -12,33 +12,33 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
-**2026-04-24 22:55:45 -0300** - `abed559` por gleisson-santos
-> **Mensagem:** feat(auth): unified google calendar oauth via dashboard and cli
-> *Arquivos tocados:* caio-stack/core/.gitkeep, caiocore/cli/commands.py, caiocore/server/api.py, dashboard/src/pages/SettingsPage.jsx, dashboard/src/services/api.js, etc...
+**2026-04-25 16:35:47 -0300** - `d377e10` por gleisson-santos
+> **Mensagem:** fix(dashboard): rewrite chat with solid scroll layout, fix agents page crash, add lazy neural graph
+> *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/graph/NeuralGraph.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, dashboard/src/pages/AgentsPage.tsx
 
 ***
 
-**2026-04-24 22:29:45 -0300** - `da7d6ea` por gleisson-santos
-> **Mensagem:** chore: remove legacy nanobot vestiges and fix graph export
-> *Arquivos tocados:* .dockerignore, README.md, bridge/package.json, graphify-out/GRAPH_REPORT.md, graphify-out/cache/0c4c208ce96f537436aa8c276c17d78a3a5bf56dd28d444876f1ef9ed1991afd.json, etc...
+**2026-04-25 16:21:48 -0300** - `504ad84` por gleisson-santos
+> **Mensagem:** feat(dashboard): major UI redesign - neural graph, inline thinking, fullwidth chat, agents page
+> *Arquivos tocados:* dashboard/package-lock.json, dashboard/package.json, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, etc...
 
 ***
 
-**2026-04-24 21:43:49 -0300** - `9cdaf67` por gleisson-santos
-> **Mensagem:** chore: sync state and update ast graphify memory
-> *Arquivos tocados:* .gitignore, INICIAR_PROJETO.md, caiocore/cli/commands.py, caiocore/config/schema.py, caiocore/server/api.py, etc...
+**2026-04-25 15:59:30 -0300** - `cdc98b3` por gleisson-santos
+> **Mensagem:** fix(auth): set OAUTHLIB_INSECURE_TRANSPORT to prevent HTTP localhost strict transport error on token fetch
+> *Arquivos tocados:* caiocore/cli/commands.py, caiocore/server/api.py
 
 ***
 
-**2026-04-16 23:23:46 -0300** - `cb0edde` por gleisson-santos
-> **Mensagem:** docs: add mascote, dashboard screenshot and README updates
-> *Arquivos tocados:* README.md, docs/dashboard.png, docs/mascote.png
+**2026-04-25 15:48:52 -0300** - `315326e` por gleisson-santos
+> **Mensagem:** fix(docker): correct caio-agent traefik loadbalancer port from 18795 to 18790
+> *Arquivos tocados:* docker-compose.yml
 
 ***
 
-**2026-04-16 23:20:59 -0300** - `4851598` por gleisson-santos
-> **Mensagem:** docs: overhaul README with architecture, setup details and features
-> *Arquivos tocados:* README.md, dashboard/SKILL22.md
+**2026-04-25 00:15:47 -0300** - `0427a82` por gleisson-santos
+> **Mensagem:** fix(docker): mount caio-stack volume to agent to ensure credentials reach container
+> *Arquivos tocados:* docker-compose.yml
 <!-- DYNAMIC_LOG_END -->
 
 ---

@@ -5,10 +5,12 @@
  * AUTHORITATIVE METADATA: All names, roles, and UI properties are defined here.
  */
 
-// Fallback no modo DEV local (npm run dev). Na VPS (Produção), usa o próprio domínio para o Traefik rotear
+// In DEV mode, use Vite's built-in proxy (see vite.config.js server.proxy).
+// This avoids CORS issues when the frontend (5177) calls the backend (18790).
+// In production, Traefik routes /api to the gateway on the same domain.
 const API_PORT = 18790
-export const BASE_URL = import.meta.env.VITE_API_URL || 
-                 (import.meta.env.DEV ? `http://localhost:${API_PORT}` : 
+export const BASE_URL = import.meta.env.VITE_API_URL ||
+                 (import.meta.env.DEV ? `` :
                  (window.location.port ? `${window.location.protocol}//${window.location.hostname}:${API_PORT}` : ''))
 
 // ─── UTILS ─────────────────────────────────────────────────────────
@@ -540,6 +542,8 @@ export const api = {
             body: JSON.stringify(data),
         })
     },
+    async getConfig() { return this.getSettings() },
+    async updateConfig(data) { return this.updateSettings(data) },
 
     // ── Actions ────────────────────────────────────────
     async generateExtra(type) { return await fetchAPI(`/api/extras/generate/${type}`, { method: 'POST' }) },
@@ -565,6 +569,11 @@ export const api = {
     async getChatHistory(sessionId = 'dashboard-default') {
         const res = await fetchAPI(`/api/chat/history/${sessionId}`)
         return res?.messages || []
+    },
+
+    // ── Action Logs / Stats ────────────────────────────
+    async getTokenStats() {
+        return await fetchAPI('/api/agent/token/stats')
     },
 
     // ── Tasks (LIVE BACKEND) ─────────────────────────────
