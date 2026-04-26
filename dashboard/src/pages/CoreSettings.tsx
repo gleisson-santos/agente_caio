@@ -163,20 +163,63 @@ export default function CoreSettings() {
               <p className="text-[13px] font-semibold text-zinc-700 flex items-center gap-2"><Calendar className="w-4 h-4 text-rose-400" />Google Calendar</p>
               {gcalMsg && <p className={cn("text-[12px] font-medium rounded-xl px-3.5 py-2.5", gcalMsg.ok?"bg-emerald-50 text-emerald-500":"bg-rose-50 text-rose-500")}>{gcalMsg.t}</p>}
               {!gcalUrl ? (
-                <div className="space-y-3">
-                  <label className="block text-[12.5px] font-medium text-zinc-500">Credentials JSON</label>
-                  <textarea className="w-full rounded-xl bg-zinc-50 px-4 py-3 text-[12px] text-zinc-600 border-0 focus:outline-none focus:ring-2 focus:ring-violet-200 font-mono h-20 resize-none" value={gcalCreds} onChange={e=>setGcalCreds(e.target.value)} placeholder='{"installed":{...}}' />
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="block text-[12.5px] font-medium text-zinc-500">Credentials JSON (Do Google Cloud)</label>
+                    <textarea className="w-full rounded-xl bg-zinc-50 px-4 py-3 text-[12px] text-zinc-600 border-0 focus:outline-none focus:ring-2 focus:ring-violet-200 font-mono h-[140px] resize-none" value={gcalCreds} onChange={e=>setGcalCreds(e.target.value)} placeholder='Cole aqui todo o conteúdo do seu credentials.json baixado do Google...' />
+                  </div>
+                  
+                  <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                    <p className="text-[12px] text-blue-600 font-medium mb-1">💡 Como obter as Credenciais?</p>
+                    <ol className="list-decimal pl-4 space-y-1 text-[11.5px] text-zinc-600">
+                      <li>Acesse o <strong>Google Cloud Console</strong> e crie um projeto.</li>
+                      <li>Habilite a API <strong>Google Calendar API</strong>.</li>
+                      <li>Vá em <strong>Credenciais</strong> \u003e Criar Credenciais \u003e <strong>ID do cliente OAuth</strong>.</li>
+                      <li>Tipo de App: Aplicativo para computador (Desktop) OU Web com URI <code>http://localhost</code>.</li>
+                      <li>Baixe o JSON, abra, copie todo o texto e cole acima!</li>
+                    </ol>
+                  </div>
+
                   <button onClick={async()=>{setGcalLoad(true);setGcalMsg(null);try{const r=await api.setupGoogleCredentials(gcalCreds);if(r?.status==='ok')setGcalUrl(r.auth_url);else setGcalMsg({ok:false,t:r?.message??'Erro'})}catch(e:any){setGcalMsg({ok:false,t:e.message})}setGcalLoad(false)}}
                     disabled={gcalLoad||!gcalCreds} className="w-full py-2.5 bg-zinc-100 text-zinc-600 rounded-xl text-[13px] font-medium hover:bg-zinc-200 transition-colors disabled:opacity-40">
-                    {gcalLoad?'Processando...':'Gerar Link'}
+                    {gcalLoad?'Processando...':'Continuar para Google'}
                   </button>
                 </div>
               ) : (
-                <div className="space-y-3 p-4 bg-zinc-50 rounded-xl">
-                  <a href={gcalUrl} target="_blank" className="text-violet-500 text-[12px] font-mono break-all hover:underline block">{gcalUrl}</a>
-                  <input className="w-full rounded-xl bg-white px-4 py-2.5 text-[13px] border-0 focus:outline-none focus:ring-2 focus:ring-violet-200" value={gcalResp} onChange={e=>setGcalResp(e.target.value)} placeholder="URL de retorno..." />
-                  <button onClick={async()=>{setGcalLoad(true);const r=await api.confirmGoogleOAuth(gcalResp);if(r?.status==='success'){setGcalMsg({ok:true,t:'Conectado!'});setGcalUrl('')}else setGcalMsg({ok:false,t:r?.message??'Erro'});setGcalLoad(false)}}
-                    className="w-full py-2.5 bg-zinc-900 text-white rounded-xl text-[13px] font-medium hover:bg-zinc-700 shadow-sm">Confirmar</button>
+                <div className="space-y-4 p-5 bg-zinc-50 rounded-xl border border-zinc-100">
+                  <div className="space-y-2">
+                    <p className="text-[12.5px] font-semibold text-zinc-700">1. Autorize no Google</p>
+                    <p className="text-[11.5px] text-zinc-500">Clique no link abaixo, faça login no Google, aceite as permissões do Calendário. O Google redirecionará para uma página vazia (http://localhost/?state=....).</p>
+                    <a href={gcalUrl} target="_blank" className="text-violet-600 text-[11.5px] font-mono break-all hover:underline block p-3 bg-white rounded-lg border border-violet-100">{gcalUrl}</a>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <p className="text-[12.5px] font-semibold text-zinc-700">2. Confirme o Acesso</p>
+                    <p className="text-[11.5px] text-zinc-500">Copie o URL inteiro dessa página vazia do localhost (o link enorme que o Google te redirecionou) e cole abaixo:</p>
+                    <input className="w-full rounded-xl bg-white px-4 py-3 text-[12px] font-mono border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-violet-200" value={gcalResp} onChange={e=>setGcalResp(e.target.value)} placeholder="http://localhost/?state=...&code=..." />
+                  </div>
+
+                  <button onClick={async()=>{
+                      setGcalLoad(true);
+                      setGcalMsg(null);
+                      try {
+                        const r = await api.confirmGoogleOAuth(gcalResp);
+                        if(r?.status==='success'){
+                            setGcalMsg({ok:true,t:'Conectado com sucesso!'});
+                            setGcalUrl('');
+                        } else {
+                            setGcalMsg({ok:false,t:r?.message??'Erro desconhecido'});
+                        }
+                      } catch (e: any) {
+                          setGcalMsg({ok:false,t: e.message || 'Falha de conexão'});
+                      }
+                      setGcalLoad(false);
+                    }}
+                    className="w-full py-3 bg-zinc-900 text-white rounded-xl text-[13px] font-medium hover:bg-zinc-800 shadow-md disabled:opacity-50"
+                    disabled={gcalLoad || !gcalResp}
+                  >
+                    {gcalLoad ? 'Validando Token...' : 'Finalizar Conexão'}
+                  </button>
                 </div>
               )}
             </div>

@@ -1424,8 +1424,16 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
             
         return {"status": "success", "message": "Google Calendar configurado com sucesso!"}
     except Exception as e:
-        logger.error(f"Erro efetuando fetch_token: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        import traceback
+        erro_trace = traceback.format_exc()
+        logger.error(f"Erro efetuando fetch_token: {erro_trace}")
+        error_msg = f"{type(e).__name__}: {str(e)}"
+        
+        # Friendly suggestion for common mismatches
+        if "MismatchingStateError" in error_msg:
+            error_msg += " (Você gerou um link novo sem recarregar a janela? O código 'state' mudou. Gere o link DNV, feche a aba antiga, faça login e cole o link NOVO de primeira.)"
+            
+        raise HTTPException(status_code=500, detail=error_msg)
 
 
 

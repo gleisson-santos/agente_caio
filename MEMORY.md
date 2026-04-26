@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-04-26 15:39:35 -0300** - `e69c6b2` por gleisson-santos
+> **Mensagem:** fix(dashboard, api): improve Google Calendar auth UX, add instructions and explicit tracebacks for token errors
+> *Arquivos tocados:* caiocore/server/api.py, dashboard/src/pages/CoreSettings.tsx
+
+***
+
 **2026-04-25 16:35:47 -0300** - `d377e10` por gleisson-santos
 > **Mensagem:** fix(dashboard): rewrite chat with solid scroll layout, fix agents page crash, add lazy neural graph
 > *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/graph/NeuralGraph.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, dashboard/src/pages/AgentsPage.tsx
@@ -32,12 +38,6 @@
 
 **2026-04-25 15:48:52 -0300** - `315326e` por gleisson-santos
 > **Mensagem:** fix(docker): correct caio-agent traefik loadbalancer port from 18795 to 18790
-> *Arquivos tocados:* docker-compose.yml
-
-***
-
-**2026-04-25 00:15:47 -0300** - `0427a82` por gleisson-santos
-> **Mensagem:** fix(docker): mount caio-stack volume to agent to ensure credentials reach container
 > *Arquivos tocados:* docker-compose.yml
 <!-- DYNAMIC_LOG_END -->
 
