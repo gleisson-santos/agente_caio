@@ -34,6 +34,7 @@ export default function CoreSettings() {
   const [tab, setTab] = useState('ia')
   const [showKeys, setShowKeys] = useState<Record<string,boolean>>({})
   const [loading, setLoading] = useState(false)
+  const [msg, setMsg] = useState<{ok:boolean,text:string}|null>(null)
   const [gcalCreds, setGcalCreds] = useState(''); const [gcalUrl, setGcalUrl] = useState(''); const [gcalResp, setGcalResp] = useState(''); const [gcalLoad, setGcalLoad] = useState(false); const [gcalMsg, setGcalMsg] = useState<{ok:boolean,t:string}|null>(null); const [gcalMethod, setGcalMethod] = useState<'oauth'|'token'>('token'); const [gcalToken, setGcalToken] = useState('');
 
   useEffect(() => { (async () => { try { const r = await api.getSettings(); setForm(rawToForm(r?.status==='error'?{}:r)) } catch { setForm(rawToForm({})) } })() }, [])
