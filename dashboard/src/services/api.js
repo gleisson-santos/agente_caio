@@ -673,5 +673,12 @@ export const api = {
             body: JSON.stringify({ response_url: responseUrl }),
         })
     },
+
+    async setupGoogleTokenDirect(tokenContent) {
+        return await fetchAPI('/api/settings/credentials/google/token_direct', {
+            method: 'POST',
+            body: JSON.stringify({ token_content: tokenContent }),
+        })
+    },
 }
 

@@ -34,8 +34,7 @@ export default function CoreSettings() {
   const [tab, setTab] = useState('ia')
   const [showKeys, setShowKeys] = useState<Record<string,boolean>>({})
   const [loading, setLoading] = useState(false)
-  const [msg, setMsg] = useState<{ok:boolean,text:string}|null>(null)
-  const [gcalCreds, setGcalCreds] = useState(''); const [gcalUrl, setGcalUrl] = useState(''); const [gcalResp, setGcalResp] = useState(''); const [gcalLoad, setGcalLoad] = useState(false); const [gcalMsg, setGcalMsg] = useState<{ok:boolean,t:string}|null>(null)
+  const [gcalCreds, setGcalCreds] = useState(''); const [gcalUrl, setGcalUrl] = useState(''); const [gcalResp, setGcalResp] = useState(''); const [gcalLoad, setGcalLoad] = useState(false); const [gcalMsg, setGcalMsg] = useState<{ok:boolean,t:string}|null>(null); const [gcalMethod, setGcalMethod] = useState<'oauth'|'token'>('token'); const [gcalToken, setGcalToken] = useState('');
 
   useEffect(() => { (async () => { try { const r = await api.getSettings(); setForm(rawToForm(r?.status==='error'?{}:r)) } catch { setForm(rawToForm({})) } })() }, [])
 
@@ -160,33 +159,69 @@ export default function CoreSettings() {
         {tab === 'ext' && (
           <div className="space-y-8">
             <div className="space-y-4">
-              <p className="text-[13px] font-semibold text-zinc-700 flex items-center gap-2"><Calendar className="w-4 h-4 text-rose-400" />Google Calendar</p>
+              <div className="flex items-center justify-between">
+                <p className="text-[13px] font-semibold text-zinc-700 flex items-center gap-2"><Calendar className="w-4 h-4 text-rose-400" />Google Calendar</p>
+                <div className="flex bg-zinc-100 rounded-lg p-0.5">
+                  <button onClick={()=>setGcalMethod('token')} className={cn("px-3 py-1.5 text-[11px] font-medium rounded-md transition-colors", gcalMethod==='token'?'bg-white text-zinc-800 shadow-sm':'text-zinc-500 hover:text-zinc-700')}>Colar Token.json</button>
+                  <button onClick={()=>setGcalMethod('oauth')} className={cn("px-3 py-1.5 text-[11px] font-medium rounded-md transition-colors", gcalMethod==='oauth'?'bg-white text-zinc-800 shadow-sm':'text-zinc-500 hover:text-zinc-700')}>Gerar Acesso (OAuth)</button>
+                </div>
+              </div>
+              
               {gcalMsg && <p className={cn("text-[12px] font-medium rounded-xl px-3.5 py-2.5", gcalMsg.ok?"bg-emerald-50 text-emerald-500":"bg-rose-50 text-rose-500")}>{gcalMsg.t}</p>}
-              {!gcalUrl ? (
+              
+              {gcalMethod === 'token' && (
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <label className="block text-[12.5px] font-medium text-zinc-500">Credentials JSON (Do Google Cloud)</label>
-                    <textarea className="w-full rounded-xl bg-zinc-50 px-4 py-3 text-[12px] text-zinc-600 border-0 focus:outline-none focus:ring-2 focus:ring-violet-200 font-mono h-[140px] resize-none" value={gcalCreds} onChange={e=>setGcalCreds(e.target.value)} placeholder='Cole aqui todo o conteúdo do seu credentials.json baixado do Google...' />
+                    <label className="block text-[12.5px] font-medium text-zinc-500">Conteúdo do arquivo <code className="text-violet-500">token.json</code></label>
+                    <textarea className="w-full rounded-xl bg-zinc-50 px-4 py-3 text-[12px] text-zinc-600 border-0 focus:outline-none focus:ring-2 focus:ring-violet-200 font-mono h-[140px] resize-none" value={gcalToken} onChange={e=>setGcalToken(e.target.value)} placeholder='{"token": "ya29.a0A...", "refresh_token": "...", ...}' />
                   </div>
                   
                   <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
-                    <p className="text-[12px] text-blue-600 font-medium mb-1">💡 Como obter as Credenciais?</p>
-                    <ol className="list-decimal pl-4 space-y-1 text-[11.5px] text-zinc-600">
-                      <li>Acesse o <strong>Google Cloud Console</strong> e crie um projeto.</li>
-                      <li>Habilite a API <strong>Google Calendar API</strong>.</li>
-                      <li>Vá em <strong>Credenciais</strong> \u003e Criar Credenciais \u003e <strong>ID do cliente OAuth</strong>.</li>
-                      <li>Tipo de App: Aplicativo para computador (Desktop) OU Web com URI <code>http://localhost</code>.</li>
-                      <li>Baixe o JSON, abra, copie todo o texto e cole acima!</li>
-                    </ol>
+                    <p className="text-[12px] text-blue-600 font-medium mb-1">💡 Já possui o token gerado?</p>
+                    <p className="text-[11.5px] text-zinc-600">Se você gerou o acesso pelo script <code className="bg-blue-100 px-1 rounded">google_token_generator.py</code> no seu computador local, basta abrir o arquivo <strong>token.json</strong> gerado lá, copiar todo o texto e colar aqui em cima. Isso pula toda a etapa chata de configuração OAuth do painel!</p>
                   </div>
 
-                  <button onClick={async()=>{setGcalLoad(true);setGcalMsg(null);try{const r=await api.setupGoogleCredentials(gcalCreds);if(r?.status==='ok')setGcalUrl(r.auth_url);else setGcalMsg({ok:false,t:r?.message??'Erro'})}catch(e:any){setGcalMsg({ok:false,t:e.message})}setGcalLoad(false)}}
-                    disabled={gcalLoad||!gcalCreds} className="w-full py-2.5 bg-zinc-100 text-zinc-600 rounded-xl text-[13px] font-medium hover:bg-zinc-200 transition-colors disabled:opacity-40">
-                    {gcalLoad?'Processando...':'Continuar para Google'}
+                  <button onClick={async()=>{
+                      setGcalLoad(true); setGcalMsg(null);
+                      try {
+                        const r = await api.setupGoogleTokenDirect(gcalToken);
+                        if(r?.status==='success'){ setGcalMsg({ok:true,t:'Conectado com sucesso através do Token!'}); setGcalToken(''); setGcalCreds(''); }
+                        else setGcalMsg({ok:false,t:r?.message??'Erro desconhecido'});
+                      } catch (e:any) { setGcalMsg({ok:false,t:e.message || 'Falha de conexão'}) }
+                      setGcalLoad(false);
+                    }}
+                    disabled={gcalLoad||!gcalToken} className="w-full py-3 bg-zinc-900 text-white rounded-xl text-[13px] font-medium hover:bg-zinc-800 shadow-md transition-colors disabled:opacity-40">
+                    {gcalLoad?'Validando...':'Salvar Token Direto'}
                   </button>
                 </div>
-              ) : (
-                <div className="space-y-4 p-5 bg-zinc-50 rounded-xl border border-zinc-100">
+              )}
+
+              {gcalMethod === 'oauth' && (
+                <>
+                  {!gcalUrl ? (
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <label className="block text-[12.5px] font-medium text-zinc-500">Credentials JSON (Do Google Cloud)</label>
+                        <textarea className="w-full rounded-xl bg-zinc-50 px-4 py-3 text-[12px] text-zinc-600 border-0 focus:outline-none focus:ring-2 focus:ring-violet-200 font-mono h-[140px] resize-none" value={gcalCreds} onChange={e=>setGcalCreds(e.target.value)} placeholder='Cole aqui todo o conteúdo do seu credentials.json baixado do Google...' />
+                      </div>
+                      
+                      <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                        <p className="text-[12px] text-blue-600 font-medium mb-1">💡 Como criar um aplicativo web OAuth?</p>
+                        <ol className="list-decimal pl-4 space-y-1 text-[11.5px] text-zinc-600">
+                          <li>Vá no <strong>Google Cloud Console</strong> e ative a Google Calendar API.</li>
+                          <li>Criar Credenciais \u003e ID do Client OAuth.</li>
+                          <li>Importante: Se usar servidor Web (VPS), adicione nas <strong>URIs de redirecionamento autorizadas</strong> a origin Exata deste Dashboard!</li>
+                          <li>Se não usar Web, crie como Desktop App (Nesse caso use a aba Token ao lado).</li>
+                        </ol>
+                      </div>
+
+                      <button onClick={async()=>{setGcalLoad(true);setGcalMsg(null);try{const r=await api.setupGoogleCredentials(gcalCreds);if(r?.status==='ok')setGcalUrl(r.auth_url);else setGcalMsg({ok:false,t:r?.message??'Erro'})}catch(e:any){setGcalMsg({ok:false,t:e.message})}setGcalLoad(false)}}
+                        disabled={gcalLoad||!gcalCreds} className="w-full py-2.5 bg-zinc-100 text-zinc-600 rounded-xl text-[13px] font-medium hover:bg-zinc-200 transition-colors disabled:opacity-40">
+                        {gcalLoad?'Processando...':'Gerar Link de Login Google'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-4 p-5 bg-zinc-50 rounded-xl border border-zinc-100">
                   <div className="space-y-2">
                     <p className="text-[12.5px] font-semibold text-zinc-700">1. Autorize no Google</p>
                     <p className="text-[11.5px] text-zinc-500">Clique no link abaixo, faça login no Google, aceite as permissões do Calendário. O Google redirecionará para uma página vazia (http://localhost/?state=....).</p>
@@ -220,7 +255,10 @@ export default function CoreSettings() {
                   >
                     {gcalLoad ? 'Validando Token...' : 'Finalizar Conexão'}
                   </button>
+                  <button onClick={()=>{setGcalUrl('');setGcalMsg(null)}} className="w-full py-2 bg-transparent text-zinc-500 rounded-xl text-[12px] hover:text-zinc-800 font-medium transition-colors">Voltar</button>
                 </div>
+              )}
+              </>
               )}
             </div>
             <div className="h-px bg-zinc-100" />

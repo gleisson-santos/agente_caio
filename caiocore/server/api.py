@@ -1435,6 +1435,35 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
             
         raise HTTPException(status_code=500, detail=error_msg)
 
+class GoogleTokenDirectRequest(BaseModel):
+    token_content: str
+
+@app.post("/api/settings/credentials/google/token_direct")
+async def save_google_token_direct(req: GoogleTokenDirectRequest):
+    """Saves a directly provided token.json and enables Calendar."""
+    try:
+        from caiocore.config.loader import get_data_dir, save_config
+        import json
+        caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+        caio_stack_core.mkdir(parents=True, exist_ok=True)
+        
+        token_data = json.loads(req.token_content)
+        if "token" not in token_data:
+            raise ValueError("O JSON fornecido não se parece com um token do Google válido (chave 'token' ausente).")
+            
+        token_path = caio_stack_core / "token.json"
+        token_path.write_text(json.dumps(token_data, indent=2), encoding="utf-8")
+        
+        # O credentials.json é opcional se o token.json tiver tudo, mas ativamos a tool mesmo assim
+        if _config:
+            _config.tools.google_calendar.enabled = True
+            save_config(_config)
+            
+        return {"status": "success", "message": "Token do Google ativado com sucesso!"}
+    except Exception as e:
+        logger.error(f"Erro em save_google_token_direct: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+
 
 
 
