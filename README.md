@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/docs/mascote_original_hd.png" alt="Mascote Agente Caio" width="420"/>
+  <img src="docs/mascote_original_hd.png" alt="Mascote Agente Caio" width="420"/>
   <h1>🛸 Agente Caio Core (CaioCore)</h1>
   <p><strong>A Solução Suprema para Operações Inteligentes e Framework Unificado de IA</strong></p>
   <p>
