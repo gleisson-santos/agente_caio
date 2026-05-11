@@ -1355,7 +1355,7 @@ async def setup_google_credentials(req: GoogleCredsRequest):
         
         from caiocore.config.loader import get_data_dir
         # Fix: Use path relative to project root instead of get_data_dir().parent.parent which points to C:\Users
-        caio_stack_core = Path.cwd() / "caio-stack" / "core"
+        caio_stack_core = _Path.cwd() / "caio-stack" / "core"
         caio_stack_core.mkdir(parents=True, exist_ok=True)
         
         cred_path = caio_stack_core / "credentials.json"
@@ -1393,7 +1393,7 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
     try:
         from caiocore.config.loader import get_data_dir
         # Fix: Use path relative to project root instead of get_data_dir().parent.parent which points to C:\Users
-        caio_stack_core = Path.cwd() / "caio-stack" / "core"
+        caio_stack_core = _Path.cwd() / "caio-stack" / "core"
         cred_path = caio_stack_core / "credentials.json"
         state_path = caio_stack_core / "oauth_state.json"
         
@@ -1457,7 +1457,7 @@ async def save_google_token_direct(req: GoogleTokenDirectRequest):
         from caiocore.config.loader import get_data_dir, save_config
         import json
         # Fix: Use path relative to project root instead of get_data_dir().parent.parent which points to C:\Users
-        caio_stack_core = Path.cwd() / "caio-stack" / "core"
+        caio_stack_core = _Path.cwd() / "caio-stack" / "core"
         caio_stack_core.mkdir(parents=True, exist_ok=True)
         
         token_data = json.loads(req.token_content)
