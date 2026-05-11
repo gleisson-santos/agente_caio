@@ -373,7 +373,11 @@ async def get_schedule_data():
         from caiocore.agent.tools.google_calendar import GoogleCalendarTool
         import json
         
-        gc_tool = GoogleCalendarTool()
+        gc = _config.tools.google_calendar
+        gc_tool = GoogleCalendarTool(
+            credentials_path=gc.credentials_path or "credentials.json",
+            token_path=gc.token_path or "token.pickle"
+        )
         try:
             service = gc_tool._get_service()
             events_json = gc_tool._list_events(service, max_results=10)
