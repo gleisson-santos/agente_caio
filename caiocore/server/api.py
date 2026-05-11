@@ -1354,7 +1354,8 @@ async def setup_google_credentials(req: GoogleCredsRequest):
         cred_data = json.loads(conteudo_str)
         
         from caiocore.config.loader import get_data_dir
-        caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+        # Fix: Use path relative to project root instead of get_data_dir().parent.parent which points to C:\Users
+        caio_stack_core = Path.cwd() / "caio-stack" / "core"
         caio_stack_core.mkdir(parents=True, exist_ok=True)
         
         cred_path = caio_stack_core / "credentials.json"
@@ -1362,6 +1363,11 @@ async def setup_google_credentials(req: GoogleCredsRequest):
         
         from google_auth_oauthlib.flow import Flow
         redirect_uri = cred_data.get('installed', cred_data.get('web', {})).get('redirect_uris', ['http://localhost'])[0]
+        
+        # Normalize localhost redirect_uri
+        if "localhost" in redirect_uri and not redirect_uri.endswith("/"):
+            redirect_uri += "/"
+            
         flow = Flow.from_client_secrets_file(
             str(cred_path), 
             scopes=["https://www.googleapis.com/auth/calendar"],
@@ -1386,7 +1392,8 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
     """Exchanges the authorization_response URL for a token and enables Calendar."""
     try:
         from caiocore.config.loader import get_data_dir
-        caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+        # Fix: Use path relative to project root instead of get_data_dir().parent.parent which points to C:\Users
+        caio_stack_core = Path.cwd() / "caio-stack" / "core"
         cred_path = caio_stack_core / "credentials.json"
         state_path = caio_stack_core / "oauth_state.json"
         
@@ -1397,6 +1404,10 @@ async def confirm_google_oauth(req: GoogleConfirmRequest):
         cred_data = json.loads(cred_path.read_text(encoding="utf-8"))
         redirect_uri = cred_data.get('installed', cred_data.get('web', {})).get('redirect_uris', ['http://localhost'])[0]
         
+        # Normalize localhost redirect_uri
+        if "localhost" in redirect_uri and not redirect_uri.endswith("/"):
+            redirect_uri += "/"
+            
         state = None
         if state_path.exists():
             state = json.loads(state_path.read_text(encoding="utf-8")).get("state")
@@ -1445,7 +1456,8 @@ async def save_google_token_direct(req: GoogleTokenDirectRequest):
     try:
         from caiocore.config.loader import get_data_dir, save_config
         import json
-        caio_stack_core = get_data_dir().parent.parent / "caio-stack" / "core"
+        # Fix: Use path relative to project root instead of get_data_dir().parent.parent which points to C:\Users
+        caio_stack_core = Path.cwd() / "caio-stack" / "core"
         caio_stack_core.mkdir(parents=True, exist_ok=True)
         
         token_data = json.loads(req.token_content)

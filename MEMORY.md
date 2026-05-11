@@ -12,33 +12,39 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
-**2026-04-26 15:39:35 -0300** - `e69c6b2` por gleisson-santos
-> **Mensagem:** fix(dashboard, api): improve Google Calendar auth UX, add instructions and explicit tracebacks for token errors
-> *Arquivos tocados:* caiocore/server/api.py, dashboard/src/pages/CoreSettings.tsx
+**2026-05-10 10:00:00 -0300** - `internal` por Gemini-CLI
+> **Mensagem:** docs: full project analysis and creation of GEMINI.md and CLAUDE.md guidelines
+> *Arquivos tocados:* GEMINI.md, CLAUDE.md, MEMORY.md
 
 ***
 
-**2026-04-25 16:35:47 -0300** - `d377e10` por gleisson-santos
-> **Mensagem:** fix(dashboard): rewrite chat with solid scroll layout, fix agents page crash, add lazy neural graph
-> *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/graph/NeuralGraph.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, dashboard/src/pages/AgentsPage.tsx
+**2026-04-26 17:07:37 -0300** - `ee352d3` por gleisson-santos
+> **Mensagem:** docs: fix broken image path for the HD transparent mascot
+> *Arquivos tocados:* README.md
 
 ***
 
-**2026-04-25 16:21:48 -0300** - `504ad84` por gleisson-santos
-> **Mensagem:** feat(dashboard): major UI redesign - neural graph, inline thinking, fullwidth chat, agents page
-> *Arquivos tocados:* dashboard/package-lock.json, dashboard/package.json, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, etc...
+**2026-04-26 16:36:51 -0300** - `fefa457` por gleisson-santos
+> **Mensagem:** fix(api): save absolute calendar token paths to config to prevent agent relative path failures
+> *Arquivos tocados:* caiocore/server/api.py
 
 ***
 
-**2026-04-25 15:59:30 -0300** - `cdc98b3` por gleisson-santos
-> **Mensagem:** fix(auth): set OAUTHLIB_INSECURE_TRANSPORT to prevent HTTP localhost strict transport error on token fetch
-> *Arquivos tocados:* caiocore/cli/commands.py, caiocore/server/api.py
+**2026-04-26 16:21:52 -0300** - `9fc0142` por gleisson-santos
+> **Mensagem:** feat(tools): add local script for generating Google Calendar token.json
+> *Arquivos tocados:* tools/google_token_generator.py
 
 ***
 
-**2026-04-25 15:48:52 -0300** - `315326e` por gleisson-santos
-> **Mensagem:** fix(docker): correct caio-agent traefik loadbalancer port from 18795 to 18790
-> *Arquivos tocados:* docker-compose.yml
+**2026-04-26 16:17:58 -0300** - `2e64467` por gleisson-santos
+> **Mensagem:** fix(agent): explicitly report token refresh failures instead of swallowing them
+> *Arquivos tocados:* caiocore/agent/tools/google_calendar.py
+
+***
+
+**2026-04-26 15:56:31 -0300** - `9014676` por gleisson-santos
+> **Mensagem:** fix(dashboard): restore missing msg state hook causing crash in settings
+> *Arquivos tocados:* dashboard/src/pages/CoreSettings.tsx
 <!-- DYNAMIC_LOG_END -->
 
 ---
