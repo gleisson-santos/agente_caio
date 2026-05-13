@@ -12,39 +12,33 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
-**2026-05-10 10:00:00 -0300** - `internal` por Gemini-CLI
-> **Mensagem:** docs: full project analysis and creation of GEMINI.md and CLAUDE.md guidelines
-> *Arquivos tocados:* GEMINI.md, CLAUDE.md, MEMORY.md
+**2026-05-12 23:38:27 -0300** - `967d647` por gleisson-santos
+> **Mensagem:** feat(dashboard): full UI/UX v5.0 upgrade - chat management, skill selector, and reasoning integration
+> *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/mcp.py, caiocore/agent/tools/sandbox.py, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, etc...
 
 ***
 
-**2026-04-26 17:07:37 -0300** - `ee352d3` por gleisson-santos
-> **Mensagem:** docs: fix broken image path for the HD transparent mascot
-> *Arquivos tocados:* README.md
+**2026-05-12 23:30:00 -0300** - `internal` por CAIO Engine v5.0
+> **Mensagem:** feat: Finalized Phase 3 evolution. UI/UX Redesign complete. Implemented Real-time Reasoning Panel (CoT) and Artifact Canvas for code/doc visualization. Dashboard v5.0 is now a "War Room" operations center.
+> *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, dashboard/src/components/ui/artifact-canvas.tsx, MEMORY.md
 
 ***
 
-**2026-04-26 16:36:51 -0300** - `fefa457` por gleisson-santos
-> **Mensagem:** fix(api): save absolute calendar token paths to config to prevent agent relative path failures
-> *Arquivos tocados:* caiocore/server/api.py
+**2026-05-12 23:20:00 -0300** - `internal` por CAIO Engine v5.0
+> **Mensagem:** feat: Finalized Phase 2 evolution. Implemented Docker Sandbox (sandbox_exec) for secure code execution and Dynamic MCP Host discovery. Caio v5.0 is now securely extensible.
+> *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/sandbox.py, caiocore/agent/tools/mcp.py, MEMORY.md
 
 ***
 
-**2026-04-26 16:21:52 -0300** - `9fc0142` por gleisson-santos
-> **Mensagem:** feat(tools): add local script for generating Google Calendar token.json
-> *Arquivos tocados:* tools/google_token_generator.py
+**2026-05-12 23:15:00 -0300** - `internal` por CAIO Engine v5.0
+> **Mensagem:** feat: Finalized Phase 1 migration. Core modules (FileSystem, Email, Calendar, Search, Workflow) transmutated to v5.0 Action Module standard. Central Action Registry updated to v1.0. Architecture now ready for Phase 2 (Sandbox/MCP).
+> *Arquivos tocados:* /modules/actions/*, /modules/actions/registry.json, MEMORY.md
 
 ***
 
-**2026-04-26 16:17:58 -0300** - `2e64467` por gleisson-santos
-> **Mensagem:** fix(agent): explicitly report token refresh failures instead of swallowing them
-> *Arquivos tocados:* caiocore/agent/tools/google_calendar.py
-
-***
-
-**2026-04-26 15:56:31 -0300** - `9014676` por gleisson-santos
-> **Mensagem:** fix(dashboard): restore missing msg state hook causing crash in settings
-> *Arquivos tocados:* dashboard/src/pages/CoreSettings.tsx
+**2026-05-12 23:05:00 -0300** - `internal` por CAIO Engine v5.0
+> **Mensagem:** feat: init Phase 1 evolution (Action Modules). Migrated FileSystem and Email modules from legacy skills_BAT to /modules/actions. Created central Action Registry.
+> *Arquivos tocados:* /modules/actions/*, /modules/actions/registry.json, MEMORY.md
 <!-- DYNAMIC_LOG_END -->
 
 ---

@@ -1,0 +1,43 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "Orquestração de agenda e eventos via Google Calendar API.",
+  "actions": [
+    {
+      "name": "list_events",
+      "description": "Lista compromissos futuros na agenda.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "max_results": { "type": "integer", "default": 10 },
+          "time_min": { "type": "string", "description": "ISO format date-time" }
+        }
+      }
+    },
+    {
+      "name": "create_event",
+      "description": "Cria um novo evento na agenda.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "summary": { "type": "string" },
+          "start_time": { "type": "string", "description": "ISO format" },
+          "end_time": { "type": "string", "description": "ISO format" },
+          "description": { "type": "string" }
+        },
+        "required": ["summary", "start_time", "end_time"]
+      }
+    },
+    {
+      "name": "delete_event",
+      "description": "Remove um evento da agenda pelo ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "event_id": { "type": "string" }
+        },
+        "required": ["event_id"]
+      }
+    }
+  ]
+}

@@ -1,154 +1,83 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  CheckCircle2,
-  Circle,
-  CircleDotDashed,
-  ChevronDown,
-  ChevronRight,
-  Sparkles,
-} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Terminal, Search, Code, CheckCircle2, Loader2, ChevronRight, Activity, Globe, ShieldCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-interface ThinkingStep {
+interface toolLog {
   id: string;
-  title: string;
-  status: "completed" | "in-progress" | "pending";
-  tools?: string[];
+  name: string;
+  status: 'running' | 'completed' | 'error';
+  timestamp: string;
 }
 
-interface AgentThinkingProps {
-  steps?: ThinkingStep[];
-  isThinking?: boolean;
-}
+export default function AgentThinking({ isThinking, currentTool }: { isThinking: boolean, currentTool?: string }) {
+  if (!isThinking) return null;
 
-const defaultSteps: ThinkingStep[] = [
-  { id: "1", title: "Analisando contexto da mensagem", status: "completed" },
-  { id: "2", title: "Selecionando ferramentas adequadas", status: "completed", tools: ["read_file", "web_search"] },
-  { id: "3", title: "Processando resposta", status: "in-progress" },
-];
-
-export default function AgentThinking({ steps = defaultSteps, isThinking = false }: AgentThinkingProps) {
-  const [expanded, setExpanded] = useState(false);
-
-  const completedCount = steps.filter((s) => s.status === "completed").length;
-  const totalCount = steps.length;
-  const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
+  const toolIcons: Record<string, any> = {
+    "sandbox_exec": <ShieldCheck className="w-4 h-4 text-emerald-500" />,
+    "web_search": <Globe className="w-4 h-4 text-blue-500" />,
+    "read_file": <Code className="w-4 h-4 text-violet-500" />,
+    "write_file": <CheckCircle2 className="w-4 h-4 text-emerald-500" />,
+    "default": <Activity className="w-4 h-4 text-zinc-400" />
+  };
 
   return (
     <motion.div
-      className="w-full max-w-[85%] mb-3"
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      exit={{ opacity: 0, y: 10 }}
+      className="w-full max-w-[500px] bg-white border border-zinc-100 rounded-xl shadow-sm overflow-hidden"
     >
-      <div className="bg-[#0c0c10]/80 backdrop-blur-xl border border-white/[0.06] rounded-xl overflow-hidden">
-        {/* Header — clickable to expand */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-white/[0.02] transition-colors"
-        >
-          <div className="flex items-center gap-2.5">
-            <div className="relative">
-              {isThinking ? (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-4 h-4 text-violet-400" />
-                </motion.div>
-              ) : (
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              )}
-            </div>
-            <span className="text-xs font-medium text-white/70">
-              {isThinking ? "Raciocinando..." : `Plano concluído`}
-            </span>
-            <span className="text-[10px] text-white/30">
-              {completedCount}/{totalCount} etapas
-            </span>
-          </div>
+      {/* Header */}
+      <div className="bg-zinc-50 px-4 py-2 flex items-center justify-between border-b border-zinc-100">
+        <div className="flex items-center gap-2">
+          <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin" />
+          <span className="text-[11px] font-bold text-zinc-500 uppercase tracking-tighter">Chain of Thought</span>
+        </div>
+        <span className="text-[10px] text-zinc-400 font-mono">v5.0 Engine</span>
+      </div>
 
-          <div className="flex items-center gap-3">
-            {/* Mini progress bar */}
-            <div className="w-16 h-1 bg-white/5 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full"
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.5 }}
-              />
+      {/* Logic Steps */}
+      <div className="p-3 space-y-3">
+        <div className="flex gap-3">
+          <div className="flex flex-col items-center">
+            <div className="w-6 h-6 rounded-full bg-violet-100 flex items-center justify-center">
+              <ChevronRight className="w-3 h-3 text-violet-600" />
             </div>
-            {expanded ? (
-              <ChevronDown className="w-3.5 h-3.5 text-white/30" />
-            ) : (
-              <ChevronRight className="w-3.5 h-3.5 text-white/30" />
-            )}
+            <div className="w-px h-full bg-zinc-100 min-h-[12px] my-1"></div>
           </div>
-        </button>
+          <div className="flex-1 pt-0.5">
+            <p className="text-[13px] text-zinc-600 font-medium">Analisando contexto e planejando ações...</p>
+          </div>
+        </div>
 
-        {/* Expanded Steps */}
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: [0.2, 0.65, 0.3, 0.9] }}
-              className="overflow-hidden"
-            >
-              <div className="px-4 pb-3 border-t border-white/[0.04]">
-                <ul className="mt-2 space-y-1.5">
-                  {steps.map((step, idx) => (
-                    <motion.li
-                      key={step.id}
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="flex items-start gap-2.5 py-1"
-                    >
-                      <div className="mt-0.5 flex-shrink-0">
-                        {step.status === "completed" ? (
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                        ) : step.status === "in-progress" ? (
-                          <CircleDotDashed className="w-3.5 h-3.5 text-blue-400 animate-spin" style={{ animationDuration: '3s' }} />
-                        ) : (
-                          <Circle className="w-3.5 h-3.5 text-white/20" />
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <span
-                          className={`text-xs ${
-                            step.status === "completed"
-                              ? "text-white/40 line-through"
-                              : step.status === "in-progress"
-                              ? "text-white/80"
-                              : "text-white/30"
-                          }`}
-                        >
-                          {step.title}
-                        </span>
-                        {step.tools && step.tools.length > 0 && (
-                          <div className="flex flex-wrap gap-1 mt-1">
-                            {step.tools.map((tool) => (
-                              <span
-                                key={tool}
-                                className="text-[10px] px-1.5 py-0.5 rounded bg-violet-500/10 text-violet-300 border border-violet-500/20"
-                              >
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </motion.li>
-                  ))}
-                </ul>
+        {currentTool && (
+          <motion.div 
+            initial={{ opacity: 0, x: -5 }} 
+            animate={{ opacity: 1, x: 0 }}
+            className="flex gap-3"
+          >
+            <div className="flex flex-col items-center">
+              <div className="w-6 h-6 rounded-full bg-zinc-100 flex items-center justify-center">
+                {toolIcons[currentTool] || toolIcons.default}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+            <div className="flex-1 bg-zinc-50/50 rounded-lg p-2.5 border border-zinc-100/50">
+               <div className="flex items-center justify-between mb-1">
+                  <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest">{currentTool}</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-medium">Ativo</span>
+               </div>
+               <p className="text-[12px] text-zinc-500 italic">Executando operação em Sandbox segura...</p>
+            </div>
+          </motion.div>
+        )}
+      </div>
+
+      {/* Footer Log */}
+      <div className="px-4 py-1.5 bg-zinc-50/30 border-t border-zinc-100 flex items-center gap-2">
+        <Terminal className="w-3 h-3 text-zinc-400" />
+        <span className="text-[10px] text-zinc-400 font-mono truncate">root@caio-v5:~/workspace# tail -f engine.log</span>
       </div>
     </motion.div>
   );

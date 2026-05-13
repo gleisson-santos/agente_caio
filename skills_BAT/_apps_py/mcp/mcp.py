@@ -44,37 +44,10 @@ class MCPToolWrapper(Tool):
         return "\n".join(parts) or "(no output)"
 
 
-async def discover_mcp_servers() -> dict:
-    """Discover MCP server configurations from manifest files in modules/mcp-servers."""
-    import json
-    from pathlib import Path
-    
-    servers = {}
-    mcp_dir = Path("modules/mcp-servers")
-    if not mcp_dir.exists():
-        return servers
-        
-    for manifest_path in mcp_dir.rglob("manifest.json"):
-        try:
-            with open(manifest_path, "r", encoding="utf-8") as f:
-                cfg = json.load(f)
-                server_id = manifest_path.parent.name
-                # Map standard manifest to MCP config object
-                servers[server_id] = type('MCPServerConfig', (), cfg)
-        except Exception as e:
-            logger.error(f"Failed to load MCP manifest at {manifest_path}: {e}")
-            
-    return servers
-
-
 async def connect_mcp_servers(
     mcp_servers: dict, registry: ToolRegistry, stack: AsyncExitStack
 ) -> None:
     """Connect to configured MCP servers and register their tools."""
-    # Merge configured servers with discovered ones
-    discovered = await discover_mcp_servers()
-    all_servers = {**mcp_servers, **discovered}
-    
     from mcp import ClientSession, StdioServerParameters
     from mcp.client.stdio import stdio_client
 

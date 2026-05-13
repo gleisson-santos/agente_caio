@@ -1,0 +1,30 @@
+{
+  "name": "search",
+  "version": "1.0.0",
+  "description": "Deep Intelligence de busca web e extração de conteúdo em tempo real.",
+  "actions": [
+    {
+      "name": "web_search",
+      "description": "Executa uma busca na web via Brave API.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Termo de busca" },
+          "count": { "type": "integer", "default": 5 }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "web_fetch",
+      "description": "Extrai o conteúdo textual de uma URL específica.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string" }
+        },
+        "required": ["url"]
+      }
+    }
+  ]
+}

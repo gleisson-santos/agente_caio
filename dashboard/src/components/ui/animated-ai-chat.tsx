@@ -147,6 +147,10 @@ export function AnimatedAIChat({ sessionId, onChatUpdate }: ChatProps) {
         }
     }, [showCmd, activeCmd, value]);
 
+    const [activeTool, setActiveTool] = useState<string | undefined>(undefined);
+
+    // ... (logic inside pickCmd or send)
+
     const send = useCallback(async () => {
         if (!value.trim() || isTyping) return;
         const msg = value.trim();
@@ -155,6 +159,7 @@ export function AnimatedAIChat({ sessionId, onChatUpdate }: ChatProps) {
         const newMessages = [...messages, { role: 'user', content: msg }];
         setMessages(newMessages);
         setIsTyping(true);
+        setActiveTool("sandbox_exec"); // Simulação inicial para demonstração de CoT
 
         // Notify sidebar
         if (onChatUpdate) {
@@ -163,14 +168,22 @@ export function AnimatedAIChat({ sessionId, onChatUpdate }: ChatProps) {
         }
 
         try {
-            const res = await api.sendChatMessage(msg, sessionId, null);
+            // Get enabled skills from session metadata in localStorage
+            const sessions = JSON.parse(localStorage.getItem('caio_sessions') || '[]');
+            const currentSession = sessions.find((s: any) => s.id === sessionId);
+            const enabledTools = currentSession?.enabledSkills || [];
+
+            const res = await api.sendChatMessage(msg, sessionId, null, enabledTools);
             if (res?.content) setMessages(prev => [...prev, { role: 'assistant', content: res.content }]);
             else if (res?.status === 'error') setMessages(prev => [...prev, { role: 'assistant', content: `⚠️ ${res.message || 'Erro.'}` }]);
             else setMessages(prev => [...prev, { role: 'assistant', content: '⚠ Erro de processamento.' }]);
         } catch (e: any) {
             const err = e.name === 'AbortError' ? '⏳ Timeout.' : `⚠ ${e.message?.slice(0, 60) || 'Erro.'}`;
             setMessages(prev => [...prev, { role: 'assistant', content: err }]);
-        } finally { setIsTyping(false); }
+        } finally { 
+            setIsTyping(false); 
+            setActiveTool(undefined);
+        }
     }, [value, isTyping, messages, sessionId, onChatUpdate, adjust]);
 
     const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -267,7 +280,7 @@ export function AnimatedAIChat({ sessionId, onChatUpdate }: ChatProps) {
                                     <div className="w-7 h-7 rounded-full bg-violet-50 flex items-center justify-center shrink-0">
                                         <Sparkles className="w-3.5 h-3.5 text-violet-500 animate-gentle-pulse" />
                                     </div>
-                                    <div className="pt-1"><AgentThinking isThinking={true} /></div>
+                                    <div className="pt-1"><AgentThinking isThinking={true} currentTool={activeTool} /></div>
                                 </motion.div>
                             )}
                             <div ref={endRef} />

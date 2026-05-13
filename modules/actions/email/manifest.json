@@ -1,0 +1,30 @@
+{
+  "name": "email",
+  "version": "1.0.0",
+  "description": "Gestão soberana de comunicações via E-mail (IMAP/SMTP).",
+  "actions": [
+    {
+      "name": "send_email",
+      "description": "Envia um e-mail para um ou mais destinatários.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "to": { "type": "string" },
+          "subject": { "type": "string" },
+          "body": { "type": "string" }
+        },
+        "required": ["to", "subject", "body"]
+      }
+    },
+    {
+      "name": "list_emails",
+      "description": "Lista e-mails recentes da caixa de entrada.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "limit": { "type": "integer", "default": 10 }
+        }
+      }
+    }
+  ]
+}

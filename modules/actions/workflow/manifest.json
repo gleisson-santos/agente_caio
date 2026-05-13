@@ -1,0 +1,27 @@
+{
+  "name": "workflow",
+  "version": "1.0.0",
+  "description": "Motor de orquestração de processos multi-etapa e automações encadeadas.",
+  "actions": [
+    {
+      "name": "run_workflow",
+      "description": "Inicia a execução de um workflow pré-definido.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "workflow_id": { "type": "string" },
+          "inputs": { "type": "object" }
+        },
+        "required": ["workflow_id"]
+      }
+    },
+    {
+      "name": "list_workflows",
+      "description": "Lista todos os workflows disponíveis no sistema.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ]
+}

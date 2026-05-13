@@ -27,6 +27,7 @@ from caiocore.agent.tools.google_calendar import GoogleCalendarTool
 from caiocore.agent.tools.documentos import GeradorDocumentosTool
 from caiocore.agent.tools.message import MessageTool
 from caiocore.agent.tools.workflow import WorkflowTool
+from caiocore.agent.tools.sandbox import SandboxExecTool
 from caiocore.agent.tools.registry import ToolRegistry
 from caiocore.agent.tools.shell import ExecTool
 from caiocore.agent.tools.spawn import SpawnTool
@@ -145,6 +146,7 @@ class AgentLoop:
             timeout=self.exec_config.timeout,
             restrict_to_workspace=self.restrict_to_workspace,
         ))
+        self.tools.register(SandboxExecTool(workspace=self.workspace))
         self.tools.register(WebSearchTool(api_key=self.brave_api_key))
         self.tools.register(WebFetchTool())
         self.tools.register(MessageTool(send_callback=self.bus.publish_outbound))

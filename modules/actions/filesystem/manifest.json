@@ -1,0 +1,43 @@
+{
+  "name": "filesystem",
+  "version": "1.0.0",
+  "description": "Manipulação avançada de arquivos e diretórios com suporte a Sandboxes.",
+  "actions": [
+    {
+      "name": "read_file",
+      "description": "Lê o conteúdo de um arquivo.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "Caminho do arquivo" }
+        },
+        "required": ["path"]
+      }
+    },
+    {
+      "name": "write_file",
+      "description": "Escreve conteúdo em um arquivo.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "Caminho do arquivo" },
+          "content": { "type": "string", "description": "Conteúdo para gravar" }
+        },
+        "required": ["path", "content"]
+      }
+    },
+    {
+      "name": "edit_file",
+      "description": "Edita um arquivo substituindo blocos de texto exatos.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "Caminho do arquivo" },
+          "old_text": { "type": "string", "description": "Texto original" },
+          "new_text": { "type": "string", "description": "Novo texto" }
+        },
+        "required": ["path", "old_text", "new_text"]
+      }
+    }
+  ]
+}

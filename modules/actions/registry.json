@@ -1,0 +1,30 @@
+{
+  "modules": [
+    {
+      "id": "filesystem",
+      "path": "modules/actions/filesystem",
+      "status": "active"
+    },
+    {
+      "id": "email",
+      "path": "modules/actions/email",
+      "status": "active"
+    },
+    {
+      "id": "calendar",
+      "path": "modules/actions/calendar",
+      "status": "active"
+    },
+    {
+      "id": "search",
+      "path": "modules/actions/search",
+      "status": "active"
+    },
+    {
+      "id": "workflow",
+      "path": "modules/actions/workflow",
+      "status": "active"
+    }
+  ],
+  "last_update": "2026-05-12T23:10:00Z"
+}
