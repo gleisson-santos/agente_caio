@@ -10,6 +10,7 @@ import MonitorPage from './pages/MonitorPage';
 import { AnimatedAIChat } from './components/ui/animated-ai-chat';
 import AgentsPage from './pages/AgentsPage';
 import ArtifactCanvas from './components/ui/artifact-canvas';
+import { cn } from './lib/utils';
 
 /* ── Chat session helpers ──────────────────────────────────────── */
 interface ChatSession {

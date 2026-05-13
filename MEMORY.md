@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-05-12 23:38:51 -0300** - `d7a2b90` por gleisson-santos
+> **Mensagem:** feat(dashboard): full UI/UX v5.0 upgrade - chat management, skill selector, and reasoning integration (secrets removed)
+> *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/mcp.py, caiocore/agent/tools/sandbox.py, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, etc...
+
+***
+
 **2026-05-12 23:38:27 -0300** - `967d647` por gleisson-santos
 > **Mensagem:** feat(dashboard): full UI/UX v5.0 upgrade - chat management, skill selector, and reasoning integration
 > *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/mcp.py, caiocore/agent/tools/sandbox.py, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, etc...
@@ -32,12 +38,6 @@
 
 **2026-05-12 23:15:00 -0300** - `internal` por CAIO Engine v5.0
 > **Mensagem:** feat: Finalized Phase 1 migration. Core modules (FileSystem, Email, Calendar, Search, Workflow) transmutated to v5.0 Action Module standard. Central Action Registry updated to v1.0. Architecture now ready for Phase 2 (Sandbox/MCP).
-> *Arquivos tocados:* /modules/actions/*, /modules/actions/registry.json, MEMORY.md
-
-***
-
-**2026-05-12 23:05:00 -0300** - `internal` por CAIO Engine v5.0
-> **Mensagem:** feat: init Phase 1 evolution (Action Modules). Migrated FileSystem and Email modules from legacy skills_BAT to /modules/actions. Created central Action Registry.
 > *Arquivos tocados:* /modules/actions/*, /modules/actions/registry.json, MEMORY.md
 <!-- DYNAMIC_LOG_END -->
 
