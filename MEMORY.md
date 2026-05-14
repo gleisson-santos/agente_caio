@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-05-12 23:46:43 -0300** - `4853019` por gleisson-santos
+> **Mensagem:** feat(dashboard): Command Center for Skills and Sidebar layout optimization v5.2
+> *Arquivos tocados:* dashboard/src/App.tsx
+
+***
+
 **2026-05-12 23:41:15 -0300** - `15b25a6` por gleisson-santos
 > **Mensagem:** fix(dashboard): import missing 'cn' utility in App.tsx to resolve crash
 > *Arquivos tocados:* dashboard/src/App.tsx
@@ -33,12 +39,6 @@
 **2026-05-12 23:30:00 -0300** - `internal` por CAIO Engine v5.0
 > **Mensagem:** feat: Finalized Phase 3 evolution. UI/UX Redesign complete. Implemented Real-time Reasoning Panel (CoT) and Artifact Canvas for code/doc visualization. Dashboard v5.0 is now a "War Room" operations center.
 > *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, dashboard/src/components/ui/artifact-canvas.tsx, MEMORY.md
-
-***
-
-**2026-05-12 23:20:00 -0300** - `internal` por CAIO Engine v5.0
-> **Mensagem:** feat: Finalized Phase 2 evolution. Implemented Docker Sandbox (sandbox_exec) for secure code execution and Dynamic MCP Host discovery. Caio v5.0 is now securely extensible.
-> *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/sandbox.py, caiocore/agent/tools/mcp.py, MEMORY.md
 <!-- DYNAMIC_LOG_END -->
 
 ---

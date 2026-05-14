@@ -14,18 +14,18 @@
 
     --sidebar-bg: #FAFAFA;
     --sidebar-foreground: #52525B;
-    --sidebar-active: #F3F0FF;
-    --sidebar-active-text: #7C3AED;
+    --sidebar-active: #F4F4F5;
+    --sidebar-active-text: #18181B;
 
-    --primary: #7C3AED;
-    --primary-hover: #6D28D9;
+    --primary: #18181B;
+    --primary-hover: #27272A;
     --primary-foreground: #FFFFFF;
-    --primary-soft: #F3F0FF;
+    --primary-soft: #F4F4F5;
 
-    --accent: #8B5CF6;
-    --accent-soft: #F5F3FF;
+    --accent: #18181B;
+    --accent-soft: #F4F4F5;
 
-    --border: #F4F4F5;
+    --border: #E4E4E7;
     --border-hover: #E4E4E7;
     --input-border: #E4E4E7;
 
