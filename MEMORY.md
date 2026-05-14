@@ -12,6 +12,12 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-05-13 22:47:30 -0300** - `02d6078` por gleisson-santos
+> **Mensagem:** fix(ci): fix dashboard build failure by removing garbage code and stabilizing App.tsx
+> *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, dashboard/src/index.css, dashboard/vite.config.js
+
+***
+
 **2026-05-12 23:46:43 -0300** - `4853019` por gleisson-santos
 > **Mensagem:** feat(dashboard): Command Center for Skills and Sidebar layout optimization v5.2
 > *Arquivos tocados:* dashboard/src/App.tsx
@@ -33,12 +39,6 @@
 **2026-05-12 23:38:27 -0300** - `967d647` por gleisson-santos
 > **Mensagem:** feat(dashboard): full UI/UX v5.0 upgrade - chat management, skill selector, and reasoning integration
 > *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/mcp.py, caiocore/agent/tools/sandbox.py, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, etc...
-
-***
-
-**2026-05-12 23:30:00 -0300** - `internal` por CAIO Engine v5.0
-> **Mensagem:** feat: Finalized Phase 3 evolution. UI/UX Redesign complete. Implemented Real-time Reasoning Panel (CoT) and Artifact Canvas for code/doc visualization. Dashboard v5.0 is now a "War Room" operations center.
-> *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, dashboard/src/components/ui/artifact-canvas.tsx, MEMORY.md
 <!-- DYNAMIC_LOG_END -->
 
 ---
