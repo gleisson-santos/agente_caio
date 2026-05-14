@@ -1,67 +1,126 @@
 <div align="center">
   <img src="docs/mascote_original_hd.png" alt="Mascote Agente Caio" width="420"/>
-  <h1>🛸 Agente Caio Core (CaioCore)</h1>
+  <h1>🛸 CaioCore v5.2 (Sovereign Intelligence)</h1>
   <p><strong>A Solução Suprema para Operações Inteligentes e Framework Unificado de IA</strong></p>
   <p>
-    <img src="https://img.shields.io/badge/Versão-Premium_v4.1-violet?style=for-the-badge" alt="Versão Premium">
-    <img src="https://img.shields.io/badge/Status-Mestre_dos_Magos-purple?style=for-the-badge" alt="Status">
+    <img src="https://img.shields.io/badge/Versão-Premium_v5.2-violet?style=for-the-badge&logo=spaceship" alt="Versão Premium">
+    <img src="https://img.shields.io/badge/Status-Soberano-purple?style=for-the-badge" alt="Status">
     <img src="https://img.shields.io/badge/Criado_por-Gleisson_Santos-blue?style=for-the-badge" alt="Autor">
   </p>
 </div>
 
 ---
 
-## ⚡ A Evolução: Agente Caio v4.1 (O Mestre dos Magos)
+## ⚡ A Evolução: CaioCore v5.2 (A Onipresença Cognitiva)
 
-Deixamos para trás a era dos multi-agentes fragmentados. Nesta evolução massiva, o **CaioCore** se consolidou como o *Mestre dos Magos*, aglomerando as habilidades de dezenas de especialistas focados (Vendas, Design, Automação, Programação, E-mails e Monitoramento) em **um único super-agente inteligente**. 
+Deixamos para trás a era dos multi-agentes fragmentados. Nesta evolução massiva, o **CaioCore** se consolidou como o *Mestre dos Magos*, aglomerando as habilidades de dezenas de especialistas focados (Vendas, Design, Automação, Programação, E-mails e Monitoramento) em **um único super-agente inteligente e soberano**. 
 
-Diferente de frameworks tradicionais como o *OpenClaw* ou simples automações como o *Nanobot*, o Caio tem uma visão analítica do todo. Ele entende nativamente a arquitetura do seu projeto, gera sua interface de usuário, marca reuniões e roda automações corporativas de infraestrutura — tudo sendo governado por apenas **uma matriz cognitiva**.
+Diferente de frameworks tradicionais, o Caio v5.2 introduz o **Arsenal de Habilidades (Command Center)**, permitindo orquestração modular de ferramentas em tempo real com raciocínio encadeado (CoT).
 
 ---
 
-### 🏗️ Arquitetura do Sistema (CaioCore)
+### 🏗️ Arquitetura do Ecossistema (High-Level)
 
 O CaioCore foi desenhado com alto poder de orquestração interna e loops refinados de observabilidade em Tempo Real.
 
 ```mermaid
-graph TD
-    %% Estilização do Diagrama
-    classDef user fill:#6366f1,stroke:#4f46e5,stroke-width:2px,color:#fff,font-weight:bold;
-    classDef core fill:#0f172a,stroke:#8b5cf6,stroke-width:2px,color:#fff;
-    classDef system fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#e2e8f0;
-    classDef db fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#fff;
-    classDef tool fill:#4c1d95,stroke:#8b5cf6,stroke-width:1px,color:#fff;
+graph TB
+    %% Definitions
+    classDef user fill:#f8fafc,stroke:#6366f1,stroke-width:2px,color:#1e293b
+    classDef frontend fill:#0f172a,stroke:#8b5cf6,stroke-width:2px,color:#fff
+    classDef gateway fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#fff
+    classDef orchestrator fill:#4c1d95,stroke:#c084fc,stroke-width:3px,color:#fff
+    classDef tool fill:#064e3b,stroke:#10b981,stroke-width:1px,color:#fff
+    classDef db fill:#18181b,stroke:#52525b,stroke-width:1px,color:#a1a1aa
 
-    User([Usuário / Desenvolvedor]):::user -->|Dashboard UI / CLI| Gateway[API Gateway & Router]:::core
+    %% Nodes
+    User([👤 Operador Soberano]):::user
     
-    subgraph CaioCore ["🤖 Super Agente CaioCore (O Mestre)"]
-        direction TB
-        Orchestrator[Motor Orquestrador Híbrido]:::system
-        ActionPlanner[Táticas e Execução]:::system
-        
-        Gateway --> Orchestrator
-        Orchestrator --> ActionPlanner
-    end
-    
-    subgraph Memories ["🧠 Integração Evolutiva"]
-        Obsidian[(Memória Dinâmica\nObsidian 3D / Graphify)]:::db
-        Tokens[(Rastreador de Custos\nPGVector DB)]:::db
+    subgraph UI_Layer ["🎨 Camada de Interface (v5.2 Premium)"]
+        Dashboard["💻 Dashboard React + Tailwind v3<br/>(Glassmorphism & Neural Sphere)"]:::frontend
+        CLI["📟 Caio CLI v0.1.4"]:::frontend
     end
 
-    Orchestrator <-->|Contexto| Obsidian
-    Orchestrator -->|Registro| Tokens
-    
-    subgraph Tools ["⚡ Poderes e Ferramentas Embutidas"]
+    subgraph Core_Engine ["🧠 Matriz de Processamento (Gateway)"]
+        Router["🛸 API Gateway / FastAPI<br/>(Roteamento Inteligente)"]:::gateway
+        Orchestrator["⚡ Mestre dos Magos<br/>(Loop de Raciocínio CoT)"]:::orchestrator
+    end
+
+    subgraph Arsenal ["⚔️ Arsenal de Habilidades (Modules)"]
         direction LR
-        WebSearch[🕸️ Pesquisa Web]:::tool
-        Cron[⏰ Crons e Agenda]:::tool
-        Mail[✉️ IA p/ Emails]:::tool
-        UXUI[🎨 UI/UX Tailwind]:::tool
+        Files["📁 Sandbox FS"]:::tool
+        Search["🌐 Web Search"]:::tool
+        Mail["📧 Sentinel Mail"]:::tool
+        MCP["🧩 MCP Host"]:::tool
     end
+
+    subgraph Persistence ["💾 Memória e Conhecimento"]
+        Obsidian[("📝 Obsidian Knowledge Graph<br/>(Neural Memory)")]:::db
+        Vector[("🧠 PGVector DB<br/>(Embeddings)")]:::db
+    end
+
+    %% Connections
+    User --> UI_Layer
+    UI_Layer --> Router
+    Router <--> Orchestrator
+    Orchestrator --> Arsenal
+    Orchestrator <--> Persistence
     
-    ActionPlanner --> Tools
-    Tools --> |Data Feedback| Orchestrator
+    %% Feedback
+    Arsenal -.->|Data Feedback| Orchestrator
 ```
+
+---
+
+### 🔮 Sovereign UI & Cognitive Insight
+
+O Dashboard v5.2 não é apenas uma interface de chat; é um **Centro de Operações Táticas (War Room)**:
+
+*   **Real-Time Reasoning Panel**: Acompanhe o "Cadeia de Pensamento" (Chain of Thought) do Caio enquanto ele orquestra ferramentas, garantindo total transparência no processo decisório.
+*   **Artifact Canvas**: Visualização instantânea de código, documentos e diagramas gerados pelo agente em uma área dedicada, sem poluir o fluxo do chat.
+*   **Neural Sphere Monitoring**: Feedback visual da atividade neural do sistema, indicando carga de processamento e saúde dos agentes de Tier 1.
+
+---
+
+### 🧠 Memória Evolutiva (Integração Automática com Obsidian)
+
+Uma das maiores revoluções do CaioCore é como ele lida com a retenção de aprendizado prolongado através de uma **Matriz de Memória Híbrida**:
+
+```mermaid
+graph LR
+    %% Styles
+    classDef input fill:#6366f1,stroke:#4f46e5,color:#fff
+    classDef process fill:#1e1b4b,stroke:#8b5cf6,color:#fff
+    classDef storage fill:#18181b,stroke:#10b981,color:#fff
+    classDef view fill:#0f172a,stroke:#3b82f6,color:#fff
+
+    In[[User Prompt]]:::input --> Core[CaioCore Engine]:::process
+    Core -->|Processamento AST| AST[Neural Mapping]:::process
+
+    subgraph Brain ["Matriz Cognitiva"]
+        AST -->|Embeddings| Vector[("PGVector DB<br/>(Semântica)")]:::storage
+        AST -->|Markdown 3D| Obsidian[("Obsidian Graph<br/>(Documentação)")]:::storage
+    end
+
+    Obsidian -->|Visualização| GraphView["🧠 3D Knowledge Map"]:::view
+    Vector -->|RAG| Core
+```
+
+1. **Economia Imediata**: Em interações curtas ou de longo prazo, gastamos até **70% menos tokens**, pois a IA não precisa reler manuais absolutos. Ela extrai blocos de memória apenas quando necessário.
+2. **Obsidian 3D**: Agora você não apenas lê logs num terminal preto; todo o mapa cerebral do Caio atualiza um repositório `.md` automaticamente. Com o **Obsidian**, você visualiza o cérebro dele em Grafos 3D!
+3. **Persistência Total**: A memória inteligente e rastreada é infalível e persistente, sobrevivendo a reinicializações e atualizações de infraestrutura.
+
+---
+
+### ⚔️ Arsenal de Habilidades (Modules v5.2)
+
+O Caio v5.2 não apenas conversa; ele **executa**. O Command Center permite ativar módulos específicos para cada missão:
+
+*   **📁 Filesystem Sandbox**: Edição e criação de arquivos em ambiente isolado e seguro.
+*   **🌐 Web Search (Deep Search)**: Busca profunda em tempo real via Brave/Google API para dados atualizados.
+*   **📧 Sentinel Mail**: Gestão inteligente de e-mails (IMAP/SMTP) com transformadores de visualização em cards.
+*   **🧩 MCP Host (Model Context Protocol)**: Integração universal com qualquer ferramenta compatível com o protocolo MCP.
+*   **⏰ Orquestrador de Cron**: Agendamento de tarefas complexas e gestão de calendário Google nativa.
 
 ---
 
@@ -76,19 +135,6 @@ Abaixo, veja o que o **CaioCore** faz em comparação à base de outros framewor
 | **Processamento de E-mails** | Busca IMAP robusta. Transforma textos sujos em **Cards visuais limpos no Frontend** | Não possui / Precisa de plugin limitador | Não possui capacidade de caixa de entrada nativa |
 | **Gestão de Custos** | Sistema embutido de Observabilidade (**`TokenAgent`**) para monitorar gastos precisos por IA | Sem rastreio consolidado | Limitado a logs perdidos no terminal |
 | **Roteamento Smart** | Roteia dinamicamente LLMs de acordo com o peso da requisição (Gemini, Groq, Claude) | Configuração travada por sistema | Seleção travada para o modelo mais caro (Claude) |
-
----
-
-### 🧠 Memória Evolutiva (Integração Automática com Obsidian)
-
-Uma das maiores revoluções do CaioCore é como ele lida com a retenção de aprendizado prolongado:
-Enquanto agentes comuns esquecem detalhes críticos quando as conversas ficam grandes, o **CaioCore escreve diretamente no formato Abstract Syntax Tree (AST)** exportável.
-
-1. **Economia Imediata**: Em interações curtas ou de longo prazo, gastamos até **70% menos tokens**, pois a IA não precisa reler manuais absolutos. Ela extrai blocos de memória apenas quando necessário.
-2. **Obsidian 3D**: Agora você não apenas lê logs num terminal preto; todo o mapa cerebral do Caio atualiza um repositório `.md` automaticamente. Isso significa que com softwares como **Obsidian** você consegue visualizar o cérebro dele em Grafos 3D das interações!
-3. **Persistência Total**: Não importa quantas vezes você reinicie o Docker ou as instâncias (Swarm). A memória inteligente e rastreada é infalível e persistente.
-
----
 
 <div align="center">
   <img src="docs/dashboard.png" alt="Dashboard Moderno CaioCore - Tailwind & TS" width="800"/>
@@ -142,13 +188,19 @@ Preparado pro mundo real com balanceamento de nós em Swarm, proxies dinâmicos 
 
 ---
 
-## 📢 Melhorias Realizadas na Série v4 💥
+## 📢 Melhorias Realizadas (CaioCore Evolution) 💥
 
-Ao longo desta versão, implementamos correções arquiteturais ferozes na matriz:
-* **Remoção das Bordas UI**: Limpeza completa no Dashboard para ficar idêntico ao modelo "borderless" Premium, resultando numa área de trabalho que reflete calma e organização.
-* **Latência de React (Eliminada)**: Modificações com `useCallback` extinguiram o lag que acontecia ao digitar no Web UI quando o agente respondia e renderizava muitos cartões no Markdown.
-* **Integração Real-Time do TokenAgent**: Agora você pode verificar a exata soma dos Tokens usados (H.) no card do Monitoramento do painel. Acabou a escuridão sobre onde vai sua franquia de APIs.
-* **Blockquote Cards Nativo**: E-mails listados formam visualizações modulares (quadradinhos elegantes com contornos) via TailWind Pro, abandonando aquele texto grudado e caótico que era típico de Respostas antigas.
+### 🛸 v5.2 — Sovereign Intelligence
+*   **Neural Memory Graph**: Integração profunda com Obsidian via AST para visualização 3D do conhecimento.
+*   **Arsenal de Habilidades**: Interface de comando modular (Command Center) para ativação de ferramentas on-the-fly.
+*   **Real-Time Reasoning (CoT)**: Painel de pensamento visível, permitindo auditar o raciocínio da IA antes da resposta final.
+*   **Performance Zero-Lag**: Refatoração completa do motor de renderização do Dashboard para suportar streams massivos sem perda de FPS.
+
+### ⚡ v4.0 — Premium UI/UX
+*   **Remoção das Bordas UI**: Design "Borderless" Premium para foco total na produtividade.
+*   **Latência de React (Eliminada)**: Uso intensivo de `useCallback` e `memo` para digitação fluida.
+*   **Integração TokenAgent**: Monitoramento de custos em tempo real diretamente no painel principal.
+*   **Cards de E-mail**: Visualização modular de e-mails Sentinel via Tailwind Pro.
 
 ---
 
@@ -157,6 +209,6 @@ Ao longo desta versão, implementamos correções arquiteturais ferozes na matri
 **Arquiteto/Desenvolvedor Chefe:** Gleisson Santos  
 **Ecossistema Principal/Deploy:** Plataforma UomniMind  
 
-<p align="center">
-  <strong>Agente Caio — A Onipresença Cognitiva da Automação.</strong>
-</p>
+<div align="center">
+  <p><strong>Agente Caio — A Onipresença Cognitiva da Automação.</strong></p>
+</div>
