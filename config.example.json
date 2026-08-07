@@ -273,7 +273,9 @@
     "tools": {
         "web": {
             "search": {
-                "apiKey": "",
+                "provider": "brave",
+                "apiKey": "XXXXXXXXX",
+                "tavilyKey": "XXXXXXXXX",
                 "maxResults": 5
             }
         },

@@ -29,7 +29,7 @@ export function AnimatedAIChat({ sessionId, onChatUpdate }: { sessionId: string,
     useEffect(() => {
         const load = async () => {
             const history = await api.getChatHistory(sessionId);
-            if (history?.messages) setMessages(history.messages);
+            if (Array.isArray(history) && history.length > 0) setMessages(history);
             else setMessages([]);
         };
         load();

@@ -103,6 +103,24 @@ PROVIDERS: tuple[ProviderSpec, ...] = (
         supports_prompt_caching=True,
     ),
 
+    # Omniroute: OpenAI-compatible gateway
+    ProviderSpec(
+        name="omniroute",
+        keywords=("omniroute", "omni"),
+        env_key="OMNIROUTE_API_KEY",
+        display_name="Omniroute",
+        litellm_prefix="openai",
+        skip_prefixes=("omniroute/",),
+        env_extras=(),
+        is_gateway=True,
+        is_local=False,
+        detect_by_key_prefix="sk-omni-",
+        detect_by_base_keyword="omniroute",
+        default_api_base="https://api.omniroute.ai/v1",
+        strip_model_prefix=False,
+        model_overrides=(),
+    ),
+
     # AiHubMix: global gateway, OpenAI-compatible interface.
     # strip_model_prefix=True: it doesn't understand "anthropic/claude-3",
     # so we strip to bare "claude-3" then re-prefix as "openai/claude-3".

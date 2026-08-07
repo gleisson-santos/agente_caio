@@ -204,6 +204,7 @@ class AgentDefaults(Base):
     max_tool_iterations: int = 20
     memory_window: int = 50
     fallback_models: list[str] = Field(default_factory=list)
+    autonomous: bool = True  # Total autonomy, bypass human confirmation constraints
 
 
 class AgentsConfig(Base):
@@ -215,6 +216,7 @@ class AgentsConfig(Base):
 class ProviderConfig(Base):
     """LLM provider configuration."""
 
+    enabled: bool = True
     api_key: str = ""
     api_base: str | None = None
     extra_headers: dict[str, str] | None = None  # Custom headers (e.g. APP-Code for AiHubMix)
@@ -240,6 +242,7 @@ class ProvidersConfig(Base):
     volcengine: ProviderConfig = Field(default_factory=ProviderConfig)  # VolcEngine (火山引擎) API gateway
     openai_codex: ProviderConfig = Field(default_factory=ProviderConfig)  # OpenAI Codex (OAuth)
     github_copilot: ProviderConfig = Field(default_factory=ProviderConfig)  # Github Copilot (OAuth)
+    omniroute: ProviderConfig = Field(default_factory=ProviderConfig)  # Omniroute API gateway
 
 
 class GatewayConfig(Base):
@@ -252,7 +255,9 @@ class GatewayConfig(Base):
 class WebSearchConfig(Base):
     """Web search tool configuration."""
 
+    provider: str = "brave"  # "brave" or "tavily"
     api_key: str = ""  # Brave Search API key
+    tavily_key: str = ""  # Tavily Search API key
     max_results: int = 5
 
 
@@ -325,25 +330,25 @@ class Config(BaseSettings):
             return kw in model_lower or kw.replace("-", "_") in model_normalized
 
         # Special case: models with slashes and colons (e.g. meta-llama/llama-3.1:free)
-        # are almost certainly intended for OpenRouter if we have an OR key.
+        # are almost certainly intended for OpenRouter if we have an OR key and it is enabled.
         if "/" in model_lower and ":" in model_lower:
             spec = find_by_name("openrouter")
             if spec:
                 p = getattr(self.providers, spec.name, None)
-                if p and p.api_key:
+                if p and p.api_key and getattr(p, "enabled", True):
                     return p, spec.name
 
         # Explicit provider prefix wins — prevents `github-copilot/...codex` matching openai_codex.
         for spec in PROVIDERS:
             p = getattr(self.providers, spec.name, None)
-            if p and model_prefix and normalized_prefix == spec.name:
+            if p and getattr(p, "enabled", True) and model_prefix and normalized_prefix == spec.name:
                 if spec.is_oauth or p.api_key:
                     return p, spec.name
 
         # Match by keyword (order follows PROVIDERS registry)
         for spec in PROVIDERS:
             p = getattr(self.providers, spec.name, None)
-            if p and any(_kw_matches(kw) for kw in spec.keywords):
+            if p and getattr(p, "enabled", True) and any(_kw_matches(kw) for kw in spec.keywords):
                 # If it matches `claude` or `gemini` but we DON'T have a key for that specific provider,
                 # we don't return it here; we'll let it fall back to a gateway.
                 if spec.is_oauth or p.api_key:
@@ -355,7 +360,7 @@ class Config(BaseSettings):
             if spec.is_oauth:
                 continue
             p = getattr(self.providers, spec.name, None)
-            if p and p.api_key:
+            if p and getattr(p, "enabled", True) and p.api_key:
                 return p, spec.name
         return None, None
 

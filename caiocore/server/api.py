@@ -85,13 +85,21 @@ class SettingsUpdate(BaseModel):
     telegramToken: Optional[str] = None
     telegramAllowList: Optional[str] = None
     telegramNotifyChatId: Optional[str] = None
+    emailUser: Optional[str] = None
+    emailPass: Optional[str] = None
+    smtpHost: Optional[str] = None
+    smtpPort: Optional[int] = None
     evolutionBaseUrl: Optional[str] = None
     evolutionApiKey: Optional[str] = None
     evolutionInstance: Optional[str] = None
     providerKeys: Optional[dict[str, str]] = None
-
     providerBases: Optional[dict[str, str]] = None
+    providerEnabled: Optional[dict[str, bool]] = None
+    searchProvider: Optional[str] = None
     braveKey: Optional[str] = None
+    tavilyKey: Optional[str] = None
+    autonomous: Optional[bool] = None
+    omnirouteCombo: Optional[str] = None
 
 
 
@@ -1192,7 +1200,10 @@ async def get_settings():
             "emailEnabled": False,
             "whatsappEnabled": False,
             "providerKeys": {},
-            "providerBases": {}
+            "providerBases": {},
+            "searchProvider": "brave",
+            "braveKey": "",
+            "tavilyKey": ""
         }
     
     # Safely extract values with getattr to prevent crashes if config structure is partial
@@ -1207,7 +1218,8 @@ async def get_settings():
         "maxTokens": safe_get(_config, "agents.defaults.max_tokens", 4096),
         "temperature": safe_get(_config, "agents.defaults.temperature", 0.7),
         "botName": getattr(_config, "bot_name", "CaioAgent"),
-        
+        "autonomous": safe_get(_config, "agents.defaults.autonomous", True),
+
         "telegramEnabled": safe_get(_config, "channels.telegram.enabled", False),
         "emailEnabled": safe_get(_config, "channels.email.enabled", False),
         "whatsappEnabled": safe_get(_config, "channels.evolution.enabled", False),
@@ -1216,6 +1228,11 @@ async def get_settings():
         "telegramAllowList": ",".join(safe_get(_config, "channels.telegram.allow_from", [])),
         "telegramNotifyChatId": safe_get(_config, "channels.telegram.notify_chat_id", ""),
         
+        "emailUser": safe_get(_config, "channels.email.imap_username", ""),
+        "emailPass": safe_get(_config, "channels.email.imap_password", ""),
+        "smtpHost": safe_get(_config, "channels.email.smtp_host", ""),
+        "smtpPort": safe_get(_config, "channels.email.smtp_port", 587),
+
         "evolutionBaseUrl": safe_get(_config, "channels.evolution.base_url", ""),
         "evolutionApiKey": safe_get(_config, "channels.evolution.api_key", ""),
         "evolutionInstance": safe_get(_config, "channels.evolution.instance_name", ""),
@@ -1228,11 +1245,27 @@ async def get_settings():
             "anthropic": safe_get(_config, "providers.anthropic.api_key", ""),
             "deepseek": safe_get(_config, "providers.deepseek.api_key", ""),
             "custom": safe_get(_config, "providers.custom.api_key", ""),
+            "omniroute": safe_get(_config, "providers.omniroute.api_key", ""),
         },
         "providerBases": {
             "custom": safe_get(_config, "providers.custom.api_base", ""),
+            "omniroute": safe_get(_config, "providers.omniroute.api_base", ""),
         },
+        "providerEnabled": {
+            "openrouter": safe_get(_config, "providers.openrouter.enabled", True),
+            "gemini": safe_get(_config, "providers.gemini.enabled", True),
+            "groq": safe_get(_config, "providers.groq.enabled", True),
+            "openai": safe_get(_config, "providers.openai.enabled", True),
+            "anthropic": safe_get(_config, "providers.anthropic.enabled", True),
+            "deepseek": safe_get(_config, "providers.deepseek.enabled", True),
+            "custom": safe_get(_config, "providers.custom.enabled", True),
+            "omniroute": safe_get(_config, "providers.omniroute.enabled", True),
+        },
+        "omnirouteCombo": safe_get(_config, "providers.omniroute.extra_headers", {}).get("X-Combo-Id", "") if safe_get(_config, "providers.omniroute.extra_headers") else "",
+        "searchEngineId": safe_get(_config, "tools.web.search.api_key", ""),
+        "searchProvider": safe_get(_config, "tools.web.search.provider", "brave"),
         "braveKey": safe_get(_config, "tools.web.search.api_key", ""),
+        "tavilyKey": safe_get(_config, "tools.web.search.tavily_key", ""),
     }
 
 
@@ -1253,6 +1286,7 @@ async def update_settings(data: SettingsUpdate):
     if data.model is not None: _config.agents.defaults.model = data.model
     if data.maxTokens is not None: _config.agents.defaults.max_tokens = data.maxTokens
     if data.temperature is not None: _config.agents.defaults.temperature = data.temperature
+    if data.autonomous is not None: _config.agents.defaults.autonomous = data.autonomous
     if data.botName is not None and hasattr(_config, "bot_name"): 
         _config.bot_name = data.botName
     
@@ -1268,27 +1302,50 @@ async def update_settings(data: SettingsUpdate):
     if data.telegramNotifyChatId is not None:
         _config.channels.telegram.notify_chat_id = data.telegramNotifyChatId
     
+    if data.emailUser is not None:
+        _config.channels.email.imap_username = data.emailUser
+        _config.channels.email.smtp_username = data.emailUser
+        _config.channels.email.from_address = data.emailUser
+    if data.emailPass is not None:
+        _config.channels.email.imap_password = data.emailPass
+        _config.channels.email.smtp_password = data.emailPass
+    if data.smtpHost is not None: _config.channels.email.smtp_host = data.smtpHost
+    if data.smtpPort is not None: _config.channels.email.smtp_port = data.smtpPort
+
     if data.evolutionBaseUrl is not None: _config.channels.evolution.base_url = data.evolutionBaseUrl
     if data.evolutionApiKey is not None: _config.channels.evolution.api_key = data.evolutionApiKey
     if data.evolutionInstance is not None: _config.channels.evolution.instance_name = data.evolutionInstance
 
     # Provider Settings
-
     if data.providerKeys:
         for p, key in data.providerKeys.items():
             if hasattr(_config.providers, p):
                 getattr(_config.providers, p).api_key = key
-    
+
     if data.providerBases:
         for p, base in data.providerBases.items():
             if hasattr(_config.providers, p):
                 getattr(_config.providers, p).api_base = base if base else None
 
+    if data.providerEnabled:
+        for p, enabled in data.providerEnabled.items():
+            if hasattr(_config.providers, p):
+                getattr(_config.providers, p).enabled = enabled
+
+    if data.omnirouteCombo is not None:
+        if not _config.providers.omniroute.extra_headers:
+            _config.providers.omniroute.extra_headers = {}
+        if data.omnirouteCombo.strip():
+            _config.providers.omniroute.extra_headers["X-Combo-Id"] = data.omnirouteCombo.strip()
+        else:
+            _config.providers.omniroute.extra_headers.pop("X-Combo-Id", None)
+
+    # Search Tools
+    if data.searchProvider is not None: _config.tools.web.search.provider = data.searchProvider
     if data.braveKey is not None: _config.tools.web.search.api_key = data.braveKey
+    if data.tavilyKey is not None: _config.tools.web.search.tavily_key = data.tavilyKey
 
     # Persist to config.json
-
-
     from caiocore.config.loader import save_config
     save_config(_config)
     
@@ -1300,28 +1357,34 @@ async def update_settings(data: SettingsUpdate):
 
         # Hot-reload provider API key (critical: without this, new keys only work after restart)
         if hasattr(_agent, 'provider') and _agent.provider:
-            # Find which provider is active based on the model prefix
-            active_provider = None
-            model_name = _config.agents.defaults.model or ""
-            for pname in ["openrouter", "gemini", "openai", "anthropic", "groq", "deepseek", "custom"]:
-                prov_cfg = getattr(_config.providers, pname, None)
-                if prov_cfg and prov_cfg.api_key:
-                    # If model starts with provider prefix or this is the first provider with a key
-                    if pname in model_name.lower() or (pname == "openrouter" and "/" in model_name):
-                        active_provider = prov_cfg
-                        break
+            # Match current model to a provider
+            prov_cfg, pname = _config._match_provider(_agent.model)
             
-            if active_provider and active_provider.api_key:
-                _agent.provider.api_key = active_provider.api_key
-                if active_provider.api_base:
-                    _agent.provider.api_base = active_provider.api_base
+            if prov_cfg and prov_cfg.api_key:
+                _agent.provider.api_key = prov_cfg.api_key
+                _agent.provider.api_base = _config.get_api_base(_agent.model)
+                _agent.provider.extra_headers = prov_cfg.extra_headers or {}
+                # Update gateway spec dynamically
+                from caiocore.providers.registry import find_gateway
+                _agent.provider._gateway = find_gateway(pname, prov_cfg.api_key, _agent.provider.api_base)
                 # Also update env vars for litellm
                 _agent.provider._setup_env(
-                    active_provider.api_key,
-                    active_provider.api_base,
-                    _config.agents.defaults.model
+                    prov_cfg.api_key,
+                    _agent.provider.api_base,
+                    _agent.model
                 )
-                logger.info("Settings: Hot-reloaded provider API key")
+                logger.info(f"Settings: Hot-reloaded provider API key, headers and gateway spec for {pname}")
+
+        # Hot-reload search tool settings
+        # The tool is registered as "web_search" (from WebSearchTool.name)
+        web_search = _agent.tools.get("web_search")
+        if web_search:
+            web_search.provider = _config.tools.web.search.provider
+            web_search.brave_key = _config.tools.web.search.api_key
+            web_search.tavily_key = _config.tools.web.search.tavily_key
+            logger.info(f"Settings: Hot-reloaded web_search tool (Provider: {web_search.provider})")
+        else:
+            logger.warning("Settings: web_search tool not found in agent for hot-reload")
 
         logger.info("Settings: Hot-reloaded AI parameters to AgentLoop")
 
@@ -1337,7 +1400,6 @@ async def update_settings(data: SettingsUpdate):
             asyncio.create_task(_channels.sync_with_config(_config))
 
     return {
-
         "status": "ok",
         "reboot_required": reboot_needed,
         "message": "Configurações salvas com sucesso." + (" Reinicie o sistema para aplicar mudanças nos canais." if reboot_needed else "")

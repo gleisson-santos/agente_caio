@@ -593,6 +593,7 @@ def gateway(
         bus=bus,
         provider=provider,
         workspace=config.workspace_path,
+        config=config,
         model=config.agents.defaults.model,
         temperature=config.agents.defaults.temperature,
         max_tokens=config.agents.defaults.max_tokens,

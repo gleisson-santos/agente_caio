@@ -47,7 +47,7 @@ from caiocore.providers.base import LLMProvider, ToolCallRequest
 from caiocore.session.manager import Session, SessionManager
 
 if TYPE_CHECKING:
-    from caiocore.config.schema import ExecToolConfig
+    from caiocore.config.schema import Config, ExecToolConfig
     from caiocore.cron.service import CronService
 
 
@@ -68,6 +68,7 @@ class AgentLoop:
         bus: MessageBus,
         provider: LLMProvider,
         workspace: Path,
+        config: Config | None = None,
         model: str | None = None,
         max_iterations: int = 20,
         temperature: float = 0.7,
@@ -87,6 +88,7 @@ class AgentLoop:
         self.bus = bus
         self.provider = provider
         self.workspace = workspace
+        self.config = config
         self.tracer = AgentTracer(self.workspace)
         self.model = model or provider.get_default_model()
         self.max_iterations = max_iterations
@@ -105,7 +107,7 @@ class AgentLoop:
         # Smart Routing — route simple queries to lighter models
         self.smart_router = SmartRouter(
             default_model=self.model,
-            light_model="google/gemini-2.0-flash-lite",
+            light_model="meta-llama/llama-3.2-3b-instruct:free",
             heavy_model=self.model,
             enabled=True,
         )
@@ -141,13 +143,29 @@ class AgentLoop:
         allowed_dir = self.workspace if self.restrict_to_workspace else None
         for cls in (ReadFileTool, WriteFileTool, EditFileTool, ListDirTool):
             self.tools.register(cls(workspace=self.workspace, allowed_dir=allowed_dir))
+            
+        try:
+            from caiocore.agent.tools.desktop import DesktopControlTool
+            self.tools.register(DesktopControlTool(workspace=self.workspace))
+        except ImportError:
+            pass
+
         self.tools.register(ExecTool(
             working_dir=str(self.workspace),
             timeout=self.exec_config.timeout,
             restrict_to_workspace=self.restrict_to_workspace,
         ))
         self.tools.register(SandboxExecTool(workspace=self.workspace))
-        self.tools.register(WebSearchTool(api_key=self.brave_api_key))
+        
+        # Initialize WebSearchTool with provider-specific keys
+        web_config = self.config.tools.web.search
+        self.tools.register(WebSearchTool(
+            provider=web_config.provider,
+            brave_key=web_config.api_key,
+            tavily_key=web_config.tavily_key,
+            max_results=web_config.max_results
+        ))
+        
         self.tools.register(WebFetchTool())
         self.tools.register(MessageTool(send_callback=self.bus.publish_outbound))
         self.tools.register(SpawnTool(manager=self.subagents))
@@ -468,12 +486,13 @@ class AgentLoop:
                         )
                         logger.warning("Tool {} BLOCKED for specialist (allowed: {})", tool_call.name, allowed_tools)
                     else:
-                        requires_app = getattr(tool_obj, "requires_approval", False) if tool_obj else False
-                        
+                        is_autonomous = getattr(self.config.agents.defaults, "autonomous", True) if self.config else True
+                        requires_app = False if is_autonomous else (getattr(tool_obj, "requires_approval", False) if tool_obj else False)
+
                         user_just_approved = False
                         if session:
                             user_just_approved = session.metadata.get("user_just_approved", False)
-                        
+
                         if requires_app and not user_just_approved:
                             logger.info("Tool {} requires approval. Blocking execution...", tool_call.name)
                             result = f"⛔ EXECUÇÃO PAUSADA: A ação '{tool_call.name}' é crítica. Você DEVE perguntar ao usuário: 'Posso proceder com esta ação? (Sim/Não)'. A ferramenta NÃO foi executada ainda."

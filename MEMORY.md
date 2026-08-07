@@ -12,6 +12,18 @@
 ## ⏳ Histórico Recente de Alterações (Auto-Feed)
 *(Este bloco é atualizado automaticamente a cada commit)*
 <!-- DYNAMIC_LOG_START -->
+**2026-05-13 23:12:00 -0300** - `58b2287` por gleisson-santos
+> **Mensagem:** docs: overhaul README with high-impact architecture and neural memory diagrams v5.2
+> *Arquivos tocados:* README.md
+
+***
+
+**2026-05-13 22:47:37 -0300** - `6e67b5f` por gleisson-santos
+> **Mensagem:** docs(memory): sync memory log with build fix commit
+> *Arquivos tocados:* Nenhum além detalhado
+
+***
+
 **2026-05-13 22:47:30 -0300** - `02d6078` por gleisson-santos
 > **Mensagem:** fix(ci): fix dashboard build failure by removing garbage code and stabilizing App.tsx
 > *Arquivos tocados:* dashboard/src/App.tsx, dashboard/src/components/ui/animated-ai-chat.tsx, dashboard/src/index.css, dashboard/vite.config.js
@@ -27,18 +39,6 @@
 **2026-05-12 23:41:15 -0300** - `15b25a6` por gleisson-santos
 > **Mensagem:** fix(dashboard): import missing 'cn' utility in App.tsx to resolve crash
 > *Arquivos tocados:* dashboard/src/App.tsx
-
-***
-
-**2026-05-12 23:38:51 -0300** - `d7a2b90` por gleisson-santos
-> **Mensagem:** feat(dashboard): full UI/UX v5.0 upgrade - chat management, skill selector, and reasoning integration (secrets removed)
-> *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/mcp.py, caiocore/agent/tools/sandbox.py, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, etc...
-
-***
-
-**2026-05-12 23:38:27 -0300** - `967d647` por gleisson-santos
-> **Mensagem:** feat(dashboard): full UI/UX v5.0 upgrade - chat management, skill selector, and reasoning integration
-> *Arquivos tocados:* caiocore/agent/loop.py, caiocore/agent/tools/mcp.py, caiocore/agent/tools/sandbox.py, dashboard/src/App.tsx, dashboard/src/components/ui/agent-plan.tsx, etc...
 <!-- DYNAMIC_LOG_END -->
 
 ---
@@ -97,6 +97,8 @@ O Agente Caio deve responder sempre de forma:
   - `python start_api.py` -> Inicia o Gateway.
   - `npm run dev` (em /dashboard) -> Inicia o Frontend.
 - **Segurança:** Todas as chaves e credenciais são gerenciadas em `config.json` (apenas exemplo em `config.example.json`).
+- **Resolução de Problemas de SO (Windows):** Se o Agente ou o usuário precisar deletar pastas bloqueadas/inapagáveis pelo Windows (ex: pastas contendo o arquivo de sistema `nul` oriundas de clones Git de Linux), utilizar o comando PowerShell com UNC Path longo: `Remove-Item -LiteralPath "\\?\C:\caminho\absoluto\pasta" -Recurse -Force`.
+- **Mente e Raciocínio (Obsidian / Graphify):** As melhorias e consultas devem passar pela pasta `graphify-out/`, que atua como escopo configurado da mente de raciocínio via Obsidian do usuário. O agente deve usar isso como base de conhecimento (Knowledge Base).
 
 ---
 

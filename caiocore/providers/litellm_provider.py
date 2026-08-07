@@ -81,6 +81,22 @@ class LiteLLMProvider(LLMProvider):
     def _resolve_model(self, model: str) -> str:
         """Resolve model name by applying provider/gateway prefixes."""
         if self._gateway:
+            # Special handling for Omniroute gateway to rewrite OpenRouter specific fallbacks/smart-routing to default model
+            if self._gateway.name == "omniroute":
+                model_lower = model.lower()
+                # 1. First redirect typical OpenRouter fallback free models to the default model
+                if "gpt-oss" in model_lower or "gemma-4-31b" in model_lower or ("llama-3.2" in model_lower and model != self.default_model):
+                    model = self.default_model
+
+                # 2. Strip organizational prefix (e.g. meta-llama/llama-3 -> llama-3) to prevent provider credentials error on Omniroute combos
+                if "/" in model:
+                    parts = model.split("/")
+                    if len(parts) > 1:
+                        model = parts[-1]
+
+                # 3. Clean up the ":free" suffix that is OpenRouter specific
+                model = model.replace(":free", "")
+
             # Gateway mode: apply gateway prefix, skip provider-specific prefixes
             prefix = self._gateway.litellm_prefix
             if self._gateway.strip_model_prefix:
