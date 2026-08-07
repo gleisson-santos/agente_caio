@@ -60,5 +60,8 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             cd /root/agente_caio
-            docker stack deploy -c docker-compose.yml caio --with-registry-auth
+            docker stack deploy -c docker-compose.yml caio --with-registry-auth --resolve-image always
+            docker service update --force caio_caio-agent
+            docker service update --force caio_caio-dashboard
+            docker service update --force caio_caio-bridge
             docker system prune -f
